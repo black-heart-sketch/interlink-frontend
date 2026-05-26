@@ -1,0 +1,938 @@
+{
+  "common": {
+    "languages": [
+      "English",
+      "French",
+      "German",
+      "Italian"
+    ],
+    "languages_list": {
+      "de": "German",
+      "en": "English",
+      "fr": "French",
+      "it": "Italian"
+    },
+    "language_center": "Global Technological Excellence",
+    "experience": "Discover the future of"
+  },
+  "nav": {
+    "home": "Home",
+    "courses": "Services",
+    "services": "Services",
+    "events": "Departments",
+    "internship": "Internship",
+    "projects": "Projects",
+    "gallery": "Showcase",
+    "about": "About",
+    "contact": "Contact",
+    "enroll": "Apply Now",
+    "signin": "Sign In",
+    "dashboard": "Dashboard",
+    "lounge": "Co-Working Lounge",
+    "library": "Knowledge Hub",
+    "learning": "Academy"
+  },
+  "hero": {
+    "master": "Master",
+    "powered_by_ai": "Advanced Technology Solutions.",
+    "subtitle_1": "A world-class platform built for ambitious organizations. Enterprise software engineering, scalable AI systems, and vetted tech internship program management.",
+    "start_learning": "Explore Services",
+    "watch_demo": "Our Projects",
+    "slides": {
+      "0": {
+        "badge": "💻 Enterprise Software Development",
+        "title": "Smart Software",
+        "titleAccent": "Built for the Future.",
+        "subtitle": "Empowering businesses through cutting-edge Software Engineering, Web Development, and Mobile Apps tailored to scale and perform at the highest levels.",
+        "cta": "Explore Services",
+        "ctaSecondary": "Our Projects",
+        "tag1": "Scale & Performance",
+        "tag2": "Web & Mobile Apps",
+        "tag3": "Enterprise Quality"
+      },
+      "1": {
+        "badge": "🤖 AI & Smart Automation",
+        "title": "Next-Gen AI",
+        "titleAccent": "Intelligent Systems.",
+        "subtitle": "Harness the power of AI-powered solutions, machine learning, and automated workflows to accelerate your company's digital transformation and data intelligence.",
+        "cta": "Discover AI Platform",
+        "ctaSecondary": "Read Case Studies",
+        "tag1": "Intelligent Workflows",
+        "tag2": "Real-Time Insights",
+        "tag3": "Predictive Analytics"
+      },
+      "2": {
+        "badge": "🎓 Professional Talent Accelerators",
+        "title": "Apply for",
+        "titleAccent": "Tech Internship.",
+        "subtitle": "Accelerate your career in software development, AI, cybersecurity, or design with hands-on projects, expert supervisor mentorship, and AI-assisted evaluations.",
+        "cta": "Apply for Internship",
+        "ctaSecondary": "View Departments",
+        "tag1": "Expert Mentorship",
+        "tag2": "Practical Experience",
+        "tag3": "Verified Certificates"
+      }
+    },
+    "student_satisfaction": "Client Satisfaction",
+    "students_countries": "Deployments in 15+ Countries"
+  },
+  "stats": {
+    "trusted_by": "Trusted by ambitious talent & leading enterprises",
+    "students": "Projects Completed",
+    "mentors": "Interns Trained",
+    "countries": "Active Departments",
+    "satisfaction": "Client Satisfaction",
+    "levels": "Expert Supervisors",
+    "content": "Partner Institutions"
+  },
+  "features": {
+    "label": "Why We're Different",
+    "heading_1": "Everything you need to grow",
+    "heading_2": "your technology ecosystem.",
+    "sub": "Six pillars that set InterLink apart from traditional consulting firms and talent programs — built for modern, scale-driven organizations.",
+    "f1_title": "AI-Powered Performance Analyzer",
+    "f1_desc": "Continuously evaluates intern check-ins, task completion speeds, report quality, and supervisor ratings to deliver real-time progress metrics.",
+    "f1_tag": "Deep Analytics",
+    "f2_title": "AI Report Assistant",
+    "f2_desc": "Generates professional, structural daily and weekly reports from bulleted student drafts, improving grammar and highlighting achievements.",
+    "f2_tag": "Automated Documentation",
+    "f3_title": "AI Task Recommendation",
+    "f3_desc": "Automatically suggests optimal developmental tasks to supervisors based on student performance, department, skills, and current timeline.",
+    "f3_tag": "Smart Recommendations",
+    "f4_title": "AI Risk Guard",
+    "f4_desc": "Detects inactive interns, late report submissions, or low-performing trends to notify admins and supervisors before deadlines are missed.",
+    "f4_tag": "Active Guard",
+    "f5_title": "AI Final Summarizer",
+    "f5_desc": "Synthesizes the entire internship journey—including completed tasks, skills acquired, and feedback—into a cohesive final summary.",
+    "f5_tag": "Comprehensive Evaluation",
+    "f6_title": "Real-Time Copilot",
+    "f6_desc": "An on-demand AI chatbot that answers questions, explains complex coding tasks, and assists students directly inside their dashboard.",
+    "f6_tag": "Smart Assistant"
+  },
+  "testimonials": {
+    "label": "Success Stories",
+    "heading_1": "Hear from teams and interns",
+    "heading_2": "who transformed their workflows.",
+    "sub": "Real impact from real teams across technology sectors.",
+    "quote_1": "InterLink changed our scaling model. Within 6 months we integrated three high-performing developers from the internship program who hit the ground running with production code.",
+    "quote_2": "The AI Report Assistant is unmatched. My supervisor received clear, beautifully structured weekly updates automatically, saving hours of status alignment every single week.",
+    "quote_3": "I built my full-stack portfolio on InterLink and landed a software engineer role at a European tech company. The structured mentorship and AI analytics gave me the exact skills I needed.",
+    "quote_4": "The real-time dashboard made the entire internship tracking seamless. Vetted reports, automated performance flags, and clear task management are brilliant design decisions.",
+    "trust_label": "Aligned with modern technology and engineering standards"
+  },
+  "cta": {
+    "label": "Limited Professional Access",
+    "heading_1": "The future of enterprise software and",
+    "heading_2": "talent acceleration starts today.",
+    "sub": "Join leading enterprises and ambitious developers already transforming their digital operations. Launch your platform experience now.",
+    "enrol_free": "Get Started Today",
+    "explore": "Explore Services",
+    "check1": "Enterprise security",
+    "check2": "No upfront cost",
+    "check3": "AI-powered dashboard"
+  },
+  "contact": {
+    "label": "Get in Touch",
+    "heading": "The future of technology starts today.",
+    "name": "Full Name",
+    "email": "Email Address",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send Message",
+    "sending": "Sending...",
+    "sent_title": "Message sent!",
+    "sent_desc": "Our team will respond within 24 hours.",
+    "send_another": "Send another message",
+    "info_title": "Contact information",
+    "address_label": "Address",
+    "email_label": "Email",
+    "phone_label": "Phone",
+    "hours_label": "Hours",
+    "select_topic": "Select a topic...",
+    "topics": {
+      "admissions": "Enterprise Services Request",
+      "mentorship": "Internship Application Support",
+      "events": "Technology Partnerships",
+      "partnership": "Corporate Training & Sourcing",
+      "press": "Press and media",
+      "other": "Other inquiry"
+    }
+  },
+  "events": {
+    "label": "Active Departments",
+    "heading_1": "Specialized engineering",
+    "heading_2": "and creative pillars.",
+    "sub": "Explore our highly specialized units designed to handle full-lifecycle digital transformations and cultivate tier-1 tech talents.",
+    "view_all": "Explore Departments",
+    "register": "Apply to Department",
+    "past_highlights": "Key departmental milestones",
+    "ev1_title": "Software Engineering",
+    "ev1_desc": "Crafting scalable cloud APIs, web architectures, and mobile platforms utilizing modern tech stacks like Node.js, React, and Python.",
+    "ev1_type": "Engineering",
+    "ev1_date": "Full lifecycle systems",
+    "ev1_loc": "Cloud & Local deployments",
+    "ev1_seats": "Vibrant development teams",
+    "ev1_badge": "High Demand",
+    "ev2_title": "Cybersecurity & Networks",
+    "ev2_desc": "Conducting rigorous threat modeling, penetration testing, security architecture reviews, and setting up automated CI/CD security scanning.",
+    "ev2_type": "Security",
+    "ev2_date": "Zero-trust environments",
+    "ev2_loc": "Secure infrastructure",
+    "ev2_seats": "Continuous monitoring",
+    "ev2_badge": "Crucial Guard",
+    "ev3_title": "AI, Data & Automation",
+    "ev3_desc": "Designing smart AI recommendation engines, building data analytics pipelines, training NLP chatbots, and automating complex operations.",
+    "ev3_type": "Intelligence",
+    "ev3_date": "State-of-the-art models",
+    "ev3_loc": "AI Lab & Integrations",
+    "ev3_seats": "Highly analytical tracks",
+    "ev3_badge": "Innovative Core"
+  },
+  "gallery": {
+    "label": "Impact Showcase",
+    "heading_1": "Moments that define",
+    "heading_2": "our technological impact.",
+    "sub": "A dynamic exploration of our projects, infrastructure, and team achievements.",
+    "featured": "Featured",
+    "moment": "Milestone",
+    "view_all": "View All Projects",
+    "img1_label": "Project Launch 2025",
+    "img2_label": "Hackathon Workshop",
+    "img3_label": "Interactive AI Lab",
+    "img4_label": "Client Demo Session",
+    "img5_label": "Cloud Infrastructure Lab",
+    "img6_label": "Graduation Ceremony"
+  },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Common Questions",
+    "sub": "Everything you need to know about InterLink's services and internship program.",
+    "q1": "What is InterLink?",
+    "a1": "InterLink is a modern technology enterprise specialized in building intelligent digital systems (software, websites, and mobile apps), AI integrations, cybersecurity audits, IoT systems, and providing high-quality hands-on internship programs for tech students.",
+    "q2": "Who can apply for an internship at InterLink?",
+    "a2": "Active university students, coding school graduates, and self-taught developers specialized in Software Engineering, Cybersecurity, AI Development, Web/Mobile Apps, or Graphic Design are highly encouraged to apply.",
+    "q3": "How does the AI-powered platform work?",
+    "a3": "Our custom AI engines help student interns by suggesting relevant tasks, assisting in writing professional daily/weekly reports, and offering an inline AI chat assistant. For supervisors, the AI assists by reviewing reports and analyzing student progress.",
+    "q4": "Are the internship programs remote or on-site?",
+    "a4": "We offer hybrid, fully on-site, and fully remote internship opportunities, depending on your department and supervisor alignment.",
+    "q5": "Do I get a certificate at the end of the internship?",
+    "a5": "Yes! Upon successful completion of your internship and final supervisor review, InterLink issues a verified digital certificate complete with a secure verification QR code and a shareable digital portfolio.",
+    "q6": "Can InterLink build custom applications for my business?",
+    "a6": "Absolutely! Our professional team delivers high-performance software engineering, custom AI integrations, cybersecurity assessments, and branding/creative flyer and graphic design services for global clients.",
+    "q7": "How many hours of check-in are required per day?",
+    "a7": "We offer flexible tracks including Full-time (8h/day), Part-time (4h/day), and specialized self-paced evening project tracks.",
+    "q8": "When can I apply to start my internship?",
+    "a8": "New cohorts start every month for all active departments. Apply online and pass our automated skills assessment.",
+    "q9": "What is an internship dashboard?",
+    "a9": "Our secure web dashboard serves as your primary workspace, enabling you to check in daily, draft reports, interact with your supervisor, use the AI Copilot, and review performance analytics."
+  },
+  "past_events": {
+    "section_title": "Highlights from past milestones",
+    "prev_event": "< Previous Milestone",
+    "next_event": "Next Milestone >",
+    "featured": "Featured",
+    "event_label": "Project",
+    "select_speaker": "Select a Team Lead:",
+    "next_speaker": "Next",
+    "highlights_label": "Highlights",
+    "comments_label": "Reviews",
+    "events": [
+      {
+        "title": "Enterprise Cloud Migration",
+        "date": "09 May 2026",
+        "attendees": "400+ Deployed APIs",
+        "description": "A major production milestone delivering secured containerized cloud architectures, microservices synchronization, and zero-downtime database clusters.",
+        "speakers": [
+          {
+            "name": "Somo Rean",
+            "role": "Lead Architect",
+            "message": "Transitioning legacy structures to high-performance Kubernetes pods was a profound milestone. Using automated CI/CD gates and real-time container metrics, we secured 99.9% uptime and streamlined API operations.",
+            "quote": "We build highly robust infrastructures where scale is built-in and security is absolute.",
+            "extra_info": "Real-time threat monitoring permits proactive mitigation of DDoS risks. We utilize advanced traffic shaping and secure socket layer encryption protocols.",
+            "highlights": [
+              "Weekly CI/CD pipeline automation.",
+              "Continuous microservices load testing.",
+              "Intensive Kubernetes cluster audits.",
+              "Zero-downtime database failovers.",
+              "Real-time resource usage monitoring.",
+              "Secure vault secret integrations.",
+              "Targeted code refactoring sessions.",
+              "12-month metrics tracking."
+            ],
+            "testimonials": [
+              {
+                "text": "Thanks to Somo's scaling patterns, our API latency dropped by 40%.",
+                "author": "Marc Yvan",
+                "role": "Senior Engineer"
+              },
+              {
+                "text": "Docker orchestration simulations prepared us perfectly for the launch.",
+                "author": "Ngoune Yann",
+                "role": "Cloud Dev Intern"
+              },
+              {
+                "text": "The setup is robust and easily scalable. Best cloud practice I have seen.",
+                "author": "Alice T.",
+                "role": "Client Architect"
+              },
+              {
+                "text": "A secure containerized approach that prevents resource depletion.",
+                "author": "Bob D.",
+                "role": "System Auditor"
+              },
+              {
+                "text": "Leads are extremely attentive to performance optimization.",
+                "author": "Clarisse M.",
+                "role": "Database Dev"
+              }
+            ]
+          },
+          {
+            "name": "Dr. Elena Schmidt",
+            "role": "AI Architect",
+            "message": "Data-centric engineering is key. By analyzing processing pipelines and deploying localized large language models, we automate manual workflows with absolute precision.",
+            "highlights": [
+              "Alignment with ISO AI standards.",
+              "Focus on neural weights optimization.",
+              "Use of clean dataset pipelines.",
+              "On-demand AI inference agents.",
+              "Predictive risk warning triggers.",
+              "Introduction of vector databases.",
+              "Secure local LLM deployments.",
+              "Real-time token cost monitoring."
+            ],
+            "testimonials": [
+              {
+                "text": "Dr. Elena explains complex vector logic with incredible simplicity.",
+                "author": "Paul Biya Jr.",
+                "role": "Machine Learning Intern"
+              },
+              {
+                "text": "Finally, an AI integration that yields practical business results!",
+                "author": "Clarisse E.",
+                "role": "Product Manager"
+              },
+              {
+                "text": "Her patience in debugging model training is unmatched.",
+                "author": "David L.",
+                "role": "Data Engineer"
+              },
+              {
+                "text": "We construct modern intelligent pipelines that scale.",
+                "author": "Eva G.",
+                "role": "Tech Lead"
+              }
+            ]
+          },
+          {
+            "name": "Jean-Pierre Nkou",
+            "role": "DevOps Manager",
+            "message": "Managing hundreds of dynamic build environments is a serious logistics feat. We implemented robust sandbox clusters to guarantee that developers can test securely.",
+            "highlights": [
+              "Optimized cloud resource allocation.",
+              "Secure digital badge authentication.",
+              "Strict environment isolation rules.",
+              "Fluid log ingestion systems.",
+              "Zero delays on release branches.",
+              "Automated backup verification.",
+              "Ergonomic developer environments.",
+              "Technical support for staging environments."
+            ],
+            "testimonials": [
+              {
+                "text": "The sandboxed testing pipeline is extremely fast and reliable.",
+                "author": "Tasha G.",
+                "role": "Frontend Architect"
+              },
+              {
+                "text": "CI runner resources are high quality and highly available.",
+                "author": "Samuel O.",
+                "role": "Full Stack Dev"
+              },
+              {
+                "text": "Everything is automated, reducing manual deployment errors.",
+                "author": "Isabelle V.",
+                "role": "Release Engineer"
+              },
+              {
+                "text": "No staging congestion or runtime permission issues.",
+                "author": "Karl H.",
+                "role": "QA Engineer"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Smart Cities IoT Summit",
+        "date": "15 April 2026",
+        "attendees": "250+ Devices",
+        "description": "An annual innovation summit showcasing smart home dashboards, automated sensor grids, and secure edge devices.",
+        "speakers": [
+          {
+            "name": "Klaus Mayer",
+            "role": "IoT Director",
+            "message": "Edge connectivity bridges hardware and digital logic. This summit highlighted local IoT systems transmitting metrics securely, demonstrating scalable local hardware engineering.",
+            "highlights": [
+              "Smart telemetry visualization dashboards.",
+              "Low-power WAN network protocols.",
+              "Real-time microcontroller scripting.",
+              "Round table on IoT cybersecurity.",
+              "Academic and enterprise hardware pacts.",
+              "Networking with hardware vendors.",
+              "Masterclass on hardware security modules.",
+              "Forum on smart grid telemetry."
+            ],
+            "testimonials": [
+              {
+                "text": "I discovered incredible hardware prototyping methods.",
+                "author": "Félix K.",
+                "role": "IoT Student"
+              },
+              {
+                "text": "The telemetry synchronization was flawless and beautiful.",
+                "author": "Sarah L.",
+                "role": "Embedded Dev"
+              },
+              {
+                "text": "Klaus is highly practical and provides great architectural guidance.",
+                "author": "Lucas P.",
+                "role": "Hardware Intern"
+              },
+              {
+                "text": "A showcase that elevates physical computing standards.",
+                "author": "Nina S.",
+                "role": "Hardware Researcher"
+              }
+            ]
+          },
+          {
+            "name": "Ms. Ngo Batoum",
+            "role": "UI/UX Specialist",
+            "message": "Designing interfaces for physical devices is a fascinating craft. The user must experience fluid dashboard feedback instantly, without confusing navigation steps.",
+            "highlights": [
+              "Interactive interface mockups.",
+              "Usability testing across device screens.",
+              "Collaborative Figma wireframing.",
+              "High-contrast visual accessibility.",
+              "Custom icons and component kits.",
+              "Responsive grid structures.",
+              "User-centric product styling.",
+              "Fluid animations for physical actions."
+            ],
+            "testimonials": [
+              {
+                "text": "Ngo's user interface design patterns are incredibly polished.",
+                "author": "Gilles M.",
+                "role": "Design Critic"
+              },
+              {
+                "text": "The dashboards feel very alive and responsive.",
+                "author": "Marie-Noëlle",
+                "role": "Product Designer"
+              },
+              {
+                "text": "I loved the UI wireframing sessions.",
+                "author": "Omer F.",
+                "role": "Frontend Intern"
+              },
+              {
+                "text": "Beautiful design systems that are a joy to implement.",
+                "author": "Rachel Z.",
+                "role": "Web Engineer"
+              }
+            ]
+          },
+          {
+            "name": "Hans Weber",
+            "role": "Automation Lead",
+            "message": "Industrial automation is a beautiful integration of mechanics and digital triggers. We successfully showcased automated factory systems processing data securely.",
+            "highlights": [
+              "Live industrial automation demo.",
+              "Hardware and software data-fusion.",
+              "ESP32 and Arduino firmware coding.",
+              "Real-time sensor calibration.",
+              "Firmware configurations shared.",
+              "Optimized low-latency logic.",
+              "Seminar on green hardware loops.",
+              "Community hardware hardware hacks."
+            ],
+            "testimonials": [
+              {
+                "text": "The automated sensor triggers were incredibly fast!",
+                "author": "Arnaud T.",
+                "role": "Tech Enthusiast"
+              },
+              {
+                "text": "Hans is a real expert in embedded systems architecture.",
+                "author": "Lydie K.",
+                "role": "Robotics Specialist"
+              },
+              {
+                "text": "The telemetry feed was robust and secure.",
+                "author": "Marc R.",
+                "role": "Network Operator"
+              },
+              {
+                "text": "I learned to configure ESP32 clients from scratch!",
+                "author": "Sandrine J.",
+                "role": "Systems Hobbyist"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "about_title": "About InterLink",
+    "about_desc": "A next-generation technology enterprise specialized in software engineering, AI innovations, and verified professional tech talent acceleration.",
+    "subscribe": "Subscribe",
+    "email_placeholder": "Your enterprise email",
+    "made_with": "Engineered with",
+    "in": "at",
+    "rights": "All rights reserved.",
+    "sections": {
+      "courses": "Services",
+      "platform": "Platform",
+      "company": "Company",
+      "legal": "Legal"
+    },
+    "links": {
+      "a1": "Software Engineering",
+      "a2": "Cybersecurity & Security",
+      "b1": "AI, Data & Automation",
+      "b2": "Graphic Design & Branding",
+      "c1": "Web & Mobile Apps",
+      "c2": "IoT Engineering",
+      "ai_curr": "AI Platform Engine",
+      "mentorship": "Verified Internships",
+      "cert": "Secure Credentials",
+      "events": "Departments",
+      "gallery": "Project Showcase",
+      "dashboard": "Client Dashboard",
+      "about": "About Us",
+      "team": "Our Team",
+      "careers": "Careers",
+      "press": "Media Kit",
+      "blog": "Tech Blog",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service",
+      "cookie": "Cookie Policy",
+      "refund": "Platform SLA"
+    }
+  },
+  "courses": {
+    "label": "Our Services & Tracks",
+    "heading_1": "Programs engineered for",
+    "heading_2": "high-impact growth.",
+    "showing": "Showing",
+    "of": "of",
+    "results": "tracks",
+    "enrol_now": "Apply Now",
+    "prev": "Previous",
+    "next": "Next",
+    "c1_title": "Enterprise Software Engineering",
+    "c1_desc": "Design and build production-grade web APIs, cloud microservices, and robust desktop programs using modern architecture models.",
+    "c2_title": "Advanced Cybersecurity Auditing",
+    "c2_desc": "Master penetration testing, secure threat modeling, server defense configurations, and database injection remediation.",
+    "c3_title": "AI, Data Science & Automation",
+    "c3_desc": "Build intelligent recommendation systems, process language with NLP models, deploy local LLMs, and structure analytics databases.",
+    "c4_title": "UX/UI & Graphic Design Systems",
+    "c4_desc": "Craft high-fidelity product wireframes, responsive mobile prototypes, sleek logos, and professional digital marketing collateral.",
+    "c5_title": "Web & Cross-Platform Mobile Apps",
+    "c5_desc": "Engineer beautiful user interfaces and fast mobile applications using modern frameworks like React, Next.js, Flutter, and Tailwind.",
+    "c6_title": "IoT & Embedded Systems Prototyping",
+    "c6_desc": "Program hardware microcontrollers, read complex analog/digital sensor feeds, and design secure low-power WAN telemetry networks.",
+    "c7_title": "Cloud DevOps & CI/CD Pipelines",
+    "c7_desc": "Automate containerized applications, set up Kubernetes clusters, audit network security, and manage continuous deployment workflows.",
+    "c8_title": "Tech Product & Project Operations",
+    "c8_desc": "Orchestrate high-velocity agile sprints, manage cross-functional requirements, write technical specifications, and ensure product quality.",
+    "c9_title": "Full Stack Engineering Intensive",
+    "c9_desc": "Comprehensive backend, frontend, database, and system operations training. Designed to fast-track candidates into senior technical tracks.",
+    "duration_weeks_one": "{{count}} Week",
+    "duration_weeks_other": "{{count}} Weeks",
+    "lesson_count_one": "{{count}} Module",
+    "lesson_count_other": "{{count}} Modules",
+    "prices": {
+      "free": "Open Track"
+    },
+    "c1_tags": [
+      "Backend API",
+      "React/Node",
+      "Architecture"
+    ],
+    "c2_tags": [
+      "SecOps",
+      "Pentesting",
+      "Network"
+    ],
+    "c3_tags": [
+      "LLMs/NLP",
+      "Data Pipeline",
+      "Automation"
+    ],
+    "c4_tags": [
+      "Figma UI",
+      "Branding",
+      "Typography"
+    ],
+    "c5_tags": [
+      "Next.js",
+      "Flutter",
+      "Responsive"
+    ],
+    "c6_tags": [
+      "ESP32/C++",
+      "Telemetry",
+      "Sensors"
+    ],
+    "c7_tags": [
+      "Docker/K8s",
+      "CI/CD Runner",
+      "Cloud"
+    ],
+    "c8_tags": [
+      "Agile/Sprints",
+      "Specs",
+      "Product"
+    ],
+    "c9_tags": [
+      "Full Stack",
+      "Fast-Track",
+      "Portfolio"
+    ]
+  },
+  "auth": {
+    "brand_subtitle": "Enterprise tech platform",
+    "language_label": "Choose language",
+    "login_badge": "Secure user access",
+    "register_badge": "Start your technical path",
+    "login_hero_1": "Welcome back to your",
+    "login_hero_2": "InterLink workstation.",
+    "login_hero_sub": "Access your projects, draft your daily reports, review comments from your supervisor, and interact with the AI Copilot inside a secure environment.",
+    "register_hero_1": "Begin your journey to",
+    "register_hero_2": "technical mastery.",
+    "register_hero_sub": "Create your account to access our structured internship departments, work on production-grade codebases, and earn verified certificates.",
+    "promise_1": "Vetted internship departments",
+    "promise_2": "Professional supervisor logs",
+    "promise_3": "Real-time AI Copilot tools",
+    "create_account": "Create account",
+    "have_account": "Sign in",
+    "signin_label": "Sign in",
+    "signin_title": "Access your workstation",
+    "signin_subtitle": "Use your registered email and password to proceed.",
+    "email": "Email address",
+    "password": "Password",
+    "password_placeholder": "Enter your password",
+    "show": "Show",
+    "hide": "Hide",
+    "remember": "Remember my session",
+    "forgot_password": "Forgot password?",
+    "signing_in": "Signing in...",
+    "signin_button": "Sign In",
+    "no_account": "New to InterLink?",
+    "login_success": "Workstation access granted successfully.",
+    "enroll_label": "Apply now",
+    "enroll_title": "Create your user profile",
+    "enroll_subtitle": "Provide your professional details to set up your workstation.",
+    "first_name": "First name",
+    "last_name": "Last name",
+    "password_strength": "Password strength",
+    "terms_text": "I agree to receive platform updates and accept the InterLink terms of service.",
+    "creating_account": "Initializing workstation...",
+    "enroll_button": "Create Account",
+    "already_account": "Already have an account?",
+    "register_success": "User profile created successfully.",
+    "phone": "Phone",
+    "study_language": "Department track",
+    "select_language_placeholder": "Select your department track...",
+    "payment_receipt": "Skills resume",
+    "click_to_attach_receipt": "Click to attach your resume (PDF, JPG, PNG)",
+    "accepted_formats": "Accepted formats: PDF, JPG, PNG (max 10 MB)",
+    "register_success_pending": "Registration successful! Your workstation profile is pending validation by an administrator.",
+    "errors": {
+      "required": "Please complete all required fields.",
+      "invalid_login": "Invalid email or password.",
+      "password_short": "Password must be at least 6 characters.",
+      "terms": "Please accept the platform terms before continuing.",
+      "register_failed": "Unable to create account. Please try again.",
+      "study_language_required": "Please select your department track.",
+      "payment_receipt_required": "Please attach your skills resume."
+    },
+    "cinematic_label": "Your journey at InterLink",
+    "cinematic_title": "From hands-on projects to enterprise roles.",
+    "cinematic_subtitle": "A structured development path through real tasks, expert mentorship, automated reviews, and verified portfolios.",
+    "background_word": "Tech",
+    "focus_languages": [
+      "Engineering",
+      "Security",
+      "Automation",
+      "Design"
+    ],
+    "brand_subtitle_suffix": "workstation",
+    "login_hero_2_suffix": "workstation.",
+    "register_hero_2_suffix": "mastery."
+  },
+  "dashboard": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "crm_leads": "CRM & Leads",
+      "programs": "Programs",
+      "partners": "Partners",
+      "testimonials": "Testimonials",
+      "gallery": "Gallery",
+      "users": "Users",
+      "events": "Events",
+      "activities": "Activities",
+      "conferences": "Conferences",
+      "upcoming": "Upcoming Events",
+      "flyer": "Flyer Campaign",
+      "members": "Members"
+    },
+    "topbar": {
+      "current_session": "Current Session",
+      "server_status": "Server Status",
+      "online": "Online & Secure",
+      "profile": "Profile Settings",
+      "signout": "Sign Out"
+    },
+    "actions": {
+      "add": "Add",
+      "edit": "Edit",
+      "delete": "Delete",
+      "save": "Save",
+      "saving": "Saving...",
+      "cancel": "Cancel",
+      "confirm_delete": "Are you sure you want to delete",
+      "search": "Search...",
+      "create": "Create",
+      "close": "Close"
+    },
+    "status": {
+      "live": "Live",
+      "review": "Review",
+      "archived": "Archived",
+      "draft": "Draft",
+      "scheduled": "Scheduled",
+      "past": "Past",
+      "active": "Active",
+      "inactive": "Inactive",
+      "new": "New",
+      "contacted": "Contacted",
+      "converted": "Converted",
+      "published": "Published",
+      "verified": "Verified",
+      "pending": "Pending"
+    },
+    "screens": {
+      "programs": {
+        "title": "Programs",
+        "name": "Name",
+        "category": "Category",
+        "duration": "Duration",
+        "level": "Level",
+        "add_program": "Add Program",
+        "delete_program": "Delete Program"
+      },
+      "leads": {
+        "title": "Leads",
+        "name": "Name",
+        "email": "Email",
+        "phone": "Phone",
+        "status": "Status",
+        "add_lead": "Add Lead"
+      },
+      "users": {
+        "title": "System Users",
+        "name": "Name",
+        "email": "Email",
+        "role": "Role",
+        "add_user": "Create User",
+        "password": "Password",
+        "password_placeholder": "min 8 chars"
+      },
+      "events": {
+        "title": "Events",
+        "event_title": "Event Title",
+        "type": "Type",
+        "date": "Date",
+        "location": "Location",
+        "add_event": "Add Event"
+      },
+      "gallery": {
+        "title": "Digital Assets",
+        "album_file": "Album / File",
+        "type": "Type",
+        "url": "URL",
+        "add_media": "Add Media",
+        "title_fr": "Title (FR)",
+        "title_en": "Title (EN)",
+        "files": "File(s)",
+        "album": "Album / File",
+        "date": "Added on",
+        "status": "status"
+      },
+      "partners": {
+        "title": "Partners",
+        "name": "Partner Name",
+        "category": "Category",
+        "website": "Website",
+        "add_partner": "Add Partner",
+        "partner": "Partner",
+        "type": "Type",
+        "country": "Country",
+        "placed_students": "Placed Interns",
+        "status": "Status"
+      },
+      "testimonials": {
+        "title": "Testimonials",
+        "author": "Author",
+        "role": "Role",
+        "rating": "Rating",
+        "add_testimonial": "Add Testimonial",
+        "content": "Content",
+        "program": "program",
+        "status": "Status"
+      },
+      "activities": {
+        "title": "Activities",
+        "activity_name": "Activity Name",
+        "category": "Category",
+        "date": "Date",
+        "add_activity": "Add Activity",
+        "activity_title": "Activity",
+        "duration": "Duration",
+        "assigned_staff": "Assigned Staff",
+        "status": "Status"
+      },
+      "conferences": {
+        "title": "Conferences",
+        "topic": "Topic",
+        "speaker": "Speaker",
+        "date": "Date",
+        "add_conference": "Add Conference",
+        "conference": "conference",
+        "speakers": "speakers",
+        "location": "location",
+        "attendees": "attendees",
+        "status": "status"
+      },
+      "flyer": {
+        "title": "Flyer Campaigns",
+        "campaign": "Campaign Name",
+        "channel": "Channel",
+        "start_date": "Start Date",
+        "end_date": "End Date",
+        "add_flyer": "Add Flyer"
+      },
+      "members": {
+        "title": "Members",
+        "name": "Name",
+        "role": "Role",
+        "department": "Department",
+        "add_member": "Add Member",
+        "member": "Member",
+        "contact": "Contact",
+        "status": "Status",
+        "profile": "Member Profile",
+        "phone": "Phone",
+        "joined": "Joined on"
+      },
+      "upcoming": {
+        "title": "Upcoming Events",
+        "event_name": "Event Name",
+        "countdown": "Countdown",
+        "add_upcoming": "Add Upcoming Event"
+      },
+      "flyers": {
+        "campaign": "campaign",
+        "channel": "channel",
+        "start_date": "start date",
+        "end_date": "end date",
+        "file": "file",
+        "view_flyer": "View Flyer",
+        "status": "status",
+        "title": "Marketing Supports",
+        "upload_flyer": "upload flyer"
+      },
+      "upcoming_events": {
+        "event": "Title",
+        "date": "Date",
+        "time": "Time",
+        "location": "Location",
+        "attendees": "Expected Attendees",
+        "status": "Status",
+        "title": "Upcoming Events",
+        "add_event": "add event"
+      }
+    },
+    "home": {
+      "revenue": "Revenue",
+      "total_leads": "Total CRM Leads",
+      "prospects_desc": "Prospects in pipeline",
+      "active_programs": "Active Programs",
+      "pending_testimonials": "Pending Testimonials",
+      "require_approval": "Require your approval",
+      "institute_trends": "InterLink Analytics",
+      "trends_desc": "Daily check-in frequencies (this month)",
+      "monthly": "Monthly",
+      "daily": "Daily",
+      "staff_distribution": "Staff Distribution",
+      "system_performance": "System Performance",
+      "optimal": "Optimal",
+      "administrators": "Administrators",
+      "teachers": "Tutors",
+      "receptionists": "Coordinators",
+      "super_admins": "Super Admins"
+    }
+  },
+  "learning": {
+    "my_learning": "My Learning",
+    "my_learning_desc": "Resume a track, review completed work, or go back to the catalogue for something new.",
+    "explore_courses": "Explore tracks",
+    "active_courses": "Active tracks",
+    "completed": "Completed",
+    "average_progress": "Average progress",
+    "loading_courses": "Loading your tracks...",
+    "no_enrolled_title": "No enrolled tracks yet",
+    "no_enrolled_desc": "Start with a free track or preview a freemium track from the catalogue.",
+    "browse_all": "Browse all tracks",
+    "sign_in_title": "Sign in to see My Learning",
+    "sign_in_desc": "Your enrolled tracks, progress, and continue buttons are connected to your workstation.",
+    "sign_in": "Sign in",
+    "all_courses": "All Tracks",
+    "all_courses_desc": "Choose from published tracks. Free tracks open immediately, freemium tracks unlock preview sections, and premium tracks request validation.",
+    "search_placeholder": "Search by title, level, category, or track...",
+    "no_courses_title": "No tracks found",
+    "no_courses_desc": "Try a different search term or plan filter.",
+    "loading_courses_catalog": "Loading tracks...",
+    "continue_learning": "Continue development",
+    "back_to_courses": "Back to tracks",
+    "back": "Back",
+    "go_to_courses": "Go to Tracks",
+    "chapters": "Sections",
+    "videos": "Modules",
+    "preview_chapters": "Preview sections",
+    "about_course": "About this track",
+    "no_description": "No description provided yet.",
+    "course_access": "Track access",
+    "free": "Free",
+    "plan_free_desc": "Enroll and access every section immediately.",
+    "plan_freemium_desc": "Start with free preview sections. Paid sections unlock after full access is approved.",
+    "plan_premium_desc": "Enrollment creates a validation request before the track content is unlocked.",
+    "curriculum": "Milestones & Tasks",
+    "locked_chapters_helper": "Locked milestones need supervisor enrollment approval.",
+    "play": "Start",
+    "loading_player": "Loading track environment...",
+    "chapter_locked": "Milestone Locked",
+    "chapter_locked_desc": "This track milestone requires supervisor enrollment approval. Please complete your check-ins or contact your supervisor.",
+    "upgrade_access": "Upgrade Access",
+    "key_moments_notions": "Key Milestones & Tools",
+    "course_curriculum": "Track Milestones",
+    "complete": "Complete",
+    "of": "of",
+    "courses_count": "tracks"
+  }
+}

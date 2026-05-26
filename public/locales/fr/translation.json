@@ -1,0 +1,938 @@
+{
+  "common": {
+    "languages": [
+      "Anglais",
+      "Français",
+      "Allemand",
+      "Italien"
+    ],
+    "languages_list": {
+      "de": "Allemand",
+      "en": "Anglais",
+      "fr": "Français",
+      "it": "Italien"
+    },
+    "language_center": "Excellence technologique mondiale",
+    "experience": "Découvrez l'avenir de"
+  },
+  "nav": {
+    "home": "Accueil",
+    "courses": "Services",
+    "services": "Services",
+    "events": "Départements",
+    "internship": "Stage",
+    "projects": "Projets",
+    "gallery": "Vitrine",
+    "about": "À propos",
+    "contact": "Contact",
+    "enroll": "Postuler",
+    "signin": "Connexion",
+    "dashboard": "Tableau de Bord",
+    "lounge": "Salon Co-Working",
+    "library": "Base de Connaissances",
+    "learning": "Académie"
+  },
+  "hero": {
+    "master": "Maîtrisez",
+    "powered_by_ai": "Solutions technologiques avancées.",
+    "subtitle_1": "Une plateforme de classe mondiale conçue pour les organisations ambitieuses. Ingénierie logicielle d'entreprise, systèmes d'IA évolutifs et gestion de programmes de stages technologiques rigoureux.",
+    "start_learning": "Explorer nos services",
+    "watch_demo": "Nos projets",
+    "slides": {
+      "0": {
+        "badge": "💻 Développement de logiciels d'entreprise",
+        "title": "Logiciel intelligent",
+        "titleAccent": "Conçu pour l'avenir.",
+        "subtitle": "Autonomiser les entreprises grâce à l'ingénierie logicielle de pointe, au développement Web et aux applications mobiles adaptées pour évoluer et performer.",
+        "cta": "Explorer les services",
+        "ctaSecondary": "Nos projets",
+        "tag1": "Échelle & Performance",
+        "tag2": "Applications Web & Mobiles",
+        "tag3": "Qualité d'entreprise"
+      },
+      "1": {
+        "badge": "🤖 IA & Automatisation intelligente",
+        "title": "IA de nouvelle génération",
+        "titleAccent": "Systèmes intelligents.",
+        "subtitle": "Exploitez la puissance des solutions basées sur l'IA, de l'apprentissage automatique et des flux de travail automatisés pour accélérer la transformation numérique.",
+        "cta": "Découvrir la plateforme IA",
+        "ctaSecondary": "Études de cas",
+        "tag1": "Flux de travail intelligents",
+        "tag2": "Aperçus en temps réel",
+        "tag3": "Analytique prédictive"
+      },
+      "2": {
+        "badge": "🎓 Accélérateurs de talents professionnels",
+        "title": "Postuler pour un",
+        "titleAccent": "Stage technologique.",
+        "subtitle": "Accélérez votre carrière dans le développement de logiciels, l'IA, la cybersécurité ou le design avec des projets pratiques et un mentorat d'experts.",
+        "cta": "Postuler au stage",
+        "ctaSecondary": "Voir les départements",
+        "tag1": "Mentorat d'experts",
+        "tag2": "Expérience pratique",
+        "tag3": "Certificats vérifiés"
+      }
+    },
+    "student_satisfaction": "Satisfaction client",
+    "students_countries": "Déploiements dans plus de 15 pays"
+  },
+  "stats": {
+    "trusted_by": "Approuvé par des talents ambitieux et des entreprises de premier plan",
+    "students": "Projets Réalisés",
+    "mentors": "Stagiaires Formés",
+    "countries": "Départements Actifs",
+    "satisfaction": "Taux de Satisfaction Client",
+    "levels": "Superviseurs Experts",
+    "content": "Institutions Partenaires"
+  },
+  "features": {
+    "label": "Pourquoi nous ?",
+    "heading_1": "Tout ce dont vous avez besoin pour développer",
+    "heading_2": "votre écosystème technologique.",
+    "sub": "Six piliers qui distinguent InterLink des cabinets de conseil traditionnels et des programmes de talents — conçus pour les organisations modernes axées sur la croissance.",
+    "f1_title": "Analyseur de performance propulsé par l'IA",
+    "f1_desc": "Évalue en continu les pointages des stagiaires, la vitesse de réalisation des tâches, la qualité des rapports et les notes des superviseurs.",
+    "f1_tag": "Analytique approfondie",
+    "f2_title": "Assistant de rapport IA",
+    "f2_desc": "Génère des rapports quotidiens et hebdomadaires professionnels et structurés à partir de brouillons d'étudiants, améliorant la grammaire.",
+    "f2_tag": "Documentation automatisée",
+    "f3_title": "Recommandation de tâches IA",
+    "f3_desc": "Suggère automatiquement des tâches de développement optimales aux superviseurs en fonction des performances, des compétences et du calendrier.",
+    "f3_tag": "Recommandations intelligentes",
+    "f4_title": "Garde-fou des risques IA",
+    "f4_desc": "Détecte les stagiaires inactifs, les soumissions de rapports tardives ou les tendances à faible performance pour notifier les admins.",
+    "f4_tag": "Surveillance active",
+    "f5_title": "Synthétiseur final IA",
+    "f5_desc": "Synthétise l'ensemble du parcours de stage — y compris les tâches accomplies, les compétences acquises et les retours — en un résumé final cohérent.",
+    "f5_tag": "Évaluation complète",
+    "f6_title": "Copilote en temps réel",
+    "f6_desc": "Un chatbot IA à la demande qui répond aux questions, explique les tâches de codage complexes et assiste les stagiaires directement.",
+    "f6_tag": "Assistant intelligent"
+  },
+  "testimonials": {
+    "label": "Témoignages Réussite",
+    "heading_1": "Écoutez les équipes et stagiaires",
+    "heading_2": "qui ont transformé leurs flux.",
+    "sub": "Impact réel d'équipes réelles dans tous les secteurs technologiques.",
+    "quote_1": "InterLink a changé notre modèle de croissance. En 6 mois, nous avons intégré trois développeurs performants issus du programme de stage qui ont été directement opérationnels.",
+    "quote_2": "L'assistant de rapport IA est sans égal. Mon superviseur a reçu automatiquement des rapports hebdomadaires clairs et structurés, économisant ainsi des heures d'alignement.",
+    "quote_3": "J'ai construit mon portfolio full-stack sur InterLink et j'ai décroché un poste d'ingénieur logiciel. Le mentorat structuré et les analyses d'IA m'ont apporté les compétences recherchées.",
+    "quote_4": "Le tableau de bord en temps réel a rendu le suivi du stage transparent. Des rapports validés, des alertes automatiques et une gestion claire des tâches.",
+    "trust_label": "Aligné sur les normes modernes de la technologie et de l'ingénierie"
+  },
+  "cta": {
+    "label": "Accès Professionnel Limité",
+    "heading_1": "L'avenir des logiciels d'entreprise et",
+    "heading_2": "de l'accélération des talents commence aujourd'hui.",
+    "sub": "Rejoignez les entreprises leaders et les développeurs ambitieux qui transforment déjà leurs opérations numériques. Lancez votre expérience maintenant.",
+    "enrol_free": "Commencer aujourd'hui",
+    "explore": "Explorer les Services",
+    "check1": "Sécurité d'entreprise",
+    "check2": "Aucun coût initial",
+    "check3": "Tableau de bord IA"
+  },
+  "contact": {
+    "label": "Contactez-nous",
+    "heading": "L'avenir de la technologie commence aujourd'hui.",
+    "name": "Nom complet",
+    "email": "Adresse e-mail",
+    "subject": "Sujet",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "sent_title": "Message envoyé !",
+    "sent_desc": "Notre équipe vous répondra sous 24 heures.",
+    "send_another": "Envoyer un autre message",
+    "info_title": "Informations de contact",
+    "address_label": "Adresse",
+    "email_label": "E-mail",
+    "phone_label": "Téléphone",
+    "hours_label": "Horaires",
+    "select_topic": "Sélectionnez un sujet...",
+    "topics": {
+      "admissions": "Demande de services d'entreprise",
+      "mentorship": "Support de candidature de stage",
+      "events": "Partenariats technologiques",
+      "partnership": "Formation d'entreprise & recrutement",
+      "press": "Presse et médias",
+      "other": "Autre demande"
+    }
+  },
+  "events": {
+    "label": "Départements Actifs",
+    "heading_1": "Piliers d'ingénierie",
+    "heading_2": "et de création spécialisés.",
+    "sub": "Explorez nos unités hautement spécialisées conçues pour gérer la transformation numérique complète et cultiver des talents technologiques de premier plan.",
+    "view_all": "Explorer les Départements",
+    "register": "Postuler au Département",
+    "past_highlights": "Jalons clés du département",
+    "ev1_title": "Ingénierie Logicielle",
+    "ev1_desc": "Conception d'API cloud évolutives, d'architectures Web et de plateformes mobiles utilisant React, Node.js et Python.",
+    "ev1_type": "Ingénierie",
+    "ev1_date": "Systèmes à cycle de vie complet",
+    "ev1_loc": "Déploiements Cloud & Locaux",
+    "ev1_seats": "Équipes de développement dynamiques",
+    "ev1_badge": "Forte Demande",
+    "ev2_title": "Cybersécurité & Réseaux",
+    "ev2_desc": "Modélisation rigoureuse des menaces, tests d'intrusion, examens d'architecture de sécurité et intégration CI/CD SecOps.",
+    "ev2_type": "Sécurité",
+    "ev2_date": "Environnements zero-trust",
+    "ev2_loc": "Infrastructure sécurisée",
+    "ev2_seats": "Surveillance continue",
+    "ev2_badge": "Protection Cruciale",
+    "ev3_title": "IA, Données & Automatisation",
+    "ev3_desc": "Conception de moteurs de recommandation IA intelligents, pipelines d'analyse de données, chatbots NLP et automatisation avancée.",
+    "ev3_type": "Intelligence",
+    "ev3_date": "Modèles de pointe",
+    "ev3_loc": "Lab IA & Intégrations",
+    "ev3_seats": "Parcours hautement analytiques",
+    "ev3_badge": "Noyau Innovant"
+  },
+  "gallery": {
+    "label": "Galerie d'Impact",
+    "heading_1": "Moments qui définissent",
+    "heading_2": "notre impact technologique.",
+    "sub": "Une exploration dynamique de nos projets, de notre infrastructure et de nos réalisations d'équipe.",
+    "featured": "À l'honneur",
+    "moment": "Jalon",
+    "view_all": "Voir tous les projets",
+    "img1_label": "Lancement de Projet 2025",
+    "img2_label": "Atelier Hackathon",
+    "img3_label": "Lab d'Apprentissage IA",
+    "img4_label": "Session de Démo Client",
+    "img5_label": "Lab d'Infrastructure Cloud",
+    "img6_label": "Cérémonie de Remise des Diplômes"
+  },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Questions Fréquentes",
+    "sub": "Tout ce que vous devez savoir sur les services d'InterLink et son programme de stage.",
+    "q1": "Qu'est-ce qu'InterLink ?",
+    "a1": "InterLink est une entreprise technologique moderne spécialisée dans le développement de systèmes numériques intelligents (logiciels, sites Web et applications mobiles), les intégrations d'IA, les audits de cybersécurité, l'IoT et les stages pratiques de haute qualité.",
+    "q2": "Qui peut postuler pour un stage chez InterLink ?",
+    "a2": "Les étudiants universitaires actifs, les diplômés d'écoles de code et les développeurs autodidactes spécialisés en développement logiciel, IA, cybersécurité ou design.",
+    "q3": "Comment fonctionne la plateforme propulsée par l'IA ?",
+    "a3": "Nos moteurs d'IA aident les stagiaires en proposant des tâches de développement, en facilitant la rédaction de rapports professionnels quotidiens/hebdomadaires et en offrant un assistant Copilote IA.",
+    "q4": "Les stages sont-ils à distance ou sur site ?",
+    "a4": "Nous proposons des opportunités hybrides, entièrement sur site ou entièrement à distance, selon votre département et les besoins de votre superviseur.",
+    "q5": "Est-ce que je reçois un certificat à la fin du stage ?",
+    "a5": "Oui ! Une fois votre stage validé avec succès par votre superviseur, InterLink délivre un certificat numérique sécurisé par code QR et un portfolio de compétences vérifié.",
+    "q6": "InterLink peut-il développer des applications sur mesure pour mon entreprise ?",
+    "a6": "Absolument ! Notre équipe professionnelle fournit de l'ingénierie logicielle haut de gamme, des intégrations d'IA personnalisées, des audits de cybersécurité et du design graphique pour des clients mondiaux.",
+    "q7": "Combien d'heures de pointage sont requises chaque jour ?",
+    "a7": "Nous proposons des parcours flexibles incluant le temps plein (8h/jour), le temps partiel (4h/jour) et des projets du soir en mode autonome.",
+    "q8": "Quand puis-je postuler pour commencer ?",
+    "a8": "De nouvelles cohortes commencent chaque mois pour tous les départements. Postulez en ligne et passez notre test d'évaluation automatisé.",
+    "q9": "Qu'est-ce que le tableau de bord de stage ?",
+    "a9": "Notre portail sécurisé est votre espace de travail principal. Il vous permet de pointer quotidiennement, de rédiger vos rapports, d'interagir avec votre superviseur et d'accéder au Copilote IA."
+  },
+  "past_events": {
+    "section_title": "Moments forts de nos jalons passés",
+    "prev_event": "< Jalon Précédent",
+    "next_event": "Jalon Suivant >",
+    "featured": "À l'honneur",
+    "event_label": "Projet",
+    "select_speaker": "Sélectionner un Team Lead :",
+    "next_speaker": "Suivant",
+    "highlights_label": "Points forts",
+    "comments_label": "Avis",
+    "events": [
+      {
+        "title": "Migration Cloud d'Entreprise",
+        "date": "09 Mai 2026",
+        "attendees": "400+ API Déployées",
+        "description": "Un jalon de production majeur fournissant des architectures cloud conteneurisées sécurisées, une synchronisation de microservices et des clusters de bases de données hautement disponibles.",
+        "speakers": [
+          {
+            "name": "Somo Rean",
+            "role": "Architecte Principal",
+            "message": "La transition des anciennes infrastructures vers des pods Kubernetes haute performance a été une étape clé. Grâce aux pipelines CI/CD automatisés et aux métriques en temps réel, nous garantissons un uptime de 99,9%.",
+            "quote": "Nous concevons des infrastructures robustes où l'évolutivité est native et la sécurité absolue.",
+            "extra_info": "La surveillance des menaces en temps réel protège contre les risques DDoS. Nous utilisons des protocoles avancés de mise en forme du trafic et de chiffrement SSL.",
+            "highlights": [
+              "Automatisation hebdomadaire des pipelines CI/CD.",
+              "Tests de charge continue sur les microservices.",
+              "Audits intensifs des clusters Kubernetes.",
+              "Basculements de base de données sans interruption.",
+              "Surveillance en temps réel des ressources.",
+              "Intégration de coffres-forts de secrets sécurisés.",
+              "Sessions ciblées de refactoring de code.",
+              "Suivi des indicateurs de performance sur 12 mois."
+            ],
+            "testimonials": [
+              {
+                "text": "Grâce aux schémas de mise à l'échelle de Somo, notre latence d'API a chuté de 40%.",
+                "author": "Marc Yvan",
+                "role": "Ingénieur Senior"
+              },
+              {
+                "text": "Les simulations d'orchestration Docker nous ont parfaitement préparés au lancement.",
+                "author": "Ngoune Yann",
+                "role": "Stagiaire Cloud Dev"
+              },
+              {
+                "text": "L'architecture est robuste et facilement extensible. Une excellente pratique cloud.",
+                "author": "Alice T.",
+                "role": "Architecte Client"
+              },
+              {
+                "text": "Une approche conteneurisée sécurisée qui évite la saturation des ressources.",
+                "author": "Bob D.",
+                "role": "Auditeur Système"
+              },
+              {
+                "text": "Les responsables sont extrêmement attentifs à l'optimisation des performances.",
+                "author": "Clarisse M.",
+                "role": "Dev Base de Données"
+              }
+            ]
+          },
+          {
+            "name": "Dr. Elena Schmidt",
+            "role": "Architecte IA",
+            "message": "L'ingénierie centrée sur les données est essentielle. En analysant les pipelines de traitement et en déployant des modèles de langage locaux, nous automatisons les processus avec précision.",
+            "highlights": [
+              "Alignement sur les normes de qualité IA ISO.",
+              "Optimisation des poids neuronaux.",
+              "Création de pipelines de données propres.",
+              "Agents d'inférence IA à la demande.",
+              "Déclencheurs d'alertes prédictives des risques.",
+              "Introduction de bases de données vectorielles.",
+              "Déploiement de modèles LLM locaux sécurisés.",
+              "Suivi du coût des tokens en temps réel."
+            ],
+            "testimonials": [
+              {
+                "text": "Le Dr Elena explique les concepts vectoriels complexes avec une clarté remarquable.",
+                "author": "Paul Biya Jr.",
+                "role": "Stagiaire Machine Learning"
+              },
+              {
+                "text": "Enfin, une intégration de l'IA qui apporte des résultats commerciaux concrets !",
+                "author": "Clarisse E.",
+                "role": "Chef de Produit"
+              },
+              {
+                "text": "Sa patience pour déboguer l'entraînement des modèles est inégalée.",
+                "author": "David L.",
+                "role": "Ingénieur Données"
+              },
+              {
+                "text": "Nous construisons des pipelines intelligents modernes et évolutifs.",
+                "author": "Eva G.",
+                "role": "Tech Lead"
+              }
+            ]
+          },
+          {
+            "name": "Jean-Pierre Nkou",
+            "role": "Responsable DevOps",
+            "message": "Gérer des centaines d'environnements de build dynamiques est un véritable défi. Nous avons implémenté des clusters sandbox isolés pour assurer des tests sécurisés.",
+            "highlights": [
+              "Optimisation de l'allocation des ressources cloud.",
+              "Authentification par badge numérique sécurisé.",
+              "Règles strictes d'isolation d'environnements.",
+              "Systèmes d'ingestion de logs fluides.",
+              "Zéro retard sur les branches de version.",
+              "Vérification automatisée des sauvegardes.",
+              "Environnements développeurs ergonomiques.",
+              "Support technique pour les environnements de staging."
+            ],
+            "testimonials": [
+              {
+                "text": "Le pipeline de test en sandbox est extrêmement rapide et fiable.",
+                "author": "Tasha G.",
+                "role": "Architecte Frontend"
+              },
+              {
+                "text": "Les ressources des serveurs d'intégration sont de haute performance.",
+                "author": "Samuel O.",
+                "role": "Dev Full Stack"
+              },
+              {
+                "text": "Tout est automatisé, éliminant les erreurs manuelles.",
+                "author": "Isabelle V.",
+                "role": "Ingénieur Release"
+              },
+              {
+                "text": "Aucun encombrement sur le staging ou problème de droits.",
+                "author": "Karl H.",
+                "role": "Ingénieur QA"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Sommet IoT Smart Cities",
+        "date": "15 Avril 2026",
+        "attendees": "250+ Équipements",
+        "description": "Un sommet annuel de l'innovation présentant des tableaux de bord domotiques, des grilles de capteurs et des équipements edge sécurisés.",
+        "speakers": [
+          {
+            "name": "Klaus Mayer",
+            "role": "Directeur IoT",
+            "message": "La connectivité edge relie le matériel à la logique numérique. Ce sommet a mis en évidence des systèmes IoT locaux transmettant des données sécurisées.",
+            "highlights": [
+              "Visualisation de la télémétrie sur tableau de bord.",
+              "Protocoles réseau longue portée basse consommation.",
+              "Programmation en temps réel de microcontrôleurs.",
+              "Table ronde sur la cybersécurité de l'IoT.",
+              "Accords matériels académiques et industriels.",
+              "Réseautage avec des fournisseurs d'équipements.",
+              "Masterclass sur les modules de sécurité matérielle.",
+              "Forum sur la télémétrie des réseaux intelligents."
+            ],
+            "testimonials": [
+              {
+                "text": "J'ai découvert des méthodes incroyables de prototypage matériel.",
+                "author": "Félix K.",
+                "role": "Étudiant IoT"
+              },
+              {
+                "text": "La synchronisation de la télémétrie était parfaite et limpide.",
+                "author": "Sarah L.",
+                "role": "Dev Systèmes Embarqués"
+              },
+              {
+                "text": "Klaus est très axé sur la pratique et fournit d'excellents conseils.",
+                "author": "Lucas P.",
+                "role": "Stagiaire Hardware"
+              },
+              {
+                "text": "Un événement qui élève les standards de l'informatique physique.",
+                "author": "Nina S.",
+                "role": "Chercheuse Hardware"
+              }
+            ]
+          },
+          {
+            "name": "Ms. Ngo Batoum",
+            "role": "Spécialiste UI/UX",
+            "message": "Concevoir des interfaces pour les objets physiques est passionnant. L'utilisateur doit ressentir un retour visuel instantané et fluide.",
+            "highlights": [
+              "Maquettes d'interfaces interactives.",
+              "Tests d'utilisabilité sur divers écrans.",
+              "Ateliers collaboratifs de wireframing Figma.",
+              "Accessibilité visuelle à haut contraste.",
+              "Kits d'icônes et de composants sur mesure.",
+              "Structures de grilles réactives et adaptables.",
+              "Stylisation axée sur l'expérience utilisateur.",
+              "Animations fluides pour les actions physiques."
+            ],
+            "testimonials": [
+              {
+                "text": "Les modèles de conception d'interface de Ngo sont incroyablement soignés.",
+                "author": "Gilles M.",
+                "role": "Critique Design"
+              },
+              {
+                "text": "Les tableaux de bord sont vivants et très interactifs.",
+                "author": "Marie-Noëlle",
+                "role": "Product Designer"
+              },
+              {
+                "text": "J'ai adoré les sessions de maquettage UI.",
+                "author": "Omer F.",
+                "role": "Stagiaire Frontend"
+              },
+              {
+                "text": "De magnifiques designs qui sont un plaisir à intégrer.",
+                "author": "Rachel Z.",
+                "role": "Ingénieur Web"
+              }
+            ]
+          },
+          {
+            "name": "Hans Weber",
+            "role": "Responsable Automatisation",
+            "message": "L'automatisation industrielle associe mécanique et signaux numériques. Nous avons présenté des systèmes d'usine automatisés traitant les données de façon sécurisée.",
+            "highlights": [
+              "Démonstration d'automatisation en direct.",
+              "Fusion des données logicielles et matérielles.",
+              "Codage de microcontrôleurs ESP32 et Arduino.",
+              "Calibrage des capteurs en temps réel.",
+              "Partage des configurations de micrologiciels.",
+              "Optimisation de la logique à basse latence.",
+              "Séminaire sur les circuits matériels écologiques.",
+              "Hacks de matériel au sein de la communauté."
+            ],
+            "testimonials": [
+              {
+                "text": "Les déclencheurs automatiques des capteurs étaient ultra rapides !",
+                "author": "Arnaud T.",
+                "role": "Passionné Tech"
+              },
+              {
+                "text": "Hans est un véritable expert en architectures embarquées.",
+                "author": "Lydie K.",
+                "role": "Spécialiste Robotique"
+              },
+              {
+                "text": "Le flux de télémétrie était solide et hautement sécurisé.",
+                "author": "Marc R.",
+                "role": "Opérateur Réseau"
+              },
+              {
+                "text": "J'ai appris à configurer des clients ESP32 de A à Z !",
+                "author": "Sandrine J.",
+                "role": "Bricoleur Systèmes"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "about_title": "À propos d'InterLink",
+    "about_desc": "Une entreprise technologique de nouvelle génération spécialisée dans l'ingénierie logicielle, les innovations d'IA et l'accélération des compétences technologiques.",
+    "subscribe": "S'abonner",
+    "email_placeholder": "Votre e-mail professionnel",
+    "made_with": "Conçu avec",
+    "in": "par",
+    "rights": "Tous droits réservés.",
+    "sections": {
+      "courses": "Services",
+      "platform": "Plateforme",
+      "company": "Entreprise",
+      "legal": "Légal"
+    },
+    "links": {
+      "a1": "Ingénierie Logicielle",
+      "a2": "Cybersécurité & Réseaux",
+      "b1": "IA, Données & Automatisation",
+      "b2": "Design Graphique & Branding",
+      "c1": "Applications Web & Mobiles",
+      "c2": "Ingénierie IoT",
+      "ai_curr": "Plateforme Moteur IA",
+      "mentorship": "Stages Vérifiés",
+      "cert": "Diplômes Sécurisés",
+      "events": "Départements",
+      "gallery": "Projets à l'Honneur",
+      "dashboard": "Espace Client",
+      "about": "À Propos",
+      "team": "Notre Équipe",
+      "careers": "Carrières",
+      "press": "Presse",
+      "blog": "Blog Tech",
+      "contact": "Contact",
+      "privacy": "Confidentialité",
+      "terms": "Conditions d'utilisation",
+      "cookie": "Cookies",
+      "refund": "SLA Plateforme"
+    }
+  },
+  "courses": {
+    "label": "Nos Services & Parcours",
+    "heading_1": "Des programmes conçus pour",
+    "heading_2": "un impact maximal.",
+    "showing": "Affichage de",
+    "of": "sur",
+    "results": "parcours",
+    "enrol_now": "Postuler",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "c1_title": "Ingénierie Logicielle d'Entreprise",
+    "c1_desc": "Concevez et développez des API Web robustes, des microservices cloud et des logiciels performants basés sur des architectures modernes.",
+    "c2_title": "Audit de Cybersécurité Avancé",
+    "c2_desc": "Maîtrisez les tests d'intrusion, la modélisation des menaces, la sécurité des serveurs et la correction des injections SQL/XSS.",
+    "c3_title": "IA, Science des Données & Automatisation",
+    "c3_desc": "Développez des systèmes de recommandation intelligents, traitez le langage (NLP), déployez des LLM locaux et gérez des bases vectorielles.",
+    "c4_title": "UI/UX & Systèmes de Design Graphique",
+    "c4_desc": "Créez des maquettes de produits haute fidélité, des prototypes mobiles interactifs, des chartes graphiques et des supports marketing visuels.",
+    "c5_title": "Développement Web & Mobile Multiplateforme",
+    "c5_desc": "Concevez des interfaces utilisateur magnifiques et rapides avec React, Next.js, Flutter et les outils CSS modernes.",
+    "c6_title": "Prototypage IoT & Systèmes Embarqués",
+    "c6_desc": "Programmez des microcontrôleurs, connectez et étalonnez des capteurs, et concevez des réseaux de télémétrie basse consommation.",
+    "c7_title": "Cloud DevOps & Pipelines CI/CD",
+    "c7_desc": "Automatisez des applications conteneurisées, gérez des clusters Kubernetes, sécurisez les réseaux cloud et orchestrez les déploiements.",
+    "c8_title": "Gestion de Projet & Operations Produit Tech",
+    "c8_desc": "Gérez des sprints agiles rapides, cadrez les exigences fonctionnelles et techniques, rédigez les spécifications et assurez la qualité.",
+    "c9_title": "Intensif Ingénieur Full Stack",
+    "c9_desc": "Une formation complète couvrant le frontend, le backend, les bases de données et l'administration système pour devenir rapidement opérationnel.",
+    "duration_weeks_one": "{{count}} semaine",
+    "duration_weeks_other": "{{count}} semaines",
+    "lesson_count_one": "{{count}} module",
+    "lesson_count_other": "{{count}} modules",
+    "prices": {
+      "free": "Parcours Ouvert"
+    },
+    "c1_tags": [
+      "API Backend",
+      "React/Node",
+      "Architecture"
+    ],
+    "c2_tags": [
+      "SecOps",
+      "PenTesting",
+      "Réseau"
+    ],
+    "c3_tags": [
+      "LLMs/NLP",
+      "Données",
+      "Automatisation"
+    ],
+    "c4_tags": [
+      "Figma UI",
+      "Branding",
+      "Typographie"
+    ],
+    "c5_tags": [
+      "Next.js",
+      "Flutter",
+      "Responsive"
+    ],
+    "c6_tags": [
+      "ESP32/C++",
+      "Télémétrie",
+      "Capteurs"
+    ],
+    "c7_tags": [
+      "Docker/K8s",
+      "CI/CD Runner",
+      "Cloud"
+    ],
+    "c8_tags": [
+      "Agile/Sprints",
+      "Specs",
+      "Produit"
+    ],
+    "c9_tags": [
+      "Full Stack",
+      "Intensif",
+      "Portfolio"
+    ]
+  },
+  "auth": {
+    "brand_subtitle": "Plateforme technologique d'entreprise",
+    "language_label": "Choisir la langue",
+    "login_badge": "Accès utilisateur sécurisé",
+    "register_badge": "Commencez votre parcours technique",
+    "login_hero_1": "Bienvenue dans votre",
+    "login_hero_2": "espace de travail InterLink.",
+    "login_hero_sub": "Accédez à vos projets, rédigez vos rapports quotidiens, consultez les commentaires de votre superviseur et utilisez le Copilote IA.",
+    "register_hero_1": "Commencez votre parcours vers",
+    "register_hero_2": "la maîtrise technique.",
+    "register_hero_sub": "Créez votre compte pour rejoindre nos départements de stage structurés, travailler sur des projets de production et obtenir des diplômes validés.",
+    "promise_1": "Départements de stage structurés",
+    "promise_2": "Rapports validés par des experts",
+    "promise_3": "Outils de Copilote IA en temps réel",
+    "create_account": "Créer un compte",
+    "have_account": "Se connecter",
+    "signin_label": "Connexion",
+    "signin_title": "Accédez à votre espace",
+    "signin_subtitle": "Utilisez votre e-mail et votre mot de passe pour continuer.",
+    "email": "Adresse e-mail",
+    "password": "Mot de passe",
+    "password_placeholder": "Entrez votre mot de passe",
+    "show": "Voir",
+    "hide": "Masquer",
+    "remember": "Se souvenir de ma session",
+    "forgot_password": "Mot de passe oublié ?",
+    "signing_in": "Connexion...",
+    "signin_button": "Se connecter",
+    "no_account": "Nouveau chez InterLink ?",
+    "login_success": "Accès accordé avec succès.",
+    "enroll_label": "Postuler",
+    "enroll_title": "Créez votre profil utilisateur",
+    "enroll_subtitle": "Fournissez vos informations pour configurer votre poste.",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "password_strength": "Force du mot de passe",
+    "terms_text": "J'accepte de recevoir des communications et j'accepte les conditions de la plateforme.",
+    "creating_account": "Initialisation du poste...",
+    "enroll_button": "Créer le compte",
+    "already_account": "Vous avez déjà un compte ?",
+    "register_success": "Profil utilisateur créé avec succès.",
+    "phone": "Téléphone",
+    "study_language": "Parcours département",
+    "select_language_placeholder": "Sélectionnez votre parcours...",
+    "payment_receipt": "CV / Compétences",
+    "click_to_attach_receipt": "Cliquez pour joindre votre CV (PDF, JPG, PNG)",
+    "accepted_formats": "Formats acceptés : PDF, JPG, PNG (max 10 Mo)",
+    "register_success_pending": "Inscription réussie ! Votre compte est en attente de validation par un administrateur.",
+    "errors": {
+      "required": "Veuillez remplir tous les champs obligatoires.",
+      "invalid_login": "E-mail ou mot de passe invalide.",
+      "password_short": "Le mot de passe doit contenir au moins 6 caractères.",
+      "terms": "Veuillez accepter les conditions de la plateforme pour continuer.",
+      "register_failed": "Impossible de créer le compte. Veuillez réessayer.",
+      "study_language_required": "Veuillez sélectionner votre parcours département.",
+      "payment_receipt_required": "Veuillez joindre votre CV de compétences."
+    },
+    "cinematic_label": "Votre parcours chez InterLink",
+    "cinematic_title": "Des projets pratiques aux rôles en entreprise.",
+    "cinematic_subtitle": "Un cheminement structuré avec des tâches réelles, un mentorat d'experts, des évaluations d'IA et des portfolios vérifiables.",
+    "background_word": "Tech",
+    "focus_languages": [
+      "Ingénierie",
+      "Sécurité",
+      "Automation",
+      "Design"
+    ],
+    "brand_subtitle_suffix": "poste",
+    "login_hero_2_suffix": "poste.",
+    "register_hero_2_suffix": "maîtrise."
+  },
+  "dashboard": {
+    "sidebar": {
+      "dashboard": "Tableau de Bord",
+      "crm_leads": "CRM & Leads",
+      "programs": "Programmes",
+      "partners": "Partenaires",
+      "testimonials": "Témoignages",
+      "gallery": "Galerie",
+      "users": "Utilisateurs",
+      "events": "Événements",
+      "activities": "Activités",
+      "conferences": "Conférences",
+      "upcoming": "Événements à venir",
+      "flyer": "Campagnes de Flyers",
+      "members": "Membres"
+    },
+    "topbar": {
+      "current_session": "Session Actuelle",
+      "server_status": "Statut du Serveur",
+      "online": "En ligne & Sécurisé",
+      "profile": "Profil",
+      "signout": "Déconnexion"
+    },
+    "actions": {
+      "add": "Ajouter",
+      "edit": "Modifier",
+      "delete": "Supprimer",
+      "save": "Enregistrer",
+      "saving": "Sauvegarde...",
+      "cancel": "Annuler",
+      "confirm_delete": "Êtes-vous sûr de vouloir supprimer",
+      "search": "Rechercher...",
+      "create": "Créer",
+      "close": "Fermer"
+    },
+    "status": {
+      "live": "En Ligne",
+      "review": "En Revue",
+      "archived": "Archivé",
+      "draft": "Brouillon",
+      "scheduled": "Programmé",
+      "past": "Passé",
+      "active": "Actif",
+      "inactive": "Inactif",
+      "new": "Nouveau",
+      "contacted": "Contacté",
+      "converted": "Converti",
+      "published": "Publié",
+      "verified": "Vérifié",
+      "pending": "En attente"
+    },
+    "screens": {
+      "programs": {
+        "title": "Programmes",
+        "name": "Nom",
+        "category": "Catégorie",
+        "duration": "Durée",
+        "level": "Niveau",
+        "add_program": "Ajouter un Programme",
+        "delete_program": "Supprimer le Programme"
+      },
+      "leads": {
+        "title": "Leads",
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Téléphone",
+        "status": "Statut",
+        "add_lead": "Ajouter un Lead"
+      },
+      "users": {
+        "title": "Utilisateurs",
+        "name": "Nom",
+        "email": "Email",
+        "role": "Rôle",
+        "add_user": "Créer un Utilisateur",
+        "password": "Mot de passe",
+        "password_placeholder": "min 8 car."
+      },
+      "events": {
+        "title": "Événements",
+        "event_title": "Titre de l'événement",
+        "type": "Type",
+        "date": "Date",
+        "location": "Lieu",
+        "add_event": "Ajouter un événement"
+      },
+      "gallery": {
+        "title": "Assets Numériques",
+        "album_file": "Album / Fichier",
+        "type": "Type",
+        "url": "URL",
+        "add_media": "Ajouter un Média",
+        "title_fr": "Titre (FR)",
+        "title_en": "Titre (EN)",
+        "files": "Fichier(s)",
+        "album": "Album / Fichier",
+        "date": "Ajouté le",
+        "status": "Statut"
+      },
+      "partners": {
+        "title": "Partenaires",
+        "name": "Nom du Partenaire",
+        "category": "Catégorie",
+        "website": "Site Web",
+        "add_partner": "Ajouter un Partenaire",
+        "partner": "Partenaire",
+        "type": "Type",
+        "country": "Pays",
+        "placed_students": "Stagiaires placés",
+        "status": "Statut"
+      },
+      "testimonials": {
+        "title": "Témoignages",
+        "author": "Auteur",
+        "role": "Rôle",
+        "rating": "Note",
+        "add_testimonial": "Ajouter un Témoignage",
+        "content": "Contenu",
+        "program": "programme",
+        "status": "Statut"
+      },
+      "activities": {
+        "title": "Activités",
+        "activity_name": "Nom de l'activité",
+        "category": "Catégorie",
+        "date": "Date",
+        "add_activity": "Ajouter une Activité",
+        "activity_title": "Activité",
+        "duration": "Durée",
+        "assigned_staff": "Personnel assigné",
+        "status": "Statut"
+      },
+      "conferences": {
+        "title": "Conférences",
+        "topic": "Sujet",
+        "speaker": "Conférencier",
+        "date": "Date",
+        "add_conference": "Ajouter une Conférence",
+        "conference": "conférence",
+        "speakers": "conférenciers",
+        "location": "lieu",
+        "attendees": "participants",
+        "status": "statut"
+      },
+      "flyer": {
+        "title": "Campagne de Flyers",
+        "campaign": "Nom de la campagne",
+        "channel": "Canal",
+        "start_date": "Date de début",
+        "end_date": "Date de fin",
+        "add_flyer": "Ajouter un Flyer"
+      },
+      "members": {
+        "title": "Membres",
+        "name": "Nom",
+        "role": "Rôle",
+        "department": "Département",
+        "add_member": "Ajouter un Membre",
+        "member": "Membre",
+        "contact": "Contact",
+        "status": "Statut",
+        "profile": "Profil du Membre",
+        "phone": "Téléphone",
+        "joined": "Inscrit le"
+      },
+      "upcoming": {
+        "title": "Événements à venir",
+        "event_name": "Nom de l'événement",
+        "countdown": "Compte à rebours",
+        "add_upcoming": "Ajouter un événement à venir"
+      },
+      "flyers": {
+        "campaign": "campagne",
+        "channel": "canal",
+        "start_date": "date de début",
+        "end_date": "date de fin",
+        "file": "fichier",
+        "view_flyer": "Voir le flyer",
+        "status": "statut",
+        "title": "Supports Marketing",
+        "upload_flyer": "téléverser le flyer"
+      },
+      "upcoming_events": {
+        "event": "Titre",
+        "date": "Date",
+        "time": "Heure",
+        "location": "Lieu",
+        "attendees": "Participants attendus",
+        "status": "Statut",
+        "title": "Événements à Venir",
+        "add_event": "ajouter un événement"
+      }
+    },
+    "home": {
+      "revenue": "Revenus",
+      "total_leads": "Total CRM Leads",
+      "prospects_desc": "Prospects dans le pipeline",
+      "active_programs": "Programmes Actifs",
+      "pending_testimonials": "Témoignages en Attente",
+      "require_approval": "Nécessite votre approbation",
+      "institute_trends": "Analytique InterLink",
+      "trends_desc": "Volume de pointages quotidiens (ce mois-ci)",
+      "monthly": "Mensuel",
+      "daily": "Quotidien",
+      "staff_distribution": "Distribution du Staff",
+      "system_performance": "Performance Système",
+      "optimal": "Optimal",
+      "administrators": "Administrateurs",
+      "teachers": "Tuteurs",
+      "receptionists": "Coordinateurs",
+      "super_admins": "Super Admins"
+    }
+  },
+  "learning": {
+    "my_learning": "Mon Apprentissage",
+    "my_learning_desc": "Reprenez un parcours, passez en revue vos tâches ou explorez le catalogue.",
+    "explore_courses": "Explorer les parcours",
+    "active_courses": "Parcours actifs",
+    "completed": "Complété",
+    "average_progress": "Progression moyenne",
+    "loading_courses": "Chargement de vos parcours...",
+    "no_enrolled_title": "Aucun parcours inscrit",
+    "no_enrolled_desc": "Commencez avec un parcours gratuit ou découvrez un aperçu.",
+    "browse_all": "Parcourir les parcours",
+    "sign_in_title": "Connectez-vous pour voir votre espace",
+    "sign_in_desc": "Vos parcours, votre progression et vos boutons d'action sont connectés à votre compte.",
+    "sign_in": "Se connecter",
+    "all_courses": "Tous les Parcours",
+    "all_courses_desc": "Choisissez parmi nos parcours ouverts. Les parcours gratuits sont immédiats, les autres demandent validation.",
+    "search_placeholder": "Rechercher par titre, niveau, catégorie ou spécialité...",
+    "no_courses_title": "Aucun parcours trouvé",
+    "no_courses_desc": "Essayez une autre recherche.",
+    "loading_courses_catalog": "Chargement des parcours...",
+    "continue_learning": "Continuer le développement",
+    "back_to_courses": "Retour aux parcours",
+    "back": "Retour",
+    "go_to_courses": "Aller aux Parcours",
+    "chapters": "Sections",
+    "videos": "Modules",
+    "preview_chapters": "Sections d'aperçu",
+    "about_course": "À propos de ce parcours",
+    "no_description": "Aucune description fournie.",
+    "course_access": "Accès au parcours",
+    "free": "Gratuit",
+    "plan_free_desc": "Inscrivez-vous et accédez immédiatement à chaque section.",
+    "plan_freemium_desc": "Commencez avec des sections gratuites. Les sections payantes se débloquent après validation.",
+    "plan_premium_desc": "L'inscription crée une demande de validation avant de débloquer le contenu.",
+    "curriculum": "Jalons & Tâches",
+    "locked_chapters_helper": "Les jalons verrouillés nécessitent la validation du superviseur.",
+    "play": "Commencer",
+    "loading_player": "Chargement de l'environnement...",
+    "chapter_locked": "Jalon Verrouillé",
+    "chapter_locked_desc": "Ce jalon de parcours nécessite la validation de l'inscription par le superviseur.",
+    "upgrade_access": "Améliorer l'accès",
+    "key_moments_notions": "Jalons Clés & Outils",
+    "course_curriculum": "Jalons du Parcours",
+    "complete": "Compléter",
+    "of": "sur",
+    "courses_count": "parcours"
+  }
+}

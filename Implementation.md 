@@ -1,0 +1,47 @@
+# Implementation Plan: Institute Einstein Landing Page
+
+This document outlines the steps required to finalize, optimize, and maintain the `landingPage.php` for the Institute Einstein project.
+
+## 1. Architectural Refactoring
+### 1.1 Externalize Assets
+- [ ] **JavaScript Extraction**: Move all inline scripts (currently ~1000 lines) into organized files:
+  - `public/assets/js/hero-slider.js`: Logic for hero content rotation.
+  - `public/assets/js/gallery-manager.js`: Dynamic gallery grid and rotation logic.
+  - `public/assets/js/event-highlights.js`: Conference/Past event fetching and rendering.
+  - `public/assets/js/landing-page-init.js`: General initialization (AOS, Swiper).
+- [ ] **CSS Extraction**: Move inline styles (currently ~300 lines) into `public/assets/css/landing-page.css`.
+
+### 1.2 View Modularization
+- [ ] **Create Partial Views**: Break down the 2200+ line file into smaller components:
+  - `Views/partials/landing/hero.php`
+  - `Views/partials/landing/upcoming_events.php`
+  - `Views/partials/landing/gallery.php`
+  - `Views/partials/landing/contact_form.php`
+- [ ] **Simplify Main File**: `landingPage.php` should primarily act as a container for these partials.
+
+## 2. Feature Completion & Polish
+### 2.1 Dynamic Hero Section
+- [ ] **Database Integration**: Instead of hardcoding `slides` in JavaScript, fetch them from the `SiteSetting` model or a new `HeroSlide` model.
+- [ ] **Transitions**: Enhance the transition effect between slides for a more premium feel.
+
+### 2.2 Conference & Past Events
+- [ ] **API Endpoint**: Ensure `IndexController::apiConference()` is fully functional and returns data in the expected format for the frontend fetch call.
+- [ ] **Rich Text Support**: Verify that the `convertDeltaToHtml` function handles all Quill editor formats used in the backend.
+
+### 2.3 Gallery & Impact
+- [ ] **Image Optimization**: Ensure images uploaded via the backend are resized/compressed to prevent slow load times in the "Our Impact" gallery.
+- [ ] **UX Polish**: Add a "View More" button for the gallery instead of infinite automatic rotation to give users more control.
+
+## 3. Multi-language Support (i18n)
+- [ ] **Centralized Translations**: Move hardcoded strings into a language file/array to avoid `if/else` clutter in the HTML.
+- [ ] **Missing Translations**: Review all sections (especially the Flyers and Why Us) to ensure no English text remains when the French language is selected.
+
+## 4. Performance & SEO
+- [ ] **Critical CSS**: Inline the critical CSS for the Hero section to improve First Contentful Paint (FCP).
+- [ ] **SEO Meta Tags**: Ensure dynamic title and meta descriptions are set in the controller for the landing page.
+- [ ] **Image Formats**: Use the `generate_image` tool to create high-quality assets where needed and convert them to WebP.
+
+## 5. Testing & Validation
+- [ ] **Responsive Check**: Test the gallery and event cards on small mobile screens (e.g., iPhone SE) and large desktops.
+- [ ] **Cross-Browser Testing**: Ensure the `fetch` and `DOMPurify` logic works in older versions of Safari and Chrome.
+- [ ] **Form Submission**: Verify the PHPMailer integration with actual SMTP credentials.

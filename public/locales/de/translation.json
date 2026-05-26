@@ -1,0 +1,938 @@
+{
+  "common": {
+    "languages": [
+      "Englisch",
+      "Französisch",
+      "Deutsch",
+      "Italienisch"
+    ],
+    "languages_list": {
+      "de": "Deutsch",
+      "en": "Englisch",
+      "fr": "Französisch",
+      "it": "Italienisch"
+    },
+    "language_center": "Globale technologische Exzellenz",
+    "experience": "Entdecken Sie die Zukunft von"
+  },
+  "nav": {
+    "home": "Startseite",
+    "courses": "Services",
+    "services": "Services",
+    "events": "Abteilungen",
+    "internship": "Praktikum",
+    "projects": "Projekte",
+    "gallery": "Showcase",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "enroll": "Jetzt bewerben",
+    "signin": "Anmelden",
+    "dashboard": "Dashboard",
+    "lounge": "Co-Working Lounge",
+    "library": "Wissensdatenbank",
+    "learning": "Akademie"
+  },
+  "hero": {
+    "master": "Meistern Sie",
+    "powered_by_ai": "Fortschrittliche Technologielösungen.",
+    "subtitle_1": "Eine erstklassige Plattform für ehrgeizige Organisationen. Enterprise-Software-Engineering, skalierbare KI-Systeme und erstklassiges IT-Praktikumsprogramm-Management.",
+    "start_learning": "Services erkunden",
+    "watch_demo": "Unsere Projekte",
+    "slides": {
+      "0": {
+        "badge": "💻 Enterprise Software-Entwicklung",
+        "title": "Intelligente Software",
+        "titleAccent": "Für die Zukunft gebaut.",
+        "subtitle": "Befähigung von Unternehmen durch modernstes Software-Engineering, Web- und App-Entwicklung für höchste Performance.",
+        "cta": "Services erkunden",
+        "ctaSecondary": "Unsere Projekte",
+        "tag1": "Skalierbarkeit & Performance",
+        "tag2": "Web- & Mobil-Apps",
+        "tag3": "Enterprise-Qualität"
+      },
+      "1": {
+        "badge": "🤖 KI & Intelligente Automatisierung",
+        "title": "Next-Gen KI",
+        "titleAccent": "Intelligente Systeme.",
+        "subtitle": "Nutzen Sie die Kraft von KI-Lösungen, Machine Learning und automatisierten Workflows für die digitale Transformation.",
+        "cta": "KI-Plattform entdecken",
+        "ctaSecondary": "Fallstudien lesen",
+        "tag1": "Intelligente Workflows",
+        "tag2": "Echtzeit-Einblicke",
+        "tag3": "Prädiktive Analysen"
+      },
+      "2": {
+        "badge": "🎓 Professionelle Talent-Beschleuniger",
+        "title": "Bewerben für",
+        "titleAccent": "Tech-Praktikum.",
+        "subtitle": "Beschleunigen Sie Ihre Karriere in Softwareentwicklung, KI oder Cybersecurity mit praktischen Projekten und Experten-Mentoring.",
+        "cta": "Für Praktikum bewerben",
+        "ctaSecondary": "Abteilungen ansehen",
+        "tag1": "Experten-Mentoring",
+        "tag2": "Praktische Erfahrung",
+        "tag3": "Verifizierte Zertifikate"
+      }
+    },
+    "student_satisfaction": "Kundenzufriedenheit",
+    "students_countries": "Bereitstellungen in über 15 Ländern"
+  },
+  "stats": {
+    "trusted_by": "Von ehrgeizigen Talenten & führenden Unternehmen geschätzt",
+    "students": "Abgeschlossene Projekte",
+    "mentors": "Ausgebildete Praktikanten",
+    "countries": "Aktive Abteilungen",
+    "satisfaction": "Kundenzufriedenheit",
+    "levels": "Experten-Supervisoren",
+    "content": "Partner-Institutionen"
+  },
+  "features": {
+    "label": "Warum wir anders sind",
+    "heading_1": "Alles, was Sie brauchen,",
+    "heading_2": "um Ihr Technologie-Ökosystem aufzubauen.",
+    "sub": "Sechs Säulen, die InterLink von traditionellen Beratungsfirmen und Talentprogrammen unterscheiden – entwickelt für moderne, wachstumsorientierte Unternehmen.",
+    "f1_title": "KI-gestützte Leistungsanalyse",
+    "f1_desc": "Bewertet kontinuierlich Praktikanten-Check-ins, Aufgabengeschwindigkeiten, Berichtsqualtität und Supervisor-Bewertungen in Echtzeit.",
+    "f1_tag": "Tiefenanalyse",
+    "f2_title": "KI-Berichts-Assistent",
+    "f2_desc": "Generiert professionelle, strukturierte tägliche und wöchentliche Berichte aus Entwürfen, verbessert die Grammatik und hebt Erfolge hervor.",
+    "f2_tag": "Automatisierte Doku",
+    "f3_title": "KI-Aufgabenempfehlung",
+    "f3_desc": "Schlägt Supervisoren automatisch optimale Entwicklungsaufgaben vor, basierend auf Leistung, Abteilung, Fähigkeiten und Zeitplan.",
+    "f3_tag": "Intelligente Empfehlungen",
+    "f4_title": "KI-Risikoschutz",
+    "f4_desc": "Erkennt inaktive Praktikanten oder verspätete Berichte, um Admins und Supervisoren rechtzeitig zu benachrichtigen.",
+    "f4_tag": "Aktiver Schutz",
+    "f5_title": "KI-Abschlusszusammenfassung",
+    "f5_desc": "Synthetisiert das gesamte Praktikum – einschließlich Aufgaben, erworbenen Fähigkeiten und Feedback – zu einem kohärenten Abschlussbericht.",
+    "f5_tag": "Umfassende Bewertung",
+    "f6_title": "Echtzeit-Copilot",
+    "f6_desc": "Ein On-Demand-KI-Chatbot, der Fragen beantwortet, komplexe Codierungsaufgaben erklärt und Praktikanten direkt im Dashboard unterstützt.",
+    "f6_tag": "Intelligenter Assistent"
+  },
+  "testimonials": {
+    "label": "Erfolgsberichten",
+    "heading_1": "Hören Sie von Teams und Praktikanten,",
+    "heading_2": "die ihre Workflows transformiert haben.",
+    "sub": "Echter Einfluss von echten Teams in allen Technologiesektoren.",
+    "quote_1": "InterLink hat unser Skalierungsmodell verändert. Innerhalb von 6 Monaten haben wir drei leistungsstarke Entwickler aus dem Praktikumsprogramm integriert, die direkt produktiv waren.",
+    "quote_2": "Der KI-Berichts-Assistent ist unübertroffen. Mein Supervisor erhielt automatisch wöchentliche Updates, was uns jede Woche Stunden an Abstimmung erspart hat.",
+    "quote_3": "Ich habe mein Full-Stack-Portfolio auf InterLink aufgebaut und eine Stelle als Software-Ingenieur bekommen. Das strukturierte Mentoring hat mir genau die Fähigkeiten gegeben, die ich brauchte.",
+    "quote_4": "Das Echtzeit-Dashboard hat das Praktikums-Tracking nahtlos gemacht. Validierte Berichte, automatische Warnungen und klares Aufgabenmanagement sind brillante Designentscheidungen.",
+    "trust_label": "Abgestimmt auf moderne Technologie- und Engineering-Standards"
+  },
+  "cta": {
+    "label": "Limitierter Professioneller Zugang",
+    "heading_1": "Die Zukunft von Enterprise-Software und",
+    "heading_2": "Talentbeschleunigung beginnt heute.",
+    "sub": "Schließen Sie sich führenden Unternehmen und ehrgeizigen Entwicklern an, die ihre digitalen Abläufe transformieren. Starten Sie jetzt.",
+    "enrol_free": "Heute loslegen",
+    "explore": "Services erkunden",
+    "check1": "Enterprise-Sicherheit",
+    "check2": "Keine Vorabkosten",
+    "check3": "KI-gestütztes Dashboard"
+  },
+  "contact": {
+    "label": "Kontaktieren Sie uns",
+    "heading": "Die Zukunft der Technologie beginnt heute.",
+    "name": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "send": "Nachricht senden",
+    "sending": "Wird gesendet...",
+    "sent_title": "Nachricht gesendet!",
+    "sent_desc": "Unser Team antwortet innerhalb von 24 Stunden.",
+    "send_another": "Weitere Nachricht senden",
+    "info_title": "Kontaktinformationen",
+    "address_label": "Adresse",
+    "email_label": "E-Mail",
+    "phone_label": "Telefon",
+    "hours_label": "Öffnungszeiten",
+    "select_topic": "Thema auswählen...",
+    "topics": {
+      "admissions": "Anfrage für Enterprise-Services",
+      "mentorship": "Praktikums-Bewerbungssupport",
+      "events": "Technologie-Partnerschaften",
+      "partnership": "Corporate Training & Sourcing",
+      "press": "Presse und Medien",
+      "other": "Sonstige Anfrage"
+    }
+  },
+  "events": {
+    "label": "Aktive Abteilungen",
+    "heading_1": "Spezialisierte Engineering-",
+    "heading_2": "und Kreativsäulen.",
+    "sub": "Erkunden Sie unsere hochspezialisierten Einheiten, die für die gesamte digitale Transformation und die Ausbildung von erstklassigen Tech-Talenten konzipiert sind.",
+    "view_all": "Abteilungen erkunden",
+    "register": "Für Abteilung bewerben",
+    "past_highlights": "Wichtige Meilensteine",
+    "ev1_title": "Software Engineering",
+    "ev1_desc": "Entwicklung skalierbarer Cloud-APIs, Webarchitekturen und mobiler Plattformen mit React, Node.js und Python.",
+    "ev1_type": "Engineering",
+    "ev1_date": "Full-Lifecycle-Systeme",
+    "ev1_loc": "Cloud- & Lokale Deployments",
+    "ev1_seats": "Dynamische Entwicklerteams",
+    "ev1_badge": "Hohe Nachfrage",
+    "ev2_title": "Cybersecurity & Netzwerke",
+    "ev2_desc": "Durchführung von Bedrohungsmodellierung, Penetrationstests, Sicherheitsarchitektur-Audits und CI/CD SecOps.",
+    "ev2_type": "Sicherheit",
+    "ev2_date": "Zero-Trust-Umgebungen",
+    "ev2_loc": "Sichere Infrastruktur",
+    "ev2_seats": "Kontinuierliche Überwachung",
+    "ev2_badge": "Wichtiger Schutz",
+    "ev3_title": "KI, Daten & Automatisierung",
+    "ev3_desc": "Design intelligenter KI-Empfehlungs-Engines, Datenpipelines, NLP-Chatbots und fortgeschrittener Automatisierung.",
+    "ev3_type": "Intelligenz",
+    "ev3_date": "Modernste Modelle",
+    "ev3_loc": "KI-Labor & Integrationen",
+    "ev3_seats": "Analytische Lernpfade",
+    "ev3_badge": "Innovativer Kern"
+  },
+  "gallery": {
+    "label": "Eindrucks-Vitrine",
+    "heading_1": "Momente, die unsere",
+    "heading_2": "technologische Wirkung definieren.",
+    "sub": "Eine dynamische Erkundung unserer Projekte, Infrastruktur und Teamerfolge.",
+    "featured": "Hervorgehoben",
+    "moment": "Meilenstein",
+    "view_all": "Alle Projekte ansehen",
+    "img1_label": "Projektstart 2025",
+    "img2_label": "Hackathon-Workshop",
+    "img3_label": "Interaktives KI-Labor",
+    "img4_label": "Kunden-Demo-Sitzung",
+    "img5_label": "Cloud-Infrastruktur-Labor",
+    "img6_label": "Zertifikatsübergabe"
+  },
+  "faq": {
+    "label": "FAQ",
+    "heading": "Häufige Fragen",
+    "sub": "Alles, was Sie über die Services und das Praktikumsprogramm von InterLink wissen müssen.",
+    "q1": "Was ist InterLink?",
+    "a1": "InterLink ist ein modernes Technologieunternehmen, das sich auf intelligente digitale Systeme (Software, Web, Mobile), KI-Integrationen, Sicherheitsaudits, IoT und erstklassige IT-Praktika spezialisiert hat.",
+    "q2": "Wer kann sich für ein Praktikum bewerben?",
+    "a2": "Aktive Studenten, Coding-School-Absolventen und autodidaktische Entwickler aus den Bereichen Software Engineering, Cybersecurity, KI, Web/Mobil oder Design.",
+    "q3": "Wie funktioniert die KI-gestützte Plattform?",
+    "a3": "Unsere KI hilft Praktikanten durch Aufgabenvorschläge, Unterstützung beim Schreiben wöchentlicher Berichte und einen KI-Copiloten. Für Supervisoren vereinfacht sie Fortschrittsanalysen.",
+    "q4": "Sind die Praktika remote oder vor Ort?",
+    "a4": "Wir bieten hybride, vollständig vor Ort stattfindende sowie reine Remote-Praktika an, je nach Absprache mit Ihrem Supervisor.",
+    "q5": "Erhalte ich am Ende des Praktikums ein Zertifikat?",
+    "a5": "Ja! Nach erfolgreichem Abschluss stellt InterLink ein verifiziertes digitales Zertifikat mit sicherem QR-Code und ein teilbares Portfolio aus.",
+    "q6": "Kann InterLink maßgeschneiderte Software für mein Unternehmen entwickeln?",
+    "a6": "Absolut! Unser professionelles Team liefert High-Performance Software-Engineering, maßgeschneiderte KI-Integrationen, Sicherheitsbewertungen und Grafikdesign für globale Kunden.",
+    "q7": "Wie viele Stunden Check-in sind täglich erforderlich?",
+    "a7": "Wir bieten flexible Pfade, einschließlich Vollzeit (8 Std./Tag), Teilzeit (4 Std./Tag) und selbstgesteuerte Abendprojektpfade.",
+    "q8": "Wann starten die nächsten Praktikumskohorten?",
+    "a8": "Neue Kohorten starten jeden Monat für alle aktiven Abteilungen. Bewerben Sie sich online und bestehen Sie unsere automatisierte Kompetenzbewertung.",
+    "q9": "Was ist das Praktikums-Dashboard?",
+    "a9": "Unser sicheres Dashboard dient als primärer Arbeitsbereich, auf dem Sie täglich einchecken, Berichte entwerfen, mit Supervisoren interagieren und den KI-Copiloten nutzen."
+  },
+  "past_events": {
+    "section_title": "Höhepunkte vergangener Meilensteine",
+    "prev_event": "< Vorheriger Meilenstein",
+    "next_event": "Nächster Meilenstein >",
+    "featured": "Hervorgehoben",
+    "event_label": "Projekt",
+    "select_speaker": "Team Lead auswählen:",
+    "next_speaker": "Weiter",
+    "highlights_label": "Höhepunkte",
+    "comments_label": "Bewertungen",
+    "events": [
+      {
+        "title": "Enterprise Cloud Migration",
+        "date": "09 May 2026",
+        "attendees": "400+ Deployed APIs",
+        "description": "A major production milestone delivering secured containerized cloud architectures, microservices synchronization, and zero-downtime database clusters.",
+        "speakers": [
+          {
+            "name": "Somo Rean",
+            "role": "Lead Architect",
+            "message": "Transitioning legacy structures to high-performance Kubernetes pods was a profound milestone. Using automated CI/CD gates and real-time container metrics, we secured 99.9% uptime and streamlined API operations.",
+            "quote": "We build highly robust infrastructures where scale is built-in and security is absolute.",
+            "extra_info": "Real-time threat monitoring permits proactive mitigation of DDoS risks. We utilize advanced traffic shaping and secure socket layer encryption protocols.",
+            "highlights": [
+              "Weekly CI/CD pipeline automation.",
+              "Continuous microservices load testing.",
+              "Intensive Kubernetes cluster audits.",
+              "Zero-downtime database failovers.",
+              "Real-time resource usage monitoring.",
+              "Secure vault secret integrations.",
+              "Targeted code refactoring sessions.",
+              "12-month metrics tracking."
+            ],
+            "testimonials": [
+              {
+                "text": "Thanks to Somo's scaling patterns, our API latency dropped by 40%.",
+                "author": "Marc Yvan",
+                "role": "Senior Engineer"
+              },
+              {
+                "text": "Docker orchestration simulations prepared us perfectly for the launch.",
+                "author": "Ngoune Yann",
+                "role": "Cloud Dev Intern"
+              },
+              {
+                "text": "The setup is robust and easily scalable. Best cloud practice I have seen.",
+                "author": "Alice T.",
+                "role": "Client Architect"
+              },
+              {
+                "text": "A secure containerized approach that prevents resource depletion.",
+                "author": "Bob D.",
+                "role": "System Auditor"
+              },
+              {
+                "text": "Leads are extremely attentive to performance optimization.",
+                "author": "Clarisse M.",
+                "role": "Database Dev"
+              }
+            ]
+          },
+          {
+            "name": "Dr. Elena Schmidt",
+            "role": "AI Architect",
+            "message": "Data-centric engineering is key. By analyzing processing pipelines and deploying localized large language models, we automate manual workflows with absolute precision.",
+            "highlights": [
+              "Alignment with ISO AI standards.",
+              "Focus on neural weights optimization.",
+              "Use of clean dataset pipelines.",
+              "On-demand AI inference agents.",
+              "Predictive risk warning triggers.",
+              "Introduction of vector databases.",
+              "Secure local LLM deployments.",
+              "Real-time token cost monitoring."
+            ],
+            "testimonials": [
+              {
+                "text": "Dr. Elena explains complex vector logic with incredible simplicity.",
+                "author": "Paul Biya Jr.",
+                "role": "Machine Learning Intern"
+              },
+              {
+                "text": "Finally, an AI integration that yields practical business results!",
+                "author": "Clarisse E.",
+                "role": "Product Manager"
+              },
+              {
+                "text": "Her patience in debugging model training is unmatched.",
+                "author": "David L.",
+                "role": "Data Engineer"
+              },
+              {
+                "text": "We construct modern intelligent pipelines that scale.",
+                "author": "Eva G.",
+                "role": "Tech Lead"
+              }
+            ]
+          },
+          {
+            "name": "Jean-Pierre Nkou",
+            "role": "DevOps Manager",
+            "message": "Managing hundreds of dynamic build environments is a serious logistics feat. We implemented robust sandbox clusters to guarantee that developers can test securely.",
+            "highlights": [
+              "Optimized cloud resource allocation.",
+              "Secure digital badge authentication.",
+              "Strict environment isolation rules.",
+              "Fluid log ingestion systems.",
+              "Zero delays on release branches.",
+              "Automated backup verification.",
+              "Ergonomic developer environments.",
+              "Technical support for staging environments."
+            ],
+            "testimonials": [
+              {
+                "text": "The sandboxed testing pipeline is extremely fast and reliable.",
+                "author": "Tasha G.",
+                "role": "Frontend Architect"
+              },
+              {
+                "text": "CI runner resources are high quality and highly available.",
+                "author": "Samuel O.",
+                "role": "Full Stack Dev"
+              },
+              {
+                "text": "Everything is automated, reducing manual deployment errors.",
+                "author": "Isabelle V.",
+                "role": "Release Engineer"
+              },
+              {
+                "text": "No staging congestion or runtime permission issues.",
+                "author": "Karl H.",
+                "role": "QA Engineer"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Smart Cities IoT Summit",
+        "date": "15 April 2026",
+        "attendees": "250+ Devices",
+        "description": "An annual innovation summit showcasing smart home dashboards, automated sensor grids, and secure edge devices.",
+        "speakers": [
+          {
+            "name": "Klaus Mayer",
+            "role": "IoT Director",
+            "message": "Edge connectivity bridges hardware and digital logic. This summit highlighted local IoT systems transmitting metrics securely, demonstrating scalable local hardware engineering.",
+            "highlights": [
+              "Smart telemetry visualization dashboards.",
+              "Low-power WAN network protocols.",
+              "Real-time microcontroller scripting.",
+              "Round table on IoT cybersecurity.",
+              "Academic and enterprise hardware pacts.",
+              "Networking with hardware vendors.",
+              "Masterclass on hardware security modules.",
+              "Forum on smart grid telemetry."
+            ],
+            "testimonials": [
+              {
+                "text": "I discovered incredible hardware prototyping methods.",
+                "author": "Félix K.",
+                "role": "IoT Student"
+              },
+              {
+                "text": "The telemetry synchronization was flawless and beautiful.",
+                "author": "Sarah L.",
+                "role": "Embedded Dev"
+              },
+              {
+                "text": "Klaus is highly practical and provides great architectural guidance.",
+                "author": "Lucas P.",
+                "role": "Hardware Intern"
+              },
+              {
+                "text": "A showcase that elevates physical computing standards.",
+                "author": "Nina S.",
+                "role": "Hardware Researcher"
+              }
+            ]
+          },
+          {
+            "name": "Ms. Ngo Batoum",
+            "role": "UI/UX Specialist",
+            "message": "Designing interfaces for physical devices is a fascinating craft. The user must experience fluid dashboard feedback instantly, without confusing navigation steps.",
+            "highlights": [
+              "Interactive interface mockups.",
+              "Usability testing across device screens.",
+              "Collaborative Figma wireframing.",
+              "High-contrast visual accessibility.",
+              "Custom icons and component kits.",
+              "Responsive grid structures.",
+              "User-centric product styling.",
+              "Fluid animations for physical actions."
+            ],
+            "testimonials": [
+              {
+                "text": "Ngo's user interface design patterns are incredibly polished.",
+                "author": "Gilles M.",
+                "role": "Design Critic"
+              },
+              {
+                "text": "The dashboards feel very alive and responsive.",
+                "author": "Marie-Noëlle",
+                "role": "Product Designer"
+              },
+              {
+                "text": "I loved the UI wireframing sessions.",
+                "author": "Omer F.",
+                "role": "Frontend Intern"
+              },
+              {
+                "text": "Beautiful design systems that are a joy to implement.",
+                "author": "Rachel Z.",
+                "role": "Web Engineer"
+              }
+            ]
+          },
+          {
+            "name": "Hans Weber",
+            "role": "Automation Lead",
+            "message": "Industrial automation is a beautiful integration of mechanics and digital triggers. We successfully showcased automated factory systems processing data securely.",
+            "highlights": [
+              "Live cooking demonstration.",
+              "Afro-German gastro-fusion.",
+              "Bread making workshops.",
+              "Craft beer tasting.",
+              "Recipes shared with the public.",
+              "Reimagined Pretzel competition.",
+              "Conference on sustainable nutrition.",
+              "Charity pastry sale."
+            ],
+            "testimonials": [
+              {
+                "text": "The mix of flavors was surprising and delicious!",
+                "author": "Arnaud T.",
+                "role": "Gourmet"
+              },
+              {
+                "text": "Hans is a real magician in the kitchen.",
+                "author": "Lydie K.",
+                "role": "Local Chef"
+              },
+              {
+                "text": "The beer was excellent, very authentic.",
+                "author": "Marc R.",
+                "role": "Visitor"
+              },
+              {
+                "text": "I learned to make black bread at home!",
+                "author": "Sandrine J.",
+                "role": "Mom"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "about_title": "Über InterLink",
+    "about_desc": "Ein Technologieunternehmen der nächsten Generation, das sich auf Software-Engineering, KI-Innovationen und die Beschleunigung professioneller Tech-Talente spezialisiert hat.",
+    "subscribe": "Abonnieren",
+    "email_placeholder": "Ihre geschäftliche E-Mail",
+    "made_with": "Erstellt mit",
+    "in": "bei",
+    "rights": "Alle Rechte vorbehalten.",
+    "sections": {
+      "courses": "Services",
+      "platform": "Plattform",
+      "company": "Unternehmen",
+      "legal": "Rechtliches"
+    },
+    "links": {
+      "a1": "Software Engineering",
+      "a2": "Cybersecurity & Sicherheit",
+      "b1": "KI, Daten & Automatisierung",
+      "b2": "Grafikdesign & Branding",
+      "c1": "Web- & Mobil-Apps",
+      "c2": "IoT Engineering",
+      "ai_curr": "KI-Plattform-Engine",
+      "mentorship": "Verifizierte Praktika",
+      "cert": "Sichere Zertifikate",
+      "events": "Abteilungen",
+      "gallery": "Projekt-Showcase",
+      "dashboard": "Kunden-Dashboard",
+      "about": "Über uns",
+      "team": "Unser Team",
+      "careers": "Karriere",
+      "press": "Pressemappe",
+      "blog": "Tech-Blog",
+      "contact": "Kontakt",
+      "privacy": "Datenschutz",
+      "terms": "Nutzungsbedingungen",
+      "cookie": "Cookie-Richtlinie",
+      "refund": "Plattform SLA"
+    }
+  },
+  "courses": {
+    "label": "Unsere Services & Lernwege",
+    "heading_1": "Programme entwickelt für",
+    "heading_2": "maximalen Einfluss.",
+    "showing": "Anzeige von",
+    "of": "von",
+    "results": "Lernwegen",
+    "enrol_now": "Jetzt bewerben",
+    "prev": "Zurück",
+    "next": "Weiter",
+    "c1_title": "Enterprise Software Engineering",
+    "c1_desc": "Design und Entwicklung robuster Web-APIs, Cloud-Mikroservices und Desktop-Programme unter Verwendung moderner Architekturmuster.",
+    "c2_title": "Erweitertes Cybersecurity-Auditing",
+    "c2_desc": "Meistern Sie Penetrationstests, Bedrohungsmodellierung, Server-Absicherung und die Behebung von Schwachstellen.",
+    "c3_title": "KI, Data Science & Automatisierung",
+    "c3_desc": "Entwicklung intelligenter Empfehlungssysteme, NLP-Verarbeitung, lokaler LLM-Deployments und Strukturierung von Analysedatenbanken.",
+    "c4_title": "UX/UI & Grafikdesign-Systeme",
+    "c4_desc": "Erstellung hochauflösender Wireframes, interaktiver Prototypen, Logos und professioneller digitaler Marketingmaterialien.",
+    "c5_title": "Web- & Cross-Platform Mobil-Apps",
+    "c5_desc": "Entwicklung ansprechender Benutzeroberflächen und schneller mobiler Anwendungen mit React, Next.js und Flutter.",
+    "c6_title": "IoT & Embedded Systems Prototyping",
+    "c6_desc": "Programmierung von Mikrocontrollern, Auslesen von Sensor-Feeds und Entwurf sicherer LPWAN-Telemetrienetzwerke.",
+    "c7_title": "Cloud DevOps & CI/CD-Pipelines",
+    "c7_desc": "Automatisierung containerisierter Anwendungen, Verwaltung von Kubernetes-Clustern und Continuous-Deployment-Workflows.",
+    "c8_title": "Tech Product & Project Operations",
+    "c8_desc": "Orchestrierung agiler Sprints, Anforderungsanalyse, Schreiben technischer Spezifikationen und Qualitätssicherung.",
+    "c9_title": "Full Stack Engineering Intensivkurs",
+    "c9_desc": "Umfassende Ausbildung in Backend, Frontend, Datenbanken und Systembetrieb. Konzipiert für den schnellen Einstieg.",
+    "duration_weeks_one": "{{count}} Woche",
+    "duration_weeks_other": "{{count}} Wochen",
+    "lesson_count_one": "{{count}} Modul",
+    "lesson_count_other": "{{count}} Module",
+    "prices": {
+      "free": "Offener Lernweg"
+    },
+    "c1_tags": [
+      "Backend API",
+      "React/Node",
+      "Architektur"
+    ],
+    "c2_tags": [
+      "SecOps",
+      "Pentesting",
+      "Netzwerk"
+    ],
+    "c3_tags": [
+      "LLMs/NLP",
+      "Datenpipeline",
+      "Automatisierung"
+    ],
+    "c4_tags": [
+      "Figma UI",
+      "Branding",
+      "Typografie"
+    ],
+    "c5_tags": [
+      "Next.js",
+      "Flutter",
+      "Responsive"
+    ],
+    "c6_tags": [
+      "ESP32/C++",
+      "Telemetrie",
+      "Sensoren"
+    ],
+    "c7_tags": [
+      "Docker/K8s",
+      "CI/CD Runner",
+      "Cloud"
+    ],
+    "c8_tags": [
+      "Agile/Sprints",
+      "Specs",
+      "Produkt"
+    ],
+    "c9_tags": [
+      "Full Stack",
+      "Intensiv",
+      "Portfolio"
+    ]
+  },
+  "auth": {
+    "brand_subtitle": "Enterprise-Tech-Plattform",
+    "language_label": "Sprache wählen",
+    "login_badge": "Sicherer Benutzerzugang",
+    "register_badge": "Starten Sie Ihren technischen Lernweg",
+    "login_hero_1": "Willkommen zurück an Ihrer",
+    "login_hero_2": "InterLink Workstation.",
+    "login_hero_sub": "Greifen Sie auf Ihre Projekte zu, entwerfen Sie tägliche Berichte, lesen Sie Feedback Ihres Supervisors und nutzen Sie den KI-Copiloten.",
+    "register_hero_1": "Beginnen Sie Ihren Weg zu",
+    "register_hero_2": "technischer Exzellenz.",
+    "register_hero_sub": "Erstellen Sie Ihr Konto, um Zugang zu unseren Praktikumsabteilungen zu erhalten, an echten Systemen zu arbeiten und Zertifikate zu erwerben.",
+    "promise_1": "Strukturierte Praktikumsabteilungen",
+    "promise_2": "Professionelle Supervisor-Berichte",
+    "promise_3": "Echtzeit-KI-Copilot-Tools",
+    "create_account": "Konto erstellen",
+    "have_account": "Anmelden",
+    "signin_label": "Anmelden",
+    "signin_title": "Workstation betreten",
+    "signin_subtitle": "Nutzen Sie Ihre E-Mail und Ihr Passwort, um fortzufahren.",
+    "email": "E-Mail-Adresse",
+    "password": "Passwort",
+    "password_placeholder": "Passwort eingeben",
+    "show": "Anzeigen",
+    "hide": "Ausblenden",
+    "remember": "Angemeldet bleiben",
+    "forgot_password": "Passwort vergessen?",
+    "signing_in": "Anmeldung...",
+    "signin_button": "Anmelden",
+    "no_account": "Neu bei InterLink?",
+    "login_success": "Workstation-Zugang erfolgreich gewährt.",
+    "enroll_label": "Jetzt bewerben",
+    "enroll_title": "Benutzerprofil erstellen",
+    "enroll_subtitle": "Geben Sie Ihre professionellen Daten ein, um Ihre Workstation einzurichten.",
+    "first_name": "Vorname",
+    "last_name": "Nachname",
+    "password_strength": "Passwortstärke",
+    "terms_text": "Ich stimme Updates zu und akzeptiere die Nutzungsbedingungen von InterLink.",
+    "creating_account": "Workstation wird initialisiert...",
+    "enroll_button": "Konto erstellen",
+    "already_account": "Haben Sie bereits ein Konto?",
+    "register_success": "Benutzerprofil erfolgreich erstellt.",
+    "phone": "Telefon",
+    "study_language": "Abteilungs-Track",
+    "select_language_placeholder": "Wählen Sie Ihre Abteilung...",
+    "payment_receipt": "Lebenslauf / Skills",
+    "click_to_attach_receipt": "Klicken, um Lebenslauf anzuhängen (PDF, JPG, PNG)",
+    "accepted_formats": "Akzeptierte Formate: PDF, JPG, PNG (max. 10 MB)",
+    "register_success_pending": "Registrierung erfolgreich! Ihr Profil wartet auf die Freigabe durch einen Administrator.",
+    "errors": {
+      "required": "Bitte füllen Sie alle Pflichtfelder aus.",
+      "invalid_login": "Ungültige E-Mail oder Passwort.",
+      "password_short": "Das Passwort muss mindestens 6 Zeichen lang sein.",
+      "terms": "Bitte akzeptieren Sie die Bedingungen, um fortzufahren.",
+      "register_failed": "Konto konnte nicht erstellt werden. Bitte erneut versuchen.",
+      "study_language_required": "Bitte wählen Sie Ihre Abteilung aus.",
+      "payment_receipt_required": "Bitte fügen Sie Ihren Lebenslauf hinzu."
+    },
+    "cinematic_label": "Ihr Weg bei InterLink",
+    "cinematic_title": "Von praktischen Projekten zu echten Stellen.",
+    "cinematic_subtitle": "Ein strukturierter Entwicklungspfad durch reale Aufgaben, Experten-Mentoring, automatisierte Reviews und verifizierte Portfolios.",
+    "background_word": "Tech",
+    "focus_languages": [
+      "Engineering",
+      "Security",
+      "Automation",
+      "Design"
+    ],
+    "brand_subtitle_suffix": "workstation",
+    "login_hero_2_suffix": "workstation.",
+    "register_hero_2_suffix": "Exzellenz."
+  },
+  "dashboard": {
+    "sidebar": {
+      "dashboard": "Dashboard",
+      "crm_leads": "CRM & Leads",
+      "programs": "Programme",
+      "partners": "Partner",
+      "testimonials": "Erfahrungsberichte",
+      "gallery": "Galerie",
+      "users": "Benutzer",
+      "events": "Events",
+      "activities": "Aktivitäten",
+      "conferences": "Konferenzen",
+      "upcoming": "Kommende Veranstaltungen",
+      "flyer": "Flyer-Kampagne",
+      "members": "Mitglieder"
+    },
+    "topbar": {
+      "current_session": "Aktuelle Sitzung",
+      "server_status": "Server-Status",
+      "online": "Online & Sicher",
+      "profile": "Profileinstellungen",
+      "signout": "Abmelden"
+    },
+    "actions": {
+      "add": "Hinzufügen",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "save": "Speichern",
+      "saving": "Speichern...",
+      "cancel": "Abbrechen",
+      "confirm_delete": "Möchten Sie wirklich löschen",
+      "search": "Suche...",
+      "create": "Erstellen",
+      "close": "Schließen"
+    },
+    "status": {
+      "live": "Live",
+      "review": "Überprüfung",
+      "archived": "Archiviert",
+      "draft": "Entwurf",
+      "scheduled": "Geplant",
+      "past": "Vergangen",
+      "active": "Aktiv",
+      "inactive": "Inaktiv",
+      "new": "Neu",
+      "contacted": "Kontaktiert",
+      "converted": "Konvertiert",
+      "published": "Veröffentlicht",
+      "verified": "Verifiziert",
+      "pending": "Ausstehend"
+    },
+    "screens": {
+      "programs": {
+        "title": "Programme",
+        "name": "Name",
+        "category": "Kategorie",
+        "duration": "Dauer",
+        "level": "Niveau",
+        "add_program": "Programm hinzufügen",
+        "delete_program": "Programm löschen"
+      },
+      "leads": {
+        "title": "Leads",
+        "name": "Name",
+        "email": "E-Mail",
+        "phone": "Telefon",
+        "status": "Status",
+        "add_lead": "Lead hinzufügen"
+      },
+      "users": {
+        "title": "Systembenutzer",
+        "name": "Name",
+        "email": "E-Mail",
+        "role": "Rolle",
+        "add_user": "Benutzer erstellen",
+        "password": "Passwort",
+        "password_placeholder": "min. 8 Zeichen"
+      },
+      "events": {
+        "title": "Events",
+        "event_title": "Event-Titel",
+        "type": "Typ",
+        "date": "Datum",
+        "location": "Ort",
+        "add_event": "Event hinzufügen"
+      },
+      "gallery": {
+        "title": "Digitale Assets",
+        "album_file": "Album / Datei",
+        "type": "Typ",
+        "url": "URL",
+        "add_media": "Medien hinzufügen",
+        "title_fr": "Titel (FR)",
+        "title_en": "Titel (EN)",
+        "files": "Datei(en)",
+        "album": "Album / Datei",
+        "date": "Hinzugefügt am",
+        "status": "Status"
+      },
+      "partners": {
+        "title": "Partner",
+        "name": "Partnername",
+        "category": "Kategorie",
+        "website": "Webseite",
+        "add_partner": "Partner hinzufügen",
+        "partner": "Partner",
+        "type": "Typ",
+        "country": "Land",
+        "placed_students": "Platzierte Praktikanten",
+        "status": "Status"
+      },
+      "testimonials": {
+        "title": "Erfahrungsberichte",
+        "author": "Autor",
+        "role": "Rolle",
+        "rating": "Bewertung",
+        "add_testimonial": "Erfahrungsbericht hinzufügen",
+        "content": "Inhalt",
+        "program": "Programm",
+        "status": "Status"
+      },
+      "activities": {
+        "title": "Aktivitäten",
+        "activity_name": "Aktivitätsname",
+        "category": "Kategorie",
+        "date": "Datum",
+        "add_activity": "Aktivität hinzufügen",
+        "activity_title": "Aktivität",
+        "duration": "Dauer",
+        "assigned_staff": "Mitarbeiter",
+        "status": "Status"
+      },
+      "conferences": {
+        "title": "Konferenzen",
+        "topic": "Thema",
+        "speaker": "Referent",
+        "date": "Datum",
+        "add_conference": "Konferenz hinzufügen",
+        "conference": "Konferenz",
+        "speakers": "Referenten",
+        "location": "Ort",
+        "attendees": "Teilnehmer",
+        "status": "Status"
+      },
+      "flyer": {
+        "title": "Flyer-Kampagnen",
+        "campaign": "Kampagnenname",
+        "channel": "Kanal",
+        "start_date": "Startdatum",
+        "end_date": "Enddatum",
+        "add_flyer": "Flyer hinzufügen"
+      },
+      "members": {
+        "title": "Mitglieder",
+        "name": "Name",
+        "role": "Rolle",
+        "department": "Abteilung",
+        "add_member": "Mitglied hinzufügen",
+        "member": "Mitglied",
+        "contact": "Kontakt",
+        "status": "Status",
+        "profile": "Mitgliederprofil",
+        "phone": "Telefon",
+        "joined": "Beigetreten am"
+      },
+      "upcoming": {
+        "title": "Kommende Events",
+        "event_name": "Eventname",
+        "countdown": "Countdown",
+        "add_upcoming": "Event hinzufügen"
+      },
+      "flyers": {
+        "campaign": "Kampagne",
+        "channel": "Kanal",
+        "start_date": "Startdatum",
+        "end_date": "Enddatum",
+        "file": "Datei",
+        "view_flyer": "Flyer ansehen",
+        "status": "Status",
+        "title": "Marketing-Supports",
+        "upload_flyer": "Flyer hochladen"
+      },
+      "upcoming_events": {
+        "event": "Titel",
+        "date": "Datum",
+        "time": "Uhrzeit",
+        "location": "Ort",
+        "attendees": "Erwartete Teilnehmer",
+        "status": "Status",
+        "title": "Kommende Events",
+        "add_event": "Event hinzufügen"
+      }
+    },
+    "home": {
+      "revenue": "Umsatz",
+      "total_leads": "Gesamt CRM-Leads",
+      "prospects_desc": "Interessenten in Pipeline",
+      "active_programs": "Aktive Programme",
+      "pending_testimonials": "Ausstehende Erfahrungsberichte",
+      "require_approval": "Benötigen Ihre Freigabe",
+      "institute_trends": "InterLink Analytics",
+      "trends_desc": "Tägliche Check-in-Frequenzen (diesen Monat)",
+      "monthly": "Monatlich",
+      "daily": "Täglich",
+      "staff_distribution": "Mitarbeiterverteilung",
+      "system_performance": "Systemleistung",
+      "optimal": "Optimal",
+      "administrators": "Administratoren",
+      "teachers": "Tutoren",
+      "receptionists": "Koordinatoren",
+      "super_admins": "Super-Admins"
+    }
+  },
+  "learning": {
+    "my_learning": "Mein Lernen",
+    "my_learning_desc": "Setzen Sie einen Lernweg fort, überprüfen Sie erledigte Aufgaben oder durchsuchen Sie den Katalog.",
+    "explore_courses": "Lernwege erkunden",
+    "active_courses": "Aktive Lernwege",
+    "completed": "Abgeschlossen",
+    "average_progress": "Durchschnittlicher Fortschritt",
+    "loading_courses": "Lernwege werden geladen...",
+    "no_enrolled_title": "Noch keine Lernwege abonniert",
+    "no_enrolled_desc": "Starten Sie mit einem kostenlosen Lernweg oder testen Sie einen Vorschau-Lernweg.",
+    "browse_all": "Alle Lernwege durchsuchen",
+    "sign_in_title": "Anmelden, um 'Mein Lernen' zu sehen",
+    "sign_in_desc": "Ihre Lernwege, Ihr Fortschritt und die Aktionsschaltflächen sind mit Ihrer Workstation verknüpft.",
+    "sign_in": "Anmelden",
+    "all_courses": "Alle Lernwege",
+    "all_courses_desc": "Wählen Sie aus den veröffentlichten Lernwegen. Offene Lernwege starten sofort, andere benötigen Freigabe.",
+    "search_placeholder": "Suche nach Titel, Level, Kategorie oder Abteilung...",
+    "no_courses_title": "Keine Lernwege gefunden",
+    "no_courses_desc": "Versuchen Sie es mit einem anderen Suchbegriff.",
+    "loading_courses_catalog": "Lernwege werden geladen...",
+    "continue_learning": "Entwicklung fortsetzen",
+    "back_to_courses": "Zurück zu den Lernwegen",
+    "back": "Zurück",
+    "go_to_courses": "Zu den Lernwegen",
+    "chapters": "Abschnitte",
+    "videos": "Module",
+    "preview_chapters": "Vorschau-Abschnitte",
+    "about_course": "Über diesen Lernweg",
+    "no_description": "Noch keine Beschreibung vorhanden.",
+    "course_access": "Lernweg-Zugriff",
+    "free": "Kostenlos",
+    "plan_free_desc": "Einschreiben und sofortigen Zugriff auf alle Abschnitte erhalten.",
+    "plan_freemium_desc": "Starten Sie mit kostenlosen Abschnitten. Die restlichen werden nach Freigabe freigeschaltet.",
+    "plan_premium_desc": "Die Anmeldung erstellt eine Freigabeanfrage, bevor der Inhalt freigeschaltet wird.",
+    "curriculum": "Meilensteine & Aufgaben",
+    "locked_chapters_helper": "Gesperrte Meilensteine erfordern die Freigabe durch den Supervisor.",
+    "play": "Starten",
+    "loading_player": "Lernumgebung wird geladen...",
+    "chapter_locked": "Meilenstein gesperrt",
+    "chapter_locked_desc": "Dieser Meilenstein erfordert die Freigabe der Anmeldung durch Ihren Supervisor.",
+    "upgrade_access": "Zugriff erweitern",
+    "key_moments_notions": "Wichtige Meilensteine & Tools",
+    "course_curriculum": "Lernweg-Meilensteine",
+    "complete": "Vollständig",
+    "of": "von",
+    "courses_count": "Lernwege"
+  }
+}
