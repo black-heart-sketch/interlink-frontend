@@ -115,7 +115,7 @@ function Dashboard() {
   const { t, i18n } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const reduxRoles = useSelector((state) => state.auth.userRoles);
-  const user = useSelector((state) => state.auth.user);
+  const user = useSelector((state) => state.auth.userProfile || state.auth.user);
   
   const userRoles = useMemo(() => {
     if (Array.isArray(reduxRoles) && reduxRoles.length) return reduxRoles;

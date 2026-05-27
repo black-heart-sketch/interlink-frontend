@@ -27,24 +27,33 @@ function PaymentInstructions({
   }, [status, t]);
 
   const handleCheckStatus = async () => {
-    if (!transactionId || !onCheckStatus) return;
+    if (!transactionId || !onCheckStatus) {
+      console.warn('[PaymentInstructions] Cannot check status: transactionId or onCheckStatus callback missing.', { transactionId, hasCallback: !!onCheckStatus });
+      return;
+    }
+    console.log(`[PaymentInstructions] Initiating status check for transaction ID: ${transactionId}`);
     setChecking(true);
     setMessage('');
     try {
       const result = await onCheckStatus(transactionId);
+      console.log('[PaymentInstructions] Check status returned result:', result);
       const nextStatus = String(result.status || '').toLowerCase();
       setStatus(nextStatus || 'pending');
 
       if (COMPLETE_STATUSES.includes(nextStatus)) {
+        console.log('[PaymentInstructions] Payment complete! Triggering onSuccess callback...');
         setCompleting(true);
         await onSuccess?.(result);
         setMessage(t('payment_instructions.payment_confirmed_sentence'));
       } else if (FAILED_STATUSES.includes(nextStatus)) {
+        console.warn(`[PaymentInstructions] Payment failed with status: ${nextStatus}`);
         setMessage(t('payment_instructions.not_completed'));
       } else {
+        console.log(`[PaymentInstructions] Payment is still pending (status: ${nextStatus})`);
         setMessage(t('payment_instructions.still_pending'));
       }
     } catch (error) {
+      console.error('[PaymentInstructions] Error checking payment status:', error);
       setMessage(error.response?.data?.message || error.message || t('payment_instructions.check_failed'));
     } finally {
       setChecking(false);

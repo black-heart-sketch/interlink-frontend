@@ -97,7 +97,7 @@ function GateLock({ user, application, onRefresh }) {
       // Initiate DigiPay payment
       const res = await axiosInstance.post('/auth/initiate-registration-payment', {
         phone,
-        email: user.email
+        email: user?.email || ''
       });
       const transactionId = res.data?.transactionId;
       if (!transactionId) {
@@ -113,6 +113,7 @@ function GateLock({ user, application, onRefresh }) {
       setPolling(true);
       toast.info(t('gate_lock.payment_initiated'));
     } catch (err) {
+      console.log(err);
       toast.error(err.response?.data?.message || t('gate_lock.payment_failed'));
     } finally {
       setLoading(false);

@@ -9,18 +9,33 @@ function ManageFinancialBalance() {
   const [loading, setLoading] = useState(true);
 
   const fetchFinancials = async () => {
+    console.log('[ManageFinancialBalance] Fetching financials (balance & registrations)...');
     try {
       const [balRes, appsRes] = await Promise.all([
-        axiosInstance.get('/payments/digipay/balance').catch(() => ({ data: { available: 0, currency: 'XAF' } })),
-        axiosInstance.get('/applications').catch(() => ({ data: [] }))
+        axiosInstance.get('/payments/digipay/balance').then(res => {
+          console.log('[ManageFinancialBalance] DigiPay balance response:', res.data);
+          return res;
+        }).catch((err) => {
+          console.error('[ManageFinancialBalance] Failed to fetch DigiPay balance, using fallback.', err);
+          return { data: { available: 0, currency: 'XAF' } };
+        }),
+        axiosInstance.get('/applications').then(res => {
+          console.log('[ManageFinancialBalance] Applications response:', res.data);
+          return res;
+        }).catch((err) => {
+          console.error('[ManageFinancialBalance] Failed to fetch admissions/applications, using fallback.', err);
+          return { data: [] };
+        })
       ]);
       setBalance(balRes.data);
       
       const paidApps = Array.isArray(appsRes.data)
         ? appsRes.data.filter(app => app.paymentStatus === 'paid')
         : [];
+      console.log(`[ManageFinancialBalance] Found ${paidApps.length} paid student registrations.`);
       setPaidStudents(paidApps);
     } catch (err) {
+      console.error('[ManageFinancialBalance] Error in fetchFinancials:', err);
       toast.error('Failed to load financial records.');
     } finally {
       setLoading(false);
