@@ -149,21 +149,20 @@ function Navbar({ theme, toggleTheme }) {
           onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.02)')}
           onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
         >
-          <svg
-            width="38"
-            height="38"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{ color: '#06B6D4', filter: 'drop-shadow(0 0 8px rgba(6, 182, 212, 0.5))' }}
-          >
-            <path d="M12 2L2 7l10 5 10-5-10-5z" />
-            <path d="M2 17l10 5 10-5" />
-            <path d="M2 12l10 5 10-5" />
-          </svg>
+          <img
+            src="/assets/images/logo.png"
+            alt="InterLink Logo"
+            style={{
+              height: '42px',
+              width: '42px',
+              objectFit: 'contain',
+              borderRadius: '12px',
+              backgroundColor: '#fff',
+              padding: '5px',
+              boxShadow: '0 8px 20px rgba(0, 0, 0, 0.12)',
+              flexShrink: 0
+            }}
+          />
           <span
             style={{
               fontSize: '1.6rem',
