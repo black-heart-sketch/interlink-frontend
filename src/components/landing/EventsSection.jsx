@@ -1,59 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-const departments = [
-  {
-    name: 'Software Engineering',
-    icon: '💻',
-    accent: '#2563EB',
-    bg: 'rgba(37,99,235,0.1)',
-    desc: 'Build robust desktop, web, and enterprise applications using modern architectures, robust data pipelines, and design patterns.',
-    techs: ['React', 'Node.js', 'Python', 'Docker', 'CI/CD']
-  },
-  {
-    name: 'Cybersecurity',
-    icon: '🛡️',
-    accent: '#EF4444',
-    bg: 'rgba(239,68,68,0.1)',
-    desc: 'Audit system vulnerabilities, secure network protocols, test database injections, and implement state-of-the-art encryption defenses.',
-    techs: ['Linux', 'Wireshark', 'Metasploit', 'OWASP Top 10']
-  },
-  {
-    name: 'IoT Engineering',
-    icon: '🔌',
-    accent: '#F59E0B',
-    bg: 'rgba(245,158,11,0.1)',
-    desc: 'Engineer connected hardware systems, design microcontrollers, and develop sensor networks for modern industry automation.',
-    techs: ['Arduino', 'Raspberry Pi', 'ESP32', 'MQTT', 'C++']
-  },
-  {
-    name: 'AI Development',
-    icon: '🤖',
-    accent: '#8B5CF6',
-    bg: 'rgba(139,92,246,0.1)',
-    desc: 'Implement deep learning neural networks, process languages with NLP, and program predictive analytics or intelligent automated agents.',
-    techs: ['PyTorch', 'TensorFlow', 'Pandas', 'OpenAI APIs', 'NLP']
-  },
-  {
-    name: 'Graphic Design',
-    icon: '🎨',
-    accent: '#EC4899',
-    bg: 'rgba(236,72,153,0.1)',
-    desc: 'Craft professional corporate branding, UI system mockups, visual banners, and beautiful vector-based marketing flyers.',
-    techs: ['Figma', 'Illustrator', 'Photoshop', 'Branding Design']
-  },
-  {
-    name: 'Web & Mobile Development',
-    icon: '📱',
-    accent: '#06B6D4',
-    bg: 'rgba(6,182,212,0.1)',
-    desc: 'Design beautiful, highly responsive user experiences and engineer modern cross-platform web and mobile applications.',
-    techs: ['Next.js', 'Flutter', 'React Native', 'Tailwind v4']
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 function EventsSection() {
+  const { t } = useTranslation();
   const [hoveredIdx, setHoveredIdx] = useState(null);
+  const departments = [
+    { name: t('common.departments.software_engineering'), icon: '💻', accent: '#2563EB', bg: 'rgba(37,99,235,0.1)', desc: t('events.departments.software_desc'), techs: ['React', 'Node.js', 'Python', 'Docker', 'CI/CD'] },
+    { name: t('common.departments.cybersecurity'), icon: '🛡️', accent: '#EF4444', bg: 'rgba(239,68,68,0.1)', desc: t('events.departments.cybersecurity_desc'), techs: ['Linux', 'Wireshark', 'Metasploit', 'OWASP Top 10'] },
+    { name: t('common.departments.iot_engineering'), icon: '🔌', accent: '#F59E0B', bg: 'rgba(245,158,11,0.1)', desc: t('events.departments.iot_desc'), techs: ['Arduino', 'Raspberry Pi', 'ESP32', 'MQTT', 'C++'] },
+    { name: t('common.departments.ai_development'), icon: '🤖', accent: '#8B5CF6', bg: 'rgba(139,92,246,0.1)', desc: t('events.departments.ai_desc'), techs: ['PyTorch', 'TensorFlow', 'Pandas', 'OpenAI APIs', 'NLP'] },
+    { name: t('common.departments.graphic_design'), icon: '🎨', accent: '#EC4899', bg: 'rgba(236,72,153,0.1)', desc: t('events.departments.design_desc'), techs: ['Figma', 'Illustrator', 'Photoshop', 'Branding Design'] },
+    { name: t('common.departments.web_mobile_development'), icon: '📱', accent: '#06B6D4', bg: 'rgba(6,182,212,0.1)', desc: t('events.departments.web_mobile_desc'), techs: ['Next.js', 'Flutter', 'React Native', 'Tailwind v4'] }
+  ];
 
   return (
     <section
@@ -64,14 +23,14 @@ function EventsSection() {
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1rem' }}>
-          🎓 INTERNSHIP PROGRAM
+          🎓 {t('events.label')}
         </div>
         <h2 className="section-heading">
-          Explore Our Active Internship<br />
-          <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Departments.</span>
+          {t('events.heading_1')}<br />
+          <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('events.heading_2')}</span>
         </h2>
         <p className="section-sub">
-          Accelerate your career in technology. Work on real production systems under expert supervisor mentorship and track your growth with our AI-powered analytics dashboard.
+          {t('events.sub')}
         </p>
       </div>
 
@@ -232,4 +191,3 @@ function EventsSection() {
 }
 
 export default EventsSection;
-

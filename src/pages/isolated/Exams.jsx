@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { examService } from '../services/examService';
 
 export default function Exams() {
+  const { t } = useTranslation();
   const [exams, setExams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -21,7 +23,7 @@ export default function Exams() {
         const data = await examService.getExams();
         setExams(data);
       } catch (err) {
-        setError('Failed to fetch exams.');
+        setError(t('exams.fetch_failed'));
       } finally {
         setLoading(false);
       }
@@ -34,27 +36,27 @@ export default function Exams() {
     const start = new Date(exam.startTime);
     const end = new Date(exam.endTime);
 
-    if (now < start) return { label: 'À venir', color: '#3b82f6', bg: 'rgba(59,130,246,0.1)' };
-    if (now >= start && now <= end) return { label: 'En cours', color: '#10b981', bg: 'rgba(16,185,129,0.1)' };
-    return { label: 'Terminé', color: '#94a3b8', bg: 'rgba(148,163,184,0.1)' };
+    if (now < start) return { key: 'upcoming', label: t('exams.status_upcoming'), color: '#3b82f6', bg: 'rgba(59,130,246,0.1)' };
+    if (now >= start && now <= end) return { key: 'active', label: t('exams.status_active'), color: '#10b981', bg: 'rgba(16,185,129,0.1)' };
+    return { key: 'ended', label: t('exams.status_ended'), color: '#94a3b8', bg: 'rgba(148,163,184,0.1)' };
   };
 
   const handleStartExam = (exam) => {
     const now = new Date();
     const start = new Date(exam.startTime);
     if (now < start) {
-      alert("Cet examen n'a pas encore commencé.");
+      alert(t('exams.not_started'));
       return;
     }
     const end = new Date(exam.endTime);
     if (now > end) {
-      alert("Cet examen est terminé.");
+      alert(t('exams.ended'));
       return;
     }
     navigate(`/exams/${exam._id}/take`);
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">Chargement...</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">{t('common.loading')}</div>;
 
   return (
     <div className="min-h-screen flex flex-col" style={{ background: 'var(--bg-primary)' }}>
@@ -62,8 +64,8 @@ export default function Exams() {
       
       <div style={{ padding: '120px 2rem 4rem 2rem', flex: 1, maxWidth: 1000, margin: '0 auto', width: '100%' }}>
         <div style={{ marginBottom: '2rem' }}>
-          <h1 style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>Module d'Examen 📝</h1>
-          <p style={{ color: 'var(--text-secondary)' }}>Retrouvez ici tous vos examens programmés.</p>
+          <h1 style={{ fontSize: '2rem', fontWeight: 900, color: 'var(--text-primary)', margin: '0 0 0.5rem 0' }}>{t('exams.title')}</h1>
+          <p style={{ color: 'var(--text-secondary)' }}>{t('exams.subtitle')}</p>
         </div>
 
         {error && <div style={{ padding: '1rem', background: 'rgba(239,68,68,0.1)', color: '#ef4444', borderRadius: 12, marginBottom: '1rem' }}>{error}</div>}
@@ -71,7 +73,7 @@ export default function Exams() {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
           {exams.length === 0 ? (
             <div style={{ padding: '3rem', textAlign: 'center', background: 'rgba(255,255,255,0.02)', borderRadius: 16 }}>
-              <p style={{ color: '#94a3b8' }}>Aucun examen disponible pour le moment.</p>
+              <p style={{ color: '#94a3b8' }}>{t('exams.none')}</p>
             </div>
           ) : (
             exams.map(exam => {
@@ -84,31 +86,31 @@ export default function Exams() {
                         {status.label}
                       </span>
                       <span style={{ color: '#60a5fa', fontSize: '0.8rem', fontWeight: 700 }}>
-                        {exam.course?.title || 'Cours Général'}
+                        {exam.course?.title || t('exams.general_course')}
                       </span>
                     </div>
                     <h2 style={{ margin: '0 0 0.5rem 0', color: 'var(--text-primary)', fontSize: '1.25rem', fontWeight: 800 }}>{exam.title}</h2>
                     <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.9rem' }}>
-                      <strong>Début :</strong> {new Date(exam.startTime).toLocaleString()}<br/>
-                      <strong>Durée :</strong> {exam.durationMinutes} minutes
+                      <strong>{t('exams.start')}:</strong> {new Date(exam.startTime).toLocaleString()}<br/>
+                      <strong>{t('exams.duration')}:</strong> {t('exams.minutes', { count: exam.durationMinutes })}
                     </p>
                   </div>
                   <div>
                     <button
                       onClick={() => handleStartExam(exam)}
-                      disabled={status.label !== 'En cours'}
+                      disabled={status.key !== 'active'}
                       style={{
                         padding: '0.75rem 1.5rem',
                         borderRadius: 12,
                         border: 'none',
-                        background: status.label === 'En cours' ? '#3b82f6' : 'rgba(255,255,255,0.05)',
-                        color: status.label === 'En cours' ? 'white' : '#94a3b8',
+                        background: status.key === 'active' ? '#3b82f6' : 'rgba(255,255,255,0.05)',
+                        color: status.key === 'active' ? 'white' : '#94a3b8',
                         fontWeight: 800,
-                        cursor: status.label === 'En cours' ? 'pointer' : 'not-allowed',
+                        cursor: status.key === 'active' ? 'pointer' : 'not-allowed',
                         transition: 'all 0.2s'
                       }}
                     >
-                      {status.label === 'Terminé' ? 'Examen clos' : 'Démarrer l\'examen'}
+                      {status.key === 'ended' ? t('exams.closed') : t('exams.start_exam')}
                     </button>
                   </div>
                 </div>

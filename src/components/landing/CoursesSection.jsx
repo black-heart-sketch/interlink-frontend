@@ -66,13 +66,13 @@ function CoursesSection() {
         {loading ? (
           <div className="flex items-center justify-center min-h-[400px] text-slate-400">
             <i className="fa-solid fa-circle-notch animate-spin text-2xl mr-3"></i>
-            Loading courses...
+            {t('courses.loading')}
           </div>
         ) : dbCourses.length === 0 ? (
           <div className="flex flex-col items-center justify-center min-h-[400px] text-slate-400 bg-white/[0.03] rounded-3xl border border-white/10 p-10">
             <i className="fa-solid fa-book-open text-4xl mb-4"></i>
-            <h3 className="text-xl font-bold text-white mb-2">No courses available yet</h3>
-            <p>Check back later for new learning content.</p>
+            <h3 className="text-xl font-bold text-white mb-2">{t('courses.empty_title')}</h3>
+            <p>{t('courses.empty_desc')}</p>
           </div>
         ) : (
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

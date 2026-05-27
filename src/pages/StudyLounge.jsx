@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Navbar from '../components/Navbar';
 import { selectCurrentUserProfile } from '../redux/authSlice';
-import { studyLanguageService } from '../services/studyLanguageService';
 import axiosInstance from '../config/axiosConfig';
 import {
   LiveKitRoom,
@@ -43,6 +43,7 @@ const IconChevronRight = () => (
 
 // ─── Pre-Join Camera Preview ────────────────────────────────────────────────
 function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
+  const { t } = useTranslation();
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const [camOn, setCamOn] = useState(true);
@@ -103,7 +104,7 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
                   <div className="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
                     {userName?.charAt(0)?.toUpperCase() || 'U'}
                   </div>
-                  <p className="text-slate-500 text-sm">Camera is off</p>
+                  <p className="text-slate-500 text-sm">{t('live_class.camera_off')}</p>
                 </div>
               ) : (
                 <video
@@ -128,7 +129,7 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
             <div className="flex items-center justify-center gap-4">
               <button
                 onClick={toggleMic}
-                title={micOn ? 'Mute microphone' : 'Unmute microphone'}
+                title={micOn ? t('live_class.mute_microphone') : t('live_class.unmute_microphone')}
                 className={`flex flex-col items-center gap-1.5 px-5 py-3 rounded-2xl transition-all duration-200 cursor-pointer font-medium text-xs ${
                   micOn
                     ? 'bg-white/10 hover:bg-white/15 text-white border border-white/10'
@@ -136,13 +137,13 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
                 }`}
               >
                 {micOn ? <IconMic /> : <IconMicOff />}
-                {micOn ? 'Mute' : 'Unmuted'}
+                {micOn ? t('live_class.mute') : t('live_class.unmuted')}
               </button>
 
               <button
                 onClick={toggleCam}
                 disabled={camError}
-                title={camOn ? 'Turn off camera' : 'Turn on camera'}
+                title={camOn ? t('live_class.turn_off_camera') : t('live_class.turn_on_camera')}
                 className={`flex flex-col items-center gap-1.5 px-5 py-3 rounded-2xl transition-all duration-200 cursor-pointer font-medium text-xs ${
                   camOn
                     ? 'bg-white/10 hover:bg-white/15 text-white border border-white/10'
@@ -150,7 +151,7 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
                 } disabled:opacity-40 disabled:cursor-not-allowed`}
               >
                 {camOn ? <IconVideo /> : <IconVideoOff />}
-                {camOn ? 'Stop Video' : 'Start Video'}
+                {camOn ? t('live_class.stop_video') : t('live_class.start_video')}
               </button>
             </div>
           </div>
@@ -172,7 +173,7 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
                 {isAdmin && (
                   <div className="flex items-center gap-1.5 text-amber-400 text-xs font-semibold bg-amber-400/10 border border-amber-400/20 rounded-lg px-3 py-2">
                     <IconShield />
-                    Moderator access enabled
+                    {t('study_lounge.moderator_access')}
                   </div>
                 )}
               </div>
@@ -181,8 +182,8 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
 
               {/* Checklist */}
               <div className="space-y-2">
-                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Before you join</p>
-                {['Be respectful to all participants', 'Mute mic when not speaking', 'Use screen share for video sync'].map(item => (
+                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">{t('live_class.before_join')}</p>
+                {[t('study_lounge.check_respectful'), t('study_lounge.check_mute'), t('study_lounge.check_screen_share')].map(item => (
                   <div key={item} className="flex items-start gap-2 text-slate-300 text-xs">
                     <svg className="w-3.5 h-3.5 text-indigo-400 mt-0.5 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
                     {item}
@@ -206,18 +207,18 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
                     <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Preparing room…
+                    {t('study_lounge.preparing_room')}
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
                     <IconVideo />
-                    Join Now
+                    {t('study_lounge.join_now')}
                   </span>
                 )}
               </button>
 
               <p className="text-center text-slate-600 text-xs">
-                By joining, you agree to our community guidelines
+                {t('live_class.community_guidelines')}
               </p>
             </div>
           </div>
@@ -229,24 +230,17 @@ function PreJoinLobby({ room, isAdmin, onJoin, isLoading, error, userName }) {
 
 // ─── Main Page ───────────────────────────────────────────────────────────────
 export default function StudyLounge() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const reduxUserProfile = useSelector(selectCurrentUserProfile);
   const user = reduxUserProfile || JSON.parse(sessionStorage.getItem('userProfile') || 'null');
 
-  const [languages, setLanguages] = useState([]);
   const [activeRoomId, setActiveRoomId] = useState('lounge-global');
   const [token, setToken] = useState(null);
   const [serverUrl, setServerUrl] = useState('');
   const [connectionError, setConnectionError] = useState('');
   const [isFetchingToken, setIsFetchingToken] = useState(false);
   const [hasJoined, setHasJoined] = useState(false);
-
-  useEffect(() => {
-    if (!user) return;
-    studyLanguageService.getLanguages(true)
-      .then(setLanguages)
-      .catch(() => {});
-  }, [user?._id]);
 
   useEffect(() => {
     if (!user || !activeRoomId) return;
@@ -256,7 +250,7 @@ export default function StudyLounge() {
     setIsFetchingToken(true);
     axiosInstance.get(`/live-classes/lounge/${activeRoomId}/token`)
       .then(res => { setToken(res.data.token); setServerUrl(res.data.url); })
-      .catch(err => setConnectionError(err.response?.data?.message || 'Access denied to this lounge.'))
+      .catch(err => setConnectionError(err.response?.data?.message || t('study_lounge.access_denied')))
       .finally(() => setIsFetchingToken(false));
   }, [activeRoomId, user?._id]);
 
@@ -264,28 +258,23 @@ export default function StudyLounge() {
 
   const userRole = (user?.role || 'student').toLowerCase();
   const isAdmin = ['superadmin', 'admin', 'teacher', 'systemadmin', 'instituteadmin'].includes(userRole);
-  const userName = `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Student';
+  const userName = `${user.firstName || ''} ${user.lastName || ''}`.trim() || t('live_class.student');
 
-  const availableLanguageLounges = languages.filter(lang => {
-    if (isAdmin) return true;
-    const userLangId = user?.studyLanguage?._id || user?.studyLanguage;
-    return lang._id === userLangId;
-  });
+  const rooms = [
+    { id: 'lounge-global', name: t('study_lounge.global_lounge'), subtitle: t('study_lounge.all_students'), icon: <IconGlobe /> },
+    { id: 'lounge-en', name: t('study_lounge.english_lounge'), subtitle: t('study_lounge.english_section'), icon: <IconBook /> },
+    { id: 'lounge-fr', name: t('study_lounge.french_lounge'), subtitle: t('study_lounge.french_section'), icon: <IconBook /> },
+    { id: 'lounge-de', name: t('study_lounge.german_lounge'), subtitle: t('study_lounge.german_section'), icon: <IconBook /> },
+    { id: 'lounge-it', name: t('study_lounge.italian_lounge'), subtitle: t('study_lounge.italian_section'), icon: <IconBook /> },
+  ];
 
-  const activeRoomName = activeRoomId === 'lounge-global'
-    ? 'Global Study Lounge'
-    : `${languages.find(l => `lounge-${l._id}` === activeRoomId)?.name || ''} Lounge`;
+  const activeRoomName = rooms.find(r => r.id === activeRoomId)?.name || t('study_lounge.global_lounge');
 
   const activeRoom = {
     name: activeRoomName,
-    subtitle: activeRoomId === 'lounge-global' ? 'Open to all InterLink students' : 'Language-specific study room',
+    subtitle: activeRoomId === 'lounge-global' ? t('study_lounge.open_to_all') : t('study_lounge.language_specific_room'),
     isGlobal: activeRoomId === 'lounge-global',
   };
-
-  const rooms = [
-    { id: 'lounge-global', name: 'Global Lounge', subtitle: 'All students', icon: <IconGlobe /> },
-    ...availableLanguageLounges.map(l => ({ id: `lounge-${l._id}`, name: l.name, subtitle: 'Language room', icon: <IconBook /> })),
-  ];
 
   return (
     <>
@@ -311,7 +300,7 @@ export default function StudyLounge() {
             <div className="px-4 py-4 border-b" style={{ borderColor: 'rgba(255,255,255,0.06)' }}>
               <div className="flex items-center gap-2">
                 <IconUsers />
-                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Study Lounges</span>
+                <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">{t('study_lounge.study_lounges')}</span>
               </div>
             </div>
 
@@ -354,7 +343,7 @@ export default function StudyLounge() {
             {isAdmin && (
               <div className="mx-3 mb-4 px-3 py-2.5 rounded-xl flex items-center gap-2" style={{ background: 'rgba(245,158,11,0.1)', border: '1px solid rgba(245,158,11,0.2)' }}>
                 <IconShield />
-                <span className="text-amber-400 text-xs font-semibold">Moderator</span>
+                <span className="text-amber-400 text-xs font-semibold">{t('study_lounge.moderator')}</span>
               </div>
             )}
           </aside>
@@ -377,7 +366,7 @@ export default function StudyLounge() {
                   onClick={() => setHasJoined(false)}
                   className="text-xs px-3 py-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition-all duration-200 cursor-pointer"
                 >
-                  ← Leave room
+                  {t('study_lounge.leave_room')}
                 </button>
               )}
             </div>
@@ -410,7 +399,7 @@ export default function StudyLounge() {
               ) : (
                 <div className="flex-1 flex flex-col items-center justify-center gap-3">
                   <div className="w-10 h-10 border-4 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-                  <p className="text-slate-500 text-sm">Loading room…</p>
+                  <p className="text-slate-500 text-sm">{t('study_lounge.loading_room')}</p>
                 </div>
               )}
             </div>

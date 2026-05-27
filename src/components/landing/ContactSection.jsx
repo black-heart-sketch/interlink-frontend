@@ -33,34 +33,34 @@ function ContactSection() {
   const onSubmit = (e) => { e.preventDefault(); setLoading(true); setTimeout(() => { setLoading(false); setSent(true); }, 1500); };
 
   const topics = [
-    { value: 'software', label: 'Software Development' },
-    { value: 'ai', label: 'AI Solutions & Integrations' },
-    { value: 'security', label: 'Cybersecurity Audit & Services' },
-    { value: 'internship', label: 'Internship Program Inquiry' },
-    { value: 'partnership', label: 'Corporate Partnerships' },
-    { value: 'other', label: 'Other Inquiries' },
+    { value: 'software', label: t('contact.topics.software') },
+    { value: 'ai', label: t('contact.topics.ai') },
+    { value: 'security', label: t('contact.topics.security') },
+    { value: 'internship', label: t('contact.topics.internship') },
+    { value: 'partnership', label: t('contact.topics.partnership') },
+    { value: 'other', label: t('contact.topics.other') },
   ];
 
   return (
     <section id="contact" className="page-section" style={{ background: 'var(--bg-color)', borderTop: '1px solid var(--glass-border)' }}>
       <div className="wide-container" style={{ maxWidth: 1280, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
-          <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1rem' }}>✉️ CONTACT US</div>
+          <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1rem' }}>✉️ {t('contact.label')}</div>
           <h2 className="section-heading">
-            Connecting Innovation to <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>the Future.</span>
+            {t('contact.heading_1')} <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('contact.heading_2')}</span>
           </h2>
-          <p className="section-sub">Have a project in mind or want to join our technical cohort? Get in touch with our team today.</p>
+          <p className="section-sub">{t('contact.sub')}</p>
         </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.6fr', gap: '2.5rem', alignItems: 'start' }} className="contact-grid">
             {/* Info */}
             <div className="glass contact-card" style={{ borderRadius: 22, padding: '2rem' }}>
-              <h3 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 1.5rem' }}>Contact Information</h3>
+              <h3 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 1.5rem' }}>{t('contact.info_title')}</h3>
               {[
-                { icon: '📍', label: 'Address', value: 'Douala, Cameroon — Rue des Acadias, Bali' },
-                { icon: '📧', label: 'Email', value: 'contact@interlink.com' },
-                { icon: '📞', label: 'Phone', value: '+237 682 931 025' },
-                { icon: '🕐', label: 'Hours', value: 'Mon–Sat, 8 AM – 6 PM WAT' },
+                { icon: '📍', label: t('contact.address'), value: t('contact.address_value') },
+                { icon: '📧', label: t('contact.email'), value: 'contact@interlink.com' },
+                { icon: '📞', label: t('contact.phone'), value: '+237 682 931 025' },
+                { icon: '🕐', label: t('contact.hours'), value: t('contact.hours_value') },
               ].map((c, i) => (
                 <div key={i} style={{ display: 'flex', gap: '0.875rem', marginBottom: '1.25rem' }}>
                   <div style={{ width: 38, height: 38, flexShrink: 0, borderRadius: 10, background: 'var(--highlight-bg)', border: '1px solid var(--glass-border)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1rem' }}>{c.icon}</div>
@@ -85,34 +85,34 @@ function ContactSection() {
             {sent ? (
               <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
                 <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>✅</div>
-                <h3 style={{ fontFamily: 'Manrope, sans-serif', color: '#34d399', margin: '0 0 0.5rem' }}>Message Sent Successfully!</h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>Thank you for reaching out. An InterLink representative will contact you shortly.</p>
-                <button className="btn-primary" style={{ marginTop: '1.5rem', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', border: 'none', color: '#fff' }} onClick={() => { setSent(false); setForm({ name: '', email: '', subject: '', message: '' }); }}>Send Another Message</button>
+                <h3 style={{ fontFamily: 'Manrope, sans-serif', color: '#34d399', margin: '0 0 0.5rem' }}>{t('contact.sent_title')}</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem' }}>{t('contact.sent_desc')}</p>
+                <button className="btn-primary" style={{ marginTop: '1.5rem', background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', border: 'none', color: '#fff' }} onClick={() => { setSent(false); setForm({ name: '', email: '', subject: '', message: '' }); }}>{t('contact.send_another')}</button>
               </div>
             ) : (
               <form onSubmit={onSubmit}>
-                <h3 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 1.75rem' }}>Send a Message</h3>
+                <h3 style={{ fontFamily: 'Manrope, sans-serif', fontSize: '1rem', fontWeight: 700, color: 'var(--text-primary)', margin: '0 0 1.75rem' }}>{t('contact.form_title')}</h3>
                 <div className="contact-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem' }}>
-                  <Field label="Full Name">
+                  <Field label={t('contact.full_name')}>
                     <input name="name" type="text" placeholder="John Doe" required value={form.name} onChange={onChange} style={inputStyle} onFocus={(e) => Object.assign(e.currentTarget.style, focusStyle)} onBlur={(e) => Object.assign(e.currentTarget.style, blurStyle)} />
                   </Field>
-                  <Field label="Email Address">
+                  <Field label={t('contact.email_address')}>
                     <input name="email" type="email" placeholder="john@example.com" required value={form.email} onChange={onChange} style={inputStyle} onFocus={(e) => Object.assign(e.currentTarget.style, focusStyle)} onBlur={(e) => Object.assign(e.currentTarget.style, blurStyle)} />
                   </Field>
                 </div>
-                <Field label="Topic / Interest">
+                <Field label={t('contact.topic_interest')}>
                   <select name="subject" required value={form.subject} onChange={onChange} style={{ ...inputStyle, cursor: 'pointer' }}>
-                    <option value="" style={{ background: 'var(--bg-color)' }}>Select a topic</option>
+                    <option value="" style={{ background: 'var(--bg-color)' }}>{t('contact.select_topic')}</option>
                     {topics.map((o) => (
                       <option key={o.value} value={o.value} style={{ background: 'var(--bg-color)' }}>{o.label}</option>
                     ))}
                   </select>
                 </Field>
-                <Field label="Your Message">
-                  <textarea name="message" required rows={5} placeholder="Describe your request..." value={form.message} onChange={onChange} style={{ ...inputStyle, resize: 'vertical' }} onFocus={(e) => Object.assign(e.currentTarget.style, focusStyle)} onBlur={(e) => Object.assign(e.currentTarget.style, blurStyle)} />
+                <Field label={t('contact.your_message')}>
+                  <textarea name="message" required rows={5} placeholder={t('contact.message_placeholder')} value={form.message} onChange={onChange} style={{ ...inputStyle, resize: 'vertical' }} onFocus={(e) => Object.assign(e.currentTarget.style, focusStyle)} onBlur={(e) => Object.assign(e.currentTarget.style, blurStyle)} />
                 </Field>
                 <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginTop: '0.5rem', opacity: loading ? 0.7 : 1, background: 'linear-gradient(135deg, #06B6D4, #8B5CF6)', border: 'none', color: '#fff' }} disabled={loading}>
-                  {loading ? 'Sending...' : 'Send Message →'}
+                  {loading ? t('contact.sending') : t('contact.send_message')}
                 </button>
               </form>
             )}
@@ -125,4 +125,3 @@ function ContactSection() {
 }
 
 export default ContactSection;
-

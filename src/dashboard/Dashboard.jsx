@@ -32,18 +32,7 @@ import ManageLeads from './screens/ManageLeads';
 import ManagePrograms from './screens/ManagePrograms';
 import ManageReports from './screens/ManageReports';
 import ManagePartners from './screens/ManagePartners';
-import ManageCourses from './screens/ManageCourses';
 import ManageLiveClasses from './screens/ManageLiveClasses';
-import {
-  AICorrectionReviewScreen,
-  AIMockGeneratorScreen,
-  ExamBlueprintsScreen,
-  ExamSessionSchedulerScreen,
-  GeneratedMockReviewScreen,
-  LiveExamMonitorScreen,
-  ResultsReleaseScreen,
-  StudentExamSessionsScreen,
-} from './screens/ManageExamSessions';
 // import AllCourses from '../pages/learning/AllCourses';
 // import MyLearning from '../pages/learning/MyLearning';
 // import CourseDetail from '../pages/learning/CourseDetail';
@@ -123,7 +112,7 @@ const canAccessView = (viewId, roles = []) => {
 };
 
 function Dashboard() {
-  const { i18n } = useTranslation();
+  const { t, i18n } = useTranslation();
   const [searchParams, setSearchParams] = useSearchParams();
   const reduxRoles = useSelector((state) => state.auth.userRoles);
   const user = useSelector((state) => state.auth.user);
@@ -272,7 +261,7 @@ function Dashboard() {
         selectView={selectView}
       />
 
-      {sidebarOpen && <button className="dashboard-scrim" type="button" aria-label="Close sidebar" onClick={() => setSidebarOpen(false)} />}
+      {sidebarOpen && <button className="dashboard-scrim" type="button" aria-label={t('dashboard.sidebar.close_sidebar')} onClick={() => setSidebarOpen(false)} />}
 
       <main className="dashboard-main no-scrollbar overflow-x-hidden pt-[100px]">
         <Topbar 
@@ -293,8 +282,8 @@ function Dashboard() {
             <section className="mb-6 rounded-[1.5rem] border border-white/10 bg-white/[0.045] p-3 shadow-[0_18px_60px_rgba(0,0,0,0.16)]">
               <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                 <div className="px-2">
-                  <span className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-blue-300">Dashboard Role</span>
-                  <p className="mt-1 text-sm font-semibold text-slate-400">Switch dashboard mode without signing out.</p>
+                  <span className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-blue-300">{t('dashboard.role_switcher.title')}</span>
+                  <p className="mt-1 text-sm font-semibold text-slate-400">{t('dashboard.role_switcher.helper')}</p>
                 </div>
                 <div className="grid gap-2 sm:grid-cols-2 lg:grid-cols-5">
                   {roleModes.map((mode) => {
@@ -332,7 +321,7 @@ function Dashboard() {
               ) : (
                 <>
                   <div className="dashboard-breadcrumb">
-                    <span>Home</span>
+                    <span>{t('dashboard.breadcrumb.home')}</span>
                     <strong>/</strong>
                     <span>{currentItem.label}</span>
                   </div>

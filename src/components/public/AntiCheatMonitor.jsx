@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as tf from '@tensorflow/tfjs';
 import * as cocoSsd from '@tensorflow-models/coco-ssd';
+import { useTranslation } from 'react-i18next';
 import { Camera, AlertTriangle } from 'lucide-react';
 
 export default function AntiCheatMonitor({ onViolation, active = true }) {
+  const { t } = useTranslation();
   const videoRef = useRef(null);
   const [model, setModel] = useState(null);
   const [error, setError] = useState('');
@@ -21,7 +23,7 @@ export default function AntiCheatMonitor({ onViolation, active = true }) {
         if (mounted) setModel(loadedModel);
       } catch (err) {
         console.error('Failed to load TF model', err);
-        if (mounted) setError('Impossible de charger le système de sécurité.');
+        if (mounted) setError(t('anti_cheat.load_failed'));
       }
     };
     loadModel();
@@ -48,9 +50,9 @@ export default function AntiCheatMonitor({ onViolation, active = true }) {
         }
       } catch (err) {
         console.error('Webcam access denied', err);
-        setError('Accès à la caméra requis pour consulter ce document sécurisé.');
+        setError(t('anti_cheat.camera_required'));
         // Trigger violation immediately if camera is denied
-        onViolation('Caméra refusée ou indisponible.');
+        onViolation(t('anti_cheat.camera_denied'));
       }
     };
 
@@ -89,7 +91,7 @@ export default function AntiCheatMonitor({ onViolation, active = true }) {
           );
 
           if (forbidden) {
-            onViolation(`Dispositif non autorisé détecté (${forbidden.class})`);
+            onViolation(t('anti_cheat.forbidden_device', { device: forbidden.class }));
           }
         } catch (err) {
           console.warn('Inference error', err);
@@ -124,11 +126,11 @@ export default function AntiCheatMonitor({ onViolation, active = true }) {
           />
           <div className="absolute top-1 left-1 flex items-center gap-1 bg-black/60 px-1.5 py-0.5 rounded text-[9px] text-white">
             <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
-            Monitoring
+            {t('anti_cheat.monitoring')}
           </div>
           {!model && (
             <div className="absolute inset-0 flex items-center justify-center bg-black/80">
-              <span className="text-xs text-slate-400">Loading AI...</span>
+              <span className="text-xs text-slate-400">{t('anti_cheat.loading_ai')}</span>
             </div>
           )}
         </>

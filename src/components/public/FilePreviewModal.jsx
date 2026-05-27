@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { X, Download, FileText, Image, Video, Music, ExternalLink, ZoomIn, ZoomOut, RotateCw, ShieldAlert, Loader2 } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import axiosInstance from '../../config/axiosConfig';
 import AntiCheatMonitor from './AntiCheatMonitor';
 
@@ -20,6 +21,7 @@ export const getFullFileUrl = (fileUrl) => {
 };
 
 export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, fileType, isPrivate, user }) {
+  const { t } = useTranslation();
   const [zoom, setZoom] = useState(1);
   const [rotation, setRotation] = useState(0);
   const [violation, setViolation] = useState(null);
@@ -87,7 +89,7 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
       })
       .catch(err => {
         console.error('Failed to fetch file blob', err);
-        setBlobError('Impossible de charger ce document. Vérifiez votre connexion ou vos permissions.');
+        setBlobError(t('file_preview.load_failed'));
       })
       .finally(() => setBlobLoading(false));
 
@@ -119,7 +121,7 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
       return (
         <div className="flex-1 flex flex-col items-center justify-center gap-4 min-h-[300px]">
           <Loader2 className="w-12 h-12 text-amber-400 animate-spin" />
-          <p className="text-slate-400 text-sm font-semibold uppercase tracking-wider">Chargement sécurisé du document...</p>
+          <p className="text-slate-400 text-sm font-semibold uppercase tracking-wider">{t('file_preview.secure_loading')}</p>
         </div>
       );
     }
@@ -141,7 +143,7 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
           <div className="relative flex-1 flex items-center justify-center overflow-auto p-4 bg-slate-950/40 rounded-2xl min-h-[300px]">
             <img
               src={blobUrl}
-              alt={fileName || 'File Preview'}
+              alt={fileName || t('file_preview.preview')}
               style={{ transform: `scale(${zoom}) rotate(${rotation}deg)`, transition: 'transform 0.2s ease-out' }}
               className="max-h-[60vh] max-w-full object-contain rounded-lg shadow-2xl"
             />
@@ -160,7 +162,7 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
           <div className="relative flex-1 w-full h-[65vh] bg-slate-900 rounded-2xl overflow-hidden border border-white/5 shadow-inner">
             <iframe
               src={`${blobUrl}#toolbar=0&navpanes=0`}
-              title={fileName || 'PDF Preview'}
+              title={fileName || t('file_preview.pdf_preview')}
               className="w-full h-full border-0"
             />
           </div>
@@ -180,8 +182,8 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
               <Music className="w-10 h-10 text-amber-500" />
             </div>
             <div className="text-center max-w-md">
-              <h4 className="text-white font-bold text-lg truncate mb-1">{fileName || 'Fichier Audio'}</h4>
-              <p className="text-xs text-slate-400">Lecture audio interactive</p>
+              <h4 className="text-white font-bold text-lg truncate mb-1">{fileName || t('file_preview.audio_file')}</h4>
+              <p className="text-xs text-slate-400">{t('file_preview.audio_playback')}</p>
             </div>
             <audio src={blobUrl} controls className="w-full max-w-md" />
           </div>
@@ -194,9 +196,9 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
               <FileText className="w-10 h-10 text-blue-500" />
             </div>
             <div className="text-center max-w-md">
-              <h4 className="text-white font-bold text-lg break-all mb-1">{fileName || 'Document'}</h4>
+              <h4 className="text-white font-bold text-lg break-all mb-1">{fileName || t('file_preview.document')}</h4>
               <p className="text-xs text-slate-400 uppercase tracking-widest font-semibold bg-slate-800/40 px-3 py-1 rounded-full border border-white/5 inline-block">
-                Fichier {extension.toUpperCase()}
+                {t('file_preview.file_type', { extension: extension.toUpperCase() })}
               </p>
             </div>
             {!isPrivate && (
@@ -204,7 +206,7 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
                 onClick={handleDownload}
                 className="flex items-center justify-center gap-2 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-5 py-3 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5 text-sm cursor-pointer border-none"
               >
-                <Download className="w-4 h-4" /> Télécharger
+                <Download className="w-4 h-4" /> {t('library.download')}
               </button>
             )}
           </div>
@@ -227,10 +229,10 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
               {detectedType === 'image' ? <Image className="w-5 h-5" /> : detectedType === 'video' ? <Video className="w-5 h-5" /> : <FileText className="w-5 h-5" />}
             </div>
             <div className="truncate">
-              <h3 className="text-white font-bold text-sm sm:text-base truncate leading-snug">{fileName || 'Aperçu du fichier'}</h3>
+              <h3 className="text-white font-bold text-sm sm:text-base truncate leading-snug">{fileName || t('file_preview.file_preview')}</h3>
               <p className="text-[10px] text-slate-400 uppercase tracking-widest mt-0.5 flex items-center gap-1.5">
-                {isPrivate && <span className="text-red-400">🔒 DOCUMENT SÉCURISÉ</span>}
-                {!isPrivate && 'Aperçu interactif'}
+                {isPrivate && <span className="text-red-400">🔒 {t('file_preview.secure_document')}</span>}
+                {!isPrivate && t('file_preview.interactive_preview')}
               </p>
             </div>
           </div>
@@ -239,7 +241,7 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
             {!isPrivate && blobUrl && (
               <button
                 onClick={handleDownload}
-                title="Télécharger le fichier"
+                title={t('file_preview.download_file')}
                 className="p-2 text-slate-400 hover:text-white bg-white/5 hover:bg-white/10 border border-white/5 rounded-xl transition-all cursor-pointer"
               >
                 <Download className="w-5 h-5" />
@@ -259,18 +261,18 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
           {violation ? (
             <div className="absolute inset-0 z-50 flex flex-col items-center justify-center bg-red-950/90 backdrop-blur-md p-8 text-center rounded-b-3xl">
               <ShieldAlert className="w-20 h-20 text-red-500 mb-4 animate-bounce" />
-              <h2 className="text-3xl font-black text-white mb-2">Accès Bloqué</h2>
+              <h2 className="text-3xl font-black text-white mb-2">{t('file_preview.access_blocked')}</h2>
               <p className="text-red-200 text-lg max-w-md">
-                Comportement suspect détecté : <strong className="text-white">{violation}</strong>
+                {t('file_preview.suspicious_behavior')}: <strong className="text-white">{violation}</strong>
               </p>
               <p className="text-slate-400 mt-4 text-sm max-w-md">
-                Ce document est confidentiel. L'utilisation de téléphones ou autres dispositifs de capture est strictement interdite.
+                {t('file_preview.confidential_warning')}
               </p>
               <button
                 onClick={onClose}
                 className="mt-8 bg-red-600 hover:bg-red-500 text-white font-bold py-3 px-8 rounded-xl transition-colors cursor-pointer border-none"
               >
-                Quitter la vue
+                {t('file_preview.exit_view')}
               </button>
             </div>
           ) : (
@@ -296,7 +298,7 @@ export default function FilePreviewModal({ isOpen, onClose, fileUrl, fileName, f
                       fontFamily: 'monospace',
                     }}
                   >
-                    CONFIDENTIEL • {user?.email || user?.firstName || 'Étudiant'} • {new Date().toLocaleDateString()}
+                    {t('file_preview.confidential')} - {user?.email || user?.firstName || t('live_class.student')} - {new Date().toLocaleDateString()}
                   </div>
                 ))}
               </div>

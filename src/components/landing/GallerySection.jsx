@@ -1,52 +1,17 @@
 import React, { useState } from 'react';
-
-const projectsData = [
-  {
-    title: 'Enterprise CRM Portal',
-    category: 'Dashboard',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80',
-    desc: 'A modern, real-time enterprise management portal complete with AI analytics, role-based dashboards, and active chat sockets.',
-    tech: 'React • Node.js • Express • Socket.IO'
-  },
-  {
-    title: 'Smart Health Mobile App',
-    category: 'Mobile App',
-    image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80',
-    desc: 'A responsive cross-platform health tracker connecting users to native IoT sensors and secure live-video consultation rooms.',
-    tech: 'Flutter • WebRTC • Firebase'
-  },
-  {
-    title: 'Aegis Cybersecurity Suite',
-    category: 'Security Tool',
-    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80',
-    desc: 'A robust suite of custom network packet analyzers, vulnerability scanner scripts, and automated penetration audit tools.',
-    tech: 'Python • Bash • Wireshark • Linux'
-  },
-  {
-    title: 'Greenhouse IoT System',
-    category: 'IoT Prototype',
-    image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80',
-    desc: 'An automated agricultural microclimate controller utilizing ESP32 boards, Wi-Fi relays, and active MQTT sensor feeds.',
-    tech: 'C++ • ESP32 • MQTT • Python'
-  },
-  {
-    title: 'Lexis AI Chat Assistant',
-    category: 'AI Solution',
-    image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=800&q=80',
-    desc: 'An enterprise context-aware customer support agent leveraging Gemini Vector Embeddings and document semantic ingestion.',
-    tech: 'Python • Gemini API • Pinecone'
-  },
-  {
-    title: 'InterLink Cyber Branding',
-    category: 'Creative Design',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80',
-    desc: 'A state-of-the-art visual identity package, creative flyer mockups, Vector graphics, and high-fidelity Figma UI design systems.',
-    tech: 'Figma • Illustrator • Photoshop'
-  }
-];
+import { useTranslation } from 'react-i18next';
 
 function GallerySection() {
+  const { t } = useTranslation();
   const [hovered, setHovered] = useState(null);
+  const projectsData = [
+    { title: t('gallery.projects.crm.title'), category: t('gallery.projects.crm.category'), image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80', desc: t('gallery.projects.crm.desc'), tech: 'React • Node.js • Express • Socket.IO' },
+    { title: t('gallery.projects.health.title'), category: t('gallery.projects.health.category'), image: 'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80', desc: t('gallery.projects.health.desc'), tech: 'Flutter • WebRTC • Firebase' },
+    { title: t('gallery.projects.security.title'), category: t('gallery.projects.security.category'), image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80', desc: t('gallery.projects.security.desc'), tech: 'Python • Bash • Wireshark • Linux' },
+    { title: t('gallery.projects.iot.title'), category: t('gallery.projects.iot.category'), image: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&q=80', desc: t('gallery.projects.iot.desc'), tech: 'C++ • ESP32 • MQTT • Python' },
+    { title: t('gallery.projects.ai.title'), category: t('gallery.projects.ai.category'), image: 'https://images.unsplash.com/photo-1677442136019-21780efad99a?w=800&q=80', desc: t('gallery.projects.ai.desc'), tech: 'Python • Gemini API • Pinecone' },
+    { title: t('gallery.projects.branding.title'), category: t('gallery.projects.branding.category'), image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=800&q=80', desc: t('gallery.projects.branding.desc'), tech: 'Figma • Illustrator • Photoshop' }
+  ];
 
   return (
     <section
@@ -57,14 +22,14 @@ function GallerySection() {
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1rem' }}>
-          💻 PROJECT SHOWCASE
+          💻 {t('gallery.label')}
         </div>
         <h2 className="section-heading">
-          Intelligent Digital Systems We Have<br />
-          <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Engineered.</span>
+          {t('gallery.heading_1')}<br />
+          <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('gallery.heading_2')}</span>
         </h2>
         <p className="section-sub">
-          Explore a curated selection of production-grade software applications, intelligent AI models, robust security toolkits, and physical IoT device systems designed by our team.
+          {t('gallery.sub')}
         </p>
       </div>
 
@@ -198,4 +163,3 @@ function GallerySection() {
 }
 
 export default GallerySection;
-

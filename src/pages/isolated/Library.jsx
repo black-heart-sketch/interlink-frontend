@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { libraryService } from '../services/libraryService';
 import { quizService } from '../services/quizService';
 import Navbar from '../components/Navbar';
@@ -9,7 +10,6 @@ import FilePreviewModal from '../components/public/FilePreviewModal';
 const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
 
 const TYPE_ICONS = { document: '📄', course: '📚', video: '🎬', audio: '🎧' };
-const TYPE_LABELS = { document: 'Document', course: 'Cours', video: 'Vidéo', audio: 'Audio' };
 const TYPE_COLORS = {
   document: 'from-blue-600 to-blue-800',
   course: 'from-emerald-600 to-teal-800',
@@ -18,6 +18,7 @@ const TYPE_COLORS = {
 };
 
 export default function Library() {
+  const { t } = useTranslation();
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -96,7 +97,7 @@ export default function Library() {
       const quizData = await quizService.getQuiz(item._id);
       setQuiz(quizData);
     } catch (err) {
-      setQuizError('Aucun quiz n’est disponible pour ce cours pour le moment.');
+      setQuizError(t('library.quiz_unavailable'));
     } finally {
       setQuizLoading(false);
     }
@@ -116,7 +117,7 @@ export default function Library() {
     // Verify all answered
     const unanswered = quiz.questions.some((_, idx) => selectedAnswers[idx] === undefined);
     if (unanswered) {
-      alert('Veuillez répondre à toutes les questions avant de soumettre !');
+      alert(t('library.answer_all_questions'));
       return;
     }
 
@@ -139,7 +140,7 @@ export default function Library() {
         }
       }
     } catch (err) {
-      alert('Erreur lors de la soumission du quiz.');
+      alert(t('library.quiz_submit_failed'));
     } finally {
       setQuizLoading(false);
     }
@@ -155,6 +156,7 @@ export default function Library() {
   const totalCount = items.length;
   const completedCount = items.filter(item => completedItems.includes(item._id)).length;
   const progressPercent = totalCount > 0 ? Math.round((completedCount / totalCount) * 100) : 0;
+  const typeLabels = { document: t('library.types.document'), course: t('library.types.course'), video: t('library.types.video'), audio: t('library.types.audio') };
 
   // SVG circular properties
   const radius = 35;
@@ -163,7 +165,7 @@ export default function Library() {
 
   if (loading) return (
     <div className="min-h-screen flex items-center justify-center" style={{ background: 'var(--bg-primary)' }}>
-      <div className="text-white text-lg">Chargement de la bibliothèque...</div>
+      <div className="text-white text-lg">{t('library.loading')}</div>
     </div>
   );
 
@@ -171,9 +173,9 @@ export default function Library() {
     <div className="min-h-screen flex items-center justify-center p-8" style={{ background: 'var(--bg-primary)' }}>
       <div className="text-center max-w-md">
         <div className="text-6xl mb-6">🔒</div>
-        <h1 className="text-2xl font-black text-white mb-3">Accès réservé</h1>
-        <p className="text-slate-400 mb-6">Vous devez être connecté pour accéder à la bibliothèque.</p>
-        <Link to="/login" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition-colors no-underline">Se connecter</Link>
+        <h1 className="text-2xl font-black text-white mb-3">{t('library.restricted_title')}</h1>
+        <p className="text-slate-400 mb-6">{t('library.login_required')}</p>
+        <Link to="/login" className="inline-block bg-blue-600 hover:bg-blue-500 text-white font-bold px-6 py-3 rounded-xl transition-colors no-underline">{t('auth.have_account')}</Link>
       </div>
     </div>
   );
@@ -182,9 +184,9 @@ export default function Library() {
     <div className="min-h-screen flex items-center justify-center p-8" style={{ background: 'var(--bg-primary)' }}>
       <div className="text-center max-w-md">
         <div className="text-6xl mb-6">⏳</div>
-        <h1 className="text-2xl font-black text-white mb-3">Compte en attente de validation</h1>
-        <p className="text-slate-400 mb-2">Votre inscription a bien été reçue. Un administrateur va vérifier votre reçu de paiement et valider votre compte.</p>
-        <p className="text-slate-500 text-sm">Vous recevrez un accès à la bibliothèque dès que votre compte sera activé.</p>
+        <h1 className="text-2xl font-black text-white mb-3">{t('library.pending_title')}</h1>
+        <p className="text-slate-400 mb-2">{t('library.pending_desc')}</p>
+        <p className="text-slate-500 text-sm">{t('library.pending_access')}</p>
       </div>
     </div>
   );
@@ -198,16 +200,16 @@ export default function Library() {
         <div style={{ maxWidth: 1200, margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
           <div>
             <h1 style={{ fontFamily: 'var(--font-display)', fontSize: '1.75rem', fontWeight: 800, color: 'var(--text-primary)', margin: 0 }}>
-              📚 Bibliothèque Académique
+              📚 {t('library.title')}
             </h1>
             {user?.studyLanguage?.name && (
               <p style={{ color: '#10b981', fontSize: '0.875rem', fontWeight: 700, margin: '0.25rem 0 0 0' }}>
-                {user.studyLanguage.name} — Espace d'Apprentissage Actif
+                {user.studyLanguage.name} - {t('library.active_learning_space')}
               </p>
             )}
           </div>
           <Link to="/lounge" style={{ background: 'rgba(59,130,246,0.1)', border: '1px solid rgba(59,130,246,0.2)', color: '#60a5fa', padding: '0.5rem 1rem', borderRadius: 10, textDecoration: 'none', fontSize: '0.85rem', fontWeight: 700 }}>
-            💬 Salon d'Étude En Direct
+            💬 {t('library.live_study_lounge')}
           </Link>
         </div>
       </div>
@@ -228,9 +230,9 @@ export default function Library() {
             </div>
           </div>
           <div>
-            <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 800, color: 'white' }}>Feuille de Route d’Apprentissage</h3>
+            <h3 style={{ margin: 0, fontSize: '1.1rem', fontWeight: 800, color: 'white' }}>{t('library.roadmap_title')}</h3>
             <p style={{ margin: '0.25rem 0 0 0', color: '#94a3b8', fontSize: '0.85rem', lineHeight: 1.4 }}>
-              Vous avez complété <strong style={{ color: '#10b981' }}>{completedCount}</strong> ressources d'étude sur un total de <strong style={{ color: '#3b82f6' }}>{totalCount}</strong> assignées à votre programme. Répondez aux quiz d'évaluation pour valider vos acquis !
+              {t('library.roadmap_prefix')} <strong style={{ color: '#10b981' }}>{completedCount}</strong> {t('library.roadmap_middle')} <strong style={{ color: '#3b82f6' }}>{totalCount}</strong> {t('library.roadmap_suffix')}
             </p>
           </div>
         </div>
@@ -239,21 +241,21 @@ export default function Library() {
         <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap', alignItems: 'center' }}>
           <input
             type="text"
-            placeholder="Rechercher une ressource..."
+            placeholder={t('library.search_placeholder')}
             value={search}
             onChange={e => setSearch(e.target.value)}
             style={{ flex: 1, minWidth: 200, background: 'rgba(255,255,255,0.05)', border: '1px solid rgba(255,255,255,0.1)', borderRadius: 12, padding: '0.75rem 1rem', color: 'white', outline: 'none' }}
           />
           <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap' }}>
-            {['', 'document', 'course', 'video', 'audio'].map(t => (
-              <button key={t} onClick={() => setTypeFilter(t)}
+            {['', 'document', 'course', 'video', 'audio'].map(type => (
+              <button key={type} onClick={() => setTypeFilter(type)}
                 style={{
                   padding: '0.5rem 1rem', borderRadius: 8, border: 'none', cursor: 'pointer', fontWeight: 700, fontSize: '0.8rem',
-                  background: typeFilter === t ? '#3b82f6' : 'rgba(255,255,255,0.05)',
-                  color: typeFilter === t ? 'white' : '#94a3b8',
+                  background: typeFilter === type ? '#3b82f6' : 'rgba(255,255,255,0.05)',
+                  color: typeFilter === type ? 'white' : '#94a3b8',
                   transition: 'all 0.2s'
                 }}>
-                {t ? `${TYPE_ICONS[t]} ${TYPE_LABELS[t]}` : 'Tous'}
+                {type ? `${TYPE_ICONS[type]} ${typeLabels[type]}` : t('library.all')}
               </button>
             ))}
           </div>
@@ -263,8 +265,8 @@ export default function Library() {
         {filtered.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '4rem', color: '#475569' }}>
             <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>📭</div>
-            <p style={{ fontWeight: 600, fontSize: '1.1rem' }}>Aucune ressource trouvée</p>
-            <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>La bibliothèque est vide ou aucun résultat ne correspond à votre recherche.</p>
+            <p style={{ fontWeight: 600, fontSize: '1.1rem' }}>{t('library.no_resources_title')}</p>
+            <p style={{ fontSize: '0.875rem', marginTop: '0.5rem' }}>{t('library.no_resources_desc')}</p>
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1.5rem' }}>
@@ -288,7 +290,7 @@ export default function Library() {
                       type: item.type,
                       isPrivate: item.isPrivate
                     })}
-                    title="Cliquer pour voir l'aperçu"
+                    title={t('library.preview_title')}
                     style={{
                       height: 130,
                       background: item.thumbnail ? `url(${API_URL}${item.thumbnail}) center/cover` : `linear-gradient(135deg, ${TYPE_COLORS[item.type]?.split(' ')[0]?.replace('from-', '')} 0%, ${TYPE_COLORS[item.type]?.split(' ')[1]?.replace('to-', '')} 100%)`,
@@ -300,7 +302,7 @@ export default function Library() {
                     {/* Checklist Completion Badge Button */}
                     <button
                       onClick={(e) => handleToggleComplete(item._id, e)}
-                      title={isCompleted ? "Marquer comme non complété" : "Marquer comme complété"}
+                      title={isCompleted ? t('library.mark_incomplete') : t('library.mark_complete')}
                       style={{
                         position: 'absolute', top: 12, right: 12, background: isCompleted ? '#10b981' : 'rgba(0,0,0,0.4)',
                         border: isCompleted ? 'none' : '1px solid rgba(255,255,255,0.4)', width: 28, height: 28, borderRadius: '50%',
@@ -317,7 +319,7 @@ export default function Library() {
                   <div style={{ padding: '1.25rem', display: 'flex', flexDirection: 'column', flex: 1 }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
                       <span style={{ fontSize: '0.65rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.1em', color: '#60a5fa', background: 'rgba(59,130,246,0.1)', padding: '0.2rem 0.5rem', borderRadius: 6 }}>
-                        {TYPE_LABELS[item.type]}
+                        {typeLabels[item.type]}
                       </span>
                     </div>
                     <h3 style={{ color: 'var(--text-primary)', fontWeight: 700, fontSize: '1rem', margin: '0 0 0.5rem 0', lineHeight: 1.3 }}>{item.title}</h3>
@@ -334,14 +336,14 @@ export default function Library() {
                         })}
                         style={{ background: 'transparent', border: 'none', color: '#60a5fa', fontWeight: 700, fontSize: '0.8rem', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                       >
-                        👁️ Aperçu
+                        👁️ {t('library.preview')}
                       </button>
                       <a
                         href={`${API_URL}${item.fileUrl}`}
                         download
                         style={{ color: '#94a3b8', fontWeight: 700, fontSize: '0.8rem', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.25rem' }}
                       >
-                        📥 Télécharger
+                        📥 {t('library.download')}
                       </a>
                       
                       <button
@@ -350,7 +352,7 @@ export default function Library() {
                         onMouseEnter={e => { e.currentTarget.style.background = 'rgba(16,185,129,0.2)'; }}
                         onMouseLeave={e => { e.currentTarget.style.background = 'rgba(16,185,129,0.1)'; }}
                       >
-                        📝 Faire le Quiz
+                        📝 {t('library.take_quiz')}
                       </button>
                     </div>
 
@@ -370,7 +372,7 @@ export default function Library() {
             {/* Modal Header */}
             <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1.5rem', borderBottom: '1px solid rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <div>
-                <span style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Quiz d'Évaluation Académique</span>
+                <span style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('library.quiz_title')}</span>
                 <h2 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'white', margin: '0.25rem 0 0 0' }}>{activeItem?.title}</h2>
               </div>
               <button onClick={() => setQuizModalOpen(false)} style={{ background: 'rgba(255,255,255,0.05)', border: 'none', color: '#94a3b8', width: 32, height: 32, borderRadius: '50%', cursor: 'pointer', fontWeight: 900 }}>×</button>
@@ -378,7 +380,7 @@ export default function Library() {
 
             {/* Modal Body */}
             <div style={{ flex: 1, padding: '1.5rem', overflowY: 'auto' }} className="no-scrollbar">
-              {quizLoading && <div style={{ textAlign: 'center', color: '#94a3b8', padding: '2rem' }}>Chargement du quiz...</div>}
+              {quizLoading && <div style={{ textAlign: 'center', color: '#94a3b8', padding: '2rem' }}>{t('library.quiz_loading')}</div>}
               
               {quizError && (
                 <div style={{ textAlign: 'center', color: '#f87171', padding: '2rem', fontWeight: 600 }}>
@@ -428,7 +430,7 @@ export default function Library() {
                       fontWeight: 800, cursor: 'pointer', transition: 'all 0.2s', marginTop: '1rem'
                     }}
                   >
-                    Soumettre les Réponses
+                    {t('library.submit_answers')}
                   </button>
                 </form>
               )}
@@ -447,20 +449,20 @@ export default function Library() {
                       {quizResult.passed ? '🎉' : '❌'}
                     </span>
                     <h3 style={{ margin: 0, fontSize: '1.3rem', fontWeight: 900, color: quizResult.passed ? '#10b981' : '#f87171' }}>
-                      {quizResult.passed ? 'Quiz Réussi !' : 'Quiz Échoué'}
+                      {quizResult.passed ? t('library.quiz_passed') : t('library.quiz_failed')}
                     </h3>
                     <p style={{ margin: '0.5rem 0 0 0', color: 'white', fontWeight: 800, fontSize: '1.5rem' }}>
-                      Score : {quizResult.score}%
+                      {t('library.score')}: {quizResult.score}%
                     </p>
                     <p style={{ margin: '0.25rem 0 0 0', color: '#94a3b8', fontSize: '0.85rem' }}>
-                      Vous avez répondu correctement à {quizResult.correctCount} questions sur {quizResult.totalQuestions}.
-                      {quizResult.passed ? " Ce cours est automatiquement validé et coché comme complété !" : " Vous devez obtenir au moins 70% pour valider ce module d'apprentissage."}
+                      {t('library.correct_answers', { correct: quizResult.correctCount, total: quizResult.totalQuestions })}
+                      {quizResult.passed ? ` ${t('library.course_validated')}` : ` ${t('library.minimum_score')}`}
                     </p>
                   </div>
 
                   {/* List of Graded Explanations */}
                   <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                    <h4 style={{ margin: 0, color: 'white', fontWeight: 800, fontSize: '0.95rem' }}>Correction détaillée</h4>
+                    <h4 style={{ margin: 0, color: 'white', fontWeight: 800, fontSize: '0.95rem' }}>{t('library.detailed_correction')}</h4>
                     {quizResult.gradedQuestions.map((q, idx) => (
                       <div key={idx} style={{
                         padding: '1rem', borderRadius: 16, background: 'rgba(255,255,255,0.01)',
@@ -472,18 +474,18 @@ export default function Library() {
                         
                         <div style={{ fontSize: '0.8rem', display: 'flex', flexDirection: 'column', gap: '0.25rem', marginBottom: '0.5rem' }}>
                           <span style={{ color: q.isCorrect ? '#10b981' : '#f87171' }}>
-                            ● Votre réponse : <strong>{q.selectedOption}</strong>
+                            {t('library.your_answer')}: <strong>{q.selectedOption}</strong>
                           </span>
                           {!q.isCorrect && (
                             <span style={{ color: '#10b981' }}>
-                              ● Réponse correcte : <strong>{q.correctOption}</strong>
+                              {t('library.correct_answer')}: <strong>{q.correctOption}</strong>
                             </span>
                           )}
                         </div>
 
                         {q.explanation && (
                           <p style={{ background: 'rgba(255,255,255,0.03)', padding: '0.5rem 0.75rem', borderRadius: 8, fontSize: '0.75rem', color: '#94a3b8', margin: 0, borderLeft: '3px solid #3b82f6' }}>
-                            <strong>Explication :</strong> {q.explanation}
+                            <strong>{t('library.explanation')}:</strong> {q.explanation}
                           </p>
                         )}
                       </div>
@@ -497,7 +499,7 @@ export default function Library() {
                       fontWeight: 800, cursor: 'pointer', transition: 'all 0.2s', marginTop: '1rem'
                     }}
                   >
-                    Fermer le Panel
+                    {t('dashboard.actions.close')}
                   </button>
 
                 </div>

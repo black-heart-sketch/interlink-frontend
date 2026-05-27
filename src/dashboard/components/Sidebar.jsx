@@ -114,8 +114,8 @@ const Sidebar = ({
       <Link
         to="/"
         className={`relative flex items-center gap-4 rounded-[1.65rem] border border-white/10 bg-white/[0.075] p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] backdrop-blur transition-all duration-300 no-underline hover:bg-white/[0.12] hover:border-white/20 ${sidebarCollapsed ? 'justify-center' : ''}`}
-        title="Go to home page"
-        aria-label="Go to home page"
+        title={t('dashboard.sidebar.go_home')}
+        aria-label={t('dashboard.sidebar.go_home')}
       >
         <img 
           src="/assets/images/logo.png" 
@@ -127,7 +127,7 @@ const Sidebar = ({
             <strong className="whitespace-nowrap bg-gradient-to-br from-white to-blue-100 bg-clip-text text-[1.03rem] font-[900] tracking-tight text-transparent">
               InterLink
             </strong>
-            <span className="mt-1 text-[0.62rem] font-black uppercase tracking-[0.22em] text-blue-200/70">Management Console</span>
+            <span className="mt-1 text-[0.62rem] font-black uppercase tracking-[0.22em] text-blue-200/70">{t('dashboard.sidebar.management_console')}</span>
           </div>
         )}
       </Link>
@@ -137,16 +137,16 @@ const Sidebar = ({
         className="absolute -right-4 top-8 z-[90] flex h-9 w-9 items-center justify-center rounded-2xl border border-blue-100 bg-white text-[#172554] shadow-[0_18px_42px_rgba(15,23,42,0.28)] transition-transform hover:scale-105"
         type="button" 
         onClick={() => setSidebarCollapsed(!sidebarCollapsed)} 
-        aria-label="Toggle sidebar"
+        aria-label={t('dashboard.sidebar.toggle_sidebar')}
       >
         <i className={`fa-solid ${sidebarCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'} text-sm`}></i>
       </button>
 
       {/* Navigation */}
-      <nav className="relative flex flex-1 flex-col gap-3 overflow-y-auto no-scrollbar pr-1" aria-label="Dashboard navigation">
+      <nav className="relative flex flex-1 flex-col gap-3 overflow-y-auto no-scrollbar pr-1" aria-label={t('dashboard.sidebar.navigation')}>
         {!sidebarCollapsed && (
           <small className="px-2 text-[0.66rem] font-black uppercase tracking-[0.24em] text-slate-500">
-            Main Menu
+            {t('dashboard.sidebar.main_menu')}
           </small>
         )}
 
@@ -189,7 +189,7 @@ const Sidebar = ({
         <div className="relative mt-auto rounded-[1.35rem] border border-emerald-400/15 bg-emerald-500/[0.06] px-4 py-3">
           <div className="flex items-center gap-3">
             <div className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_14px_rgba(52,211,153,0.9)]" />
-            <span className="text-[0.64rem] font-black uppercase tracking-[0.2em] text-emerald-200/80">System Online</span>
+            <span className="text-[0.64rem] font-black uppercase tracking-[0.2em] text-emerald-200/80">{t('dashboard.sidebar.system_online')}</span>
           </div>
           <div className="mt-2 h-1 overflow-hidden rounded-full bg-white/10">
             <div className="h-full w-4/5 rounded-full bg-gradient-to-r from-emerald-400 to-blue-400" />

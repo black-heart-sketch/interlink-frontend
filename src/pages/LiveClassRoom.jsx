@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
   LiveKitRoom,
   VideoConference,
@@ -42,6 +43,7 @@ const IconCheck = () => (
 
 // ─── Pre-Join Lobby ───────────────────────────────────────────────────────────
 function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
+  const { t } = useTranslation();
   const videoRef = useRef(null);
   const streamRef = useRef(null);
   const [camOn, setCamOn] = useState(true);
@@ -91,17 +93,17 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
           onClick={onBack}
           className="flex items-center gap-2 text-slate-400 hover:text-white transition-colors mb-6 text-sm cursor-pointer"
         >
-          <IconArrowLeft /> Back
+          <IconArrowLeft /> {t('learning.back')}
         </button>
 
         {/* Class title */}
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold mb-3" style={{ background: 'rgba(79,70,229,0.2)', color: '#818cf8', border: '1px solid rgba(79,70,229,0.3)' }}>
             <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse" />
-            Live Class
+            {t('live_class.live_class')}
           </div>
           <h1 className="text-3xl font-bold text-white mb-2" style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}>
-            {liveClass?.title || 'Live Class'}
+            {liveClass?.title || t('live_class.live_class')}
           </h1>
           {liveClass?.description && (
             <p className="text-slate-400 text-sm max-w-md mx-auto">{liveClass.description}</p>
@@ -120,7 +122,7 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
                   <div className="w-20 h-20 rounded-full bg-gradient-to-br from-indigo-600 to-purple-700 flex items-center justify-center text-3xl font-bold text-white shadow-lg">
                     {userName?.charAt(0)?.toUpperCase() || 'U'}
                   </div>
-                  <p className="text-slate-500 text-sm">Camera is off</p>
+                  <p className="text-slate-500 text-sm">{t('live_class.camera_off')}</p>
                 </div>
               ) : (
                 <video ref={videoRef} autoPlay playsInline muted className="w-full h-full object-cover scale-x-[-1]" />
@@ -144,7 +146,7 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
                 }`}
               >
                 {micOn ? <IconMic /> : <IconMicOff />}
-                {micOn ? 'Mute' : 'Unmuted'}
+                {micOn ? t('live_class.mute') : t('live_class.unmuted')}
               </button>
               <button
                 onClick={toggleCam}
@@ -156,7 +158,7 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
                 } disabled:opacity-40 disabled:cursor-not-allowed`}
               >
                 {camOn ? <IconVideo /> : <IconVideoOff />}
-                {camOn ? 'Stop Video' : 'Start Video'}
+                {camOn ? t('live_class.stop_video') : t('live_class.start_video')}
               </button>
             </div>
           </div>
@@ -187,7 +189,7 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
                       <div className="text-indigo-400"><IconUser /></div>
                       {typeof liveClass.teacher === 'object'
                         ? `${liveClass.teacher.firstName || ''} ${liveClass.teacher.lastName || ''}`.trim()
-                        : 'Instructor'}
+                        : t('live_class.instructor')}
                     </div>
                   )}
                   <div className="border-t border-white/5 pt-1" />
@@ -196,8 +198,8 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
 
               {/* Checklist */}
               <div className="space-y-2">
-                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">Before you join</p>
-                {['Ensure your camera & mic work', 'Find a quiet environment', 'Keep mic muted when not speaking'].map(item => (
+                <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">{t('live_class.before_join')}</p>
+                {[t('live_class.check_camera_mic'), t('live_class.check_quiet'), t('live_class.check_mute')].map(item => (
                   <div key={item} className="flex items-start gap-2 text-slate-300 text-xs">
                     <div className="text-indigo-400 mt-0.5 flex-shrink-0"><IconCheck /></div>
                     {item}
@@ -221,18 +223,18 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
                     <span className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                    Preparing…
+                    {t('live_class.preparing')}
                   </span>
                 ) : (
                   <span className="flex items-center justify-center gap-2">
                     <IconVideo />
-                    Join Class
+                    {t('live_class.join_class')}
                   </span>
                 )}
               </button>
 
               <p className="text-center text-slate-600 text-xs">
-                By joining, you agree to our community guidelines
+                {t('live_class.community_guidelines')}
               </p>
             </div>
           </div>
@@ -244,6 +246,7 @@ function ClassLobby({ liveClass, isLoading, onJoin, onBack, error, userName }) {
 
 // ─── Main Page ────────────────────────────────────────────────────────────────
 export default function LiveClassRoom() {
+  const { t } = useTranslation();
   const { meetingId } = useParams();
   const navigate = useNavigate();
   const reduxUserProfile = useSelector(selectCurrentUserProfile);
@@ -256,7 +259,7 @@ export default function LiveClassRoom() {
   const [hasJoined, setHasJoined] = useState(false);
   const [liveClass, setLiveClass] = useState(null);
 
-  const userName = `${user?.firstName || ''} ${user?.lastName || ''}`.trim() || 'Student';
+  const userName = `${user?.firstName || ''} ${user?.lastName || ''}`.trim() || t('live_class.student');
 
   useEffect(() => {
     if (!meetingId) return;
@@ -270,7 +273,7 @@ export default function LiveClassRoom() {
         setServerUrl(tokenRes.data.url);
         if (classRes.data?.length > 0) setLiveClass(classRes.data[0]);
       })
-      .catch(err => setError(err.response?.data?.message || 'Access denied or meeting not found.'))
+      .catch(err => setError(err.response?.data?.message || t('live_class.access_denied')))
       .finally(() => setIsLoading(false));
   }, [meetingId]);
 
@@ -285,14 +288,14 @@ export default function LiveClassRoom() {
             <div className="w-16 h-16 rounded-2xl bg-red-500/15 border border-red-500/30 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#f87171" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             </div>
-            <h2 className="text-2xl font-bold text-white">Cannot join class</h2>
+            <h2 className="text-2xl font-bold text-white">{t('live_class.cannot_join')}</h2>
             <p className="text-slate-400 max-w-sm text-sm">{error}</p>
             <button
               onClick={() => navigate('/dashboard')}
               className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all cursor-pointer"
               style={{ background: 'rgba(79,70,229,0.2)', border: '1px solid rgba(79,70,229,0.3)' }}
             >
-              <IconArrowLeft /> Return to Dashboard
+              <IconArrowLeft /> {t('live_class.return_dashboard')}
             </button>
           </div>
         </div>
@@ -337,7 +340,7 @@ export default function LiveClassRoom() {
           >
             <div className="flex items-center gap-2">
               <div className="w-2 h-2 rounded-full bg-indigo-400 animate-pulse" />
-              <span className="text-sm font-semibold text-white">{liveClass?.title || 'Live Class'}</span>
+              <span className="text-sm font-semibold text-white">{liveClass?.title || t('live_class.live_class')}</span>
               <span className="text-xs text-slate-500 ml-1">· {meetingId}</span>
             </div>
           </div>

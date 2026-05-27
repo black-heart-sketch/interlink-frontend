@@ -173,13 +173,13 @@ function TestimonialsSection() {
         {/* Header */}
         <div style={{ textAlign: 'center', marginBottom: '3.5rem' }}>
           <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1rem' }}>
-            💬 SUCCESS STORIES
+            💬 {t('testimonials.label')}
           </div>
           <h2 className="section-heading">
-            Hear From Our Successful<br />
-            <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Tech Interns.</span>
+            {t('testimonials.heading_1')}<br />
+            <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('testimonials.heading_2')}</span>
           </h2>
-          <p className="section-sub">Dozens of software engineers, cybersecurity analysts, and AI developers have accelerated their professional career pathways with InterLink.</p>
+          <p className="section-sub">{t('testimonials.sub')}</p>
         </div>
 
         {loading ? (
@@ -472,4 +472,3 @@ function TestimonialsSection() {
 }
 
 export default TestimonialsSection;
-

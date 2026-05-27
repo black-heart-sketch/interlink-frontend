@@ -10,7 +10,7 @@ function HeroSection() {
   const [transitioning, setTransitioning] = useState(false);
   const intervalRef = useRef(null);
 
-  const techTerms = ['Innovation', 'Intelligence', 'Security', 'Automation', 'Software'];
+  const techTerms = t('hero.tech_terms', { returnObjects: true });
   const [techIndex, setTechIndex] = useState(0);
 
   useEffect(() => {
@@ -176,7 +176,7 @@ function HeroSection() {
           }}>
             <img
               src={slide.image}
-              alt="InterLink Technology Showcase"
+            alt={t('hero.showcase_alt')}
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
             {/* Overlay gradient */}
@@ -192,7 +192,7 @@ function HeroSection() {
             zIndex: 2, minWidth: 150,
           }}>
             <div style={{ fontSize: '1.5rem', fontWeight: 800, color: '#06b6d4', fontFamily: 'Manrope, sans-serif', lineHeight: 1 }}>99%</div>
-            <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: 2 }}>Platform Success</div>
+            <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: 2 }}>{t('hero.platform_success')}</div>
           </div>
           <div className="glass hero-floating-card" style={{
             position: 'absolute', bottom: -18, left: -18, borderRadius: 16, padding: '0.875rem 1.25rem',
@@ -203,7 +203,7 @@ function HeroSection() {
                 <span key={i} style={{ fontSize: '1.2rem' }}>{f}</span>
               ))}
             </div>
-            <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: 4 }}>Tech Focus Areas</div>
+            <div style={{ fontSize: '0.75rem', color: '#94a3b8', marginTop: 4 }}>{t('hero.tech_focus_areas')}</div>
           </div>
         </div>
       </div>
@@ -224,7 +224,7 @@ function HeroSection() {
               transition: 'all 0.35s ease',
               padding: 0,
             }}
-            aria-label={`Slide ${i + 1}`}
+            aria-label={t('hero.slide_label', { number: i + 1 })}
           />
         ))}
       </div>
@@ -278,4 +278,3 @@ function HeroSection() {
 }
 
 export default HeroSection;
-

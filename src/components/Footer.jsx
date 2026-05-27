@@ -1,48 +1,50 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
+  const { t } = useTranslation();
   const footerSections = [
     {
-      heading: 'Services',
+      heading: t('footer.sections.courses'),
       icon: '🛠️',
       links: [
-        { label: 'Software Development', href: '/#services' },
-        { label: 'AI Solutions', href: '/#services' },
-        { label: 'Cybersecurity', href: '/#services' },
-        { label: 'IoT Engineering', href: '/#services' },
-        { label: 'Graphic Design', href: '/#services' },
-        { label: 'Internship Training', href: '/#services' },
+        { label: t('footer.links.a1'), href: '/#services' },
+        { label: t('footer.links.c1'), href: '/#services' },
+        { label: t('footer.links.a2'), href: '/#services' },
+        { label: t('footer.links.c2'), href: '/#services' },
+        { label: t('footer.links.b2'), href: '/#services' },
+        { label: t('footer.links.mentorship'), href: '/#services' },
       ]
     },
     {
-      heading: 'Platform',
+      heading: t('footer.sections.platform'),
       icon: '🧭',
       links: [
-        { label: 'AI Assistant', href: '/#internship' },
-        { label: 'Task Management', href: '/#internship' },
-        { label: 'Daily Reports', href: '/#internship' },
-        { label: 'Attendance', href: '/#internship' },
-        { label: 'Lounge (Chat)', href: '/#internship' },
-        { label: 'Dashboard', href: '/dashboard' },
+        { label: t('footer.links.ai_curr'), href: '/#internship' },
+        { label: t('footer.links.task_management'), href: '/#internship' },
+        { label: t('footer.links.daily_reports'), href: '/#internship' },
+        { label: t('footer.links.attendance'), href: '/#internship' },
+        { label: t('footer.links.lounge'), href: '/#internship' },
+        { label: t('footer.links.dashboard'), href: '/dashboard' },
       ]
     },
     {
-      heading: 'Company',
+      heading: t('footer.sections.company'),
       icon: '🏢',
       links: [
-        { label: 'About Us', href: '/#about' },
-        { label: 'Our Projects', href: '/#projects' },
-        { label: 'Contact Us', href: '/#contact' },
-        { label: 'Careers', href: '#' },
+        { label: t('footer.links.about'), href: '/#about' },
+        { label: t('footer.links.gallery'), href: '/#projects' },
+        { label: t('footer.links.contact'), href: '/#contact' },
+        { label: t('footer.links.careers'), href: '#' },
       ]
     },
     {
-      heading: 'Legal',
+      heading: t('footer.sections.legal'),
       icon: '⚖️',
       links: [
-        { label: 'Privacy Policy', href: '#' },
-        { label: 'Terms of Service', href: '#' },
-        { label: 'Cookie Policy', href: '#' },
+        { label: t('footer.links.privacy'), href: '#' },
+        { label: t('footer.links.terms'), href: '#' },
+        { label: t('footer.links.cookie'), href: '#' },
       ]
     }
   ];
@@ -92,12 +94,12 @@ function Footer() {
               </span>
             </div>
             <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', lineHeight: 1.75, marginBottom: '1.5rem', maxWidth: '28ch' }}>
-              Connecting innovation to the future. Empowering businesses and students through software engineering, cybersecurity, AI, and creative digital solutions.
+              {t('footer.about_desc')}
             </p>
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               <input
                 type="email"
-                placeholder="Enter your email"
+                placeholder={t('footer.email_placeholder')}
                 style={{
                   flex: 1, background: 'var(--input-bg)',
                   border: '1px solid var(--glass-border)',
@@ -107,7 +109,7 @@ function Footer() {
                 }}
               />
               <button className="btn-primary" style={{ padding: '0.625rem 1rem', fontSize: '0.8rem', borderRadius: 10, backgroundColor: 'var(--btn-primary-bg)', color: 'white', border: 'none', cursor: 'pointer' }}>
-                Subscribe
+                {t('footer.subscribe')}
               </button>
             </div>
           </div>
@@ -145,13 +147,13 @@ function Footer() {
           borderTop: '1px solid rgba(255,255,255,0.05)',
         }}>
           <p style={{ fontSize: '0.8125rem', color: 'var(--text-muted)', margin: 0 }}>
-            © {new Date().getFullYear()} InterLink. All rights reserved.
+            © {new Date().getFullYear()} InterLink. {t('footer.rights_reserved')}
           </p>
           <div style={{ display: 'flex', gap: '1.5rem' }}>
             {[
-              { label: 'Privacy Policy', href: '#' },
-              { label: 'Terms of Service', href: '#' },
-              { label: 'Cookie Policy', href: '#' }
+              { label: t('footer.privacy_policy'), href: '#' },
+              { label: t('footer.terms_service'), href: '#' },
+              { label: t('footer.cookie_policy'), href: '#' }
             ].map((link) => (
               <a key={link.label} href={link.href} style={{ fontSize: '0.8rem', color: 'var(--text-muted)', textDecoration: 'none', transition: 'color 0.2s' }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--text-primary)')}
@@ -160,9 +162,9 @@ function Footer() {
             ))}
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>Made with</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('footer.made_with')}</span>
             <span style={{ fontSize: '0.9rem' }}>❤️</span>
-            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>in Cameroon 🇨🇲</span>
+            <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>{t('footer.in_cameroon')}</span>
           </div>
         </div>
       </div>
@@ -175,4 +177,3 @@ function Footer() {
 }
 
 export default Footer;
-

@@ -1,7 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function AboutSection() {
+  const { t } = useTranslation();
+  const highlights = [
+    { title: t('about.highlight_1_title'), desc: t('about.highlight_1_desc'), icon: '🌐' },
+    { title: t('about.highlight_2_title'), desc: t('about.highlight_2_desc'), icon: '🤖' },
+    { title: t('about.highlight_3_title'), desc: t('about.highlight_3_desc'), icon: '🎓' }
+  ];
+
   return (
     <section
       id="about"
@@ -59,25 +67,25 @@ function AboutSection() {
             <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
               <div style={{ width: 12, height: 12, borderRadius: '50%', background: '#06b6d4', boxShadow: '0 0 10px #06b6d4' }} />
               <div style={{ flex: 1, height: 2, background: 'linear-gradient(to right, #06b6d4, #8b5cf6, transparent)' }} />
-              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>Core Matrix</span>
+              <span style={{ fontSize: '0.75rem', fontWeight: 800, color: 'rgba(255,255,255,0.4)', textTransform: 'uppercase', letterSpacing: '0.1em' }}>{t('about.core_matrix')}</span>
             </div>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>Enterprise Value</div>
-              <h4 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800, color: '#fff', lineHeight: 1.25 }}>Connecting talent & businesses to advanced digital solutions.</h4>
+              <div style={{ fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em' }}>{t('about.enterprise_value')}</div>
+              <h4 style={{ margin: 0, fontSize: '1.4rem', fontWeight: 800, color: '#fff', lineHeight: 1.25 }}>{t('about.enterprise_value_desc')}</h4>
             </div>
 
             {/* Glowing Specs Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1rem', marginTop: '0.5rem' }}>
               <div style={{ padding: '1rem', borderRadius: 14, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
                 <div style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>⚡</div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff' }}>99.9% Scalable</div>
-                <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: 2 }}>High-performance core</div>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff' }}>{t('about.scalable')}</div>
+                <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: 2 }}>{t('about.high_performance_core')}</div>
               </div>
               <div style={{ padding: '1rem', borderRadius: 14, background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.04)' }}>
                 <div style={{ fontSize: '1.25rem', marginBottom: '0.25rem' }}>🛡️</div>
-                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff' }}>Fortified Systems</div>
-                <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: 2 }}>Secure by design</div>
+                <div style={{ fontSize: '0.85rem', fontWeight: 700, color: '#fff' }}>{t('about.fortified_systems')}</div>
+                <div style={{ fontSize: '0.725rem', color: 'var(--text-muted)', marginTop: 2 }}>{t('about.secure_by_design')}</div>
               </div>
             </div>
           </div>
@@ -86,11 +94,11 @@ function AboutSection() {
         {/* Right Column: Copy */}
         <div className="about-copy">
           <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1.25rem' }}>
-            ✦ ABOUT INTERLINK
+            ✦ {t('about.label')}
           </div>
           <h2 className="section-heading" style={{ textAlign: 'left', margin: '0 0 1.5rem', lineHeight: 1.15 }}>
-            Learn. Innovate. Connect.<br />
-            <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Our Technological DNA.</span>
+            {t('about.heading_1')}<br />
+            <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('about.heading_2')}</span>
           </h2>
           
           <p style={{
@@ -99,16 +107,12 @@ function AboutSection() {
             lineHeight: 1.75,
             margin: '0 0 2rem'
           }}>
-            InterLink is a modern technology enterprise specialized in building intelligent digital systems, training young talents, and delivering professional software, cybersecurity, IoT, AI, and creative design solutions.
+            {t('about.description')}
           </p>
 
           {/* Highlights */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
-            {[
-              { title: 'Connected Technology Systems', desc: 'Engineering robust cloud platforms, mobile structures, and smart IoT device networks.', icon: '🌐' },
-              { title: 'AI-Powered Orchestrations', desc: 'Optimizing manual tasks, evaluating student progress, and generating detailed reports.', icon: '🤖' },
-              { title: 'Professional Mentorship Focus', desc: 'Empowering future developers through immersive real-world projects and expert supervisor logic.', icon: '🎓' }
-            ].map((hl, idx) => (
+            {highlights.map((hl, idx) => (
               <div key={idx} style={{ display: 'flex', gap: '1rem', alignItems: 'start' }}>
                 <div style={{
                   width: 36, height: 36, borderRadius: '50%',
@@ -126,10 +130,10 @@ function AboutSection() {
 
           <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
             <a href="#services" className="btn-primary" style={{ padding: '0.9rem 2rem', borderRadius: 14, fontSize: '0.9rem', fontWeight: 800, background: 'linear-gradient(135deg, #06B6D4, #2563EB)', border: 'none', color: '#fff', textDecoration: 'none' }}>
-              Explore Services
+              {t('about.explore_services')}
             </a>
             <Link to="/register" className="btn-ghost" style={{ padding: '0.9rem 2rem', borderRadius: 14, fontSize: '0.9rem', fontWeight: 800, textDecoration: 'none' }}>
-              Join Internship Program →
+              {t('about.join_program')}
             </Link>
           </div>
         </div>

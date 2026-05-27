@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const accentColors = [
   { color: '#3b82f6', bg: 'rgba(59,130,246,0.12)', glow: 'rgba(59,130,246,0.18)' },
@@ -10,47 +11,17 @@ const accentColors = [
   { color: '#10b981', bg: 'rgba(16,185,129,0.12)', glow: 'rgba(16,185,129,0.18)' },
 ];
 
-const servicesData = [
-  {
-    title: 'Software Development',
-    category: 'Engineering',
-    icon: '💻',
-    description: 'Design and build custom, high-performance web applications, fluid mobile applications, and scalable backend cloud-based databases tailored for your enterprise scaling.'
-  },
-  {
-    title: 'AI Solutions',
-    category: 'Intelligence',
-    icon: '🤖',
-    description: 'Maximize business efficiency with custom neural network models, natural language processing tools, custom LLM integrations, and intelligent automated workflow agents.'
-  },
-  {
-    title: 'Cybersecurity',
-    category: 'Security',
-    icon: '🛡️',
-    description: 'Protect your enterprise assets with comprehensive network auditing, professional penetration testing, source code analysis, and high-standard encryption integrations.'
-  },
-  {
-    title: 'IoT Engineering',
-    category: 'Hardware',
-    icon: '🔌',
-    description: 'Develop intelligent connected hardware prototypes, smart sensor monitoring networks, and firmware applications engineered for custom home/industrial automations.'
-  },
-  {
-    title: 'Flyer & Graphic Design',
-    category: 'Creative',
-    icon: '🎨',
-    description: 'Create distinct visual identities with state-of-the-art corporate branding designs, interactive vector flyer designs, visual posters, and polished UI/UX website wireframes.'
-  },
-  {
-    title: 'Internship Training',
-    category: 'Academy',
-    icon: '🎓',
-    description: 'Accelerate tech careers for high-potential students through hands-on enterprise-grade projects, direct expert mentorship, daily schedules, and AI analytics.'
-  }
-];
-
 const ProgramsList = () => {
+  const { t } = useTranslation();
   const [hovered, setHovered] = useState(null);
+  const servicesData = [
+    { title: t('services.items.software.title'), category: t('services.items.software.category'), icon: '💻', description: t('services.items.software.description') },
+    { title: t('services.items.ai.title'), category: t('services.items.ai.category'), icon: '🤖', description: t('services.items.ai.description') },
+    { title: t('services.items.security.title'), category: t('services.items.security.category'), icon: '🛡️', description: t('services.items.security.description') },
+    { title: t('services.items.iot.title'), category: t('services.items.iot.category'), icon: '🔌', description: t('services.items.iot.description') },
+    { title: t('services.items.design.title'), category: t('services.items.design.category'), icon: '🎨', description: t('services.items.design.description') },
+    { title: t('services.items.training.title'), category: t('services.items.training.category'), icon: '🎓', description: t('services.items.training.description') }
+  ];
 
   return (
     <section
@@ -61,14 +32,14 @@ const ProgramsList = () => {
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1rem' }}>
-          🛠️ OUR SERVICES
+          🛠️ {t('services.label')}
         </div>
         <h2 className="section-heading">
-          High-Performance Solutions for<br />
-          <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Modern Enterprises.</span>
+          {t('services.heading_1')}<br />
+          <span className="gradient-text" style={{ background: 'linear-gradient(135deg, #06B6D4 0%, #8B5CF6 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>{t('services.heading_2')}</span>
         </h2>
         <p className="section-sub">
-          We combine cutting-edge technology expertise with professional standards to deliver premium, reliable digital solutions that scale with your business goals.
+          {t('services.sub')}
         </p>
       </div>
 
@@ -180,7 +151,7 @@ const ProgramsList = () => {
                   transition: 'all 0.25s ease',
                 }}
               >
-                Inquire Service
+                {t('services.inquire')}
                 <span style={{ fontSize: '0.9rem' }}>→</span>
               </a>
             </div>

@@ -13,7 +13,17 @@
       "it": "Italiano"
     },
     "language_center": "Eccellenza tecnologica globale",
-    "experience": "Scopri il futuro del"
+    "experience": "Scopri il futuro del",
+    "departments": {
+      "software_engineering": "Ingegneria software",
+      "cybersecurity": "Cybersicurezza",
+      "ai_development": "Sviluppo IA",
+      "iot_engineering": "Ingegneria IoT",
+      "graphic_design": "Graphic design",
+      "web_mobile_development": "Sviluppo web e mobile"
+    },
+    "loading": "Caricamento...",
+    "loading_state": "Caricamento stato..."
   },
   "nav": {
     "home": "Home",
@@ -74,7 +84,18 @@
       }
     },
     "student_satisfaction": "Soddisfazione del cliente",
-    "students_countries": "Distribuzioni in oltre 15 paesi"
+    "students_countries": "Distribuzioni in oltre 15 paesi",
+    "tech_terms": [
+      "Innovazione",
+      "Intelligenza",
+      "Sicurezza",
+      "Automazione",
+      "Software"
+    ],
+    "showcase_alt": "Vetrina tecnologica InterLink",
+    "platform_success": "Successo piattaforma",
+    "tech_focus_areas": "Aree focus tech",
+    "slide_label": "Slide {{number}}"
   },
   "stats": {
     "trusted_by": "Scelto da talenti ambiziosi e aziende leader",
@@ -110,10 +131,10 @@
     "f6_tag": "Assistente intelligente"
   },
   "testimonials": {
-    "label": "Storie di Successo",
-    "heading_1": "Ascolta i team e gli stagisti",
-    "heading_2": "che hanno trasformato i loro flussi di lavoro.",
-    "sub": "Impatto reale da team reali in tutti i settori tecnologici.",
+    "label": "STORIE DI SUCCESSO",
+    "heading_1": "Ascolta i nostri",
+    "heading_2": "stagisti tech.",
+    "sub": "Molti ingegneri software, analisti cybersecurity e sviluppatori IA hanno accelerato il percorso professionale con InterLink.",
     "quote_1": "InterLink ha cambiato il nostro modello di scaling. In 6 mesi abbiamo integrato tre sviluppatori altamente performanti provenienti dal programma di stage che sono stati immediatamente produttivi.",
     "quote_2": "L'assistente di rapporti IA non ha eguali. Il mio supervisore ha ricevuto automaticamente rapporti settimanali chiari e strutturati, facendoci risparmiare ore di allineamento.",
     "quote_3": "Ho costruito il mio portfolio full-stack su InterLink e ho ottenuto un ruolo di ingegnere del software. Il tutoraggio strutturato mi ha fornito esattamente le competenze necessarie.",
@@ -132,37 +153,56 @@
     "check3": "Dashboard basata su IA"
   },
   "contact": {
-    "label": "Contattaci",
+    "label": "CONTATTACI",
     "heading": "Il futuro della tecnologia inizia oggi.",
     "name": "Nome completo",
-    "email": "Indirizzo e-mail",
+    "email": "Email",
     "subject": "Oggetto",
     "message": "Messaggio",
     "send": "Invia messaggio",
-    "sending": "Invio in corso...",
-    "sent_title": "Messaggio inviato!",
-    "sent_desc": "Il nostro team risponderà entro 24 ore.",
+    "sending": "Invio...",
+    "sent_title": "Messaggio inviato con successo!",
+    "sent_desc": "Grazie per averci contattato. Un rappresentante InterLink ti risponderà presto.",
     "send_another": "Invia un altro messaggio",
     "info_title": "Informazioni di contatto",
     "address_label": "Indirizzo",
     "email_label": "E-mail",
     "phone_label": "Telefono",
     "hours_label": "Orari",
-    "select_topic": "Seleziona un argomento...",
+    "select_topic": "Seleziona argomento",
     "topics": {
       "admissions": "Richiesta di servizi aziendali",
       "mentorship": "Supporto per la candidatura di stage",
       "events": "Partnership tecnologiche",
-      "partnership": "Formazione aziendale & Recruiting",
+      "partnership": "Partnership aziendali",
       "press": "Stampa e media",
-      "other": "Altra richiesta"
-    }
+      "other": "Altre richieste",
+      "software": "Sviluppo software",
+      "ai": "Soluzioni e integrazioni IA",
+      "security": "Audit e servizi cybersicurezza",
+      "internship": "Richiesta programma stage"
+    },
+    "heading_1": "Connettere l’innovazione al",
+    "heading_2": "futuro.",
+    "sub": "Hai un progetto o vuoi entrare nella nostra coorte tecnica? Contatta il team oggi.",
+    "address": "Indirizzo",
+    "address_value": "Douala, Camerun - Rue des Acadias, Bali",
+    "phone": "Telefono",
+    "hours": "Orari",
+    "hours_value": "Lun-Sab, 8-18 WAT",
+    "form_title": "Invia un messaggio",
+    "full_name": "Nome completo",
+    "email_address": "Indirizzo email",
+    "topic_interest": "Argomento / interesse",
+    "your_message": "Il tuo messaggio",
+    "message_placeholder": "Descrivi la tua richiesta...",
+    "send_message": "Invia messaggio"
   },
   "events": {
-    "label": "Dipartimenti Attivi",
-    "heading_1": "Piloni di ingegneria",
-    "heading_2": "e creatività specializzati.",
-    "sub": "Esplora le nostre unità altamente specializzate progettate per gestire la trasformazione digitale completa e formare talenti tecnologici di primo livello.",
+    "label": "PROGRAMMA STAGE",
+    "heading_1": "Esplora i nostri dipartimenti",
+    "heading_2": "di stage attivi.",
+    "sub": "Accelera la tua carriera tech. Lavora su sistemi reali con mentorship esperta e monitora la crescita con dashboard IA.",
     "view_all": "Esplora i dipartimenti",
     "register": "Candidati al dipartimento",
     "past_highlights": "Pietre miliari del dipartimento",
@@ -186,13 +226,21 @@
     "ev3_date": "Modelli all'avanguardia",
     "ev3_loc": "Lab IA & Integrazioni",
     "ev3_seats": "Percorsi altamente analitici",
-    "ev3_badge": "Nucleo innovativo"
+    "ev3_badge": "Nucleo innovativo",
+    "departments": {
+      "software_desc": "Costruisci applicazioni desktop, web ed enterprise robuste con architetture moderne e pipeline dati.",
+      "cybersecurity_desc": "Audita vulnerabilità, proteggi protocolli di rete, testa injection e implementa difese crittografiche avanzate.",
+      "iot_desc": "Progetta hardware connesso, microcontrollori e reti di sensori per automazione industriale.",
+      "ai_desc": "Implementa reti neurali, NLP e analisi predittive o agenti automatizzati intelligenti.",
+      "design_desc": "Crea branding corporate, mockup UI, banner visuali e flyer marketing vettoriali.",
+      "web_mobile_desc": "Progetta UX responsive e sviluppa app web e mobile multipiattaforma moderne."
+    }
   },
   "gallery": {
-    "label": "Vetrina d'Impatto",
-    "heading_1": "Momenti che definiscono",
-    "heading_2": "il nostro impatto tecnologico.",
-    "sub": "Un'esplorazione dinamica dei nostri progetti, infrastrutture e risultati del team.",
+    "label": "VETRINA PROGETTI",
+    "heading_1": "Sistemi digitali intelligenti che abbiamo",
+    "heading_2": "realizzato.",
+    "sub": "Esplora applicazioni software, modelli IA, toolkit sicurezza e sistemi IoT fisici progettati dal nostro team.",
     "featured": "In primo piano",
     "moment": "Pietra miliare",
     "view_all": "Vedi tutti i progetti",
@@ -201,12 +249,44 @@
     "img3_label": "Lab di Apprendimento IA",
     "img4_label": "Sessione Demo Cliente",
     "img5_label": "Lab Infrastruttura Cloud",
-    "img6_label": "Cerimonia di Consegna Certificati"
+    "img6_label": "Cerimonia di Consegna Certificati",
+    "projects": {
+      "crm": {
+        "title": "Portale CRM enterprise",
+        "category": "Dashboard",
+        "desc": "Un portale gestionale real-time con analytics IA, dashboard per ruoli e chat attive."
+      },
+      "health": {
+        "title": "App mobile salute smart",
+        "category": "App mobile",
+        "desc": "Un tracker salute multipiattaforma collegato a sensori IoT e consulenze video sicure."
+      },
+      "security": {
+        "title": "Suite cybersicurezza Aegis",
+        "category": "Tool sicurezza",
+        "desc": "Una suite di analizzatori pacchetti, scanner vulnerabilità e strumenti di audit automatizzati."
+      },
+      "iot": {
+        "title": "Sistema IoT serra",
+        "category": "Prototipo IoT",
+        "desc": "Un controller agricolo microclimatico con ESP32, relay Wi-Fi e feed sensori MQTT."
+      },
+      "ai": {
+        "title": "Assistente chat IA Lexis",
+        "category": "Soluzione IA",
+        "desc": "Un agente customer support contestuale con Gemini Embeddings e ingestion semantica documentale."
+      },
+      "branding": {
+        "title": "Cyber branding InterLink",
+        "category": "Design creativo",
+        "desc": "Un pacchetto identità visiva con mockup flyer, grafica vettoriale e sistemi UI Figma."
+      }
+    }
   },
   "faq": {
     "label": "FAQ",
-    "heading": "Domande Comuni",
-    "sub": "Tutto quello che c'è da sapere sui servizi e sul programma di stage di InterLink.",
+    "heading": "Domande frequenti",
+    "sub": "Hai domande? Abbiamo le risposte. Scopri tutto sui servizi InterLink e sul programma stage.",
     "q1": "Cos'è InterLink?",
     "a1": "InterLink è una moderna impresa tecnologica specializzata nello sviluppo di sistemi digitali intelligenti (software, siti web e app mobili), integrazioni di intelligenza artificiale, audit di cybersicurezza, sistemi IoT e stage pratici di alta qualità.",
     "q2": "Chi può candidarsi per uno stage in InterLink?",
@@ -224,7 +304,33 @@
     "q8": "Quando iniziano i prossimi stage?",
     "a8": "Nuovi gruppi iniziano ogni mese per tutti i dipartimenti attivi. Candidati online e supera il nostro test di valutazione delle competenze automatizzato.",
     "q9": "Cos'è la dashboard dello stage?",
-    "a9": "La nostra piattaforma sicura è il tuo spazio di lavoro principale, da cui puoi effettuare il check-in giornaliero, redigere rapporti, interagire con il supervisore e accedere al Copilote IA."
+    "a9": "La nostra piattaforma sicura è il tuo spazio di lavoro principale, da cui puoi effettuare il check-in giornaliero, redigere rapporti, interagire con il supervisore e accedere al Copilote IA.",
+    "items": [
+      {
+        "q": "Che cos’è InterLink?",
+        "a": "InterLink è un’impresa tecnologica moderna per sistemi digitali intelligenti, IA, cybersicurezza, IoT e stage pratici per studenti tech."
+      },
+      {
+        "q": "Chi può candidarsi per uno stage?",
+        "a": "Studenti universitari, diplomati di coding school e sviluppatori autodidatti in software, cybersicurezza, IA, web/mobile o design sono incoraggiati a candidarsi."
+      },
+      {
+        "q": "Come funziona la piattaforma IA?",
+        "a": "I nostri motori IA suggeriscono task, aiutano nei report, supportano i corsi e aiutano i supervisori ad analizzare i progressi."
+      },
+      {
+        "q": "Gli stage sono remoti o in sede?",
+        "a": "Offriamo opportunità ibride, in sede e completamente remote in base al dipartimento e alla supervisione."
+      },
+      {
+        "q": "Riceverò un certificato alla fine?",
+        "a": "Sì. Dopo il completamento e la revisione finale, InterLink rilascia un certificato digitale verificato."
+      },
+      {
+        "q": "InterLink può creare app per la mia azienda?",
+        "a": "Sì. Il nostro team offre software, integrazioni IA, cybersicurezza, branding e design creativo."
+      }
+    ]
   },
   "past_events": {
     "section_title": "Momenti salienti delle pietre miliari passate",
@@ -517,11 +623,20 @@
       "press": "Presse",
       "blog": "Blog Tech",
       "contact": "Contatti",
-      "privacy": "Privacy Policy",
+      "privacy": "Informativa sulla privacy",
       "terms": "Termini di servizio",
       "cookie": "Cookies",
-      "refund": "SLA Piattaforma"
-    }
+      "refund": "SLA Piattaforma",
+      "task_management": "Gestione task",
+      "daily_reports": "Report giornalieri",
+      "attendance": "Presenze",
+      "lounge": "Sala (chat)"
+    },
+    "rights_reserved": "Tutti i diritti riservati.",
+    "privacy_policy": "Privacy Policy",
+    "terms_service": "Termini di servizio",
+    "cookie_policy": "Cookie Policy",
+    "in_cameroon": "in Camerun 🇨🇲"
   },
   "courses": {
     "label": "I nostri Servizi & Percorsi",
@@ -602,7 +717,10 @@
       "Full Stack",
       "Intensivo",
       "Portfolio"
-    ]
+    ],
+    "loading": "Caricamento corsi...",
+    "empty_title": "Nessun corso ancora disponibile",
+    "empty_desc": "Torna più tardi per nuovi contenuti."
   },
   "auth": {
     "brand_subtitle": "Piattaforma tecnologica aziendale",
@@ -659,12 +777,15 @@
       "terms": "Accetta i termini della piattaforma per continuare.",
       "register_failed": "Impossibile creare account. Riprova.",
       "study_language_required": "Seleziona il tuo percorso dipartimento.",
-      "payment_receipt_required": "Allega il tuo CV di competenze."
+      "payment_receipt_required": "Allega il tuo CV di competenze.",
+      "password_mismatch": "Le password non corrispondono.",
+      "step1_required": "Tutti i campi del passaggio 1 sono obbligatori.",
+      "class_required": "Seleziona la tua classe."
     },
     "cinematic_label": "Il tuo percorso in InterLink",
     "cinematic_title": "Dai progetti pratici a ruoli aziendali concreti.",
     "cinematic_subtitle": "Un percorso strutturato con compiti reali, tutoraggio di esperti, valutazioni IA e portfolio verificabile.",
-    "background_word": "Tech",
+    "background_word": "Tecnologia",
     "focus_languages": [
       "Ingegneria",
       "Sicurezza",
@@ -673,12 +794,29 @@
     ],
     "brand_subtitle_suffix": "postazione",
     "login_hero_2_suffix": "postazione.",
-    "register_hero_2_suffix": "padronanza."
+    "register_hero_2_suffix": "padronanza.",
+    "step_counter": "Passaggio {{step}} di 2",
+    "step1_subtitle": "Crea credenziali sicure per iniziare.",
+    "step2_subtitle": "Indica il tuo focus tecnico e seleziona la classe dinamica.",
+    "account_info": "Informazioni account",
+    "track_details": "Dettagli percorso",
+    "confirm_password": "Conferma password",
+    "confirm_password_placeholder": "Conferma la password",
+    "next_step": "Passaggio successivo",
+    "dynamic_class": "Classe dinamica / Coorte",
+    "select_class_placeholder": "Seleziona la classe (sezione e livello)",
+    "class_section_level": "Sezione {{section}} - Livello {{level}}",
+    "select_department_track": "Seleziona percorso dipartimento",
+    "application_track": "Modalità candidatura",
+    "remote_track": "Percorso remoto",
+    "remote_track_helper": "Invia la candidatura e procedi con la valutazione da remoto.",
+    "in_person_track": "Percorso in presenza",
+    "in_person_track_helper": "Carica il tuo CV competenze per una validazione prioritaria in presenza."
   },
   "dashboard": {
     "sidebar": {
       "dashboard": "Dashboard",
-      "crm_leads": "CRM & Leads",
+      "crm_leads": "CRM e lead",
       "programs": "Programmi",
       "partners": "Partner",
       "reports": "Gestisci report",
@@ -695,7 +833,14 @@
       "conferences": "Conferenze",
       "upcoming": "Prossimi Eventi",
       "flyer": "Campagne Flyer",
-      "members": "Membri"
+      "members": "Membri",
+      "go_home": "Vai alla home",
+      "toggle_sidebar": "Attiva/disattiva sidebar",
+      "close_sidebar": "Chiudi sidebar",
+      "navigation": "Navigazione dashboard",
+      "management_console": "Console di gestione",
+      "main_menu": "Menu principale",
+      "system_online": "Sistema online"
     },
     "topbar": {
       "current_session": "Sessione Corrente",
@@ -743,7 +888,7 @@
         "delete_program": "Elimina Programma"
       },
       "leads": {
-        "title": "Leads",
+        "title": "Lead",
         "name": "Nome",
         "email": "Email",
         "phone": "Telefono",
@@ -770,12 +915,12 @@
       "gallery": {
         "title": "Assets Digitali",
         "album_file": "Album / File",
-        "type": "Type",
+        "type": "Tipo",
         "url": "URL",
         "add_media": "Aggiungi un Media",
         "title_fr": "Titolo (FR)",
         "title_en": "Titolo (EN)",
-        "files": "File(s)",
+        "files": "File",
         "album": "Album / File",
         "date": "Aggiunto il",
         "status": "Stato"
@@ -872,11 +1017,55 @@
         "status": "Stato",
         "title": "Eventi a Venire",
         "add_event": "aggiungi evento"
+      },
+      "profile": {
+        "title": "Impostazioni dell'account",
+        "subtitle": "Configura le tue credenziali personali e personalizza gli ambienti linguistici.",
+        "first_name": "Nome",
+        "last_name": "Cognome",
+        "email": "Indirizzo e-mail",
+        "phone": "Numero di telefono",
+        "dashboard_lang": "Lingua del pannello di controllo",
+        "new_password": "Nuova password",
+        "confirm_password": "Conferma password",
+        "save": "Salva modifiche profilo",
+        "saving": "Salvataggio..."
+      },
+      "system_settings": {
+        "title": "Configurazioni di sistema",
+        "subtitle": "Gestisci le quote di iscrizione, i requisiti di pagamento e le credenziali del gateway online.",
+        "fee_amount": "Importo quota di iscrizione (XAF)",
+        "require_payment": "Richiedi pagamento di onboarding",
+        "fee_desc": "I tirocinanti devono pagare questo importo online durante l'onboarding per sbloccare l'accesso.",
+        "gate_desc": "Blocca automaticamente i pannelli di controllo degli studenti fino alla verifica del pagamento.",
+        "apikey": "Chiave segreta API DigiPay",
+        "env_mode": "Modalità ambiente DigiPay",
+        "sandbox": "Modalità Sandbox",
+        "production": "Produzione live",
+        "sandbox_desc": "Simulatore di pagamenti di prova.",
+        "production_desc": "Pagamenti reali Mobile Money.",
+        "save": "Salva impostazioni",
+        "saving": "Salvataggio modifiche..."
+      },
+      "financial_balance": {
+        "title": "Bilancio finanziario e controllo",
+        "subtitle": "Verifica i saldi di tesoreria DigiPay in tempo reale e traccia le quote di iscrizione pagate.",
+        "gateway_bal": "Saldo del gateway DigiPay",
+        "total_revenue": "Entrate totali delle ammissioni",
+        "ledger_title": "Registro dei pagamenti di onboarding",
+        "ledger_desc": "Visualizzazione cronologica in tempo reale degli studenti registrati che hanno completato il pagamento.",
+        "student": "Studente",
+        "track": "Indirizzo",
+        "ref_tx": "ID transazione rif",
+        "paid_fee": "Quota pagata",
+        "approval": "Approvazione",
+        "refresh": "Aggiorna",
+        "empty": "Nessuno studente pagante trovato nei registri."
       }
     },
     "home": {
       "revenue": "Revenues",
-      "total_leads": "Total CRM Leads",
+      "total_leads": "Lead CRM totali",
       "prospects_desc": "Prospects nel pipeline",
       "active_programs": "Programmi Attivi",
       "pending_testimonials": "Testimonianze in Attesa",
@@ -891,7 +1080,60 @@
       "administrators": "Amministratori",
       "teachers": "Tutor",
       "receptionists": "Coordinatori",
-      "super_admins": "Super Admins"
+      "super_admins": "Super amministratori"
+    },
+    "role_switcher": {
+      "title": "Ruolo dashboard",
+      "helper": "Cambia modalità dashboard senza uscire."
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "live_classes": {
+      "title": "Calendario corsi online",
+      "subtitle": "Partecipa a corsi, conferenze e webinar all’orario programmato.",
+      "refresh": "Aggiorna",
+      "loading": "Caricamento calendario...",
+      "empty": "Nessuna sessione programmata.",
+      "load_failed": "Impossibile caricare il calendario live.",
+      "title_required": "Il titolo è obbligatorio.",
+      "study_language_required": "Seleziona una lingua di studio.",
+      "participants_required": "Seleziona i partecipanti alla chiamata.",
+      "time_required": "Orario di inizio e fine obbligatori.",
+      "updated": "Calendario aggiornato.",
+      "scheduled": "Sessione programmata.",
+      "save_failed": "Impossibile salvare il calendario.",
+      "confirm_delete": "Eliminare \"{{title}}\"?",
+      "deleted": "Sessione eliminata.",
+      "delete_failed": "Impossibile eliminare la sessione.",
+      "join": "Entra",
+      "not_time_yet": "Non è ancora ora",
+      "edit_session": "Modifica sessione",
+      "program_session": "Programma sessione",
+      "admin_only": "Solo gli admin possono creare slot calendario.",
+      "form_title": "Titolo",
+      "description": "Descrizione",
+      "type": "Tipo",
+      "audience": "Audience",
+      "audience_study_language": "Lingua di studio",
+      "audience_all_users": "Tutti gli utenti",
+      "audience_internship_pair": "Coppia tirocinio",
+      "language": "Lingua",
+      "select_language": "Seleziona lingua...",
+      "teacher": "Docente",
+      "assign_later": "Assegna dopo / admin ospita",
+      "participants": "Partecipanti",
+      "multi_select_hint": "Tieni premuto Command/Ctrl per scegliere supervisore e studente.",
+      "start": "Inizio",
+      "end": "Fine",
+      "save_changes": "Salva modifiche",
+      "schedule": "Programma",
+      "types": {
+        "course": "Corso online",
+        "conference": "Conferenza",
+        "webinar": "Webinar",
+        "mentorship": "Chiamata mentoring"
+      }
     }
   },
   "learning": {
@@ -939,6 +1181,339 @@
     "course_curriculum": "Pietre Miliari del Percorso",
     "complete": "Completo",
     "of": "su",
-    "courses_count": "percorsi"
+    "courses_count": "percorsi",
+    "video_marked_complete": "Video segnato come completato.",
+    "video_complete_failed": "Impossibile segnare il video come completato.",
+    "enroll_before_payment": "Iscriviti a questo percorso prima di richiedere l’accesso a pagamento.",
+    "chapter_payment_requested": "Richiesta di accesso al capitolo inviata.",
+    "chapter_payment_failed": "Impossibile richiedere l’accesso al capitolo.",
+    "no_next_content": "Nessun contenuto successivo disponibile.",
+    "next_content_locked": "Il contenuto successivo è bloccato.",
+    "course_content": "Contenuto del percorso",
+    "overall_progress": "Avanzamento complessivo",
+    "exam_locked_until_complete": "L’esame finale si sblocca quando tutti i contenuti richiesti sono completati.",
+    "content_locked": "Contenuto bloccato",
+    "video_requires_enrollment": "Questo video richiede l’iscrizione.",
+    "chapter_payment_pending": "Pagamento del capitolo in attesa",
+    "pay_this_chapter": "Paga questo capitolo",
+    "awaiting_confirmation": "In attesa di conferma",
+    "request_chapter_access": "Richiedi accesso al capitolo",
+    "view_course_details": "Vedi dettagli del percorso",
+    "hide_transcript": "Nascondi trascrizione",
+    "show_transcript": "Mostra trascrizione",
+    "no_transcript_available": "Nessuna trascrizione disponibile.",
+    "completes_automatically": "Si completa automaticamente",
+    "next_content": "Contenuto successivo",
+    "objectives": "Obiettivi",
+    "resources": "Risorse",
+    "no_resources_available": "Nessuna risorsa disponibile.",
+    "course_details": "Dettagli del percorso",
+    "instructor": "Istruttore",
+    "duration": "Durata",
+    "sections": "Sezioni",
+    "price": "Prezzo",
+    "key_moments_helper": "Usa i momenti chiave per passare a spiegazioni e strumenti importanti.",
+    "no_key_moments": "Nessun momento chiave ancora disponibile.",
+    "course": "Corso",
+    "general": "Generale",
+    "all_levels": "Tutti i livelli",
+    "untitled_course": "Corso senza titolo",
+    "default_course_description": "Un percorso strutturato con lezioni guidate e risorse pratiche.",
+    "progress": "Avanzamento"
+  },
+  "theme": {
+    "switch_light": "Passa alla modalità chiara",
+    "switch_dark": "Passa alla modalità scura"
+  },
+  "profile": {
+    "success": "Profilo aggiornato correttamente.",
+    "error": "Impossibile aggiornare il profilo."
+  },
+  "gate_lock": {
+    "registration_payment_verified": "Pagamento di registrazione completato e verificato con successo!",
+    "select_valid_department": "Seleziona un percorso dipartimento valido.",
+    "application_submitted": "Candidatura di tirocinio inviata con successo!",
+    "application_failed": "Impossibile inviare la candidatura di tirocinio.",
+    "phone_required": "Inserisci un numero Mobile Money.",
+    "transaction_missing": "ID transazione non restituito.",
+    "payment_initiated": "Pagamento avviato! Controlla il telefono per approvare la richiesta Mobile Money.",
+    "payment_failed": "Impossibile avviare il pagamento di registrazione.",
+    "onboarding_required": "Onboarding richiesto",
+    "access_restricted": "Accesso limitato",
+    "unlock_helper": "Completa i passaggi seguenti per sbloccare il tuo cockpit candidato attivo.",
+    "step_1": "Passaggio 1",
+    "step_2": "Passaggio 2",
+    "internship_request": "Richiesta tirocinio",
+    "submitted": "Inviata",
+    "pending": "In sospeso",
+    "registration_fee": "Quota di registrazione",
+    "paid": "Pagato",
+    "processing": "In elaborazione",
+    "submit_request_title": "1. Invia richiesta di tirocinio",
+    "submit_request_helper": "Scegli il percorso dipartimento tecnologico e le preferenze da remoto.",
+    "online_evaluation": "Valutazione online.",
+    "physical_placement": "Collocamento in presenza.",
+    "submitting": "Invio...",
+    "send_request": "Invia richiesta tirocinio",
+    "pay_fee_title": "2. Paga la quota di registrazione",
+    "pay_fee_helper": "Paga in sicurezza la quota di 5.000 XAF tramite Mobile Money per attivare il cockpit candidato.",
+    "payment_required": "Pagamento registrazione richiesto",
+    "payment_processed_automatically": "I pagamenti online sono elaborati automaticamente.",
+    "mobile_money_phone": "Numero Mobile Money",
+    "initiating_payment": "Avvio pagamento...",
+    "pay_now": "Paga ora la quota",
+    "waiting_payment": "In attesa della conferma del pagamento...",
+    "payment_prompt_sent": "Una richiesta di conferma Mobile Money è stata inviata al tuo telefono",
+    "payment_prompt_pin": "Inserisci il PIN per approvare la transazione. Stiamo monitorando lo stato.",
+    "cancel_try_again": "Annulla e riprova",
+    "admin_review_title": "3. Revisione amministrativa e assegnazione",
+    "payment_verified_helper": "La tua candidatura è registrata e il pagamento online è stato verificato!",
+    "registration_complete": "Registrazione completata",
+    "payment_received": "Abbiamo ricevuto il pagamento di 5.000 XAF per la registrazione.",
+    "pending_review": "Revisione operativa in sospeso",
+    "request_processing_prefix": "La tua richiesta di tirocinio per",
+    "request_processing_suffix": "è in elaborazione dal nostro staff amministrativo. La classe dinamica e il supervisore diretto saranno assegnati a breve.",
+    "check_status": "Controlla stato"
+  },
+  "payment_status": {
+    "registration_missing": "Mancano i dettagli di registrazione. Riavvia la registrazione.",
+    "registration_success": "Registrazione completata. Il tuo account è attivo.",
+    "course_payment_success": "Pagamento confermato. Accesso al corso sbloccato.",
+    "session_not_found": "Sessione di pagamento non trovata",
+    "restart_flow": "Riavvia il flusso di pagamento.",
+    "back_to_registration": "Torna alla registrazione"
+  },
+  "live_class": {
+    "live_class": "Lezione live",
+    "camera_off": "Fotocamera disattivata",
+    "mute": "Disattiva audio",
+    "unmuted": "Audio attivo",
+    "stop_video": "Ferma video",
+    "start_video": "Avvia video",
+    "instructor": "Docente",
+    "before_join": "Prima di entrare",
+    "check_camera_mic": "Assicurati che fotocamera e microfono funzionino",
+    "check_quiet": "Trova un ambiente tranquillo",
+    "check_mute": "Tieni il microfono disattivato quando non parli",
+    "preparing": "Preparazione...",
+    "join_class": "Entra nella lezione",
+    "community_guidelines": "Entrando, accetti le nostre linee guida della community",
+    "student": "Studente",
+    "access_denied": "Accesso negato o riunione non trovata.",
+    "cannot_join": "Impossibile entrare nella lezione",
+    "return_dashboard": "Torna alla dashboard",
+    "mute_microphone": "Disattiva microfono",
+    "unmute_microphone": "Riattiva microfono",
+    "turn_off_camera": "Disattiva fotocamera",
+    "turn_on_camera": "Attiva fotocamera"
+  },
+  "study_lounge": {
+    "moderator_access": "Accesso moderatore attivato",
+    "check_respectful": "Rispetta tutti i partecipanti",
+    "check_mute": "Disattiva il microfono quando non parli",
+    "check_screen_share": "Usa la condivisione schermo per sincronizzare il video",
+    "preparing_room": "Preparazione sala...",
+    "join_now": "Entra ora",
+    "access_denied": "Accesso negato a questa sala.",
+    "global_lounge": "Sala globale",
+    "all_students": "Tutti gli studenti",
+    "english_lounge": "Sala inglese",
+    "english_section": "Sezione inglese",
+    "french_lounge": "Sala francese",
+    "french_section": "Sezione francese",
+    "german_lounge": "Sala tedesca",
+    "german_section": "Sezione tedesca",
+    "italian_lounge": "Sala italiana",
+    "italian_section": "Sezione italiana",
+    "open_to_all": "Aperta a tutti gli studenti InterLink",
+    "language_specific_room": "Sala studio per lingua",
+    "study_lounges": "Sale studio",
+    "moderator": "Moderatore",
+    "leave_room": "Esci dalla sala",
+    "loading_room": "Caricamento sala..."
+  },
+  "exams": {
+    "fetch_failed": "Impossibile caricare gli esami.",
+    "status_upcoming": "In arrivo",
+    "status_active": "In corso",
+    "status_ended": "Terminato",
+    "not_started": "Questo esame non è ancora iniziato.",
+    "ended": "Questo esame è terminato.",
+    "title": "Modulo esami",
+    "subtitle": "Trova qui tutti gli esami programmati.",
+    "none": "Nessun esame disponibile al momento.",
+    "general_course": "Corso generale",
+    "start": "Inizio",
+    "duration": "Durata",
+    "minutes": "{{count}} minuti",
+    "closed": "Esame chiuso",
+    "start_exam": "Avvia esame"
+  },
+  "take_exam": {
+    "already_submitted": "Questo esame è già stato inviato.",
+    "load_failed": "Errore durante il caricamento dell'esame.",
+    "submitted_score": "Esame inviato con successo! Punteggio: {{score}}%",
+    "submit_failed": "Errore durante l'invio.",
+    "initializing": "Inizializzazione ambiente sicuro...",
+    "submitting": "Invio...",
+    "submit": "Invia",
+    "interrupted": "Esame interrotto",
+    "violation_detected": "Violazione rilevata",
+    "auto_submitted": "Le tue risposte sono state inviate automaticamente e l'incidente è stato segnalato.",
+    "question_number": "Domanda {{number}}"
+  },
+  "payment_instructions": {
+    "payment_confirmed": "Pagamento confermato",
+    "payment_failed": "Pagamento fallito",
+    "waiting_confirmation": "In attesa di conferma",
+    "payment_confirmed_sentence": "Pagamento confermato.",
+    "not_completed": "Il pagamento non è stato completato. Avvia un nuovo pagamento o contatta il supporto.",
+    "still_pending": "Il pagamento è ancora in sospeso. Conferma la richiesta Mobile Money sul telefono, poi controlla di nuovo.",
+    "check_failed": "Impossibile verificare lo stato del pagamento.",
+    "mobile_money": "Mobile Money",
+    "title": "Completa il pagamento",
+    "amount": "Importo",
+    "phone": "Telefono",
+    "reference": "Riferimento",
+    "next_title": "Cosa fare ora",
+    "step_keep_open": "1. Mantieni questa pagina aperta.",
+    "step_check_phone": "2. Controlla il telefono per la richiesta Mobile Money.",
+    "step_confirm_pin": "3. Conferma il pagamento con il PIN.",
+    "step_check_status": "4. Torna qui e clicca “Controlla stato”.",
+    "checking": "Controllo..."
+  },
+  "library": {
+    "loading": "Caricamento biblioteca...",
+    "restricted_title": "Accesso riservato",
+    "login_required": "Devi aver effettuato l’accesso per accedere alla biblioteca.",
+    "pending_title": "Account in attesa di validazione",
+    "pending_desc": "La tua registrazione è stata ricevuta. Un amministratore verificherà la ricevuta di pagamento e convaliderà l’account.",
+    "pending_access": "Riceverai accesso alla biblioteca appena l’account sarà attivato.",
+    "title": "Biblioteca accademica",
+    "active_learning_space": "Spazio di apprendimento attivo",
+    "live_study_lounge": "Sala studio live",
+    "roadmap_title": "Roadmap di apprendimento",
+    "roadmap_prefix": "Hai completato",
+    "roadmap_middle": "risorse di studio su",
+    "roadmap_suffix": "assegnate al tuo programma. Completa i quiz di valutazione per convalidare i progressi.",
+    "search_placeholder": "Cerca una risorsa...",
+    "all": "Tutti",
+    "no_resources_title": "Nessuna risorsa trovata",
+    "no_resources_desc": "La biblioteca è vuota o nessun risultato corrisponde alla ricerca.",
+    "preview_title": "Clicca per vedere l’anteprima",
+    "mark_incomplete": "Segna come incompleto",
+    "mark_complete": "Segna come completato",
+    "preview": "Anteprima",
+    "download": "Scarica",
+    "take_quiz": "Fai il quiz",
+    "quiz_title": "Quiz di valutazione accademica",
+    "quiz_loading": "Caricamento quiz...",
+    "quiz_unavailable": "Nessun quiz è ancora disponibile per questo corso.",
+    "answer_all_questions": "Rispondi a tutte le domande prima di inviare.",
+    "quiz_submit_failed": "Errore durante l’invio del quiz.",
+    "submit_answers": "Invia risposte",
+    "quiz_passed": "Quiz superato!",
+    "quiz_failed": "Quiz non superato",
+    "score": "Punteggio",
+    "correct_answers": "Hai risposto correttamente a {{correct}} domande su {{total}}.",
+    "course_validated": "Questo corso viene validato automaticamente e segnato come completato!",
+    "minimum_score": "Devi ottenere almeno il 70% per validare questo modulo.",
+    "detailed_correction": "Correzione dettagliata",
+    "your_answer": "La tua risposta",
+    "correct_answer": "Risposta corretta",
+    "explanation": "Spiegazione",
+    "types": {
+      "document": "Documento",
+      "course": "Corso",
+      "video": "Video",
+      "audio": "Audio"
+    }
+  },
+  "file_preview": {
+    "load_failed": "Impossibile caricare questo documento. Controlla connessione o autorizzazioni.",
+    "secure_loading": "Caricamento sicuro del documento...",
+    "preview": "Anteprima file",
+    "pdf_preview": "Anteprima PDF",
+    "audio_file": "File audio",
+    "audio_playback": "Riproduzione audio interattiva",
+    "document": "Documento",
+    "file_type": "File {{extension}}",
+    "file_preview": "Anteprima file",
+    "secure_document": "DOCUMENTO SICURO",
+    "interactive_preview": "Anteprima interattiva",
+    "download_file": "Scarica file",
+    "access_blocked": "Accesso bloccato",
+    "suspicious_behavior": "Comportamento sospetto rilevato",
+    "confidential_warning": "Questo documento è riservato. Telefoni o altri dispositivi di acquisizione sono severamente vietati.",
+    "exit_view": "Esci dalla vista",
+    "confidential": "RISERVATO"
+  },
+  "anti_cheat": {
+    "load_failed": "Impossibile caricare il sistema di sicurezza.",
+    "camera_required": "L’accesso alla fotocamera è richiesto per visualizzare questo documento sicuro.",
+    "camera_denied": "Fotocamera negata o non disponibile.",
+    "forbidden_device": "Dispositivo non autorizzato rilevato ({{device}})",
+    "monitoring": "Monitoraggio",
+    "loading_ai": "Caricamento IA..."
+  },
+  "about": {
+    "core_matrix": "Matrice centrale",
+    "enterprise_value": "Valore aziendale",
+    "enterprise_value_desc": "Connettere talenti e aziende a soluzioni digitali avanzate.",
+    "scalable": "99,9% scalabile",
+    "high_performance_core": "Nucleo ad alte prestazioni",
+    "fortified_systems": "Sistemi rafforzati",
+    "secure_by_design": "Sicuro by design",
+    "label": "CHI È INTERLINK",
+    "heading_1": "Impara. Innova. Connetti.",
+    "heading_2": "Il nostro DNA tecnologico.",
+    "description": "InterLink è un’impresa tecnologica moderna specializzata in sistemi digitali intelligenti, formazione di giovani talenti e soluzioni professionali in software, cybersicurezza, IoT, IA e design creativo.",
+    "highlight_1_title": "Sistemi tecnologici connessi",
+    "highlight_1_desc": "Progettazione di piattaforme cloud robuste, strutture mobili e reti IoT intelligenti.",
+    "highlight_2_title": "Orchestrazioni basate su IA",
+    "highlight_2_desc": "Ottimizzazione delle attività manuali, valutazione dei progressi e generazione di report dettagliati.",
+    "highlight_3_title": "Mentorship professionale",
+    "highlight_3_desc": "Supporto ai futuri sviluppatori con progetti reali e supervisione esperta.",
+    "explore_services": "Esplora servizi",
+    "join_program": "Entra nel programma stage"
+  },
+  "services": {
+    "label": "I NOSTRI SERVIZI",
+    "heading_1": "Soluzioni ad alte prestazioni per",
+    "heading_2": "imprese moderne.",
+    "sub": "Uniamo competenza tecnologica e standard professionali per offrire soluzioni digitali affidabili e scalabili.",
+    "inquire": "Richiedi servizio",
+    "items": {
+      "software": {
+        "title": "Sviluppo software",
+        "category": "Ingegneria",
+        "description": "Progettiamo applicazioni web, mobile e backend cloud performanti per la crescita aziendale."
+      },
+      "ai": {
+        "title": "Soluzioni IA",
+        "category": "Intelligenza",
+        "description": "Massimizza l’efficienza con modelli neurali, NLP, integrazioni LLM e agenti di workflow automatici."
+      },
+      "security": {
+        "title": "Cybersicurezza",
+        "category": "Sicurezza",
+        "description": "Proteggi gli asset aziendali con audit rete, penetration test, analisi codice e crittografia avanzata."
+      },
+      "iot": {
+        "title": "Ingegneria IoT",
+        "category": "Hardware",
+        "description": "Sviluppa prototipi connessi, reti sensori e firmware per automazioni domestiche o industriali."
+      },
+      "design": {
+        "title": "Flyer e graphic design",
+        "category": "Creativo",
+        "description": "Crea identità visive, flyer vettoriali, poster e wireframe UI/UX professionali."
+      },
+      "training": {
+        "title": "Formazione stage",
+        "category": "Accademia",
+        "description": "Accelera carriere tech con progetti reali, mentorship, planning quotidiano e analytics IA."
+      }
+    }
   }
 }

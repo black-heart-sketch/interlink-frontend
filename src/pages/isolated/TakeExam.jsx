@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { examService } from '../services/examService';
 import AntiCheatMonitor from '../components/public/AntiCheatMonitor';
 import { ShieldAlert } from 'lucide-react';
 
 export default function TakeExam() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const navigate = useNavigate();
   const [exam, setExam] = useState(null);
@@ -23,7 +25,7 @@ export default function TakeExam() {
         setExam(data.exam);
         setAttempt(data.attempt);
         if (data.attempt.status === 'completed') {
-          setError('Cet examen a déjà été soumis.');
+          setError(t('take_exam.already_submitted'));
         } else {
           // Initialize answers from previous state if any
           setAnswers(data.attempt.answers || {});
@@ -46,7 +48,7 @@ export default function TakeExam() {
           }
         }
       } catch (err) {
-        setError(err.response?.data?.message || 'Erreur lors du chargement de l\'examen.');
+        setError(err.response?.data?.message || t('take_exam.load_failed'));
       } finally {
         setLoading(false);
       }
@@ -74,10 +76,10 @@ export default function TakeExam() {
     setSubmitting(true);
     try {
       const res = await examService.submitAttempt(id, currentAnswers || answers);
-      alert(`Examen soumis avec succès ! Score: ${res.score}%`);
+      alert(t('take_exam.submitted_score', { score: res.score }));
       navigate('/exams');
     } catch (err) {
-      alert('Erreur lors de la soumission.');
+      alert(t('take_exam.submit_failed'));
       setSubmitting(false);
     }
   };
@@ -93,7 +95,7 @@ export default function TakeExam() {
     submitExam(answers, true);
   };
 
-  if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">Initialisation de l'environnement sécurisé...</div>;
+  if (loading) return <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">{t('take_exam.initializing')}</div>;
   if (error) return <div className="min-h-screen flex items-center justify-center bg-slate-950 text-red-500 font-bold p-8 text-center">{error}</div>;
 
   const formatTime = (seconds) => {
@@ -119,7 +121,7 @@ export default function TakeExam() {
           >
             <span className="inline-flex items-center gap-2">
               {submitting && <i className="fa-solid fa-spinner fa-spin" aria-hidden="true" />}
-              {submitting ? 'Envoi...' : 'Soumettre'}
+              {submitting ? t('take_exam.submitting') : t('take_exam.submit')}
             </span>
           </button>
         </div>
@@ -130,15 +132,15 @@ export default function TakeExam() {
         {violation ? (
            <div className="bg-red-950/80 border border-red-500/30 p-8 rounded-2xl text-center">
              <ShieldAlert className="w-16 h-16 text-red-500 mx-auto mb-4" />
-             <h2 className="text-2xl font-bold text-white mb-2">Examen Interrompu</h2>
-             <p className="text-red-200">Violation détectée : {violation}</p>
-             <p className="text-slate-400 mt-4 text-sm">Vos réponses ont été automatiquement soumises et l'incident a été signalé.</p>
+             <h2 className="text-2xl font-bold text-white mb-2">{t('take_exam.interrupted')}</h2>
+             <p className="text-red-200">{t('take_exam.violation_detected')}: {violation}</p>
+             <p className="text-slate-400 mt-4 text-sm">{t('take_exam.auto_submitted')}</p>
            </div>
         ) : (
           <div className="space-y-8">
             {exam?.questions.map((q, qIdx) => (
               <div key={q._id} className="bg-slate-900 border border-white/5 p-6 rounded-xl">
-                <h3 className="text-lg font-bold text-white mb-4">Question {qIdx + 1}</h3>
+                <h3 className="text-lg font-bold text-white mb-4">{t('take_exam.question_number', { number: qIdx + 1 })}</h3>
                 <p className="text-slate-300 mb-6 leading-relaxed">{q.questionText}</p>
                 <div className="space-y-3">
                   {q.options.map((opt, oIdx) => {

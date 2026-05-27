@@ -1,46 +1,23 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const FAQSection = () => {
+  const { t } = useTranslation();
   const [activeIndex, setActiveIndex] = useState(null);
 
   const toggleAccordion = (index) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const faqData = [
-    {
-      q: 'What is InterLink?',
-      a: 'InterLink is a modern technology enterprise specialized in building intelligent digital systems (software, websites, and mobile apps), AI integrations, cybersecurity audits, IoT systems, and providing high-quality hands-on internship programs for tech students.'
-    },
-    {
-      q: 'Who can apply for an internship at InterLink?',
-      a: 'Active university students, coding school graduates, and self-taught developers specialized in Software Engineering, Cybersecurity, AI Development, Web/Mobile Apps, or Graphic Design are highly encouraged to apply.'
-    },
-    {
-      q: 'How does the AI-powered platform work?',
-      a: 'Our custom AI engines help student interns by suggesting relevant tasks, assisting in writing professional daily/weekly reports, and offering an inline AI chat assistant. For supervisors, the AI assists by reviewing reports and analyzing student progress.'
-    },
-    {
-      q: 'Are the internship programs remote or on-site?',
-      a: 'We offer hybrid, fully on-site, and fully remote internship opportunities, depending on your department and supervisor alignment.'
-    },
-    {
-      q: 'Do I get a certificate at the end of the internship?',
-      a: 'Yes! Upon successful completion of your internship and final supervisor review, InterLink issues a verified digital certificate complete with a secure verification QR code and a shareable digital portfolio.'
-    },
-    {
-      q: 'Can InterLink build custom applications for my business?',
-      a: 'Absolutely! Our professional team delivers high-performance software engineering, custom AI integrations, cybersecurity assessments, and branding/creative flyer and graphic design services for global clients.'
-    }
-  ];
+  const faqData = t('faq.items', { returnObjects: true });
 
   return (
     <section id="faq" className="page-section wide-container" style={{ maxWidth: 1280, margin: '0 auto', position: 'relative', zIndex: 10 }}>
       {/* Header */}
       <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
         <div className="section-label" style={{ display: 'inline-flex', marginBottom: '1rem' }}>❓ FAQ</div>
-        <h2 className="section-heading">Frequently Asked Questions</h2>
-        <p className="section-sub">Have questions? We have answers. Find everything you need to know about InterLink's services and internship program below.</p>
+        <h2 className="section-heading">{t('faq.heading')}</h2>
+        <p className="section-sub">{t('faq.sub')}</p>
       </div>
 
       {/* Strict 2-column grid */}
@@ -152,4 +129,3 @@ const FAQSection = () => {
 };
 
 export default FAQSection;
-

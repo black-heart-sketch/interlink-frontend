@@ -13,7 +13,17 @@
       "it": "Italian"
     },
     "language_center": "Global Technological Excellence",
-    "experience": "Discover the future of"
+    "experience": "Discover the future of",
+    "departments": {
+      "software_engineering": "Software Engineering",
+      "cybersecurity": "Cybersecurity",
+      "ai_development": "AI Development",
+      "iot_engineering": "IoT Engineering",
+      "graphic_design": "Graphic Design",
+      "web_mobile_development": "Web & Mobile Development"
+    },
+    "loading": "Loading...",
+    "loading_state": "Loading state..."
   },
   "nav": {
     "home": "Home",
@@ -74,7 +84,18 @@
       }
     },
     "student_satisfaction": "Client Satisfaction",
-    "students_countries": "Deployments in 15+ Countries"
+    "students_countries": "Deployments in 15+ Countries",
+    "tech_terms": [
+      "Innovation",
+      "Intelligence",
+      "Security",
+      "Automation",
+      "Software"
+    ],
+    "showcase_alt": "InterLink Technology Showcase",
+    "platform_success": "Platform Success",
+    "tech_focus_areas": "Tech Focus Areas",
+    "slide_label": "Slide {{number}}"
   },
   "stats": {
     "trusted_by": "Trusted by ambitious talent & leading enterprises",
@@ -110,10 +131,10 @@
     "f6_tag": "Smart Assistant"
   },
   "testimonials": {
-    "label": "Success Stories",
-    "heading_1": "Hear from teams and interns",
-    "heading_2": "who transformed their workflows.",
-    "sub": "Real impact from real teams across technology sectors.",
+    "label": "SUCCESS STORIES",
+    "heading_1": "Hear From Our Successful",
+    "heading_2": "Tech Interns.",
+    "sub": "Dozens of software engineers, cybersecurity analysts, and AI developers have accelerated their professional career pathways with InterLink.",
     "quote_1": "InterLink changed our scaling model. Within 6 months we integrated three high-performing developers from the internship program who hit the ground running with production code.",
     "quote_2": "The AI Report Assistant is unmatched. My supervisor received clear, beautifully structured weekly updates automatically, saving hours of status alignment every single week.",
     "quote_3": "I built my full-stack portfolio on InterLink and landed a software engineer role at a European tech company. The structured mentorship and AI analytics gave me the exact skills I needed.",
@@ -132,37 +153,56 @@
     "check3": "AI-powered dashboard"
   },
   "contact": {
-    "label": "Get in Touch",
+    "label": "CONTACT US",
     "heading": "The future of technology starts today.",
     "name": "Full Name",
-    "email": "Email Address",
+    "email": "Email",
     "subject": "Subject",
     "message": "Message",
     "send": "Send Message",
     "sending": "Sending...",
-    "sent_title": "Message sent!",
-    "sent_desc": "Our team will respond within 24 hours.",
-    "send_another": "Send another message",
-    "info_title": "Contact information",
+    "sent_title": "Message Sent Successfully!",
+    "sent_desc": "Thank you for reaching out. An InterLink representative will contact you shortly.",
+    "send_another": "Send Another Message",
+    "info_title": "Contact Information",
     "address_label": "Address",
     "email_label": "Email",
     "phone_label": "Phone",
     "hours_label": "Hours",
-    "select_topic": "Select a topic...",
+    "select_topic": "Select a topic",
     "topics": {
       "admissions": "Enterprise Services Request",
       "mentorship": "Internship Application Support",
       "events": "Technology Partnerships",
-      "partnership": "Corporate Training & Sourcing",
+      "partnership": "Corporate Partnerships",
       "press": "Press and media",
-      "other": "Other inquiry"
-    }
+      "other": "Other Inquiries",
+      "software": "Software Development",
+      "ai": "AI Solutions & Integrations",
+      "security": "Cybersecurity Audit & Services",
+      "internship": "Internship Program Inquiry"
+    },
+    "heading_1": "Connecting Innovation to",
+    "heading_2": "the Future.",
+    "sub": "Have a project in mind or want to join our technical cohort? Get in touch with our team today.",
+    "address": "Address",
+    "address_value": "Douala, Cameroon - Rue des Acadias, Bali",
+    "phone": "Phone",
+    "hours": "Hours",
+    "hours_value": "Mon-Sat, 8 AM - 6 PM WAT",
+    "form_title": "Send a Message",
+    "full_name": "Full Name",
+    "email_address": "Email Address",
+    "topic_interest": "Topic / Interest",
+    "your_message": "Your Message",
+    "message_placeholder": "Describe your request...",
+    "send_message": "Send Message"
   },
   "events": {
-    "label": "Active Departments",
-    "heading_1": "Specialized engineering",
-    "heading_2": "and creative pillars.",
-    "sub": "Explore our highly specialized units designed to handle full-lifecycle digital transformations and cultivate tier-1 tech talents.",
+    "label": "INTERNSHIP PROGRAM",
+    "heading_1": "Explore Our Active Internship",
+    "heading_2": "Departments.",
+    "sub": "Accelerate your career in technology. Work on real production systems under expert supervisor mentorship and track your growth with our AI-powered analytics dashboard.",
     "view_all": "Explore Departments",
     "register": "Apply to Department",
     "past_highlights": "Key departmental milestones",
@@ -186,13 +226,21 @@
     "ev3_date": "State-of-the-art models",
     "ev3_loc": "AI Lab & Integrations",
     "ev3_seats": "Highly analytical tracks",
-    "ev3_badge": "Innovative Core"
+    "ev3_badge": "Innovative Core",
+    "departments": {
+      "software_desc": "Build robust desktop, web, and enterprise applications using modern architectures, robust data pipelines, and design patterns.",
+      "cybersecurity_desc": "Audit system vulnerabilities, secure network protocols, test database injections, and implement state-of-the-art encryption defenses.",
+      "iot_desc": "Engineer connected hardware systems, design microcontrollers, and develop sensor networks for modern industry automation.",
+      "ai_desc": "Implement deep learning neural networks, process languages with NLP, and program predictive analytics or intelligent automated agents.",
+      "design_desc": "Craft professional corporate branding, UI system mockups, visual banners, and beautiful vector-based marketing flyers.",
+      "web_mobile_desc": "Design beautiful, highly responsive user experiences and engineer modern cross-platform web and mobile applications."
+    }
   },
   "gallery": {
-    "label": "Impact Showcase",
-    "heading_1": "Moments that define",
-    "heading_2": "our technological impact.",
-    "sub": "A dynamic exploration of our projects, infrastructure, and team achievements.",
+    "label": "PROJECT SHOWCASE",
+    "heading_1": "Intelligent Digital Systems We Have",
+    "heading_2": "Engineered.",
+    "sub": "Explore a curated selection of production-grade software applications, intelligent AI models, robust security toolkits, and physical IoT device systems designed by our team.",
     "featured": "Featured",
     "moment": "Milestone",
     "view_all": "View All Projects",
@@ -201,12 +249,44 @@
     "img3_label": "Interactive AI Lab",
     "img4_label": "Client Demo Session",
     "img5_label": "Cloud Infrastructure Lab",
-    "img6_label": "Graduation Ceremony"
+    "img6_label": "Graduation Ceremony",
+    "projects": {
+      "crm": {
+        "title": "Enterprise CRM Portal",
+        "category": "Dashboard",
+        "desc": "A modern, real-time enterprise management portal complete with AI analytics, role-based dashboards, and active chat sockets."
+      },
+      "health": {
+        "title": "Smart Health Mobile App",
+        "category": "Mobile App",
+        "desc": "A responsive cross-platform health tracker connecting users to native IoT sensors and secure live-video consultation rooms."
+      },
+      "security": {
+        "title": "Aegis Cybersecurity Suite",
+        "category": "Security Tool",
+        "desc": "A robust suite of custom network packet analyzers, vulnerability scanner scripts, and automated penetration audit tools."
+      },
+      "iot": {
+        "title": "Greenhouse IoT System",
+        "category": "IoT Prototype",
+        "desc": "An automated agricultural microclimate controller utilizing ESP32 boards, Wi-Fi relays, and active MQTT sensor feeds."
+      },
+      "ai": {
+        "title": "Lexis AI Chat Assistant",
+        "category": "AI Solution",
+        "desc": "An enterprise context-aware customer support agent leveraging Gemini Vector Embeddings and document semantic ingestion."
+      },
+      "branding": {
+        "title": "InterLink Cyber Branding",
+        "category": "Creative Design",
+        "desc": "A state-of-the-art visual identity package, creative flyer mockups, vector graphics, and high-fidelity Figma UI design systems."
+      }
+    }
   },
   "faq": {
     "label": "FAQ",
-    "heading": "Common Questions",
-    "sub": "Everything you need to know about InterLink's services and internship program.",
+    "heading": "Frequently Asked Questions",
+    "sub": "Have questions? We have answers. Find everything you need to know about InterLink's services and internship program below.",
     "q1": "What is InterLink?",
     "a1": "InterLink is a modern technology enterprise specialized in building intelligent digital systems (software, websites, and mobile apps), AI integrations, cybersecurity audits, IoT systems, and providing high-quality hands-on internship programs for tech students.",
     "q2": "Who can apply for an internship at InterLink?",
@@ -224,7 +304,33 @@
     "q8": "When can I apply to start my internship?",
     "a8": "New cohorts start every month for all active departments. Apply online and pass our automated skills assessment.",
     "q9": "What is an internship dashboard?",
-    "a9": "Our secure web dashboard serves as your primary workspace, enabling you to check in daily, draft reports, interact with your supervisor, use the AI Copilot, and review performance analytics."
+    "a9": "Our secure web dashboard serves as your primary workspace, enabling you to check in daily, draft reports, interact with your supervisor, use the AI Copilot, and review performance analytics.",
+    "items": [
+      {
+        "q": "What is InterLink?",
+        "a": "InterLink is a modern technology enterprise specialized in building intelligent digital systems, AI integrations, cybersecurity audits, IoT systems, and hands-on internship programs for tech students."
+      },
+      {
+        "q": "Who can apply for an internship at InterLink?",
+        "a": "Active university students, coding school graduates, and self-taught developers specialized in software, cybersecurity, AI, web/mobile apps, or graphic design are encouraged to apply."
+      },
+      {
+        "q": "How does the AI-powered platform work?",
+        "a": "Our AI engines suggest tasks, help interns write reports, offer course chat support, and help supervisors review progress."
+      },
+      {
+        "q": "Are the internship programs remote or on-site?",
+        "a": "We offer hybrid, fully on-site, and fully remote opportunities depending on department and supervisor alignment."
+      },
+      {
+        "q": "Do I get a certificate at the end?",
+        "a": "Yes. After completion and supervisor review, InterLink issues a verified digital certificate with a secure verification flow."
+      },
+      {
+        "q": "Can InterLink build custom applications for my business?",
+        "a": "Absolutely. Our team delivers software engineering, AI integration, cybersecurity, branding, and creative design services for global clients."
+      }
+    ]
   },
   "past_events": {
     "section_title": "Highlights from past milestones",
@@ -520,8 +626,17 @@
       "privacy": "Privacy Policy",
       "terms": "Terms of Service",
       "cookie": "Cookie Policy",
-      "refund": "Platform SLA"
-    }
+      "refund": "Platform SLA",
+      "task_management": "Task Management",
+      "daily_reports": "Daily Reports",
+      "attendance": "Attendance",
+      "lounge": "Lounge (Chat)"
+    },
+    "rights_reserved": "All rights reserved.",
+    "privacy_policy": "Privacy Policy",
+    "terms_service": "Terms of Service",
+    "cookie_policy": "Cookie Policy",
+    "in_cameroon": "in Cameroon 🇨🇲"
   },
   "courses": {
     "label": "Our Services & Tracks",
@@ -602,7 +717,10 @@
       "Full Stack",
       "Fast-Track",
       "Portfolio"
-    ]
+    ],
+    "loading": "Loading courses...",
+    "empty_title": "No courses available yet",
+    "empty_desc": "Check back later for new learning content."
   },
   "auth": {
     "brand_subtitle": "Enterprise tech platform",
@@ -659,7 +777,10 @@
       "terms": "Please accept the platform terms before continuing.",
       "register_failed": "Unable to create account. Please try again.",
       "study_language_required": "Please select your department track.",
-      "payment_receipt_required": "Please attach your skills resume."
+      "payment_receipt_required": "Please attach your skills resume.",
+      "password_mismatch": "Passwords do not match.",
+      "step1_required": "All Step 1 fields are required.",
+      "class_required": "Please select your class."
     },
     "cinematic_label": "Your journey at InterLink",
     "cinematic_title": "From hands-on projects to enterprise roles.",
@@ -673,7 +794,24 @@
     ],
     "brand_subtitle_suffix": "workstation",
     "login_hero_2_suffix": "workstation.",
-    "register_hero_2_suffix": "mastery."
+    "register_hero_2_suffix": "mastery.",
+    "step_counter": "Step {{step}} of 2",
+    "step1_subtitle": "Create your secure account credentials to get started.",
+    "step2_subtitle": "Tell us about your tech training focus and select your dynamic class.",
+    "account_info": "Account Info",
+    "track_details": "Track Details",
+    "confirm_password": "Confirm Password",
+    "confirm_password_placeholder": "Confirm your password",
+    "next_step": "Next Step",
+    "dynamic_class": "Dynamic Class / Cohort",
+    "select_class_placeholder": "Select your class (Language Section & Level)",
+    "class_section_level": "{{section}} Section - Level {{level}}",
+    "select_department_track": "Select Department Track",
+    "application_track": "Application Track",
+    "remote_track": "Remote Track",
+    "remote_track_helper": "Submit your application and proceed with remote evaluation.",
+    "in_person_track": "In-Person Track",
+    "in_person_track_helper": "Upload your skills resume for priority physical placement and validation."
   },
   "dashboard": {
     "sidebar": {
@@ -695,7 +833,14 @@
       "conferences": "Conferences",
       "upcoming": "Upcoming Events",
       "flyer": "Flyer Campaign",
-      "members": "Members"
+      "members": "Members",
+      "go_home": "Go to home page",
+      "toggle_sidebar": "Toggle sidebar",
+      "close_sidebar": "Close sidebar",
+      "navigation": "Dashboard navigation",
+      "management_console": "Management Console",
+      "main_menu": "Main Menu",
+      "system_online": "System Online"
     },
     "topbar": {
       "current_session": "Current Session",
@@ -872,6 +1017,50 @@
         "status": "Status",
         "title": "Upcoming Events",
         "add_event": "add event"
+      },
+      "profile": {
+        "title": "Account Settings",
+        "subtitle": "Configure your personal credentials and customize language environments.",
+        "first_name": "First Name",
+        "last_name": "Last Name",
+        "email": "Email Address",
+        "phone": "Phone Number",
+        "dashboard_lang": "Dashboard Language",
+        "new_password": "New Password",
+        "confirm_password": "Confirm Password",
+        "save": "Save Profile Changes",
+        "saving": "Saving..."
+      },
+      "system_settings": {
+        "title": "System Configurations",
+        "subtitle": "Manage registration fees, payment requirements, and online gateway credentials.",
+        "fee_amount": "Registration Fee Amount (XAF)",
+        "require_payment": "Require Onboarding Payment",
+        "fee_desc": "Trainees must pay this amount online during onboarding to unlock platform access.",
+        "gate_desc": "Automatically gates student cockpit dashboards until fee payment is verified.",
+        "apikey": "DigiPay API Secret Key",
+        "env_mode": "DigiPay Environment Mode",
+        "sandbox": "Sandbox Mode",
+        "production": "Live Production",
+        "sandbox_desc": "Test payments simulator.",
+        "production_desc": "Real Mobile Money payouts.",
+        "save": "Save Settings",
+        "saving": "Saving Changes..."
+      },
+      "financial_balance": {
+        "title": "Financial Balance & Audit",
+        "subtitle": "Audit real-time DigiPay treasury balances and track paid registration fees from active students.",
+        "gateway_bal": "DigiPay Gateway Balance",
+        "total_revenue": "Total Admissions Revenue",
+        "ledger_title": "Onboarding Paid Ledger",
+        "ledger_desc": "Real-time chronological view of registered students who have successfully finalized payments.",
+        "student": "Student",
+        "track": "Track",
+        "ref_tx": "Ref Transaction ID",
+        "paid_fee": "Paid Fee",
+        "approval": "Approval",
+        "refresh": "Refresh",
+        "empty": "No paid students found on record."
       }
     },
     "home": {
@@ -892,6 +1081,59 @@
       "teachers": "Tutors",
       "receptionists": "Coordinators",
       "super_admins": "Super Admins"
+    },
+    "role_switcher": {
+      "title": "Dashboard Role",
+      "helper": "Switch dashboard mode without signing out."
+    },
+    "breadcrumb": {
+      "home": "Home"
+    },
+    "live_classes": {
+      "title": "Online Course Schedule",
+      "subtitle": "Join scheduled online courses, conferences, and webinars at their programmed time.",
+      "refresh": "Refresh",
+      "loading": "Loading schedule...",
+      "empty": "No scheduled sessions yet.",
+      "load_failed": "Unable to load live schedule.",
+      "title_required": "Title is required.",
+      "study_language_required": "Select a study language.",
+      "participants_required": "Select call participants.",
+      "time_required": "Start and end time are required.",
+      "updated": "Schedule updated.",
+      "scheduled": "Session scheduled.",
+      "save_failed": "Unable to save schedule.",
+      "confirm_delete": "Delete \"{{title}}\"?",
+      "deleted": "Session deleted.",
+      "delete_failed": "Unable to delete session.",
+      "join": "Join",
+      "not_time_yet": "Not time yet",
+      "edit_session": "Edit session",
+      "program_session": "Program a session",
+      "admin_only": "Only admins can create calendar slots.",
+      "form_title": "Title",
+      "description": "Description",
+      "type": "Type",
+      "audience": "Audience",
+      "audience_study_language": "Study language",
+      "audience_all_users": "All users",
+      "audience_internship_pair": "Internship pair",
+      "language": "Language",
+      "select_language": "Select language...",
+      "teacher": "Teacher",
+      "assign_later": "Assign later / admin hosts",
+      "participants": "Participants",
+      "multi_select_hint": "Hold Command/Ctrl to choose the supervisor and student for the call.",
+      "start": "Start",
+      "end": "End",
+      "save_changes": "Save changes",
+      "schedule": "Schedule",
+      "types": {
+        "course": "Online course",
+        "conference": "Conference",
+        "webinar": "Webinar",
+        "mentorship": "Mentorship call"
+      }
     }
   },
   "learning": {
@@ -939,6 +1181,339 @@
     "course_curriculum": "Track Milestones",
     "complete": "Complete",
     "of": "of",
-    "courses_count": "tracks"
+    "courses_count": "tracks",
+    "video_marked_complete": "Video marked as complete.",
+    "video_complete_failed": "Unable to mark the video as complete.",
+    "enroll_before_payment": "Enroll in this track before requesting payment access.",
+    "chapter_payment_requested": "Chapter access request sent.",
+    "chapter_payment_failed": "Unable to request chapter access.",
+    "no_next_content": "No next content is available.",
+    "next_content_locked": "The next content is locked.",
+    "course_content": "Course content",
+    "overall_progress": "Overall progress",
+    "exam_locked_until_complete": "The final exam unlocks after all required content is complete.",
+    "content_locked": "Content locked",
+    "video_requires_enrollment": "This video requires enrollment.",
+    "chapter_payment_pending": "Chapter payment pending",
+    "pay_this_chapter": "Pay for this chapter",
+    "awaiting_confirmation": "Awaiting confirmation",
+    "request_chapter_access": "Request chapter access",
+    "view_course_details": "View course details",
+    "hide_transcript": "Hide transcript",
+    "show_transcript": "Show transcript",
+    "no_transcript_available": "No transcript available.",
+    "completes_automatically": "Completes automatically",
+    "next_content": "Next content",
+    "objectives": "Objectives",
+    "resources": "Resources",
+    "no_resources_available": "No resources available.",
+    "course_details": "Course details",
+    "instructor": "Instructor",
+    "duration": "Duration",
+    "sections": "Sections",
+    "price": "Price",
+    "key_moments_helper": "Use key moments to jump to important explanations and tools.",
+    "no_key_moments": "No key moments are available yet.",
+    "course": "Course",
+    "general": "General",
+    "all_levels": "All Levels",
+    "untitled_course": "Untitled course",
+    "default_course_description": "A structured learning path with guided lessons and practical resources.",
+    "progress": "Progress"
+  },
+  "theme": {
+    "switch_light": "Switch to light mode",
+    "switch_dark": "Switch to dark mode"
+  },
+  "profile": {
+    "success": "Profile updated successfully.",
+    "error": "Unable to update profile."
+  },
+  "gate_lock": {
+    "registration_payment_verified": "Registration payment completed and verified successfully!",
+    "select_valid_department": "Please select a valid department track.",
+    "application_submitted": "Internship application submitted successfully!",
+    "application_failed": "Failed to submit internship application.",
+    "phone_required": "Please enter a phone number for Mobile Money payment.",
+    "transaction_missing": "Transaction ID was not returned.",
+    "payment_initiated": "Payment initiated! Please check your phone for the Mobile Money prompt to approve.",
+    "payment_failed": "Failed to initiate registration payment.",
+    "onboarding_required": "Onboarding Required",
+    "access_restricted": "Access Restricted",
+    "unlock_helper": "Please complete the onboarding steps below to unlock your active candidate cockpit.",
+    "step_1": "Step 1",
+    "step_2": "Step 2",
+    "internship_request": "Internship Request",
+    "submitted": "Submitted",
+    "pending": "Pending",
+    "registration_fee": "Registration Fee",
+    "paid": "Paid",
+    "processing": "Processing",
+    "submit_request_title": "1. Submit Internship Request",
+    "submit_request_helper": "Choose your dynamic technology department track and remote mode preferences.",
+    "online_evaluation": "Online evaluation.",
+    "physical_placement": "Physical placement.",
+    "submitting": "Submitting...",
+    "send_request": "Send Internship Request",
+    "pay_fee_title": "2. Pay Registration Fee",
+    "pay_fee_helper": "Securely pay the 5,000 XAF registration fee online via Mobile Money to activate your candidate cockpit.",
+    "payment_required": "Registration Payment Required",
+    "payment_processed_automatically": "Online payments are processed automatically.",
+    "mobile_money_phone": "Mobile Money Phone Number",
+    "initiating_payment": "Initiating Payment...",
+    "pay_now": "Pay Registration Fee Now",
+    "waiting_payment": "Waiting for payment confirmation...",
+    "payment_prompt_sent": "A Mobile Money confirmation prompt was sent to your phone",
+    "payment_prompt_pin": "Please enter your PIN to approve the transaction. We are monitoring status.",
+    "cancel_try_again": "Cancel and Try Again",
+    "admin_review_title": "3. Admin Review and Allocation",
+    "payment_verified_helper": "Your application is fully registered and online payment has been verified!",
+    "registration_complete": "Registration Complete",
+    "payment_received": "We received your payment of 5,000 XAF for your registration.",
+    "pending_review": "Pending Operational Review",
+    "request_processing_prefix": "Your internship request for",
+    "request_processing_suffix": "is being processed by our administrative staff. They will allocate your dynamic training class and assign your direct supervisor shortly.",
+    "check_status": "Check Status"
+  },
+  "payment_status": {
+    "registration_missing": "Registration details are missing. Please restart registration.",
+    "registration_success": "Registration successful. Your account is active.",
+    "course_payment_success": "Payment confirmed. Course access unlocked.",
+    "session_not_found": "Payment session not found",
+    "restart_flow": "Please restart the payment flow.",
+    "back_to_registration": "Back to registration"
+  },
+  "live_class": {
+    "live_class": "Live Class",
+    "camera_off": "Camera is off",
+    "mute": "Mute",
+    "unmuted": "Unmuted",
+    "stop_video": "Stop Video",
+    "start_video": "Start Video",
+    "instructor": "Instructor",
+    "before_join": "Before you join",
+    "check_camera_mic": "Ensure your camera and mic work",
+    "check_quiet": "Find a quiet environment",
+    "check_mute": "Keep mic muted when not speaking",
+    "preparing": "Preparing...",
+    "join_class": "Join Class",
+    "community_guidelines": "By joining, you agree to our community guidelines",
+    "student": "Student",
+    "access_denied": "Access denied or meeting not found.",
+    "cannot_join": "Cannot join class",
+    "return_dashboard": "Return to Dashboard",
+    "mute_microphone": "Mute microphone",
+    "unmute_microphone": "Unmute microphone",
+    "turn_off_camera": "Turn off camera",
+    "turn_on_camera": "Turn on camera"
+  },
+  "study_lounge": {
+    "moderator_access": "Moderator access enabled",
+    "check_respectful": "Be respectful to all participants",
+    "check_mute": "Mute mic when not speaking",
+    "check_screen_share": "Use screen share for video sync",
+    "preparing_room": "Preparing room...",
+    "join_now": "Join Now",
+    "access_denied": "Access denied to this lounge.",
+    "global_lounge": "Global Lounge",
+    "all_students": "All students",
+    "english_lounge": "English Lounge",
+    "english_section": "English section",
+    "french_lounge": "French Lounge",
+    "french_section": "French section",
+    "german_lounge": "German Lounge",
+    "german_section": "German section",
+    "italian_lounge": "Italian Lounge",
+    "italian_section": "Italian section",
+    "open_to_all": "Open to all InterLink students",
+    "language_specific_room": "Language-specific study room",
+    "study_lounges": "Study Lounges",
+    "moderator": "Moderator",
+    "leave_room": "Leave room",
+    "loading_room": "Loading room..."
+  },
+  "exams": {
+    "fetch_failed": "Failed to fetch exams.",
+    "status_upcoming": "Upcoming",
+    "status_active": "In progress",
+    "status_ended": "Ended",
+    "not_started": "This exam has not started yet.",
+    "ended": "This exam has ended.",
+    "title": "Exam Module",
+    "subtitle": "Find all your scheduled exams here.",
+    "none": "No exams available yet.",
+    "general_course": "General Course",
+    "start": "Start",
+    "duration": "Duration",
+    "minutes": "{{count}} minutes",
+    "closed": "Exam closed",
+    "start_exam": "Start exam"
+  },
+  "take_exam": {
+    "already_submitted": "This exam has already been submitted.",
+    "load_failed": "Error loading the exam.",
+    "submitted_score": "Exam submitted successfully! Score: {{score}}%",
+    "submit_failed": "Error during submission.",
+    "initializing": "Initializing secure environment...",
+    "submitting": "Submitting...",
+    "submit": "Submit",
+    "interrupted": "Exam Interrupted",
+    "violation_detected": "Violation detected",
+    "auto_submitted": "Your answers were automatically submitted and the incident was reported.",
+    "question_number": "Question {{number}}"
+  },
+  "payment_instructions": {
+    "payment_confirmed": "Payment confirmed",
+    "payment_failed": "Payment failed",
+    "waiting_confirmation": "Waiting for confirmation",
+    "payment_confirmed_sentence": "Payment confirmed.",
+    "not_completed": "Payment was not completed. Please initiate a new payment or contact support.",
+    "still_pending": "Payment is still pending. Confirm the Mobile Money prompt on your phone, then check again.",
+    "check_failed": "Unable to check payment status.",
+    "mobile_money": "Mobile Money",
+    "title": "Complete your payment",
+    "amount": "Amount",
+    "phone": "Phone",
+    "reference": "Reference",
+    "next_title": "What to do next",
+    "step_keep_open": "1. Keep this page open.",
+    "step_check_phone": "2. Check your phone for the Mobile Money authorization prompt.",
+    "step_confirm_pin": "3. Confirm the payment with your PIN.",
+    "step_check_status": "4. Return here and click “Check Status”.",
+    "checking": "Checking..."
+  },
+  "library": {
+    "loading": "Loading library...",
+    "restricted_title": "Restricted access",
+    "login_required": "You must be signed in to access the library.",
+    "pending_title": "Account pending validation",
+    "pending_desc": "Your registration has been received. An administrator will review your payment receipt and validate your account.",
+    "pending_access": "You will receive library access as soon as your account is activated.",
+    "title": "Academic Library",
+    "active_learning_space": "Active Learning Space",
+    "live_study_lounge": "Live Study Lounge",
+    "roadmap_title": "Learning Roadmap",
+    "roadmap_prefix": "You have completed",
+    "roadmap_middle": "study resources out of",
+    "roadmap_suffix": "assigned to your program. Complete assessment quizzes to validate your progress.",
+    "search_placeholder": "Search for a resource...",
+    "all": "All",
+    "no_resources_title": "No resources found",
+    "no_resources_desc": "The library is empty or no result matches your search.",
+    "preview_title": "Click to preview",
+    "mark_incomplete": "Mark as incomplete",
+    "mark_complete": "Mark as complete",
+    "preview": "Preview",
+    "download": "Download",
+    "take_quiz": "Take Quiz",
+    "quiz_title": "Academic Assessment Quiz",
+    "quiz_loading": "Loading quiz...",
+    "quiz_unavailable": "No quiz is available for this course yet.",
+    "answer_all_questions": "Please answer all questions before submitting.",
+    "quiz_submit_failed": "Error submitting the quiz.",
+    "submit_answers": "Submit Answers",
+    "quiz_passed": "Quiz Passed!",
+    "quiz_failed": "Quiz Failed",
+    "score": "Score",
+    "correct_answers": "You answered {{correct}} out of {{total}} questions correctly.",
+    "course_validated": "This course is automatically validated and marked complete!",
+    "minimum_score": "You must score at least 70% to validate this learning module.",
+    "detailed_correction": "Detailed correction",
+    "your_answer": "Your answer",
+    "correct_answer": "Correct answer",
+    "explanation": "Explanation",
+    "types": {
+      "document": "Document",
+      "course": "Course",
+      "video": "Video",
+      "audio": "Audio"
+    }
+  },
+  "file_preview": {
+    "load_failed": "Unable to load this document. Check your connection or permissions.",
+    "secure_loading": "Securely loading document...",
+    "preview": "File preview",
+    "pdf_preview": "PDF preview",
+    "audio_file": "Audio file",
+    "audio_playback": "Interactive audio playback",
+    "document": "Document",
+    "file_type": "{{extension}} file",
+    "file_preview": "File preview",
+    "secure_document": "SECURE DOCUMENT",
+    "interactive_preview": "Interactive preview",
+    "download_file": "Download file",
+    "access_blocked": "Access blocked",
+    "suspicious_behavior": "Suspicious behavior detected",
+    "confidential_warning": "This document is confidential. Phones or other capture devices are strictly prohibited.",
+    "exit_view": "Exit view",
+    "confidential": "CONFIDENTIAL"
+  },
+  "anti_cheat": {
+    "load_failed": "Unable to load the security system.",
+    "camera_required": "Camera access is required to view this secure document.",
+    "camera_denied": "Camera denied or unavailable.",
+    "forbidden_device": "Unauthorized device detected ({{device}})",
+    "monitoring": "Monitoring",
+    "loading_ai": "Loading AI..."
+  },
+  "about": {
+    "core_matrix": "Core Matrix",
+    "enterprise_value": "Enterprise Value",
+    "enterprise_value_desc": "Connecting talent and businesses to advanced digital solutions.",
+    "scalable": "99.9% Scalable",
+    "high_performance_core": "High-performance core",
+    "fortified_systems": "Fortified Systems",
+    "secure_by_design": "Secure by design",
+    "label": "ABOUT INTERLINK",
+    "heading_1": "Learn. Innovate. Connect.",
+    "heading_2": "Our Technological DNA.",
+    "description": "InterLink is a modern technology enterprise specialized in building intelligent digital systems, training young talents, and delivering professional software, cybersecurity, IoT, AI, and creative design solutions.",
+    "highlight_1_title": "Connected Technology Systems",
+    "highlight_1_desc": "Engineering robust cloud platforms, mobile structures, and smart IoT device networks.",
+    "highlight_2_title": "AI-Powered Orchestrations",
+    "highlight_2_desc": "Optimizing manual tasks, evaluating student progress, and generating detailed reports.",
+    "highlight_3_title": "Professional Mentorship Focus",
+    "highlight_3_desc": "Empowering future developers through immersive real-world projects and expert supervisor logic.",
+    "explore_services": "Explore Services",
+    "join_program": "Join Internship Program"
+  },
+  "services": {
+    "label": "OUR SERVICES",
+    "heading_1": "High-Performance Solutions for",
+    "heading_2": "Modern Enterprises.",
+    "sub": "We combine cutting-edge technology expertise with professional standards to deliver premium, reliable digital solutions that scale with your business goals.",
+    "inquire": "Inquire Service",
+    "items": {
+      "software": {
+        "title": "Software Development",
+        "category": "Engineering",
+        "description": "Design and build custom, high-performance web applications, fluid mobile applications, and scalable backend cloud-based databases tailored for your enterprise scaling."
+      },
+      "ai": {
+        "title": "AI Solutions",
+        "category": "Intelligence",
+        "description": "Maximize business efficiency with custom neural network models, natural language processing tools, custom LLM integrations, and intelligent automated workflow agents."
+      },
+      "security": {
+        "title": "Cybersecurity",
+        "category": "Security",
+        "description": "Protect your enterprise assets with comprehensive network auditing, professional penetration testing, source code analysis, and high-standard encryption integrations."
+      },
+      "iot": {
+        "title": "IoT Engineering",
+        "category": "Hardware",
+        "description": "Develop intelligent connected hardware prototypes, smart sensor monitoring networks, and firmware applications engineered for custom home/industrial automations."
+      },
+      "design": {
+        "title": "Flyer & Graphic Design",
+        "category": "Creative",
+        "description": "Create distinct visual identities with state-of-the-art corporate branding designs, interactive vector flyer designs, visual posters, and polished UI/UX website wireframes."
+      },
+      "training": {
+        "title": "Internship Training",
+        "category": "Academy",
+        "description": "Accelerate tech careers for high-potential students through hands-on enterprise-grade projects, direct expert mentorship, daily schedules, and AI analytics."
+      }
+    }
   }
 }
