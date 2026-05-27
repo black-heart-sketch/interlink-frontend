@@ -9,6 +9,7 @@ const TYPES = [
   { value: 'course', label: 'Online course' },
   { value: 'conference', label: 'Conference' },
   { value: 'webinar', label: 'Webinar' },
+  { value: 'mentorship', label: 'Mentorship call' },
 ];
 
 const EMPTY_FORM = {
@@ -18,6 +19,7 @@ const EMPTY_FORM = {
   audience: 'study_language',
   studyLanguage: '',
   teacher: '',
+  participants: [],
   scheduledStartTime: '',
   scheduledEndTime: '',
 };
@@ -78,7 +80,7 @@ export default function ManageLiveClasses() {
       const [items, langs, teacherRows] = await Promise.all([
         liveClassService.getLiveClasses(),
         studyLanguageService.getLanguages(true),
-        isAdmin ? userService.getUsers({ role: 'teacher' }).catch(() => []) : Promise.resolve([]),
+        isAdmin ? userService.getUsers({ role: 'teacher,supervisor,student' }).catch(() => []) : Promise.resolve([]),
       ]);
       setClasses(Array.isArray(items) ? items : []);
       setLanguages(langs);
@@ -101,6 +103,7 @@ export default function ManageLiveClasses() {
     event.preventDefault();
     if (!form.title.trim()) return toast.error('Title is required.');
     if (form.audience === 'study_language' && !form.studyLanguage) return toast.error('Select a study language.');
+    if (form.audience === 'internship_pair' && form.participants.length === 0) return toast.error('Select call participants.');
     if (!form.scheduledStartTime || !form.scheduledEndTime) return toast.error('Start and end time are required.');
 
     setSaving(true);
@@ -109,6 +112,7 @@ export default function ManageLiveClasses() {
         ...form,
         studyLanguage: form.audience === 'study_language' ? form.studyLanguage : undefined,
         teacher: form.teacher || undefined,
+        participants: form.audience === 'internship_pair' ? form.participants : [],
         scheduledStartTime: new Date(form.scheduledStartTime).toISOString(),
         scheduledEndTime: new Date(form.scheduledEndTime).toISOString(),
       };
@@ -133,6 +137,7 @@ export default function ManageLiveClasses() {
       audience: item.audience || 'study_language',
       studyLanguage: item.studyLanguage?._id || item.studyLanguage || '',
       teacher: item.teacher?._id || item.teacher || '',
+      participants: (item.participants || []).map((participant) => participant._id || participant),
       scheduledStartTime: toDateTimeLocal(item.scheduledStartTime),
       scheduledEndTime: toDateTimeLocal(item.scheduledEndTime),
     });
@@ -235,6 +240,7 @@ export default function ManageLiveClasses() {
                 <select value={form.audience} onChange={(e) => setForm({ ...form, audience: e.target.value })} className={selectCls}>
                   <option value="study_language">Study language</option>
                   <option value="all_users">All users</option>
+                  <option value="internship_pair">Internship pair</option>
                 </select>
               </label>
             </div>
@@ -252,8 +258,23 @@ export default function ManageLiveClasses() {
                 <span className="mb-2 block text-sm font-bold text-slate-400">Teacher</span>
                 <select value={form.teacher} onChange={(e) => setForm({ ...form, teacher: e.target.value })} className={selectCls}>
                   <option value="">Assign later / admin hosts</option>
-                  {teachers.map(teacher => <option key={teacher._id} value={teacher._id}>{`${teacher.firstName || ''} ${teacher.lastName || ''}`.trim() || teacher.email}</option>)}
+                  {teachers.filter((teacher) => ['teacher', 'supervisor'].includes(teacher.role)).map(teacher => <option key={teacher._id} value={teacher._id}>{`${teacher.firstName || ''} ${teacher.lastName || ''}`.trim() || teacher.email}</option>)}
                 </select>
+              </label>
+            )}
+            {form.audience === 'internship_pair' && (
+              <label className="block">
+                <span className="mb-2 block text-sm font-bold text-slate-400">Participants</span>
+                <select
+                  multiple
+                  required
+                  value={form.participants}
+                  onChange={(e) => setForm({ ...form, participants: Array.from(e.target.selectedOptions).map((option) => option.value) })}
+                  className={`${selectCls} h-32 py-3`}
+                >
+                  {teachers.map(user => <option key={user._id} value={user._id}>{`${user.firstName || ''} ${user.lastName || ''}`.trim() || user.email} · {user.role}</option>)}
+                </select>
+                <p className="mt-2 text-xs font-semibold text-slate-500">Hold Command/Ctrl to choose the supervisor and student for the call.</p>
               </label>
             )}
             <div className="grid gap-4">

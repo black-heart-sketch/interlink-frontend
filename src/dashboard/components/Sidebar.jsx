@@ -119,13 +119,13 @@ const Sidebar = ({
       >
         <img 
           src="/assets/images/logo.png" 
-          alt="Institute Einstein" 
+          alt="InterLink" 
           className="h-12 w-12 shrink-0 rounded-2xl bg-white p-1.5 object-contain shadow-lg shadow-blue-950/20" 
         />
         {!sidebarCollapsed && (
           <div className="flex flex-col leading-tight overflow-hidden">
             <strong className="whitespace-nowrap bg-gradient-to-br from-white to-blue-100 bg-clip-text text-[1.03rem] font-[900] tracking-tight text-transparent">
-              Institute Einsteins
+              InterLink
             </strong>
             <span className="mt-1 text-[0.62rem] font-black uppercase tracking-[0.22em] text-blue-200/70">Management Console</span>
           </div>

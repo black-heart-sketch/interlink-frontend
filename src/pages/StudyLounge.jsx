@@ -278,7 +278,7 @@ export default function StudyLounge() {
 
   const activeRoom = {
     name: activeRoomName,
-    subtitle: activeRoomId === 'lounge-global' ? 'Open to all Einstein students' : 'Language-specific study room',
+    subtitle: activeRoomId === 'lounge-global' ? 'Open to all InterLink students' : 'Language-specific study room',
     isGlobal: activeRoomId === 'lounge-global',
   };
 

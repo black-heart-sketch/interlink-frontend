@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Base instance configuration
 const axiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:5001/api',
+  baseURL: import.meta.env.VITE_API_URL || 'http://56.228.14.58:5001/api',
   timeout: 0, // No timeout — video uploads can take several minutes
   headers: {
     'Content-Type': 'application/json',

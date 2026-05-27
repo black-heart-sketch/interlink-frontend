@@ -70,11 +70,11 @@ function AuthShell({ mode = 'login', children }) {
           <Link to="/" className="flex items-center gap-3 text-white no-underline">
             <img
               src="/assets/images/logo.png"
-              alt="Institute Einstein"
+              alt="InterLink"
               className="h-12 w-auto rounded-xl object-contain"
             />
             <div className="hidden sm:block">
-              <div className="text-sm font-black uppercase tracking-[0.18em] text-white">Institute Einsteins</div>
+              <div className="text-sm font-black uppercase tracking-[0.18em] text-white">InterLink</div>
               <div className="text-xs font-semibold text-slate-400">
                 {currentFocusLanguage} {t('auth.brand_subtitle_suffix')}
               </div>

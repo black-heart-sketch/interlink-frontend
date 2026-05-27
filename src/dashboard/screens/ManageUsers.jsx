@@ -5,7 +5,6 @@ import DataTable from '../components/DataTable';
 import StatusBadge from '../components/StatusBadge';
 import Loader from '../components/Loader';
 import { userService } from '../../services/userService';
-import { studyLanguageService } from '../../services/studyLanguageService';
 import FilePreviewModal, { getThumbnailUrl } from '../../components/public/FilePreviewModal';
 
 const ROLES = ['student', 'teacher', 'advisor', 'admin', 'superadmin', 'partner'];
@@ -15,7 +14,7 @@ const STUDY_MODES = [
   { value: 'on_site', label: 'On-site' },
 ];
 const LEVELS = ['none', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-const EMPTY_FORM = { firstName: '', lastName: '', email: '', phone: '', password: '', role: 'student', status: 'active', studyLanguage: '', studyMode: 'online', registeredLevel: 'none' };
+const EMPTY_FORM = { firstName: '', lastName: '', email: '', phone: '', password: '', role: 'student', status: 'active', studyMode: 'online', registeredLevel: 'none' };
 
 const ROLE_COLORS = {
   superadmin: 'bg-purple-500/10 text-purple-400',
@@ -60,9 +59,6 @@ const columns = (t) => [
       </span>
     ),
   },
-  { key: 'studyLanguage', header: 'Langue', render: (row) => row.studyLanguage?.name ? (
-    <span className="bg-teal-500/10 text-teal-400 px-2 py-1 rounded text-xs font-bold">{row.studyLanguage.name}</span>
-  ) : '—' },
   {
     key: 'studyMode',
     header: 'Type',
@@ -87,7 +83,6 @@ const columns = (t) => [
 function ManageUsers() {
   const { t } = useTranslation();
   const [userList, setUserList] = useState([]);
-  const [languages, setLanguages] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modal, setModal] = useState(null);
   const [form, setForm] = useState(EMPTY_FORM);
@@ -96,12 +91,8 @@ function ManageUsers() {
 
   const fetchData = async () => {
     try {
-      const [users, langs] = await Promise.all([
-        userService.getUsers(),
-        studyLanguageService.getLanguages(true)
-      ]);
+      const users = await userService.getUsers();
       setUserList(users);
-      setLanguages(langs);
     } catch { toast.error('Erreur de chargement des utilisateurs'); }
     finally { setLoading(false); }
   };
@@ -119,7 +110,6 @@ function ManageUsers() {
         password: '',
         role: row.role || 'student',
         status: row.status || 'active',
-        studyLanguage: row.studyLanguage?._id || row.studyLanguage || '',
         studyMode: row.studyMode || 'online',
         registeredLevel: row.registeredLevel || 'none',
       });
@@ -236,12 +226,6 @@ function ManageUsers() {
                       {STATUSES.map(s => <option key={s} value={s}>{s.charAt(0).toUpperCase() + s.slice(1)}</option>)}
                     </select>
                   </F>
-                  <F label="Langue d'étude">
-                    <select value={form.studyLanguage} onChange={(e) => setForm({ ...form, studyLanguage: e.target.value })} className={selectCls}>
-                      <option value="">— Aucune —</option>
-                      {languages.map(l => <option key={l._id} value={l._id}>{l.name}</option>)}
-                    </select>
-                  </F>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <F label="Type d'étudiant">
@@ -290,12 +274,6 @@ function ManageUsers() {
                     </select>
                   </F>
                 </div>
-                <F label="Langue d'étude">
-                  <select value={form.studyLanguage} onChange={(e) => setForm({ ...form, studyLanguage: e.target.value })} className={selectCls}>
-                    <option value="">— Aucune —</option>
-                    {languages.map(l => <option key={l._id} value={l._id}>{l.name}</option>)}
-                  </select>
-                </F>
                 <div className="grid grid-cols-2 gap-4">
                   <F label="Type d'étudiant">
                     <select value={form.studyMode} onChange={(e) => setForm({ ...form, studyMode: e.target.value, registeredLevel: e.target.value === 'online' ? 'none' : (form.registeredLevel === 'none' ? 'A1' : form.registeredLevel) })} className={selectCls}>
@@ -334,7 +312,6 @@ function ManageUsers() {
                   {[
                     ['Rôle', modal.row.role],
                     ['Statut', modal.row.status],
-                    ['Langue', modal.row.studyLanguage?.name || '—'],
                     ['Type', modal.row.studyMode === 'on_site' ? 'On-site' : 'Online'],
                     ['Niveau inscrit', modal.row.registeredLevel && modal.row.registeredLevel !== 'none' ? modal.row.registeredLevel : '—'],
                     ['Téléphone', modal.row.phone || '—'],

@@ -118,7 +118,7 @@ const ContactForm = () => {
               Demande envoyée !
             </h3>
             <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem', lineHeight: 1.7, marginBottom: '1.5rem' }}>
-              Merci de l'intérêt que vous portez à l'Institut Einstein. Notre équipe vous contactera très prochainement.
+              Merci de l'intérêt que vous portez à InterLink. Notre équipe vous contactera très prochainement.
             </p>
             <button
               onClick={() => setStatus('idle')}

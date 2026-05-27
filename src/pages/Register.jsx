@@ -135,14 +135,6 @@ function Register() {
       setError('Please select your department track.');
       return;
     }
-    if (isOnSite && !receiptFile) {
-      setError('Skills CV/Resume is required for placement validation.');
-      return;
-    }
-    if (shouldPayOnlineFee && !formData.phone) {
-      setError('A phone number is required for Mobile Money payment.');
-      return;
-    }
     if (!acceptedTerms) {
       setError(t('auth.errors.terms'));
       return;
@@ -152,63 +144,8 @@ function Register() {
     setError('');
 
     try {
-      let transactionId = '';
-
-      if (shouldPayOnlineFee) {
-        const payment = await initiateRegistrationPayment({
-          phone: formData.phone,
-          email: formData.email,
-        });
-        transactionId = payment.transactionId;
-        if (!transactionId) throw new Error('No transaction ID returned by payment provider.');
-
-        const pendingRegistration = {
-          firstName: formData.firstName,
-          lastName: formData.lastName,
-          email: formData.email,
-          phone: formData.phone,
-          password: formData.password,
-          studyLanguage: formData.studyLanguage,
-          class: formData.class,
-          department: formData.department,
-          registeredLevel: formData.registeredLevel,
-        };
-        const paymentContext = {
-          kind: 'registration',
-          transactionId,
-          amount: payment.amount || settings.registrationFee,
-          currency: 'XAF',
-          customerPhone: formData.phone,
-          description: 'Confirm the Mobile Money payment to activate your online student account.',
-          cancelPath: '/register',
-        };
-
-        sessionStorage.setItem('pendingRegistration', JSON.stringify(pendingRegistration));
-        sessionStorage.setItem('pendingPaymentContext', JSON.stringify(paymentContext));
-        navigate('/payment/status', { state: { paymentContext } });
-        return;
-      }
-
-      let response;
-      if (receiptFile) {
-        const fd = new FormData();
-        Object.entries(formData).forEach(([k, v]) => {
-          if (v !== undefined && v !== null && v !== '') fd.append(k, v);
-        });
-        if (transactionId) fd.append('transactionId', transactionId);
-        fd.append('paymentReceipt', receiptFile);
-
-        response = await axiosInstance.post('/auth/register', fd, {
-          headers: { 'Content-Type': 'multipart/form-data' }
-        });
-      } else {
-        response = await axiosInstance.post('/auth/register', {
-          ...formData,
-          ...(transactionId && { transactionId }),
-        });
-      }
+      const response = await axiosInstance.post('/auth/register', formData);
       toast.success(response.data?.message || 'Registration successful.');
-
       navigate('/login');
     } catch (err) {
       const message = err.response?.data?.message || err.message || t('auth.errors.register_failed');
@@ -361,61 +298,6 @@ function Register() {
                 ))}
               </div>
             </div>
-
-            <label className="block">
-              <span className="mb-2 block text-sm font-bold text-slate-200">Skills CV / Resume {isOnSite && <span className="text-red-400">*</span>}</span>
-              <div className={`relative flex items-center ${inputCls} h-auto py-3 cursor-pointer`} onClick={() => document.getElementById('receipt-input').click()}>
-                <span className="mr-3 text-lg">📄</span>
-                <span className={`flex-1 text-sm truncate ${receiptFile ? receiptFile.name : 'Click to attach your CV/Resume (PDF, JPG, PNG)'}`}>
-                  {receiptFile ? receiptFile.name : 'Click to attach your CV/Resume (PDF, JPG, PNG)'}
-                </span>
-                {receiptFile && <button type="button" onClick={e => { e.stopPropagation(); setReceiptFile(null); }} className="text-slate-400 hover:text-red-400 ml-2 bg-transparent border-none text-lg cursor-pointer">×</button>}
-              </div>
-              <input id="receipt-input" type="file" accept=".pdf,.jpg,.jpeg,.png" className="hidden" onChange={e => setReceiptFile(e.target.files[0] || null)} />
-              <p className="mt-1.5 text-xs text-slate-500">Accepted formats: PDF, JPG, JPEG, PNG (max 5MB)</p>
-            </label>
-
-            {!isOnSite && settings.requireOnlineRegistrationFee && (
-              <div>
-                <span className="mb-2 block text-sm font-bold text-slate-200">Registration Payment Option <span className="text-red-400">*</span></span>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  {[
-                    ['pay_now', 'Pay Now (Mobile Money)', `Securely pay the ${Number(settings.registrationFee).toLocaleString()} XAF registration fee now to activate your account immediately.`],
-                    ['pay_later', 'Pay Later', 'Register today and complete your payment within 7 days from your candidate dashboard.'],
-                  ].map(([value, label, helper]) => (
-                    <label key={value} className={`cursor-pointer rounded-2xl border p-4 transition ${formData.paymentOption === value ? 'border-blue-400/60 bg-blue-500/10 text-white' : 'border-white/10 bg-white/[0.04] text-slate-300 hover:bg-white/[0.07]'}`}>
-                      <span className="flex items-center gap-3">
-                        <input type="radio" name="paymentOption" value={value} checked={formData.paymentOption === value} onChange={handleChange} className="h-4 w-4 accent-blue-500" />
-                        <span className="font-black">{label}</span>
-                      </span>
-                      <span className="mt-2 block text-xs font-semibold leading-5 text-slate-500">{helper}</span>
-                    </label>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {!isOnSite && shouldPayOnlineFee && (
-              <div className="rounded-2xl border border-emerald-400/20 bg-emerald-500/10 p-4">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="text-sm font-black text-emerald-100">Online registration fee</span>
-                  <strong className="text-lg font-black text-white">{Number(settings.registrationFee).toLocaleString()} XAF</strong>
-                </div>
-                <p className="mt-2 text-xs font-semibold leading-5 text-emerald-100/70">A Mobile Money push will be sent to your phone before the account is created.</p>
-              </div>
-            )}
-
-            {!isOnSite && settings.requireOnlineRegistrationFee && formData.paymentOption === 'pay_later' && (
-              <div className="rounded-2xl border border-amber-400/20 bg-amber-500/10 p-4 text-sm font-semibold text-amber-100">
-                You will be registered with a pending status. Please complete the {Number(settings.registrationFee).toLocaleString()} XAF payment within 7 days to unlock your internship cohort resources.
-              </div>
-            )}
-
-            {!isOnSite && !settings.requireOnlineRegistrationFee && (
-              <div className="rounded-2xl border border-blue-400/20 bg-blue-500/10 p-4 text-sm font-semibold text-blue-100">
-                Online registration is currently free. No payment is required.
-              </div>
-            )}
 
             <label className="flex items-start gap-3 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-sm leading-6 text-slate-300">
               <input type="checkbox" checked={acceptedTerms} onChange={(e) => setAcceptedTerms(e.target.checked)} className="mt-1 h-4 w-4 rounded border-white/20 bg-white/10 accent-blue-500" />

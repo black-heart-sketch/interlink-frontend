@@ -5,20 +5,21 @@ import { toast } from 'react-toastify';
 import axiosInstance from '../../config/axiosConfig';
 import Loader from '../components/Loader';
 
-export default function ManageActivities() {
+export default function ManageActivities({ dashboardRoles }) {
   const { t } = useTranslation();
 
   // Resolve active role
   const reduxRoles = useSelector((state) => state.auth.userRoles);
   const userProfile = useSelector((state) => state.auth.userProfile);
   const userRoles = useMemo(() => {
+    if (Array.isArray(dashboardRoles) && dashboardRoles.length) return dashboardRoles;
     if (Array.isArray(reduxRoles) && reduxRoles.length) return reduxRoles;
     try {
       return JSON.parse(sessionStorage.getItem('userRoles') || localStorage.getItem('userRoles') || '[]');
     } catch {
       return [];
     }
-  }, [reduxRoles]);
+  }, [dashboardRoles, reduxRoles]);
 
   const normalizeRole = (r) => String(r || '').toLowerCase();
   const roles = useMemo(() => (Array.isArray(userRoles) ? userRoles : []).map(normalizeRole), [userRoles]);

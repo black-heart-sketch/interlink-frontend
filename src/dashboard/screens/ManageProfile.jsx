@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { selectCurrentUserProfile, setCredentials } from '../../redux/authSlice';
 import { userService } from '../../services/userService';
-import { studyLanguageService } from '../../services/studyLanguageService';
 
 function ManageProfile() {
   const { t, i18n } = useTranslation();
@@ -18,32 +17,13 @@ function ManageProfile() {
     email: userProfile?.email || '',
     phone: userProfile?.phone || '',
     language: userProfile?.language || i18n.language || 'fr',
-    studyLanguage: userProfile?.studyLanguage?._id || userProfile?.studyLanguage || '',
     password: '',
     confirmPassword: '',
   });
 
   const [avatarFile, setAvatarFile] = useState(null);
   const [avatarPreview, setAvatarPreview] = useState('');
-  const [languages, setLanguages] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [fetchingLangs, setFetchingLangs] = useState(false);
-
-  // Get active study languages from database
-  useEffect(() => {
-    const fetchStudyLanguages = async () => {
-      setFetchingLangs(true);
-      try {
-        const data = await studyLanguageService.getLanguages(true);
-        setLanguages(data);
-      } catch (err) {
-        console.error('Failed to load study languages', err);
-      } finally {
-        setFetchingLangs(false);
-      }
-    };
-    fetchStudyLanguages();
-  }, []);
 
   // Sync avatar preview with userProfile
   useEffect(() => {
@@ -87,7 +67,6 @@ function ManageProfile() {
       submissionData.append('email', formData.email);
       submissionData.append('phone', formData.phone);
       submissionData.append('language', formData.language);
-      submissionData.append('studyLanguage', formData.studyLanguage);
       
       if (formData.password) {
         submissionData.append('password', formData.password);
@@ -170,8 +149,22 @@ function ManageProfile() {
             </label>
           </div>
 
+          <label className="mt-5 flex w-full cursor-pointer items-center justify-center gap-2 rounded-2xl border border-white/10 bg-white/[0.06] px-4 py-3 text-sm font-black text-blue-100 transition hover:border-blue-400/40 hover:bg-blue-500/10">
+            <i className="fa-solid fa-image" aria-hidden="true"></i>
+            {avatarFile ? avatarFile.name : 'Choose profile image'}
+            <input 
+              type="file" 
+              accept="image/*" 
+              onChange={handleAvatarChange} 
+              className="hidden" 
+            />
+          </label>
+          <p className="mt-2 text-xs font-semibold leading-5 text-slate-500">
+            This image appears on your dashboard profile and in direct messages.
+          </p>
+
           <h2 className="mt-6 text-2xl font-black text-white tracking-tight">
-            {`${formData.firstName} ${formData.lastName}`.trim() || userProfile?.email || 'Einstein User'}
+            {`${formData.firstName} ${formData.lastName}`.trim() || userProfile?.email || 'InterLink User'}
           </h2>
           <span className="mt-1 inline-flex items-center rounded-full bg-blue-500/20 px-3.5 py-1 text-xs font-black uppercase tracking-widest text-blue-400">
             {userRoleDisplay}
@@ -197,7 +190,8 @@ function ManageProfile() {
         </div>
 
         {/* Right Column: Custom Glassmorphic Settings Panel */}
-        <div className="lg:col-span-2 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md shadow-2xl transition-all duration-300 hover:border-emerald-500/20">
+        <div className="lg:col-span-2 rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-md shadow-2xl transition-all duration-300 hover:border-emerald-500/20 animate-fade-up">
+          
           <div className="mb-6 border-b border-white/10 pb-4">
             <h3 className="text-2xl font-black text-white">Account Settings</h3>
             <p className="text-slate-400 text-sm mt-1">Configure your personal credentials and customize language environments.</p>
@@ -259,26 +253,8 @@ function ManageProfile() {
               </label>
             </div>
 
-            {/* Row 3: Study Language & System Language */}
+            {/* Row 3: System Language */}
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-              <label className="block">
-                <span className="mb-2 block text-xs font-black uppercase tracking-widest text-slate-400">Default Study Lounge</span>
-                <select
-                  name="studyLanguage"
-                  value={formData.studyLanguage}
-                  onChange={handleChange}
-                  disabled={fetchingLangs}
-                  className="h-12 w-full rounded-2xl border border-white/10 bg-slate-900 px-4 text-sm text-white outline-none transition focus:border-blue-500/50"
-                >
-                  <option value="">Select a study lounge...</option>
-                  {languages.map((lang) => (
-                    <option key={lang._id} value={lang._id}>
-                      {lang.name}
-                    </option>
-                  ))}
-                </select>
-              </label>
-
               <label className="block">
                 <span className="mb-2 block text-xs font-black uppercase tracking-widest text-slate-400">Dashboard Language</span>
                 <select
@@ -346,6 +322,7 @@ function ManageProfile() {
             </div>
 
           </form>
+
         </div>
 
       </div>
