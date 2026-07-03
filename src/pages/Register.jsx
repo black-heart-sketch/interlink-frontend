@@ -17,7 +17,7 @@ function Register() {
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', phone: '',
     password: '', confirmPassword: '', studyMode: 'online', registeredLevel: 'none',
-    class: '', department: 'none', paymentOption: 'pay_now'
+    class: '', department: 'none', paymentOption: 'pay_now', referralCode: ''
   });
   const [step, setStep] = useState(1);
   const [settings, setSettings] = useState({
@@ -122,6 +122,10 @@ function Register() {
     }
     if (formData.department === 'none') {
       setError(t('auth.errors.study_language_required'));
+      return;
+    }
+    if (!formData.referralCode.trim()) {
+      setError(t('auth.errors.referral_code_required', 'Referral code is required.'));
       return;
     }
     if (!acceptedTerms) {
@@ -268,6 +272,19 @@ function Register() {
                 <option value="Graphic Design">{t('common.departments.graphic_design')}</option>
                 <option value="Web & Mobile Development">{t('common.departments.web_mobile_development')}</option>
               </select>
+            </label>
+
+            <label className="block">
+              <span className="mb-2 block text-sm font-bold text-slate-200">{t('auth.referral_code', 'Referral code')} <span className="text-red-400">*</span></span>
+              <input
+                type="text"
+                name="referralCode"
+                value={formData.referralCode}
+                onChange={handleChange}
+                placeholder={t('auth.referral_code_placeholder', 'Code from InterLink or a partner')}
+                autoComplete="off"
+                className={inputCls}
+              />
             </label>
 
             <div>

@@ -22,6 +22,11 @@ export const userService = {
     return response.data;
   },
 
+  getAccessSummary: async (id) => {
+    const response = await axiosInstance.get(`/users/${id}/access-summary`);
+    return response.data;
+  },
+
   deleteUser: async (id) => {
     const response = await axiosInstance.delete(`/users/${id}`);
     return response.data;

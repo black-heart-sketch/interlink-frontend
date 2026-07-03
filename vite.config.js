@@ -30,5 +30,22 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:5000'
     }
+  },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (!id.includes('node_modules')) return undefined;
+          if (id.includes('/react/') || id.includes('/react-dom/') || id.includes('react-router-dom')) return 'vendor-react';
+          if (id.includes('three') || id.includes('@react-three')) return 'vendor-3d';
+          if (id.includes('@livekit') || id.includes('livekit-client')) return 'vendor-livekit';
+          if (id.includes('@tensorflow')) return 'vendor-tensorflow';
+          if (id.includes('recharts')) return 'vendor-charts';
+          if (id.includes('pdf') || id.includes('canvas')) return 'vendor-doc-preview';
+          if (id.includes('lucide-react') || id.includes('@fortawesome')) return 'vendor-icons';
+          return undefined;
+        }
+      }
+    }
   }
 });

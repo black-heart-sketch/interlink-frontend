@@ -26,6 +26,7 @@ const ROLE_COLORS = {
 };
 
 const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+const formatXaf = (amount) => `${Number(amount || 0).toLocaleString('fr-FR')} XAF`;
 
 function F({ label, children }) {
   return (
@@ -88,6 +89,8 @@ function ManageUsers() {
   const [form, setForm] = useState(EMPTY_FORM);
   const [saving, setSaving] = useState(false);
   const [previewFile, setPreviewFile] = useState(null);
+  const [accessSummary, setAccessSummary] = useState(null);
+  const [accessLoading, setAccessLoading] = useState(false);
 
   const fetchData = async () => {
     try {
@@ -101,6 +104,7 @@ function ManageUsers() {
 
   const openModal = (type, row = null) => {
     setModal({ type, row });
+    setAccessSummary(null);
     if (type === 'Edit' && row) {
       setForm({
         firstName: row.firstName || '',
@@ -116,8 +120,16 @@ function ManageUsers() {
     } else {
       setForm(EMPTY_FORM);
     }
+
+    if (type === 'View' && row?.role === 'student') {
+      setAccessLoading(true);
+      userService.getAccessSummary(row._id)
+        .then(setAccessSummary)
+        .catch(() => setAccessSummary(null))
+        .finally(() => setAccessLoading(false));
+    }
   };
-  const closeModal = () => { setModal(null); setForm(EMPTY_FORM); };
+  const closeModal = () => { setModal(null); setForm(EMPTY_FORM); setAccessSummary(null); };
   const handleAction = (type, row) => {
     if (type === 'Create') return openModal('Create');
     openModal(type, row);
@@ -312,6 +324,7 @@ function ManageUsers() {
                   {[
                     ['Rôle', modal.row.role],
                     ['Statut', modal.row.status],
+                    ['Accès plateforme', modal.row.platformAccessOverride ? 'Validé manuellement' : 'Standard'],
                     ['Type', modal.row.studyMode === 'on_site' ? 'On-site' : 'Online'],
                     ['Niveau inscrit', modal.row.registeredLevel && modal.row.registeredLevel !== 'none' ? modal.row.registeredLevel : '—'],
                     ['Téléphone', modal.row.phone || '—'],
@@ -323,6 +336,47 @@ function ManageUsers() {
                     </div>
                   ))}
                 </div>
+
+                {modal.row.role === 'student' && (
+                  <div className="mb-4 rounded-2xl border border-white/10 bg-slate-950/35 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                      <div>
+                        <span className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-blue-300">Accès & Paiements</span>
+                        <h4 className="mt-1 text-sm font-black text-white">Statut étudiant</h4>
+                      </div>
+                      <span className={`rounded-full px-3 py-1 text-xs font-black ${accessSummary?.platformAccess ? 'bg-emerald-500/10 text-emerald-300' : 'bg-amber-500/10 text-amber-300'}`}>
+                        {accessLoading ? 'Chargement...' : accessSummary?.platformAccess ? 'Accès ouvert' : 'Accès bloqué'}
+                      </span>
+                    </div>
+
+                    {accessLoading ? (
+                      <p className="mt-4 text-sm text-slate-500">Chargement des informations...</p>
+                    ) : accessSummary ? (
+                      <>
+                        <div className="mt-4 grid grid-cols-2 gap-3">
+                          {[
+                            ['Inscription', accessSummary.registrationPaid ? 'Payée' : accessSummary.manuallyValidated ? 'Validée manuellement' : 'Non payée'],
+                            ['Demande admission', accessSummary.application?.status || 'Aucune'],
+                            ['Frais internship', formatXaf(accessSummary.internshipFee)],
+                            ['Déjà payé', formatXaf(accessSummary.amountPaid)],
+                            ['Paiement en attente', formatXaf(accessSummary.pendingAmount)],
+                            ['Reste à payer', formatXaf(accessSummary.remainingAmount)],
+                          ].map(([label, value]) => (
+                            <div key={label} className="rounded-xl border border-white/10 bg-white/[0.035] p-3">
+                              <span className="block text-[0.62rem] font-black uppercase tracking-[0.14em] text-slate-500">{label}</span>
+                              <strong className="mt-1 block text-xs text-white">{value}</strong>
+                            </div>
+                          ))}
+                        </div>
+                        <p className="mt-3 text-xs leading-5 text-slate-500">
+                          L'accès plateforme peut être ouvert par paiement d'inscription ou validation manuelle. Les frais internship restent visibles mais ne bloquent pas l'accès.
+                        </p>
+                      </>
+                    ) : (
+                      <p className="mt-4 text-sm text-slate-500">Résumé indisponible.</p>
+                    )}
+                  </div>
+                )}
 
                 {/* Payment receipt */}
                 {modal.row.paymentReceiptUrl && (
@@ -363,10 +417,10 @@ function ManageUsers() {
                 )}
 
                 {/* Validate button for pending users */}
-                {modal.row.status === 'pending' && (
+                {modal.row.role === 'student' && !modal.row.platformAccessOverride && (
                   <button onClick={handleValidate} disabled={saving}
                     className="w-full mb-3 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold cursor-pointer border-none transition-colors disabled:opacity-60">
-                    {saving ? 'Validation...' : '✅ Valider et activer ce compte'}
+                    {saving ? 'Validation...' : 'Valider et donner accès à la plateforme'}
                   </button>
                 )}
                 <button onClick={closeModal} className="w-full py-3 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold cursor-pointer border-none transition-colors">{t('dashboard.actions.cancel')}</button>
@@ -401,10 +455,10 @@ function ManageUsers() {
                     <i className="fa-solid fa-pen text-emerald-400"></i>
                     Modifier les informations
                   </button>
-                  {modal.row.status === 'pending' && (
+                  {modal.row.role === 'student' && !modal.row.platformAccessOverride && (
                     <button onClick={handleValidate} disabled={saving} className="flex items-center gap-3 rounded-xl border border-emerald-500/20 bg-emerald-500/10 px-4 py-3 text-left text-emerald-300 hover:bg-emerald-500/20 transition-colors">
                       <i className="fa-solid fa-user-check"></i>
-                      Valider et activer le compte
+                      Valider et donner accès à la plateforme
                     </button>
                   )}
                   <button onClick={() => openModal('Delete', modal.row)} className="flex items-center gap-3 rounded-xl border border-red-500/20 bg-red-500/10 px-4 py-3 text-left text-red-300 hover:bg-red-500/20 transition-colors">

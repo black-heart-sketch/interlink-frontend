@@ -7,6 +7,8 @@ function ManageSettings() {
   const [settings, setSettings] = useState({
     registrationFee: 5000,
     requireOnlineRegistrationFee: true,
+    internshipFee: 0,
+    internshipInstallments: 1,
     digipayApiKey: '',
     digipayEnv: 'production'
   });
@@ -22,6 +24,8 @@ function ManageSettings() {
           setSettings({
             registrationFee: res.data.registrationFee || 0,
             requireOnlineRegistrationFee: res.data.requireOnlineRegistrationFee ?? true,
+            internshipFee: res.data.internshipFee || 0,
+            internshipInstallments: res.data.internshipInstallments || 1,
             digipayApiKey: res.data.digipayApiKey || '',
             digipayEnv: res.data.digipayEnv || 'production'
           });
@@ -89,6 +93,40 @@ function ManageSettings() {
                 Trainees must pay this amount online during onboarding to unlock platform access.
               </span>
             </label>
+
+            <div className="grid gap-4 md:grid-cols-2">
+              <label className="block">
+                <span className="mb-2 block text-xs font-bold text-slate-400">Internship Fee Amount (XAF)</span>
+                <input
+                  type="number"
+                  min="0"
+                  required
+                  value={settings.internshipFee}
+                  onChange={(e) => setSettings({ ...settings, internshipFee: Number(e.target.value) })}
+                  className={inputCls}
+                  placeholder="e.g. 150000"
+                />
+                <span className="mt-1.5 block text-[0.65rem] text-slate-500 font-semibold leading-relaxed">
+                  Total internship amount visible on each student dashboard.
+                </span>
+              </label>
+
+              <label className="block">
+                <span className="mb-2 block text-xs font-bold text-slate-400">Installment Count</span>
+                <input
+                  type="number"
+                  min="1"
+                  required
+                  value={settings.internshipInstallments}
+                  onChange={(e) => setSettings({ ...settings, internshipInstallments: Math.max(1, Number(e.target.value)) })}
+                  className={inputCls}
+                  placeholder="e.g. 3"
+                />
+                <span className="mt-1.5 block text-[0.65rem] text-slate-500 font-semibold leading-relaxed">
+                  Students pay the internship fee in this number of equal installments.
+                </span>
+              </label>
+            </div>
 
             <label className="flex items-center justify-between gap-4 rounded-2xl border border-white/10 bg-slate-950/30 p-4 transition hover:bg-slate-950/40">
               <span className="min-w-0">

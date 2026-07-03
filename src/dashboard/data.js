@@ -2,6 +2,7 @@ export const sidebarItems = [
   { id: 'overview', label: 'Overview Cockpit', icon: 'fa-solid fa-chart-line', accent: '#3b82f6', i18nKey: 'sidebar.dashboard' },
   { id: 'users', label: 'User Directory', icon: 'fa-solid fa-users-gear', accent: '#a855f7', i18nKey: 'sidebar.users' },
   { id: 'applications', label: 'Admissions Pipeline', icon: 'fa-solid fa-folder-open', accent: '#10b981', i18nKey: 'sidebar.crm_leads' },
+  { id: 'referrals', label: 'Referral Codes', icon: 'fa-solid fa-ticket', accent: '#f59e0b', i18nKey: 'sidebar.referrals' },
   { id: 'departments', label: 'Department Tracks', icon: 'fa-solid fa-network-wired', accent: '#3b82f6', i18nKey: 'sidebar.programs' },
   { id: 'tasks', label: 'Trainee Tasks', icon: 'fa-solid fa-list-check', accent: '#10b981', i18nKey: 'sidebar.activities' },
   { id: 'reports', label: 'Manage Reports', icon: 'fa-solid fa-file-invoice', accent: '#14b8a6', i18nKey: 'sidebar.reports' },
@@ -26,7 +27,7 @@ export const sidebarGroups = [
     id: 'workspace',
     label: 'Workspace',
     icon: 'fa-solid fa-layer-group',
-    items: ['overview', 'users', 'applications', 'departments'],
+    items: ['overview', 'users', 'applications', 'referrals', 'departments'],
   },
   {
     id: 'operations',
@@ -65,6 +66,7 @@ export const admin = {
 export const moduleCopy = {
   users: ['User Directory', 'Manage candidate user credentials, security statuses, and access roles.', 'New User'],
   applications: ['Admissions Pipeline', 'Review visitor submissions, upload resumes/CVs, and approve candidate registrations.', 'New Application'],
+  referrals: ['Referral Codes', 'Create referral codes for partners, campaigns, and staff, then track registration usage.', 'Create Code'],
   departments: ['Department Tracks', 'Configure system-wide active tech tracks and department paths.', 'Create Track'],
   tasks: ['Trainee Tasks Kanban', 'Assign daily operations tasks, describe requirements, and monitor student Kanban cards.', 'Assign Task'],
   reports: ['Manage Reports', 'Review trainees daily or weekly activity submissions. Post rating feedback.', 'New Report'],

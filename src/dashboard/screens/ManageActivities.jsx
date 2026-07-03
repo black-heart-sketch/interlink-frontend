@@ -47,7 +47,10 @@ export default function ManageActivities({ dashboardRoles }) {
   const [allocateForm, setAllocateForm] = useState({
     title: '',
     description: '',
+    assignmentScope: 'individual',
     internId: '',
+    internIds: [],
+    frequency: 'daily',
     priority: 'medium',
     deadline: '',
   });
@@ -60,6 +63,7 @@ export default function ManageActivities({ dashboardRoles }) {
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
+  const [frequencyFilter, setFrequencyFilter] = useState('all');
 
   // Fetch tasks
   const fetchTasks = async () => {
@@ -132,18 +136,25 @@ export default function ManageActivities({ dashboardRoles }) {
   // Handle supervisor allocating new task
   const handleAllocateTask = async (e) => {
     e.preventDefault();
-    if (!allocateForm.internId) {
+    if (allocateForm.assignmentScope === 'individual' && !allocateForm.internId) {
       toast.warning('Please select a target trainee.');
+      return;
+    }
+    if (allocateForm.assignmentScope === 'selected' && !allocateForm.internIds.length) {
+      toast.warning('Please select at least one trainee.');
       return;
     }
     setAllocateSaving(true);
     try {
-      await axiosInstance.post('/tasks', allocateForm);
-      toast.success('Technical task successfully allocated!');
+      const res = await axiosInstance.post('/tasks', allocateForm);
+      toast.success(res.data?.message || 'Technical task successfully allocated!');
       setAllocateForm({
         title: '',
         description: '',
+        assignmentScope: 'individual',
         internId: '',
+        internIds: [],
+        frequency: 'daily',
         priority: 'medium',
         deadline: '',
       });
@@ -204,8 +215,7 @@ export default function ManageActivities({ dashboardRoles }) {
     if (!window.confirm('Are you sure you want to delete this task?')) return;
     try {
       setLoading(true);
-      await axiosInstance.patch(`/tasks/${taskId}`, { status: 'deleted' }); // or direct delete
-      // Just filter it out or fetch again
+      await axiosInstance.delete(`/tasks/${taskId}`);
       toast.success('Task deleted successfully.');
       await fetchTasks();
     } catch (err) {
@@ -257,10 +267,33 @@ export default function ManageActivities({ dashboardRoles }) {
 
       const matchStatus = statusFilter === 'all' || t.status === statusFilter;
       const matchPriority = priorityFilter === 'all' || t.priority === priorityFilter;
+      const matchFrequency = frequencyFilter === 'all' || (t.frequency || 'daily') === frequencyFilter;
 
-      return matchSearch && matchStatus && matchPriority;
+      return matchSearch && matchStatus && matchPriority && matchFrequency;
     });
-  }, [tasks, searchQuery, statusFilter, priorityFilter]);
+  }, [tasks, searchQuery, statusFilter, priorityFilter, frequencyFilter]);
+
+  const batchGroups = useMemo(() => {
+    const groups = new Map();
+    tasks.forEach((task) => {
+      const key = task.assignmentBatchId || task._id;
+      if (!groups.has(key)) {
+        groups.set(key, {
+          id: key,
+          title: task.title,
+          description: task.description,
+          frequency: task.frequency || 'daily',
+          assignmentScope: task.assignmentScope || 'individual',
+          priority: task.priority,
+          deadline: task.deadline,
+          createdAt: task.createdAt,
+          tasks: [],
+        });
+      }
+      groups.get(key).tasks.push(task);
+    });
+    return Array.from(groups.values()).sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0));
+  }, [tasks]);
 
   // Review Queue Tasks (status === 'submitted')
   const reviewQueueTasks = useMemo(() => {
@@ -367,7 +400,7 @@ export default function ManageActivities({ dashboardRoles }) {
 
                           {/* Detail Footer */}
                           <div className="mt-4 flex items-center justify-between border-t border-white/5 pt-3">
-                            <div className="flex items-center gap-1.5 text-slate-500">
+                          <div className="flex items-center gap-1.5 text-slate-500">
                               <i className="fa-regular fa-calendar text-[0.7rem]" />
                               <span className="text-[0.65rem] font-medium">{formatDate(task.deadline)}</span>
                             </div>
@@ -601,6 +634,7 @@ export default function ManageActivities({ dashboardRoles }) {
         {[
           { id: 'roster', label: '📋 Roster & Tasks', icon: 'fa-solid fa-table-list' },
           { id: 'allocate', label: '➕ Allocate New Task', icon: 'fa-solid fa-calendar-plus' },
+          { id: 'batches', label: `🗂 Batch History (${batchGroups.length})`, icon: 'fa-solid fa-layer-group' },
           { id: 'review', label: `📥 Review Submissions (${reviewQueueTasks.length})`, icon: 'fa-solid fa-inbox' },
         ].map((tab) => (
           <button
@@ -662,6 +696,17 @@ export default function ManageActivities({ dashboardRoles }) {
                 <option value="medium">Medium</option>
                 <option value="high">High</option>
               </select>
+
+              <select
+                value={frequencyFilter}
+                onChange={(e) => setFrequencyFilter(e.target.value)}
+                className="bg-slate-900 border border-white/15 rounded-2xl px-4 py-3 text-xs text-white outline-none focus:border-blue-500/60"
+              >
+                <option value="all">All Frequencies</option>
+                <option value="daily">Daily</option>
+                <option value="weekly">Weekly</option>
+                <option value="custom">Custom</option>
+              </select>
             </div>
           </div>
 
@@ -684,6 +729,9 @@ export default function ManageActivities({ dashboardRoles }) {
                     <div className="flex items-center justify-between gap-3">
                       <span className={`rounded-full px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-wider ${getPriorityStyle(task.priority)}`}>
                         {task.priority} Priority
+                      </span>
+                      <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-wider text-cyan-300">
+                        {task.frequency || 'daily'}
                       </span>
                       <span className={`rounded-full px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-wider ${getStatusStyle(task.status)}`}>
                         {task.status.replace('_', ' ')}
@@ -775,29 +823,85 @@ export default function ManageActivities({ dashboardRoles }) {
               <i className="fa-solid fa-calendar-plus" />
             </div>
             <div>
-              <h3 className="text-base font-black text-white">Allocate Daily Operational Task</h3>
-              <p className="text-xs text-slate-400">Deploy technical workloads, priorities, and deadlines directly to candidate trainee boards.</p>
+              <h3 className="text-base font-black text-white">Allocate Student Task</h3>
+              <p className="text-xs text-slate-400">Deploy daily or weekly workloads to one student, selected students, or every student.</p>
             </div>
           </div>
 
           <form onSubmit={handleAllocateTask} className="space-y-5 text-xs">
-            {/* Target Intern Dropdown */}
-            <label className="flex flex-col gap-2">
-              <span className="text-slate-300 font-bold">Assign Deliverable To (Trainee Intern)</span>
-              <select
-                required
-                value={allocateForm.internId}
-                onChange={(e) => setAllocateForm({ ...allocateForm, internId: e.target.value })}
-                className="bg-slate-900 border border-white/10 rounded-2xl px-4 py-3.5 text-white outline-none focus:border-blue-500/60"
-              >
-                <option value="">-- Choose active intern candidate --</option>
-                {students.map((stud) => (
-                  <option key={stud._id} value={stud._id}>
-                    {stud.firstName} {stud.lastName} ({stud.department || 'No department'}) - {stud.email}
-                  </option>
-                ))}
-              </select>
-            </label>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <label className="flex flex-col gap-2">
+                <span className="text-slate-300 font-bold">Task Frequency</span>
+                <select
+                  value={allocateForm.frequency}
+                  onChange={(e) => setAllocateForm({ ...allocateForm, frequency: e.target.value })}
+                  className="bg-slate-900 border border-white/10 rounded-2xl px-4 py-3.5 text-white outline-none focus:border-blue-500/60"
+                >
+                  <option value="daily">Daily task</option>
+                  <option value="weekly">Weekly task</option>
+                  <option value="custom">Custom task</option>
+                </select>
+              </label>
+
+              <label className="flex flex-col gap-2">
+                <span className="text-slate-300 font-bold">Assignment Target</span>
+                <select
+                  value={allocateForm.assignmentScope}
+                  onChange={(e) => setAllocateForm({ ...allocateForm, assignmentScope: e.target.value, internId: '', internIds: [] })}
+                  className="bg-slate-900 border border-white/10 rounded-2xl px-4 py-3.5 text-white outline-none focus:border-blue-500/60"
+                >
+                  <option value="individual">One selected student</option>
+                  <option value="selected">Selected students</option>
+                  <option value="all">All students</option>
+                </select>
+              </label>
+            </div>
+
+            {allocateForm.assignmentScope === 'individual' && (
+              <label className="flex flex-col gap-2">
+                <span className="text-slate-300 font-bold">Assign Deliverable To</span>
+                <select
+                  required
+                  value={allocateForm.internId}
+                  onChange={(e) => setAllocateForm({ ...allocateForm, internId: e.target.value })}
+                  className="bg-slate-900 border border-white/10 rounded-2xl px-4 py-3.5 text-white outline-none focus:border-blue-500/60"
+                >
+                  <option value="">-- Choose active intern candidate --</option>
+                  {students.map((stud) => (
+                    <option key={stud._id} value={stud._id}>
+                      {stud.firstName} {stud.lastName} ({stud.department || 'No department'}) - {stud.email}
+                    </option>
+                  ))}
+                </select>
+              </label>
+            )}
+
+            {allocateForm.assignmentScope === 'selected' && (
+              <label className="flex flex-col gap-2">
+                <span className="text-slate-300 font-bold">Select Students</span>
+                <select
+                  multiple
+                  required
+                  value={allocateForm.internIds}
+                  onChange={(e) => setAllocateForm({ ...allocateForm, internIds: Array.from(e.target.selectedOptions).map((option) => option.value) })}
+                  className="min-h-[180px] bg-slate-900 border border-white/10 rounded-2xl px-4 py-3.5 text-white outline-none focus:border-blue-500/60"
+                >
+                  {students.map((stud) => (
+                    <option key={stud._id} value={stud._id}>
+                      {stud.firstName} {stud.lastName} ({stud.department || 'No department'}) - {stud.email}
+                    </option>
+                  ))}
+                </select>
+                <span className="text-[0.68rem] font-semibold text-slate-500">Hold Cmd/Ctrl to select multiple students.</span>
+              </label>
+            )}
+
+            {allocateForm.assignmentScope === 'all' && (
+              <div className="rounded-2xl border border-cyan-500/20 bg-cyan-500/10 p-4 text-cyan-100">
+                <strong className="block text-xs font-black uppercase tracking-wider text-cyan-300">All students selected</strong>
+                <p className="mt-1 text-[0.7rem] leading-relaxed text-cyan-100/70">This task will be copied to every non-banned student account.</p>
+              </div>
+            )}
 
             {/* Task Title */}
             <label className="flex flex-col gap-2">
@@ -885,7 +989,85 @@ export default function ManageActivities({ dashboardRoles }) {
       )}
 
       {/* =================================--------- */}
-      {/* TAB PANEL 3: REVIEW QUEUE SUBMISSIONS */}
+      {/* TAB PANEL 3: BATCH HISTORY */}
+      {/* =================================--------- */}
+      {activeTab === 'batches' && (
+        <div className="space-y-5">
+          {batchGroups.length === 0 ? (
+            <div className="flex flex-col items-center justify-center py-20 text-center rounded-[2rem] border border-white/10 bg-slate-900/20">
+              <i className="fa-solid fa-layer-group text-slate-700 text-3xl mb-3" />
+              <h3 className="text-white font-bold">No Batch History</h3>
+              <p className="text-xs text-slate-500 mt-1 max-w-sm">Assigned tasks will appear here grouped by bulk operation or single assignment.</p>
+            </div>
+          ) : (
+            batchGroups.map((batch) => {
+              const completed = batch.tasks.filter((task) => task.status === 'completed').length;
+              const submitted = batch.tasks.filter((task) => task.status === 'submitted').length;
+              const pending = batch.tasks.filter((task) => task.status === 'pending').length;
+              const inProgress = batch.tasks.filter((task) => task.status === 'in_progress').length;
+              return (
+                <article key={batch.id} className="rounded-3xl border border-white/10 bg-slate-900/40 p-6 shadow-xl">
+                  <div className="grid gap-5 lg:grid-cols-[minmax(0,1fr)_360px] lg:items-start">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-3 py-1 text-[0.62rem] font-black uppercase tracking-wider text-cyan-300">{batch.frequency}</span>
+                        <span className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[0.62rem] font-black uppercase tracking-wider text-slate-300">{batch.assignmentScope}</span>
+                        <span className={`rounded-full px-3 py-1 text-[0.62rem] font-black uppercase tracking-wider ${getPriorityStyle(batch.priority)}`}>{batch.priority}</span>
+                      </div>
+                      <h3 className="mt-4 truncate text-lg font-black text-white">{batch.title}</h3>
+                      <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-400">{batch.description}</p>
+                      <div className="mt-4 flex flex-wrap gap-4 text-xs font-semibold text-slate-500">
+                        <span><i className="fa-regular fa-calendar mr-1" /> Due {formatDate(batch.deadline)}</span>
+                        <span><i className="fa-regular fa-clock mr-1" /> Created {formatDate(batch.createdAt)}</span>
+                        <span><i className="fa-solid fa-users mr-1" /> {batch.tasks.length} student{batch.tasks.length === 1 ? '' : 's'}</span>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-2 gap-3">
+                      {[
+                        ['Pending', pending, 'text-slate-300'],
+                        ['In progress', inProgress, 'text-violet-300'],
+                        ['Submitted', submitted, 'text-blue-300'],
+                        ['Completed', completed, 'text-emerald-300'],
+                      ].map(([label, value, tone]) => (
+                        <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+                          <span className="block text-[0.62rem] font-black uppercase tracking-[0.16em] text-slate-500">{label}</span>
+                          <strong className={`mt-2 block text-xl font-black ${tone}`}>{value}</strong>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="mt-5 grid gap-2 border-t border-white/10 pt-4 md:grid-cols-2 xl:grid-cols-3">
+                    {batch.tasks.slice(0, 9).map((task) => (
+                      <button
+                        key={task._id}
+                        type="button"
+                        onClick={() => setSelectedTask(task)}
+                        className="flex items-center justify-between gap-3 rounded-2xl border border-white/10 bg-white/[0.035] px-4 py-3 text-left transition hover:bg-white/[0.07]"
+                      >
+                        <span className="min-w-0">
+                          <strong className="block truncate text-xs text-white">{task.intern ? `${task.intern.firstName} ${task.intern.lastName}` : 'Student'}</strong>
+                          <span className="mt-1 block truncate text-[0.68rem] text-slate-500">{task.intern?.email || 'No email'}</span>
+                        </span>
+                        <span className={`shrink-0 rounded-full px-2 py-1 text-[0.58rem] font-black uppercase ${getStatusStyle(task.status)}`}>{task.status.replace('_', ' ')}</span>
+                      </button>
+                    ))}
+                    {batch.tasks.length > 9 && (
+                      <div className="rounded-2xl border border-white/10 bg-white/[0.02] px-4 py-3 text-xs font-bold text-slate-500">
+                        +{batch.tasks.length - 9} more students
+                      </div>
+                    )}
+                  </div>
+                </article>
+              );
+            })
+          )}
+        </div>
+      )}
+
+      {/* =================================--------- */}
+      {/* TAB PANEL 4: REVIEW QUEUE SUBMISSIONS */}
       {/* =================================--------- */}
       {activeTab === 'review' && (
         <div className="space-y-6">

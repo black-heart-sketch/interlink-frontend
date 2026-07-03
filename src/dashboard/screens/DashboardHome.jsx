@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
 import { Area, AreaChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../config/axiosConfig';
 import { settingService } from '../../services/settingService';
+import { paymentService } from '../../services/paymentService';
 
 const monthlyTrend = [
   { name: 'Jan', value: 18 }, { name: 'Feb', value: 24 }, { name: 'Mar', value: 31 },
@@ -12,8 +14,11 @@ const monthlyTrend = [
   { name: 'Oct', value: 71 }, { name: 'Nov', value: 83 }, { name: 'Dec', value: 96 },
 ];
 
+const formatXaf = (amount) => `${Number(amount || 0).toLocaleString('fr-FR')} XAF`;
+
 export default function DashboardHome({ onSelect, userRoles = [] }) {
   const { t } = useTranslation();
+  const navigate = useNavigate();
   
   // Resolve Role
   const normalizeRole = (r) => String(r || '').toLowerCase();
@@ -25,11 +30,14 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
 
   // Shared state
   const [loading, setLoading] = useState(true);
-  const [settings, setSettings] = useState({ registrationFee: 5000, requireOnlineRegistrationFee: true });
+  const [settings, setSettings] = useState({ registrationFee: 5000, requireOnlineRegistrationFee: true, internshipFee: 0, internshipInstallments: 1 });
   const [settingsSaving, setSettingsSaving] = useState(false);
 
   // Student specific state
   const [studentInternship, setStudentInternship] = useState(null);
+  const [internshipPayment, setInternshipPayment] = useState(null);
+  const [paymentPhone, setPaymentPhone] = useState('');
+  const [paymentLoading, setPaymentLoading] = useState(false);
 
   // Supervisor & Admin specific state
   const [internships, setInternships] = useState([]);
@@ -48,6 +56,8 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
             setSettings({
               registrationFee: Number(s.registrationFee) || 5000,
               requireOnlineRegistrationFee: Boolean(s.requireOnlineRegistrationFee),
+              internshipFee: Number(s.internshipFee) || 0,
+              internshipInstallments: Number(s.internshipInstallments) || 1,
             });
           }
         } catch (e) {
@@ -58,6 +68,7 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
           try {
             const res = await axiosInstance.get('/internships/me');
             setStudentInternship(res.data);
+            setPaymentPhone(res.data?.student?.phone || '');
           } catch (e) {
             // Fallback mock details for student dashboard
             setStudentInternship({
@@ -71,6 +82,12 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
               supervisor: { firstName: 'Agbor', lastName: 'Anderson', email: 'agbor@interlink.com' },
               class: { name: 'English Level 2' }
             });
+          }
+          try {
+            const paymentSummary = await paymentService.getMyInternshipSummary();
+            setInternshipPayment(paymentSummary);
+          } catch (e) {
+            console.warn('Unable to load internship payment summary', e);
           }
         } else {
           // Supervisor, Admin, Manager data
@@ -112,6 +129,19 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
     }
   };
 
+  const handlePayInternshipInstallment = async () => {
+    setPaymentLoading(true);
+    try {
+      const response = await paymentService.payInternshipInstallment({ phone: paymentPhone });
+      setInternshipPayment(response.summary);
+      toast.success(response.message || 'Internship installment payment started.');
+    } catch (error) {
+      toast.error(error.response?.data?.message || 'Unable to start installment payment.');
+    } finally {
+      setPaymentLoading(false);
+    }
+  };
+
   // Approval trigger for Manager / Admin
   const handleApproveApp = async (appId) => {
     try {
@@ -139,6 +169,16 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
       class: { name: 'English Level 2' },
       supervisor: { firstName: 'Anderson', lastName: 'A.' }
     };
+    const payment = internshipPayment || {
+      internshipFee: settings.internshipFee,
+      internshipInstallments: settings.internshipInstallments,
+      amountPaid: 0,
+      pendingAmount: 0,
+      remainingAmount: settings.internshipFee,
+      nextInstallmentAmount: settings.internshipInstallments > 0 ? Math.ceil(settings.internshipFee / settings.internshipInstallments) : settings.internshipFee,
+      payments: []
+    };
+    const paymentProgress = payment.internshipFee > 0 ? Math.min(100, Math.round((payment.amountPaid / payment.internshipFee) * 100)) : 0;
 
     return (
       <div className="space-y-8 pb-10">
@@ -157,11 +197,11 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
                 Welcome to your workspace. Below is your active tracking module for the <strong>{s.department}</strong> department track.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
-                <button type="button" onClick={() => onSelect?.('live-schedule')} className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-slate-950 shadow-xl transition hover:-translate-y-0.5 hover:bg-blue-50">
+                <button type="button" onClick={() => onSelect?.('live-classes')} className="rounded-2xl bg-white px-5 py-3 text-sm font-black text-slate-950 shadow-xl transition hover:-translate-y-0.5 hover:bg-blue-50">
                   <i className="fa-solid fa-video mr-2" /> Live Classes
                 </button>
-                <button type="button" onClick={() => onSelect?.('student-exam-sessions')} className="rounded-2xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-white/15">
-                  <i className="fa-solid fa-clipboard-check mr-2" /> Exam waiting room
+                <button type="button" onClick={() => onSelect?.('tasks')} className="rounded-2xl border border-white/15 bg-white/10 px-5 py-3 text-sm font-black text-white transition hover:-translate-y-0.5 hover:bg-white/15">
+                  <i className="fa-solid fa-clipboard-check mr-2" /> My tasks
                 </button>
               </div>
             </div>
@@ -184,6 +224,88 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
               <span className="mt-4 text-xs font-bold text-slate-400">{s.class?.name || 'Class Cohort'}</span>
             </div>
           </div>
+        </section>
+
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_360px]">
+          <article className="rounded-[1.6rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(16,185,129,0.14),transparent_30%),linear-gradient(135deg,rgba(15,23,42,0.82),rgba(30,41,59,0.64))] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
+            <div className="flex flex-col gap-4 md:flex-row md:items-start md:justify-between">
+              <div>
+                <span className="inline-flex items-center gap-2 rounded-full border border-emerald-400/20 bg-emerald-500/10 px-4 py-2 text-[0.68rem] font-black uppercase tracking-[0.2em] text-emerald-200">
+                  <i className="fa-solid fa-wallet" aria-hidden="true" />
+                  Internship Fee
+                </span>
+                <h2 className="mt-4 text-2xl font-black text-white">Payment balance</h2>
+                <p className="mt-2 max-w-2xl text-sm leading-7 text-slate-400">
+                  Your internship fee is split into {payment.internshipInstallments || 1} installment{Number(payment.internshipInstallments) === 1 ? '' : 's'} defined by the admin.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-white/10 bg-slate-950/35 px-5 py-4 text-right">
+                <span className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-slate-500">Total fee</span>
+                <strong className="mt-1 block text-2xl font-black text-white">{formatXaf(payment.internshipFee)}</strong>
+              </div>
+            </div>
+
+            <div className="mt-6 grid gap-4 md:grid-cols-3">
+              {[
+                ['Already paid', payment.amountPaid, 'text-emerald-300', 'fa-circle-check'],
+                ['Pending payment', payment.pendingAmount, 'text-amber-300', 'fa-clock'],
+                ['Amount remaining', payment.remainingAmount, 'text-blue-300', 'fa-scale-balanced'],
+              ].map(([label, value, tone, icon]) => (
+                <div key={label} className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-slate-500">{label}</span>
+                    <i className={`fa-solid ${icon} ${tone}`} aria-hidden="true" />
+                  </div>
+                  <strong className="mt-3 block text-xl font-black text-white">{formatXaf(value)}</strong>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-6">
+              <div className="flex items-center justify-between text-xs font-black uppercase tracking-[0.18em] text-slate-500">
+                <span>Paid progress</span>
+                <span>{paymentProgress}%</span>
+              </div>
+              <div className="mt-2 h-3 overflow-hidden rounded-full bg-white/10">
+                <div className="h-full rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 transition-all" style={{ width: `${paymentProgress}%` }} />
+              </div>
+            </div>
+          </article>
+
+          <aside className="rounded-[1.6rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
+            <span className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-blue-300">Next Installment</span>
+            <strong className="mt-3 block text-3xl font-black text-white">{formatXaf(payment.nextInstallmentAmount)}</strong>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              Pay the next installment using Mobile Money. Completed sandbox payments update this balance immediately.
+            </p>
+            <label className="mt-5 block">
+              <span className="mb-2 block text-xs font-bold text-slate-400">Mobile Money phone</span>
+              <input
+                type="tel"
+                value={paymentPhone}
+                onChange={(event) => setPaymentPhone(event.target.value)}
+                placeholder="+237 6XX XXX XXX"
+                className="h-12 w-full rounded-2xl border border-white/10 bg-slate-950/45 px-4 text-white outline-none transition placeholder:text-slate-600 focus:border-blue-400 focus:ring-2 focus:ring-blue-500/10"
+              />
+            </label>
+            <button
+              type="button"
+              onClick={handlePayInternshipInstallment}
+              disabled={paymentLoading || !payment.nextInstallmentAmount}
+              className="mt-4 h-12 w-full rounded-2xl bg-emerald-500 px-5 text-sm font-black text-slate-950 shadow-xl transition hover:-translate-y-0.5 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
+            >
+              {paymentLoading ? (
+                <>
+                  <i className="fa-solid fa-spinner fa-spin mr-2" />
+                  Processing...
+                </>
+              ) : payment.remainingAmount <= 0 ? (
+                'Fully paid'
+              ) : (
+                'Pay installment'
+              )}
+            </button>
+          </aside>
         </section>
 
         {/* Student metrics cards */}
@@ -261,10 +383,10 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
               </div>
 
               <div className="mt-5 grid gap-3">
-                <button type="button" onClick={() => onSelect?.('library')} className="w-full rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-xs font-black uppercase tracking-widest text-slate-200 hover:bg-white/[0.08] transition">
-                  <i className="fa-solid fa-book-open mr-2" /> Library Resources
+                <button type="button" onClick={() => onSelect?.('reports')} className="w-full rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-xs font-black uppercase tracking-widest text-slate-200 hover:bg-white/[0.08] transition">
+                  <i className="fa-solid fa-file-invoice mr-2" /> Submit Reports
                 </button>
-                <button type="button" onClick={() => navigate?.('/lounge')} className="w-full rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-xs font-black uppercase tracking-widest text-slate-200 hover:bg-white/[0.08] transition">
+                <button type="button" onClick={() => navigate('/lounge')} className="w-full rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-xs font-black uppercase tracking-widest text-slate-200 hover:bg-white/[0.08] transition">
                   <i className="fa-solid fa-comments mr-2" /> Lounge Chatroom
                 </button>
               </div>

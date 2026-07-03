@@ -33,6 +33,7 @@ import ManagePrograms from './screens/ManagePrograms';
 import ManageReports from './screens/ManageReports';
 import ManagePartners from './screens/ManagePartners';
 import ManageLiveClasses from './screens/ManageLiveClasses';
+import ManageReferrals from './screens/ManageReferrals';
 // import AllCourses from '../pages/learning/AllCourses';
 // import MyLearning from '../pages/learning/MyLearning';
 // import CourseDetail from '../pages/learning/CourseDetail';
@@ -41,6 +42,7 @@ import ManageLiveClasses from './screens/ManageLiveClasses';
 const screenMap = {
   users: ManageUsers,
   applications: ManageLeads,
+  referrals: ManageReferrals,
   departments: ManagePrograms,
   tasks: ManageActivities,
   reports: ManageReports,
@@ -63,6 +65,7 @@ const screenMap = {
 const moduleMeta = {
   users: { metric: 'Accounts', value: 'Directory', tone: 'from-violet-500 to-fuchsia-400', helper: 'Trainee, supervisor, and operational accounts control.' },
   applications: { metric: 'Pipeline', value: 'Admissions', tone: 'from-emerald-500 to-teal-400', helper: 'Visitor submissions, resume screening, and onboarding.' },
+  referrals: { metric: 'Referral', value: 'Usage', tone: 'from-amber-500 to-yellow-400', helper: 'Create admission referral codes and monitor usage.' },
   departments: { metric: 'Tracks', value: 'Tech Sectors', tone: 'from-blue-500 to-cyan-400', helper: 'Manage active engineering tracks and student seating.' },
   tasks: { metric: 'Tasks', value: 'Kanban', tone: 'from-emerald-500 to-lime-400', helper: 'Track daily training deliverables and supervisor assignments.' },
   reports: { metric: 'Checkins', value: 'Performance', tone: 'from-teal-500 to-emerald-400', helper: 'Grade daily trainee logs and review feedback.' },
@@ -131,8 +134,13 @@ function Dashboard() {
   const [application, setApplication] = useState(null);
   const [appLoading, setAppLoading] = useState(false);
 
+  const effectiveUserRoles = useMemo(() => {
+    if (!isSuperAdmin) return userRoles;
+    return [roleMode];
+  }, [isSuperAdmin, roleMode, userRoles]);
+
   const fetchApplicationStatus = async () => {
-    const normalizedRoles = userRoles.map(normalizeRole);
+    const normalizedRoles = effectiveUserRoles.map(normalizeRole);
     if (!normalizedRoles.includes('student')) {
       return;
     }
@@ -141,32 +149,31 @@ function Dashboard() {
       const res = await axiosInstance.get('/applications/me');
       setApplication(res.data || null);
     } catch (err) {
-      console.error('Error fetching application status:', err);
+      setApplication(null);
+      if (err.response?.status !== 404) {
+        console.error('Error fetching application status:', err);
+      }
     } finally {
       setAppLoading(false);
     }
   };
 
   useEffect(() => {
-    if (userRoles.length) {
+    if (effectiveUserRoles.length) {
       fetchApplicationStatus();
     }
-  }, [userRoles]);
-
-  const effectiveUserRoles = useMemo(() => {
-    if (!isSuperAdmin) return userRoles;
-    return [roleMode];
-  }, [isSuperAdmin, roleMode, userRoles]);
+  }, [effectiveUserRoles]);
 
   const isStudentLocked = useMemo(() => {
     const normalizedRoles = effectiveUserRoles.map(normalizeRole);
     if (!normalizedRoles.includes('student')) return false;
+    if (user?.platformAccessOverride) return false;
     
     if (!application) return true;
-    if (application.status !== 'approved' || application.paymentStatus !== 'paid') return true;
+    if (application.status !== 'approved') return true;
     
     return false;
-  }, [effectiveUserRoles, application]);
+  }, [effectiveUserRoles, application, user?.platformAccessOverride]);
 
   const visibleSidebarItems = useMemo(() => {
     return sidebarItems.filter((item) => canAccessView(item.id, effectiveUserRoles));
