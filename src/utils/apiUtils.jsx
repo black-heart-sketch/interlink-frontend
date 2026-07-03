@@ -2,7 +2,20 @@ import { store } from 'redux/store';
 import { clearCredentials } from 'redux/authSlice';
 import { toast } from 'react-toastify';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/';
+const FALLBACK_API_URL = 'https://interiilink.com/api/api/';
+
+const resolveApiUrl = () => {
+  const configuredUrl = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || FALLBACK_API_URL;
+  try {
+    const url = new URL(configuredUrl);
+    const isBrowserHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
+    return isBrowserHttps && url.protocol !== 'https:' ? FALLBACK_API_URL : configuredUrl;
+  } catch {
+    return FALLBACK_API_URL;
+  }
+};
+
+const BASE_URL = resolveApiUrl();
 
 const publicRoutes = [
   '/auth/login',
