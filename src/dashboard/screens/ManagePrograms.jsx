@@ -10,7 +10,7 @@ const CATEGORIES = ['language', 'preparation', 'integration', 'coaching'];
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const LANGS = [{ v: 'de', l: 'Allemand' }, { v: 'fr', l: 'Français' }, { v: 'en', l: 'Anglais' }];
 const EMPTY = { title: '', slug: '', category: 'language', level: 'A1', duration: '', price: '', description: '', language: 'de', isPublished: false };
-const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
 
 function Field({ label, children }) {
   return (

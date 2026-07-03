@@ -24,7 +24,7 @@ const formatDate = (value) => value ? new Date(value).toLocaleDateString(undefin
 const getAssetUrl = (url) => {
   if (!url) return '';
   if (/^https?:\/\//i.test(url)) return url;
-  const apiBase = import.meta.env.VITE_API_URL || 'http://localhost:5001/api';
+  const apiBase = import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/';
   return `${apiBase.replace(/\/api\/?$/, '')}${url}`;
 };
 

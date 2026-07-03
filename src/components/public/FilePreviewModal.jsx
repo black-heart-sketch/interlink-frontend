@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import axiosInstance from '../../config/axiosConfig';
 import AntiCheatMonitor from './AntiCheatMonitor';
 
-const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
 
 export const getThumbnailUrl = (fileUrl) => {
   if (!fileUrl) return null;

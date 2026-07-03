@@ -72,7 +72,7 @@ const PastEventsHighlights = () => {
   const [highlightPage, setHighlightPage] = useState(1);
   const [selectedHighlight, setSelectedHighlight] = useState(null);
   const [isMobileGrid, setIsMobileGrid] = useState(false);
-  const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+  const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
 
   useEffect(() => {
     const fetchEvents = async () => {

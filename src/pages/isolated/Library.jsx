@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FilePreviewModal from '../components/public/FilePreviewModal';
 
-const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
 
 const TYPE_ICONS = { document: '📄', course: '📚', video: '🎬', audio: '🎧' };
 const TYPE_COLORS = {

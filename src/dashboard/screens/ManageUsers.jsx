@@ -25,7 +25,7 @@ const ROLE_COLORS = {
   partner: 'bg-pink-500/10 text-pink-400',
 };
 
-const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
 const formatXaf = (amount) => `${Number(amount || 0).toLocaleString('fr-FR')} XAF`;
 
 function F({ label, children }) {

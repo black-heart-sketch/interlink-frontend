@@ -1,4 +1,4 @@
-const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
 
 export const getCourseId = (course) => course?._id || course?.id;
 

@@ -103,7 +103,7 @@ const Topbar = ({
     role: userProfile.role === 'superadmin' ? 'System Administrator' : (userProfile.role === 'admin' ? 'Administrator' : userProfile.role === 'teacher' ? 'Teacher' : userProfile.role === 'advisor' ? 'Advisor' : 'Student'),
     email: userProfile.email,
     phone: userProfile.phone || '',
-    avatar: userProfile.avatar ? (userProfile.avatar.startsWith('http') ? userProfile.avatar : `http://localhost:5001${userProfile.avatar}`) : admin.avatar
+    avatar: userProfile.avatar ? (userProfile.avatar.startsWith('http') ? userProfile.avatar : `${(import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/').replace(/\/api\/?$/, '')}${userProfile.avatar}`) : admin.avatar
   } : admin;
 
   const handleSignOut = () => {

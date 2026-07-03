@@ -8,7 +8,7 @@ import { mediaService } from '../../services/mediaService';
 import FilePreviewModal, { getThumbnailUrl, getFullFileUrl } from '../../components/public/FilePreviewModal';
 
 const EMPTY_FORM = { title: '', description: '', type: 'photo', url: '', status: 'Review', files: [] };
-const API_URL = import.meta.env.VITE_API_URL?.replace('/api', '') || 'http://localhost:5001';
+const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
 
 const TYPE_ICONS = { photo: '📷', video: '🎥' };
 const STATUS_COLORS = {

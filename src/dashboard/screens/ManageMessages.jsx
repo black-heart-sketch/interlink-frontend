@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import { messageService } from '../../services/messageService';
 
 const fullName = (user) => [user?.firstName, user?.lastName].filter(Boolean).join(' ') || user?.email || 'Contact';
-const apiBase = (import.meta.env.VITE_API_URL || 'http://localhost:5001/api').replace(/\/api\/?$/, '');
+const apiBase = (import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/').replace(/\/api\/?$/, '');
 const assetUrl = (url) => /^https?:\/\//i.test(url || '') ? url : `${apiBase}${url}`;
 const avatarUrl = (user) => user?.avatar ? assetUrl(user.avatar) : '';
 

@@ -2,7 +2,7 @@ import { store } from 'redux/store';
 import { clearCredentials } from 'redux/authSlice';
 import { toast } from 'react-toastify';
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/';
 
 const publicRoutes = [
   '/auth/login',
