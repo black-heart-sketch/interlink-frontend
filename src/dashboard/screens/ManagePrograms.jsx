@@ -5,12 +5,13 @@ import DataTable from '../components/DataTable';
 import Loader from '../components/Loader';
 import { programService } from '../../services/programService';
 import FilePreviewModal from '../../components/public/FilePreviewModal';
+import { API_ORIGIN } from '../../config/apiConfig';
 
 const CATEGORIES = ['language', 'preparation', 'integration', 'coaching'];
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const LANGS = [{ v: 'de', l: 'Allemand' }, { v: 'fr', l: 'Français' }, { v: 'en', l: 'Anglais' }];
 const EMPTY = { title: '', slug: '', category: 'language', level: 'A1', duration: '', price: '', description: '', language: 'de', isPublished: false };
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
+const API_URL = API_ORIGIN;
 
 function Field({ label, children }) {
   return (

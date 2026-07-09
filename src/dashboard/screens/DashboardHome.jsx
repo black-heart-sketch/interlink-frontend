@@ -15,6 +15,23 @@ const monthlyTrend = [
 ];
 
 const formatXaf = (amount) => `${Number(amount || 0).toLocaleString('fr-FR')} XAF`;
+const roadmapDateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric' });
+const roadmapEndDateFormatter = new Intl.DateTimeFormat('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+
+const formatRoadmapRange = (start, end) => {
+  const startDate = new Date(`${start}T00:00:00`);
+  const endDate = new Date(`${end}T00:00:00`);
+  return `${roadmapDateFormatter.format(startDate)} - ${roadmapEndDateFormatter.format(endDate)}`;
+};
+
+const getRoadmapStatus = (start, end, isComplete, hasStartedData = false) => {
+  if (isComplete) return 'completed';
+  const today = new Date();
+  const startDate = new Date(`${start}T00:00:00`);
+  const endDate = new Date(`${end}T23:59:59`);
+  if (hasStartedData || (today >= startDate && today <= endDate)) return 'active';
+  return 'pending';
+};
 
 export default function DashboardHome({ onSelect, userRoles = [] }) {
   const { t } = useTranslation();
@@ -36,7 +53,10 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
   // Student specific state
   const [studentInternship, setStudentInternship] = useState(null);
   const [internshipPayment, setInternshipPayment] = useState(null);
+  const [studentTasks, setStudentTasks] = useState([]);
+  const [studentReports, setStudentReports] = useState([]);
   const [paymentPhone, setPaymentPhone] = useState('');
+  const [paymentAmount, setPaymentAmount] = useState('');
   const [paymentLoading, setPaymentLoading] = useState(false);
 
   // Supervisor & Admin specific state
@@ -65,30 +85,19 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
         }
 
         if (isStudent) {
-          try {
-            const res = await axiosInstance.get('/internships/me');
-            setStudentInternship(res.data);
-            setPaymentPhone(res.data?.student?.phone || '');
-          } catch (e) {
-            // Fallback mock details for student dashboard
-            setStudentInternship({
-              department: 'Software Engineering',
-              startDate: new Date(),
-              progress: 68,
-              tasksCompleted: 18,
-              totalTasks: 25,
-              attendanceRate: 98.4,
-              supervisorRating: 4.8,
-              supervisor: { firstName: 'Agbor', lastName: 'Anderson', email: 'agbor@interlink.com' },
-              class: { name: 'English Level 2' }
-            });
-          }
-          try {
-            const paymentSummary = await paymentService.getMyInternshipSummary();
-            setInternshipPayment(paymentSummary);
-          } catch (e) {
-            console.warn('Unable to load internship payment summary', e);
-          }
+          const [internshipRes, tasksRes, reportsRes, paymentRes] = await Promise.all([
+            axiosInstance.get('/internships/me').catch(() => ({ data: null })),
+            axiosInstance.get('/tasks').catch(() => ({ data: [] })),
+            axiosInstance.get('/reports').catch(() => ({ data: [] })),
+            paymentService.getMyInternshipSummary().then((data) => ({ data })).catch(() => ({ data: null })),
+          ]);
+
+          setStudentInternship(internshipRes.data || null);
+          setStudentTasks(Array.isArray(tasksRes.data) ? tasksRes.data : []);
+          setStudentReports(Array.isArray(reportsRes.data) ? reportsRes.data : []);
+          setInternshipPayment(paymentRes.data || null);
+          setPaymentAmount((current) => current || (paymentRes.data?.nextInstallmentAmount ? String(paymentRes.data.nextInstallmentAmount) : ''));
+          setPaymentPhone(internshipRes.data?.student?.phone || '');
         } else {
           // Supervisor, Admin, Manager data
           const [intsRes, appsRes, deptsRes] = await Promise.all([
@@ -132,8 +141,9 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
   const handlePayInternshipInstallment = async () => {
     setPaymentLoading(true);
     try {
-      const response = await paymentService.payInternshipInstallment({ phone: paymentPhone });
+      const response = await paymentService.payInternshipInstallment({ phone: paymentPhone, amount: Number(paymentAmount) });
       setInternshipPayment(response.summary);
+      setPaymentAmount(response.summary?.nextInstallmentAmount ? String(response.summary.nextInstallmentAmount) : '');
       toast.success(response.message || 'Internship installment payment started.');
     } catch (error) {
       toast.error(error.response?.data?.message || 'Unable to start installment payment.');
@@ -159,15 +169,31 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
 
   // ─── 1. STUDENT VIEW ────────────────────────────────────────────────────────
   if (isStudent) {
-    const s = studentInternship || {
-      department: 'Software Engineering',
-      progress: 68,
-      tasksCompleted: 18,
-      totalTasks: 25,
-      attendanceRate: 98.4,
-      supervisorRating: 4.8,
-      class: { name: 'English Level 2' },
-      supervisor: { firstName: 'Anderson', lastName: 'A.' }
+    const completedTasks = studentTasks.filter((task) => task.status === 'completed').length;
+    const submittedTasks = studentTasks.filter((task) => task.status === 'submitted').length;
+    const activeTasks = studentTasks.filter((task) => ['pending', 'in_progress', 'rejected'].includes(task.status)).length;
+    const overdueTasks = studentTasks.filter((task) => task.deadline && new Date(task.deadline) < new Date() && !['completed', 'submitted'].includes(task.status)).length;
+    const approvedReports = studentReports.filter((report) => report.status === 'approved').length;
+    const pendingReports = studentReports.filter((report) => report.status === 'pending').length;
+    const taskProgress = studentTasks.length ? Math.round((completedTasks / studentTasks.length) * 100) : 0;
+    const recentTasks = [...studentTasks].sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0)).slice(0, 5);
+    const recentReports = [...studentReports].sort((a, b) => new Date(b.createdAt || 0) - new Date(a.createdAt || 0)).slice(0, 3);
+    const completedScores = studentTasks
+      .filter((task) => task.status === 'completed' && Number.isFinite(Number(task.score)))
+      .map((task) => Number(task.score));
+    const averageTaskRating = completedScores.length
+      ? Number((((completedScores.reduce((sum, score) => sum + score, 0) / completedScores.length) / 100) * 5).toFixed(1))
+      : null;
+    const s = {
+      department: studentInternship?.department || 'No active internship',
+      progress: studentTasks.length ? taskProgress : Number(studentInternship?.progress || 0),
+      tasksCompleted: studentTasks.length ? completedTasks : Number(studentInternship?.tasksCompleted || 0),
+      totalTasks: studentTasks.length ? studentTasks.length : Number(studentInternship?.totalTasks || 0),
+      attendanceRate: Number(studentInternship?.attendanceRate || 0),
+      supervisorRating: averageTaskRating ?? Number(studentInternship?.supervisorRating || 0),
+      class: studentInternship?.class || null,
+      supervisor: studentInternship?.supervisor || null,
+      status: studentInternship?.status || 'not_started',
     };
     const payment = internshipPayment || {
       internshipFee: settings.internshipFee,
@@ -175,10 +201,53 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
       amountPaid: 0,
       pendingAmount: 0,
       remainingAmount: settings.internshipFee,
+      maxPayableAmount: settings.internshipFee,
       nextInstallmentAmount: settings.internshipInstallments > 0 ? Math.ceil(settings.internshipFee / settings.internshipInstallments) : settings.internshipFee,
       payments: []
     };
     const paymentProgress = payment.internshipFee > 0 ? Math.min(100, Math.round((payment.amountPaid / payment.internshipFee) * 100)) : 0;
+    const customPaymentAmount = Number(paymentAmount);
+    const reportsTarget = 12;
+    const approvedReportsProgress = Math.min(approvedReports, reportsTarget);
+    const internshipTimeline = [
+      {
+        range: formatRoadmapRange('2026-07-06', '2026-07-12'),
+        stage: 'Activation, access & onboarding',
+        desc: studentInternship
+          ? `Internship is ${s.status.replace('_', ' ')} for ${s.department}. Class: ${s.class?.name || 'Class Cohort'}.`
+          : 'Activate the internship record, confirm department placement, and verify platform access.',
+        status: getRoadmapStatus('2026-07-06', '2026-07-12', Boolean(studentInternship), Boolean(studentInternship)),
+      },
+      {
+        range: formatRoadmapRange('2026-07-13', '2026-08-09'),
+        stage: 'Operational tasks & weekly submissions',
+        desc: `${completedTasks} of ${studentTasks.length || 0} tasks completed, ${activeTasks} active, ${submittedTasks} awaiting review. Target: 90%+ task rating.`,
+        status: getRoadmapStatus('2026-07-13', '2026-08-09', taskProgress >= 90 && studentTasks.length > 0, studentTasks.length > 0),
+      },
+      {
+        range: formatRoadmapRange('2026-08-10', '2026-08-30'),
+        stage: 'Research assessment & mock papers',
+        desc: `${studentReports.length} reports submitted, ${approvedReports} approved. Build evidence for the capstone research review.`,
+        status: getRoadmapStatus('2026-08-10', '2026-08-30', approvedReports >= 4, studentReports.length > 0),
+      },
+      {
+        range: formatRoadmapRange('2026-08-31', '2026-09-13'),
+        stage: 'Department assignment finalization',
+        desc: `Confirm supervisor feedback, close overdue work${overdueTasks ? ` (${overdueTasks} overdue)` : ''}, and lock final department deliverables.`,
+        status: getRoadmapStatus('2026-08-31', '2026-09-13', overdueTasks === 0 && taskProgress >= 90 && studentTasks.length > 0, taskProgress > 0),
+      },
+      {
+        range: formatRoadmapRange('2026-09-14', '2026-09-30'),
+        stage: 'Supervisor grading & certificate verification',
+        desc: `${approvedReportsProgress}/${reportsTarget} report approvals recorded. Payment: ${formatXaf(payment.amountPaid)} of ${formatXaf(payment.internshipFee)} paid.`,
+        status: getRoadmapStatus(
+          '2026-09-14',
+          '2026-09-30',
+          s.progress >= 100 || s.status === 'completed',
+          approvedReports > 0 || payment.amountPaid > 0
+        ),
+      },
+    ];
 
     return (
       <div className="space-y-8 pb-10">
@@ -214,7 +283,7 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
                   <circle cx="64" cy="64" r="54" className="stroke-white/5" strokeWidth="8" fill="transparent" />
                   <circle cx="64" cy="64" r="54" className="stroke-cyan-400" strokeWidth="8" fill="transparent"
                     strokeDasharray={2 * Math.PI * 54}
-                    strokeDashoffset={2 * Math.PI * 54 * (1 - s.progress / 100)}
+                    strokeDashoffset={2 * Math.PI * 54 * (1 - Math.min(100, Math.max(0, s.progress)) / 100)}
                     strokeLinecap="round"
                     style={{ transition: 'stroke-dashoffset 1s ease' }}
                   />
@@ -273,11 +342,26 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
           </article>
 
           <aside className="rounded-[1.6rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
-            <span className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-blue-300">Next Installment</span>
+            <span className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-blue-300">Custom Payment</span>
             <strong className="mt-3 block text-3xl font-black text-white">{formatXaf(payment.nextInstallmentAmount)}</strong>
             <p className="mt-2 text-sm leading-6 text-slate-400">
-              Pay the next installment using Mobile Money. Completed sandbox payments update this balance immediately.
+              Suggested installment shown above. Enter the amount you can pay today using Mobile Money.
             </p>
+            <label className="mt-5 block">
+              <span className="mb-2 block text-xs font-bold text-slate-400">Amount to pay (XAF)</span>
+              <input
+                type="number"
+                min="1"
+                max={payment.maxPayableAmount || payment.remainingAmount || undefined}
+                value={paymentAmount}
+                onChange={(event) => setPaymentAmount(event.target.value)}
+                placeholder={payment.nextInstallmentAmount ? String(payment.nextInstallmentAmount) : '0'}
+                className="h-12 w-full rounded-2xl border border-white/10 bg-slate-950/45 px-4 text-white outline-none transition placeholder:text-slate-600 focus:border-blue-400 focus:ring-2 focus:ring-blue-500/10"
+              />
+              <span className="mt-1.5 block text-[0.65rem] font-semibold text-slate-500">
+                Maximum payable now: {formatXaf(payment.maxPayableAmount ?? payment.remainingAmount)}
+              </span>
+            </label>
             <label className="mt-5 block">
               <span className="mb-2 block text-xs font-bold text-slate-400">Mobile Money phone</span>
               <input
@@ -291,7 +375,7 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
             <button
               type="button"
               onClick={handlePayInternshipInstallment}
-              disabled={paymentLoading || !payment.nextInstallmentAmount}
+              disabled={paymentLoading || payment.remainingAmount <= 0 || !Number.isFinite(customPaymentAmount) || customPaymentAmount <= 0 || customPaymentAmount > (payment.maxPayableAmount ?? payment.remainingAmount)}
               className="mt-4 h-12 w-full rounded-2xl bg-emerald-500 px-5 text-sm font-black text-slate-950 shadow-xl transition hover:-translate-y-0.5 hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
             >
               {paymentLoading ? (
@@ -302,7 +386,7 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
               ) : payment.remainingAmount <= 0 ? (
                 'Fully paid'
               ) : (
-                'Pay installment'
+                'Pay custom amount'
               )}
             </button>
           </aside>
@@ -312,10 +396,10 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
         <section className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
           {[
             { label: 'Completed Tasks', value: s.tasksCompleted, max: `/${s.totalTasks || s.tasksCompleted}`, icon: 'fa-solid fa-list-check', color: 'from-blue-500 to-cyan-400' },
-            { label: 'Pending Tasks', value: Math.max(0, (s.totalTasks || 0) - (s.tasksCompleted || 0)), max: '', icon: 'fa-solid fa-clock-rotate-left', color: 'from-violet-500 to-fuchsia-400' },
-            { label: 'Attendance Rate', value: `${s.attendanceRate}%`, max: '', icon: 'fa-solid fa-user-check', color: 'from-emerald-500 to-teal-400' },
-            { label: 'Supervisor Rating', value: `${s.supervisorRating} / 5`, max: '', icon: 'fa-solid fa-star', color: 'from-amber-500 to-orange-400' },
-            { label: 'Department Track', value: s.department.split(' ')[0], max: '', icon: 'fa-solid fa-briefcase', color: 'from-slate-500 to-blue-400' }
+            { label: 'Active Tasks', value: activeTasks, max: submittedTasks ? `+${submittedTasks} in review` : '', icon: 'fa-solid fa-clock-rotate-left', color: 'from-violet-500 to-fuchsia-400' },
+            { label: 'Reports Filed', value: studentReports.length, max: `${approvedReports} approved`, icon: 'fa-solid fa-file-invoice', color: 'from-emerald-500 to-teal-400' },
+            { label: 'Supervisor Rating', value: s.supervisorRating ? `${s.supervisorRating} / 5` : 'No score', max: '', icon: 'fa-solid fa-star', color: 'from-amber-500 to-orange-400' },
+            { label: 'Department Track', value: s.department.split(' ')[0], max: overdueTasks ? `${overdueTasks} overdue` : s.status.replace('_', ' '), icon: 'fa-solid fa-briefcase', color: 'from-slate-500 to-blue-400' }
           ].map((k) => (
             <article key={k.label} className="group relative overflow-hidden rounded-[1.35rem] border border-white/10 bg-white/[0.045] p-5 shadow-[0_18px_55px_rgba(0,0,0,0.22)] transition hover:-translate-y-1 hover:border-cyan-400/35">
               <div className={`absolute -right-8 -top-8 h-24 w-24 rounded-full bg-gradient-to-br ${k.color} opacity-20 blur-2xl transition group-hover:opacity-35`} />
@@ -335,29 +419,104 @@ export default function DashboardHome({ onSelect, userRoles = [] }) {
           ))}
         </section>
 
+        <section className="grid gap-6 xl:grid-cols-[minmax(0,1.35fr)_minmax(320px,0.9fr)]">
+          <article className="rounded-[1.6rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
+            <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+              <div>
+                <span className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-blue-300">Live Task Management</span>
+                <h3 className="mt-2 text-2xl font-black text-white">Current assignments</h3>
+              </div>
+              <button type="button" onClick={() => onSelect?.('tasks')} className="rounded-2xl bg-white px-5 py-3 text-xs font-black uppercase tracking-widest text-slate-950 transition hover:bg-blue-50">
+                Open task board
+              </button>
+            </div>
+
+            <div className="mt-5 grid gap-3">
+              {recentTasks.length ? recentTasks.map((task) => {
+                const isOverdue = task.deadline && new Date(task.deadline) < new Date() && !['completed', 'submitted'].includes(task.status);
+                return (
+                  <div key={task._id} className="grid gap-3 rounded-2xl border border-white/10 bg-slate-950/30 p-4 md:grid-cols-[minmax(0,1fr)_150px_120px] md:items-center">
+                    <div className="min-w-0">
+                      <div className="flex flex-wrap gap-2">
+                        <span className="rounded-full border border-cyan-500/20 bg-cyan-500/10 px-2 py-0.5 text-[0.58rem] font-black uppercase text-cyan-300">{task.frequency || 'daily'}</span>
+                        {isOverdue && <span className="rounded-full border border-rose-500/20 bg-rose-500/10 px-2 py-0.5 text-[0.58rem] font-black uppercase text-rose-300">Overdue</span>}
+                      </div>
+                      <strong className="mt-2 block truncate text-sm text-white">{task.title}</strong>
+                      <span className="mt-1 block truncate text-xs text-slate-500">{task.description}</span>
+                    </div>
+                    <span className="text-xs font-bold text-slate-400">{task.deadline ? new Date(task.deadline).toLocaleDateString() : 'No deadline'}</span>
+                    <span className={`rounded-full px-3 py-1 text-center text-[0.65rem] font-black uppercase ${
+                      task.status === 'completed' ? 'bg-emerald-500/10 text-emerald-300' :
+                      task.status === 'submitted' ? 'bg-blue-500/10 text-blue-300' :
+                      task.status === 'rejected' ? 'bg-rose-500/10 text-rose-300' :
+                      'bg-amber-500/10 text-amber-300'
+                    }`}>
+                      {task.status?.replace('_', ' ')}
+                    </span>
+                  </div>
+                );
+              }) : (
+                <div className="rounded-2xl border border-white/10 bg-slate-950/30 p-8 text-center text-sm font-semibold text-slate-500">
+                  No tasks assigned yet.
+                </div>
+              )}
+            </div>
+          </article>
+
+          <aside className="rounded-[1.6rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
+            <span className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-emerald-300">Report Tracking</span>
+            <h3 className="mt-2 text-xl font-black text-white">Daily & weekly reports</h3>
+            <div className="mt-5 grid grid-cols-2 gap-3">
+              {[
+                ['Pending', pendingReports],
+                ['Approved', approvedReports],
+              ].map(([label, value]) => (
+                <div key={label} className="rounded-2xl border border-white/10 bg-slate-950/30 p-4">
+                  <span className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-slate-500">{label}</span>
+                  <strong className="mt-2 block text-2xl font-black text-white">{value}</strong>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-5 space-y-3">
+              {recentReports.length ? recentReports.map((report) => (
+                <div key={report._id} className="rounded-2xl border border-white/10 bg-slate-950/30 p-4">
+                  <div className="flex items-center justify-between gap-3">
+                    <strong className="truncate text-sm text-white">{report.title}</strong>
+                    <span className="rounded-full bg-white/10 px-2 py-1 text-[0.58rem] font-black uppercase text-slate-300">{report.type}</span>
+                  </div>
+                  <p className="mt-2 line-clamp-2 text-xs leading-5 text-slate-500">{report.content}</p>
+                </div>
+              )) : (
+                <p className="rounded-2xl border border-white/10 bg-slate-950/30 p-5 text-center text-sm font-semibold text-slate-500">No reports submitted yet.</p>
+              )}
+            </div>
+
+            <button type="button" onClick={() => onSelect?.('reports')} className="mt-5 w-full rounded-2xl border border-white/10 bg-white/[0.04] p-3 text-xs font-black uppercase tracking-widest text-slate-200 transition hover:bg-white/[0.08]">
+              Submit report
+            </button>
+          </aside>
+        </section>
+
         {/* Timeline & Actions */}
         <section className="grid gap-6 xl:grid-cols-[minmax(0,1.5fr)_minmax(340px,0.85fr)]">
           {/* Interactive Timeline */}
           <article className="rounded-[1.6rem] border border-white/10 bg-white/[0.045] p-6 shadow-[0_22px_70px_rgba(0,0,0,0.22)]">
             <span className="text-[0.68rem] font-black uppercase tracking-[0.2em] text-cyan-300">Your Progression Roadmap</span>
             <h3 className="mt-2 text-2xl font-black text-white">Internship Milestones</h3>
-            <p className="mt-1 text-sm text-slate-400">Chronological checklist of your pathway to completion.</p>
+            <p className="mt-1 text-sm text-slate-400">Live checklist from Jul 6, 2026 through Sep 30, 2026.</p>
 
             <div className="mt-8 space-y-6">
-              {[
-                { stage: 'Month 1: Technical Setup & Onboarding', desc: 'Acquire access to resources, configure local environments, dynamic class seating.', status: 'completed' },
-                { stage: 'Month 2: Core Task Submissions', desc: 'Perform weekly supervisor-assigned operational tasks. Maintain 90%+ ratings.', status: 'active' },
-                { stage: 'Month 3: Capstone Research Assessment', desc: 'Launch mock exam papers and finalize department assignments.', status: 'pending' },
-                { stage: 'Month 4: Supervisor Grading & Certificate', desc: 'Admin reviews performance scores and generates digital verification certificates.', status: 'pending' }
-              ].map((m, idx) => (
+              {internshipTimeline.map((m, idx) => (
                 <div key={idx} className="flex gap-4">
                   <div className="flex flex-col items-center">
                     <span className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-xs font-bold ${m.status === 'completed' ? 'bg-emerald-500 text-white' : m.status === 'active' ? 'bg-cyan-500 text-white shadow-lg shadow-cyan-500/20' : 'bg-white/10 text-slate-500'}`}>
                       {m.status === 'completed' ? '✓' : idx + 1}
                     </span>
-                    {idx < 3 && <div className="w-[2px] flex-1 bg-white/10 my-1" />}
+                    {idx < internshipTimeline.length - 1 && <div className="w-[2px] flex-1 bg-white/10 my-1" />}
                   </div>
-                  <div>
+                  <div className="min-w-0">
+                    <span className="text-[0.62rem] font-black uppercase tracking-[0.16em] text-slate-500">{m.range}</span>
                     <h4 className={`text-sm font-black ${m.status === 'completed' ? 'text-slate-400 line-through' : m.status === 'active' ? 'text-cyan-300' : 'text-slate-200'}`}>{m.stage}</h4>
                     <p className="mt-1.5 text-xs leading-relaxed text-slate-400">{m.desc}</p>
                   </div>

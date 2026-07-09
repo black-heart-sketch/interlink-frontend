@@ -3,9 +3,10 @@ import { io } from 'socket.io-client';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { messageService } from '../../services/messageService';
+import { API_ORIGIN } from '../../config/apiConfig';
 
 const fullName = (user) => [user?.firstName, user?.lastName].filter(Boolean).join(' ') || user?.email || 'Contact';
-const apiBase = (import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/').replace(/\/api\/?$/, '');
+const apiBase = API_ORIGIN;
 const assetUrl = (url) => /^https?:\/\//i.test(url || '') ? url : `${apiBase}${url}`;
 const avatarUrl = (user) => user?.avatar ? assetUrl(user.avatar) : '';
 

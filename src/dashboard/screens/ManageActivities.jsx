@@ -64,6 +64,10 @@ export default function ManageActivities({ dashboardRoles }) {
   const [statusFilter, setStatusFilter] = useState('all');
   const [priorityFilter, setPriorityFilter] = useState('all');
   const [frequencyFilter, setFrequencyFilter] = useState('all');
+  const [studentFrequencyView, setStudentFrequencyView] = useState('daily');
+  const [draggedTaskId, setDraggedTaskId] = useState(null);
+  const [dragOverLane, setDragOverLane] = useState(null);
+  const [assigningBatchId, setAssigningBatchId] = useState(null);
 
   // Fetch tasks
   const fetchTasks = async () => {
@@ -225,6 +229,33 @@ export default function ManageActivities({ dashboardRoles }) {
     }
   };
 
+  const handleAssignExistingTaskToNewStudents = async (taskId) => {
+    setAssigningBatchId(taskId);
+    try {
+      const res = await axiosInstance.post(`/tasks/${taskId}/assign-new-students`);
+      toast.success(res.data?.message || 'Existing task assigned to new students.');
+      await fetchTasks();
+    } catch (err) {
+      toast.error(err.response?.data?.message || 'Failed to assign task to new students.');
+    } finally {
+      setAssigningBatchId(null);
+    }
+  };
+
+  const taskFrequencyViews = [
+    { id: 'daily', label: 'Daily', icon: 'fa-solid fa-sun', helper: 'Today goals' },
+    { id: 'weekly', label: 'Weekly', icon: 'fa-solid fa-calendar-week', helper: 'Sprint goals' },
+    { id: 'monthly', label: 'Monthly', icon: 'fa-solid fa-calendar-days', helper: 'Milestones' },
+  ];
+
+  const kanbanLaneConfig = [
+    { id: 'pending', title: 'Pending Backlog', color: 'text-slate-400', icon: 'fa-regular fa-clipboard', bg: 'bg-slate-950/20' },
+    { id: 'in_progress', title: 'In Progress', color: 'text-violet-400', icon: 'fa-solid fa-person-running', bg: 'bg-violet-950/5' },
+    { id: 'submitted', title: 'Awaiting Grading', color: 'text-blue-400', icon: 'fa-solid fa-spinner fa-spin-pulse', bg: 'bg-blue-950/5' },
+    { id: 'completed', title: 'Completed', color: 'text-emerald-400', icon: 'fa-solid fa-circle-check', bg: 'bg-emerald-950/5' },
+    { id: 'rejected', title: 'Revision Requested', color: 'text-rose-400', icon: 'fa-solid fa-triangle-exclamation', bg: 'bg-rose-950/5' },
+  ];
+
   // Trainee Kanban lane helpers
   const kanbanLanes = useMemo(() => {
     const lanes = {
@@ -234,13 +265,44 @@ export default function ManageActivities({ dashboardRoles }) {
       completed: [],
       rejected: [],
     };
-    tasks.forEach((t) => {
+    tasks.filter((task) => (task.frequency || 'daily') === studentFrequencyView).forEach((t) => {
       if (lanes[t.status]) {
         lanes[t.status].push(t);
       }
     });
     return lanes;
+  }, [tasks, studentFrequencyView]);
+
+  const studentFrequencyCounts = useMemo(() => {
+    return taskFrequencyViews.reduce((counts, view) => {
+      counts[view.id] = tasks.filter((task) => (task.frequency || 'daily') === view.id).length;
+      return counts;
+    }, {});
   }, [tasks]);
+
+  const handleTaskDrop = async (targetStatus) => {
+    const task = tasks.find((item) => item._id === draggedTaskId);
+    setDraggedTaskId(null);
+    setDragOverLane(null);
+    if (!task || task.status === targetStatus) return;
+
+    if (targetStatus === 'in_progress' && ['pending', 'rejected'].includes(task.status)) {
+      await handleStartTask(task._id);
+      return;
+    }
+
+    if (targetStatus === 'submitted' && ['in_progress', 'rejected'].includes(task.status)) {
+      handleOpenSubmission(task);
+      return;
+    }
+
+    if (targetStatus === 'completed') {
+      toast.info('Completed tasks are marked by your supervisor after grading.');
+      return;
+    }
+
+    toast.info('This move is locked by the task workflow. Use the available action button on the card.');
+  };
 
   // Supervisor metrics calculations
   const supervisorMetrics = useMemo(() => {
@@ -276,7 +338,7 @@ export default function ManageActivities({ dashboardRoles }) {
   const batchGroups = useMemo(() => {
     const groups = new Map();
     tasks.forEach((task) => {
-      const key = task.assignmentBatchId || task._id;
+      const key = task.assignmentBatchId || task.taskId || task._id;
       if (!groups.has(key)) {
         groups.set(key, {
           id: key,
@@ -342,21 +404,59 @@ export default function ManageActivities({ dashboardRoles }) {
   if (isStudent) {
     return (
       <div className="space-y-8">
+        <section className="rounded-[1.6rem] border border-white/10 bg-slate-950/30 p-4 shadow-[0_18px_60px_rgba(0,0,0,0.18)]">
+          <div className="grid gap-3 md:grid-cols-3">
+            {taskFrequencyViews.map((view) => {
+              const active = studentFrequencyView === view.id;
+              return (
+                <button
+                  key={view.id}
+                  type="button"
+                  onClick={() => setStudentFrequencyView(view.id)}
+                  className={`flex items-center justify-between rounded-2xl border px-4 py-3 text-left transition ${
+                    active
+                      ? 'border-cyan-400/50 bg-cyan-500/15 text-white shadow-lg shadow-cyan-500/10'
+                      : 'border-white/10 bg-white/[0.035] text-slate-300 hover:border-white/20 hover:bg-white/[0.06]'
+                  }`}
+                >
+                  <span className="flex items-center gap-3">
+                    <span className={`grid h-10 w-10 place-items-center rounded-xl ${active ? 'bg-cyan-400 text-slate-950' : 'bg-white/10 text-slate-300'}`}>
+                      <i className={view.icon} aria-hidden="true" />
+                    </span>
+                    <span>
+                      <strong className="block text-sm font-black">{view.label}</strong>
+                      <span className="mt-0.5 block text-[0.68rem] font-bold uppercase tracking-[0.16em] text-slate-500">{view.helper}</span>
+                    </span>
+                  </span>
+                  <span className={`rounded-full px-2.5 py-1 text-xs font-black ${active ? 'bg-white text-slate-950' : 'bg-white/10 text-white'}`}>
+                    {studentFrequencyCounts[view.id] || 0}
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+        </section>
+
         {/* Kanban Board Container */}
         <div className="grid grid-cols-1 gap-6 md:grid-cols-3 lg:grid-cols-5">
           {/* Lane Column Component */}
-          {[
-            { id: 'pending', title: 'Pending Backlog', color: 'text-slate-400', icon: 'fa-regular fa-clipboard', bg: 'bg-slate-950/20' },
-            { id: 'in_progress', title: 'In Progress', color: 'text-violet-400', icon: 'fa-solid fa-person-running', bg: 'bg-violet-950/5' },
-            { id: 'submitted', title: 'Awaiting Grading', color: 'text-blue-400', icon: 'fa-solid fa-spinner fa-spin-pulse', bg: 'bg-blue-950/5' },
-            { id: 'completed', title: 'Completed', color: 'text-emerald-400', icon: 'fa-solid fa-circle-check', bg: 'bg-emerald-950/5' },
-            { id: 'rejected', title: 'Revision Requested', color: 'text-rose-400', icon: 'fa-solid fa-triangle-exclamation', bg: 'bg-rose-950/5' },
-          ].map((lane) => {
+          {kanbanLaneConfig.map((lane) => {
             const laneTasks = kanbanLanes[lane.id] || [];
             return (
               <div
                 key={lane.id}
-                className={`flex flex-col rounded-3xl border border-white/5 p-4 min-h-[450px] ${lane.bg} backdrop-blur-xl`}
+                onDragOver={(event) => {
+                  event.preventDefault();
+                  setDragOverLane(lane.id);
+                }}
+                onDragLeave={() => setDragOverLane((current) => current === lane.id ? null : current)}
+                onDrop={(event) => {
+                  event.preventDefault();
+                  handleTaskDrop(lane.id);
+                }}
+                className={`flex min-h-[450px] flex-col rounded-3xl border p-4 backdrop-blur-xl transition ${lane.bg} ${
+                  dragOverLane === lane.id ? 'border-cyan-400/60 bg-cyan-500/10 shadow-xl shadow-cyan-500/10' : 'border-white/5'
+                }`}
               >
                 {/* Lane Header */}
                 <div className="mb-4 flex items-center justify-between border-b border-white/5 pb-2">
@@ -382,7 +482,18 @@ export default function ManageActivities({ dashboardRoles }) {
                       return (
                         <div
                           key={task._id}
-                          className="group relative flex flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-cyan-500/5 hover:bg-slate-900/80"
+                          draggable
+                          onDragStart={(event) => {
+                            setDraggedTaskId(task._id);
+                            event.dataTransfer.effectAllowed = 'move';
+                          }}
+                          onDragEnd={() => {
+                            setDraggedTaskId(null);
+                            setDragOverLane(null);
+                          }}
+                          className={`group relative flex cursor-grab flex-col rounded-2xl border border-white/10 bg-slate-900/60 p-4 shadow-lg transition-all duration-300 hover:-translate-y-1 hover:border-white/20 hover:bg-slate-900/80 hover:shadow-cyan-500/5 active:cursor-grabbing ${
+                            draggedTaskId === task._id ? 'opacity-60 ring-2 ring-cyan-400/40' : ''
+                          }`}
                         >
                           <div className="flex items-center justify-between gap-2">
                             <span className={`rounded-full px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-widest ${getPriorityStyle(task.priority)}`}>
@@ -487,7 +598,7 @@ export default function ManageActivities({ dashboardRoles }) {
                 </div>
                 <div className="flex justify-between">
                   <span className="text-slate-400 font-semibold">Assigned Track:</span>
-                  <span className="text-blue-300 font-bold">{selectedTask.department}</span>
+                  <span className="text-blue-300 font-bold">{selectedTask.department || 'All departments'}</span>
                 </div>
                 {selectedTask.supervisor && (
                   <div className="flex justify-between">
@@ -705,6 +816,7 @@ export default function ManageActivities({ dashboardRoles }) {
                 <option value="all">All Frequencies</option>
                 <option value="daily">Daily</option>
                 <option value="weekly">Weekly</option>
+                <option value="monthly">Monthly</option>
                 <option value="custom">Custom</option>
               </select>
             </div>
@@ -824,7 +936,7 @@ export default function ManageActivities({ dashboardRoles }) {
             </div>
             <div>
               <h3 className="text-base font-black text-white">Allocate Student Task</h3>
-              <p className="text-xs text-slate-400">Deploy daily or weekly workloads to one student, selected students, or every student.</p>
+              <p className="text-xs text-slate-400">Deploy daily, weekly, or monthly workloads to one student, selected students, or every student.</p>
             </div>
           </div>
 
@@ -839,6 +951,7 @@ export default function ManageActivities({ dashboardRoles }) {
                 >
                   <option value="daily">Daily task</option>
                   <option value="weekly">Weekly task</option>
+                  <option value="monthly">Monthly task</option>
                   <option value="custom">Custom task</option>
                 </select>
               </label>
@@ -1021,6 +1134,15 @@ export default function ManageActivities({ dashboardRoles }) {
                         <span><i className="fa-regular fa-clock mr-1" /> Created {formatDate(batch.createdAt)}</span>
                         <span><i className="fa-solid fa-users mr-1" /> {batch.tasks.length} student{batch.tasks.length === 1 ? '' : 's'}</span>
                       </div>
+                      <button
+                        type="button"
+                        onClick={() => handleAssignExistingTaskToNewStudents(batch.tasks[0]._id)}
+                        disabled={assigningBatchId === batch.tasks[0]._id}
+                        className="mt-5 inline-flex items-center gap-2 rounded-2xl border border-emerald-400/20 bg-emerald-500/10 px-4 py-3 text-xs font-black uppercase tracking-wider text-emerald-300 transition hover:bg-emerald-500/20 disabled:cursor-not-allowed disabled:opacity-60"
+                      >
+                        <i className={`fa-solid ${assigningBatchId === batch.tasks[0]._id ? 'fa-spinner fa-spin' : 'fa-user-plus'}`} />
+                        Assign To New Students
+                      </button>
                     </div>
 
                     <div className="grid grid-cols-2 gap-3">
@@ -1182,7 +1304,7 @@ export default function ManageActivities({ dashboardRoles }) {
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400 font-semibold">Track/Department:</span>
-                <span className="text-blue-300 font-bold">{selectedTask.department}</span>
+                <span className="text-blue-300 font-bold">{selectedTask.department || 'All departments'}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-slate-400 font-semibold">Scheduled Due Date:</span>

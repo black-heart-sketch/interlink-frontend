@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { publicService } from '../../services/publicService';
+import { API_ORIGIN } from '../../config/apiConfig';
 
 const buildSpeaker = (name, role, focus) => ({
   name,
@@ -72,7 +73,7 @@ const PastEventsHighlights = () => {
   const [highlightPage, setHighlightPage] = useState(1);
   const [selectedHighlight, setSelectedHighlight] = useState(null);
   const [isMobileGrid, setIsMobileGrid] = useState(false);
-  const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
+  const API_URL = API_ORIGIN;
 
   useEffect(() => {
     const fetchEvents = async () => {

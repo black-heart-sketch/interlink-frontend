@@ -1,26 +1,9 @@
 import axios from 'axios';
-
-const FALLBACK_API_URL = 'https://interiilink.com/api/api/';
-
-const resolveApiUrl = () => {
-  const configuredUrl = import.meta.env.VITE_API_URL || FALLBACK_API_URL;
-
-  try {
-    const url = new URL(configuredUrl);
-    const isBrowserHttps = typeof window !== 'undefined' && window.location.protocol === 'https:';
-    if (isBrowserHttps && url.protocol !== 'https:') {
-      return FALLBACK_API_URL;
-    }
-  } catch {
-    return FALLBACK_API_URL;
-  }
-
-  return configuredUrl;
-};
+import { API_BASE_URL } from './apiConfig';
 
 // Base instance configuration
 const axiosInstance = axios.create({
-  baseURL: resolveApiUrl(),
+  baseURL: API_BASE_URL,
   timeout: 0, // No timeout — video uploads can take several minutes
   headers: {
     'Content-Type': 'application/json',

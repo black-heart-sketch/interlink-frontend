@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { toast } from 'react-toastify';
 import { selectCurrentUserProfile, setCredentials } from '../../redux/authSlice';
 import { userService } from '../../services/userService';
+import { API_ORIGIN } from '../../config/apiConfig';
 
 function ManageProfile() {
   const { t, i18n } = useTranslation();
@@ -30,7 +31,7 @@ function ManageProfile() {
     if (userProfile?.avatar) {
       const fullUrl = userProfile.avatar.startsWith('http')
         ? userProfile.avatar
-        : `${(import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/').replace(/\/api\/?$/, '')}${userProfile.avatar}`;
+        : `${API_ORIGIN}${userProfile.avatar}`;
       setAvatarPreview(fullUrl);
     } else {
       setAvatarPreview('https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=240&q=80&auto=format&fit=crop');

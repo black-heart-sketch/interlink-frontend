@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import axiosInstance from '../../config/axiosConfig';
+import { API_ORIGIN } from '../../config/apiConfig';
 import { reportService } from '../../services/reportService';
 import Loader from '../components/Loader';
 
@@ -32,8 +33,7 @@ const formatDate = (value) => value ? new Date(value).toLocaleDateString(undefin
 const getAssetUrl = (url) => {
   if (!url) return '';
   if (/^https?:\/\//i.test(url)) return url;
-  const apiBase = import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/';
-  return `${apiBase.replace(/\/api\/?$/, '')}${url}`;
+  return `${API_ORIGIN}${url}`;
 };
 
 const statusStyles = {

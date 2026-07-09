@@ -10,11 +10,14 @@ function ManageSettings() {
     internshipFee: 0,
     internshipInstallments: 1,
     digipayApiKey: '',
-    digipayEnv: 'production'
+    digipayEnv: 'production',
+    openRouterApiKey: '',
+    openRouterModel: 'google/gemini-2.5-flash'
   });
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [showKey, setShowKey] = useState(false);
+  const [showOpenRouterKey, setShowOpenRouterKey] = useState(false);
 
   useEffect(() => {
     const fetchSettings = async () => {
@@ -27,7 +30,9 @@ function ManageSettings() {
             internshipFee: res.data.internshipFee || 0,
             internshipInstallments: res.data.internshipInstallments || 1,
             digipayApiKey: res.data.digipayApiKey || '',
-            digipayEnv: res.data.digipayEnv || 'production'
+            digipayEnv: res.data.digipayEnv || 'production',
+            openRouterApiKey: res.data.openRouterApiKey || '',
+            openRouterModel: res.data.openRouterModel || 'google/gemini-2.5-flash'
           });
         }
       } catch (err) {
@@ -209,6 +214,61 @@ function ManageSettings() {
                 })}
               </div>
             </div>
+          </div>
+        </article>
+
+        {/* AI Capabilities Panel */}
+        <article className="rounded-[2rem] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(168,85,247,0.08),transparent_25%),linear-gradient(135deg,rgba(15,23,42,0.65),rgba(30,41,59,0.5))] p-8 shadow-[0_24px_80px_rgba(0,0,0,0.2)] backdrop-blur xl:col-span-2">
+          <div className="flex items-start gap-4 mb-6">
+            <span className="flex h-12 w-12 items-center justify-center rounded-2xl bg-purple-500/10 text-purple-400 border border-purple-500/20 text-xl shadow-lg">
+              <i className="fa-solid fa-brain" />
+            </span>
+            <div>
+              <span className="text-[0.65rem] font-black uppercase tracking-[0.2em] text-purple-300">AI Capabilities</span>
+              <h3 className="text-xl font-black text-white mt-1">OpenRouter Configuration</h3>
+              <p className="text-xs text-slate-400 leading-relaxed mt-1">
+                Configure your OpenRouter credentials and preferred model. If configured, these settings take precedence over standard Gemini API keys.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid gap-6 md:grid-cols-2">
+            <label className="block">
+              <span className="mb-2 block text-xs font-bold text-slate-400">OpenRouter API Key</span>
+              <div className="relative">
+                <input
+                  type={showOpenRouterKey ? 'text' : 'password'}
+                  value={settings.openRouterApiKey}
+                  onChange={(e) => setSettings({ ...settings, openRouterApiKey: e.target.value })}
+                  className="h-[50px] w-full rounded-2xl border border-white/10 bg-slate-950/45 pl-4 pr-12 text-white outline-none transition focus:border-blue-400 focus:ring-2 focus:ring-blue-500/10 placeholder:text-slate-700 font-mono text-sm"
+                  placeholder="sk-or-v1-..."
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowOpenRouterKey(!showOpenRouterKey)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 rounded-xl p-2 text-slate-500 transition hover:bg-white/5 hover:text-white bg-transparent border-none cursor-pointer"
+                >
+                  <i className={`fa-solid ${showOpenRouterKey ? 'fa-eye-slash' : 'fa-eye'}`} />
+                </button>
+              </div>
+              <span className="mt-1.5 block text-[0.65rem] text-slate-500 font-semibold leading-relaxed">
+                OpenRouter API Secret Key. Leave empty to fallback to default Gemini API key.
+              </span>
+            </label>
+
+            <label className="block">
+              <span className="mb-2 block text-xs font-bold text-slate-400">OpenRouter Model</span>
+              <input
+                type="text"
+                value={settings.openRouterModel}
+                onChange={(e) => setSettings({ ...settings, openRouterModel: e.target.value })}
+                className={inputCls}
+                placeholder="e.g. google/gemini-2.5-flash"
+              />
+              <span className="mt-1.5 block text-[0.65rem] text-slate-500 font-semibold leading-relaxed">
+                The identifier of the model to use on OpenRouter (e.g. <strong className="text-slate-400">google/gemini-2.5-flash</strong> or <strong className="text-slate-400">poolside/laguna-xs-2.1:free</strong>).
+              </span>
+            </label>
           </div>
         </article>
 

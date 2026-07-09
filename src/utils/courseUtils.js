@@ -1,4 +1,6 @@
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
+import { API_ORIGIN } from '../config/apiConfig';
+
+const API_URL = API_ORIGIN;
 
 export const getCourseId = (course) => course?._id || course?.id;
 

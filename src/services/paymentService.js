@@ -31,6 +31,10 @@ export const paymentService = {
     const res = await axiosInstance.post('/payments/internship/installment', data);
     return res.data;
   },
+  recordManualInternshipPayment: async (data = {}) => {
+    const res = await axiosInstance.post('/payments/internship/manual', data);
+    return res.data;
+  },
   getPaymentById: async (id) => {
     console.log(`[PaymentService] Fetching payment detail for ID: ${id}`);
     try {

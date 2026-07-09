@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Download, FileText, Image, Video, Music, ExternalLink, ZoomIn, ZoomOut, RotateCw, ShieldAlert, Loader2 } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import axiosInstance from '../../config/axiosConfig';
+import { API_ORIGIN } from '../../config/apiConfig';
 import AntiCheatMonitor from './AntiCheatMonitor';
 
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
+const API_URL = API_ORIGIN;
 
 export const getThumbnailUrl = (fileUrl) => {
   if (!fileUrl) return null;

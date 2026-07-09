@@ -6,9 +6,10 @@ import Loader from '../components/Loader';
 import StatusBadge from '../components/StatusBadge';
 import { mediaService } from '../../services/mediaService';
 import FilePreviewModal, { getThumbnailUrl, getFullFileUrl } from '../../components/public/FilePreviewModal';
+import { API_ORIGIN } from '../../config/apiConfig';
 
 const EMPTY_FORM = { title: '', description: '', type: 'photo', url: '', status: 'Review', files: [] };
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
+const API_URL = API_ORIGIN;
 
 const TYPE_ICONS = { photo: '📷', video: '🎥' };
 const STATUS_COLORS = {

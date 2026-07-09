@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import Loader from '../components/Loader';
 import { studentProjectService } from '../../services/studentProjectService';
+import { API_ORIGIN } from '../../config/apiConfig';
 
 const EMPTY_FORM = {
   title: '',
@@ -24,8 +25,7 @@ const formatDate = (value) => value ? new Date(value).toLocaleDateString(undefin
 const getAssetUrl = (url) => {
   if (!url) return '';
   if (/^https?:\/\//i.test(url)) return url;
-  const apiBase = import.meta.env.VITE_API_URL || 'https://interiilink.com/api/api/';
-  return `${apiBase.replace(/\/api\/?$/, '')}${url}`;
+  return `${API_ORIGIN}${url}`;
 };
 
 const statusStyles = {

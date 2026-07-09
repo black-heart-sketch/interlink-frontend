@@ -6,8 +6,9 @@ import { quizService } from '../services/quizService';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import FilePreviewModal from '../components/public/FilePreviewModal';
+import { API_ORIGIN } from '../config/apiConfig';
 
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
+const API_URL = API_ORIGIN;
 
 const TYPE_ICONS = { document: '📄', course: '📚', video: '🎬', audio: '🎧' };
 const TYPE_COLORS = {

@@ -6,6 +6,7 @@ import StatusBadge from '../components/StatusBadge';
 import Loader from '../components/Loader';
 import { userService } from '../../services/userService';
 import FilePreviewModal, { getThumbnailUrl } from '../../components/public/FilePreviewModal';
+import { API_ORIGIN } from '../../config/apiConfig';
 
 const ROLES = ['student', 'teacher', 'advisor', 'admin', 'superadmin', 'partner'];
 const STATUSES = ['active', 'inactive', 'pending', 'banned'];
@@ -25,7 +26,7 @@ const ROLE_COLORS = {
   partner: 'bg-pink-500/10 text-pink-400',
 };
 
-const API_URL = import.meta.env.VITE_API_URL?.replace(/\/api\/?$/, '') || 'https://interiilink.com';
+const API_URL = API_ORIGIN;
 const formatXaf = (amount) => `${Number(amount || 0).toLocaleString('fr-FR')} XAF`;
 
 function F({ label, children }) {
